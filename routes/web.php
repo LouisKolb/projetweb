@@ -24,4 +24,6 @@ Route::post('/user','UserController@store');
 
 
 Route::post('/login',"UserController@processlogin");
-//Route::get('/user','UserController@update');
+
+
+Route::get('/test',function(){return view('test');});
