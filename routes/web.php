@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::get('/login','UserController@login');
+Route::get('/register','UserController@create');
+Route::post('/user','UserController@store');
+
+
+
+Route::post('/login',"UserController@processlogin");
+//Route::get('/user','UserController@update');
