@@ -91,41 +91,41 @@ $(document).ready(function(){
 
 
 
-//   $("#register_form").submit(function(e) {
-//   e.preventDefault(); // avoid to execute the actual submit of the form.
-//   var form = $("#register_form");
+  $("#register_form").submit(function(e) {
+  e.preventDefault(); // avoid to execute the actual submit of the form.
+  var form = $("#register_form");
   
-//   $.ajax({
-//             type: form.attr('method'),
-//             url: form.attr('action'),
-//             data: form.serialize(),
-//             success: function (data) {
-//                 //console.log('Submission was successful.');
-//                 console.log(data);
-//                 window.location.replace("/login"); 
+  $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            success: function (data) {
+                //console.log('Submission was successful.');
+                console.log(data);
+                window.location.replace("/login"); 
 
-//             },
-//             error: function (data) {
-//                 console.log('An error occurred.');
-//                 console.log(data)
-//                 try{
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data)
+                try{
                    
-//                     errors=data.responseJSON
-//                     errors = errors.errors;
-//                     for(i=0;i<errors.length;i++){
-//                       M.toast({html: errors[i] , classes: 'red darken-2' ,displayLength:5000})
-//                       console.log(i);
-//                       if(i==errors.length-1)return
-//                     }
-//                 }catch(e){
-//                     M.toast({html: "Une erreur s'est produite merci de votre compréhension" , classes: 'red darken-2' ,displayLength:5000})
-//                 }
-//                 console.log(errors);
-//             },
-//         });
+                    errors=data.responseJSON
+                    errors = errors.errors;
+                    for(i=0;i<errors.length;i++){
+                      M.toast({html: errors[i] , classes: 'red darken-2' ,displayLength:5000})
+                      console.log(i);
+                      if(i==errors.length-1)return
+                    }
+                }catch(e){
+                    M.toast({html: "Une erreur s'est produite merci de votre compréhension" , classes: 'red darken-2' ,displayLength:5000})
+                }
+                console.log(errors);
+            },
+        });
 
 
-// });
+});
 
 </script>
 @endsection

@@ -55,8 +55,6 @@ class UserController extends Controller
         }
         if ($loged) {
             session()->push('user', request()->username);
-            $user->last_connexion = date('Y-m-d H:i:s');
-            $user->connexion_ip = request()->ip();
             $user->save();
             return "Connected :" . $user->username;
         }
@@ -122,9 +120,7 @@ class UserController extends Controller
 
 
 
-      
-
-
+    
 
 
         //test de la dureté du mdp bon on va pas faire chier le monde
@@ -144,6 +140,11 @@ class UserController extends Controller
         $user->first_name = ucwords(strtolower(request()->first_name));
         $user->last_name = ucwords(strtoupper(request()->last_name));
         $user->centre = request()->centre;
+        if (!preg_match('/@cesi\.fr/',request()->email)){
+            $user->addRole("Tutor");
+        }else{
+            $user->addRole("Student");
+        }
         
         $user->save();
         
