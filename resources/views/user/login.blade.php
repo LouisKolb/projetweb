@@ -1,4 +1,4 @@
-@extends('layout.master') 
+@extends('layout.master')
 @section('content')
 
 
@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <input id="username" type="text" class="validate" name="username">
-                    <label for="username">Email or useranme</label>
+                    <label for="username">Email or username</label>
                 </div>
 
                 <div class="input-field col s12">
@@ -40,13 +40,13 @@
 
 
 @endsection
- 
+
 @section('scripts')
 <script>
     $("#login_form").submit(function(e) {
   e.preventDefault(); // avoid to execute the actual submit of the form.
   var form = $("#login_form");
-  
+
   $.ajax({
             type: form.attr('method'),
             url: form.attr('action'),
@@ -54,13 +54,13 @@
             success: function (data) {
                 //console.log('Submission was successful.');
                 console.log(data);
-                window.location.replace("/"); 
+                window.location.replace("/");
 
             },
             error: function (data) {
                 console.log('An error occurred.');
                 error = JSON.parse(data.responseText)
-                
+
                 try{
                     errors = error.errors
                     for(i=0;i<errors.length;i++){
@@ -70,9 +70,9 @@
                 }catch(e){
                     M.toast({html: "Une erreur s'est produite merci de votre compréhension" , classes: 'red darken-2' ,displayLength:5000})
                 }
-                
-                
-               
+
+
+
             },
         });
 
