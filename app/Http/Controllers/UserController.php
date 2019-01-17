@@ -140,14 +140,20 @@ class UserController extends Controller
         $user->first_name = ucwords(strtolower(request()->first_name));
         $user->last_name = ucwords(strtoupper(request()->last_name));
         $user->centre = request()->centre;
-        if (!preg_match('/@cesi\.fr/',request()->email)){
+        $user->mailtoken=bin2hex(random_bytes(30));
+       
+        
+        $user->save();
+
+
+
+        $user = User::where('username',$user->username)->first();
+        if (!preg_match('/@cesi\.fr/',$user->email)){
             $user->addRole("Tutor");
         }else{
             $user->addRole("Student");
         }
-        
         $user->save();
-        
         return "Succesfully Sing in";
 
     }

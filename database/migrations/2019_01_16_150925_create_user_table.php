@@ -19,6 +19,8 @@ class CreateUserTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
+            $table->string('mailtoken');
+            $table->string('validate')->default(0);
             $table->string('password');
             $table->integer('centre');
             
@@ -35,6 +37,6 @@ class CreateUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('users');
     }
 }
