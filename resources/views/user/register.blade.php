@@ -115,7 +115,8 @@ $(document).ready(function(){
                     for(i=0;i<errors.length;i++){
                       M.toast({html: errors[i] , classes: 'red darken-2' ,displayLength:5000})
                       console.log(i);
-                      if(i==errors.length-1)return
+                      if(i==errors.length-1)
+                      return
                     }
                 }catch(e){
                     M.toast({html: "Une erreur s'est produite merci de votre compréhension" , classes: 'red darken-2' ,displayLength:5000})
