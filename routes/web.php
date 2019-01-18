@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/login','UserController@login');
 Route::get('/register','UserController@create');
 Route::post('/user','UserController@store');
+Route::post('/logout','UserController@logout');
 Route::get('/event/create','EventController@create');
 Route::post('/event','EventController@store');
 Route::get('/event','EventController@show');
