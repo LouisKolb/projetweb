@@ -1,0 +1,294 @@
+
+/* Style for Topnav */
+
+#logo{
+    max-width: 13em;
+    padding-left: 1%;
+    padding-top: 0.5%;
+}
+
+#top-nav{
+
+    height: 6em;
+    padding: 0px 20px;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    margin: auto; 
+    z-index: 999; 
+       
+}
+
+.top ul .navitem{ 
+    margin-top: 0.9em;
+    font-size: 1em;
+}
+
+.top ul li a{
+    font-size: 1.2em;
+    color: white;   
+}
+
+.top ul li a:hover{
+    color:#ffc252;
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.top ul li a.active {
+    color: #ffc252;
+}
+
+.top ul li:hover  {
+    background-color: rgba(0, 0, 0, 0) !important;  
+} 
+
+/* Style for Dropdown in Topnav */
+.drop{
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffc252;
+    top:-1.08em;
+}
+
+
+
+/* Style for Sidenav on Medium and Small screen */
+
+#slide-out{
+    background-color: black;
+}
+
+#slide-out ul li a:hover{
+    color:#ffc252;
+}
+
+#slide-out ul{
+    width: 1000px;
+}
+
+#slide-out li a{
+    color: white;
+    font-size: 0.9em;
+}
+
+.sidenav li > a:hover > i.material-icons {
+    color:#ffc252 !important;
+}
+
+
+
+
+
+
+
+/* Parallax and diviser height, border */
+
+.parallax-container{
+    height: 30em;
+}
+
+.diviser{
+    height: 15em;
+    border-top: 10px solid #5a86dd;
+}
+
+
+.border-down {
+    border-bottom: 10px solid #5a86dd;
+}
+
+
+/* Color style for bg */
+.bg-blue{
+    background-color: #5a86dd;
+}
+
+.bg-blue:hover{
+    background-color: white;
+    color: #5a86dd;
+}
+
+/* Color style for text */
+.color-blue{
+    color: #5a86dd;
+}
+
+/* Product img size and margin */
+
+.img-product{
+    max-width: 15em;
+    max-height: 15em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Product card margin */
+.product .card{
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+/* Modal img size and margin */
+.img-modal{
+    width:90%;
+    height:90%;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+/* Dropdoxn max height */
+.dropdown-content {
+    max-height: 150px;
+}
+
+/* Modal style, padding, color */
+
+.modal .dropdown-content li > a, .dropdown-content li > span {
+    color: black !important;
+}
+
+.modal p{
+    padding-top: 10px;
+}
+
+.modal h4{
+    padding-top: 10px;
+}
+
+
+#pagination ul li a{
+    font-size: 1.2em;
+    color: black;   
+}
+
+#pagination li a:hover{
+    color:#5a86dd;
+    background-color: rgba(0, 0, 0, 0) !important;
+} 
+#pagination li.active a {
+    color:white!important;
+    background-color: #5a86dd!important;
+
+} 
+
+
+/* Chips Color */
+
+.chip:focus {
+   background-color: #5a86dd;
+}
+
+/* Cart style padding, color, position */
+.cart{
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+
+#bottom-cart{
+    background-color: white;
+    position: relative;
+    top: 1em;
+    margin-bottom: 8em;
+
+}
+#close-cart{
+    margin-top: 0.3em;
+}
+
+
+/* Style for footer */
+.page-footer i:hover {
+    color: #ffc252;
+}
+
+.zoom {
+    font-size: 3rem;
+}
+
+/* Icon bar aside social network */
+.icon-bar {
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 998;
+}
+  
+.icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 20px;
+}
+  
+.icon-bar a:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+  
+.facebook {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+  
+.twitter {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+  
+.instagram {
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Put a marge on top article in home page */
+.hoverable a {
+    margin-bottom: 0.6em;
+}
+
+/* Style divider */
+hr.divider { 
+    border: 0; 
+    height: 1px; 
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+
+.zoom {
+    font-size: 3rem;
+}
+
+.borderdown {
+    border-bottom: 10px solid #5a86dd;
+}
+
+.blueborders {
+    border-top: 10px solid #5a86dd;
+    border-bottom: 10px solid #5a86dd
+}
+
+
+.fa-chevron-left {
+    color: #ffc252;
+}
+
+.fa-chevron-right {
+    color: #ffc252;
+}
+
+.btn-flat i {
+    color: #ffc252;
+    font-size: 5em;
+}
+
+.top-article {
+    color: black;
+}
