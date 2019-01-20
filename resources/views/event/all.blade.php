@@ -16,10 +16,10 @@
         <input type="hidden" name="_method" value="put">
         <input type="submit" value="Annuler">
         </form>
-        <form class="" action="/event/delete/{{$event->id}}" method="post">
+        <form class="" action="/event/{{$event->id}}" method="post">
         @csrf
+        <input type="hidden" name="_method" value="delete">
         <input type="hidden" value="delete" name="validate">
-        <input type="hidden" name="_method" value="put">
         <input type="submit" value="Supprimer">
         </form>
         <br><br><br>

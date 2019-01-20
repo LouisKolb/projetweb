@@ -12,9 +12,20 @@ class user extends Model
    
         public static function find($id){
             $client = new Client(); //GuzzleHttp\Client
+            $result = $response = $client->get("localhost:3000/user/$id");
             
-                $result = $response = $client->get("localhost:3000/user/$id");
-                return json_decode($result->getBody());
+            $result = json_decode($result->getBody(),TRUE);
+            $user = new user();
+            $user->id = $result['id'];
+            $user->username = $result['username'];
+            $user->last_name = $result['last_name'];
+            $user->first_name = $result['first_name'];
+            $user->email = $result['email'];
+            $user->mailtoken = $result['mailtoken'];
+            
+            
+            return $user;
+                
         }
 
 
@@ -25,10 +36,10 @@ class user extends Model
 
 
 
-        public function addRole($userid,$rolename){
+        public function addRole($rolename){
             $role = role::where('name',$rolename)->first();
             DB::table('role_user')->insert([
-                ['role_id' => $role->id, 'user_id' => $userid]
+                ['role_id' => $role->id, 'user_id' => $this->id]
             ]);
             
         }
@@ -39,7 +50,7 @@ class user extends Model
         public function hasRole($rolename){
             $roles = $this->roles;
             foreach($roles as $role){
-                if($role->name == $rolename)
+                if(strtolower($role->name) == strtolower($rolename))
                     return true;
             }
             

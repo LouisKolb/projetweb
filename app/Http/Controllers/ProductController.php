@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view("product.show");
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view("product.create");
     }
 
     /**
@@ -46,7 +46,7 @@ class ProductController extends Controller
      */
     public function show(product $product)
     {
-        //
+        return view("product.show");
     }
 
     /**
@@ -82,4 +82,9 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function order(){
+        return view("product.order");
+    }
+
 }

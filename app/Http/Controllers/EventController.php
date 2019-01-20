@@ -13,8 +13,12 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   $events= event::orderBy('date','asc')->get();
+        return view("event.all",compact('events'));
+    }
+    public function idea(){
+        $events =event::where('statut','1')->orderBy('created_at','asc')->get();
+        return view('event.idea',compact('events'));
     }
 
     /**
@@ -132,10 +136,9 @@ class EventController extends Controller
      * @param  \App\event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(event $events)
+    public function show(event $event)
     {
-        $events= event::orderBy('date','asc')->get();
-        return view('event.show',compact('events'));
+        return view('event.show',compact('event'));
     }
 
     /**
@@ -146,7 +149,7 @@ class EventController extends Controller
      */
     public function edit(event $event)
     {
-        //
+        return view('event.edit',compact('event'));
     }
 
     /**
