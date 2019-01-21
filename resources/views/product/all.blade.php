@@ -1,4 +1,4 @@
-@extends('layout.master') 
+@extends('layout.master')
 @section('content')
 
 <section id="section">
@@ -48,7 +48,7 @@
             <div class="card hoverable ">
                 <div class="card-image ">
                     <img class="img-product" src="{{ $product->img }}">
-                        <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger open" data-id="Album" href="#modal1"><i
+                        <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger open" data-id="Album" href="#modal{{$product->id}}"><i
                         class="material-icons">add</i></a>
                 </div>
                 <div class="card-content card-height">
@@ -65,9 +65,49 @@
                 </div>
             </div>
         </div>
+        <div id="modal{{$product->id}}" class="modal">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col s12 m12 l6 ">
+                        <img class="img-modal" src="{{ $product->img }}">
+                    </div>
+
+                    <div class="col s12 m12 l6">
+                        <h4>{{ $product->name }}</h4>
+                        <p>{{ $product->description }}</p>
+                        <form class="col s10" method="POST" action="/event" id="event_form">
+                          @csrf
+                              <input id="name" type="text" class="validate" name="name">
+
+                            <div class="input-field col s12">
+                              <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Créer l'événement</button>
+                            </div>
+
+                        </form>
+                        <div class="input-field s6 m6 l6 textyellow">
+                            <select>
+                                    <option value="" disabled selected>Nombre d'article</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            <button class="btn waves-effect waves-light bg-blue" type="submit" name="action">Ajouter au
+                                    panier
+                                </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-effect#5a86dd btn-flat">Fermer</a>
+            </div>
+
+        </div>
+
         @endforeach
     </div>
-    
+
 </div>
 <div class="container center-align" id="pagination">
     <ul class="pagination">
@@ -95,45 +135,9 @@
     </div>
 
 
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <div class="row">
-            <div class="col s12 m12 l6 ">
-                <img class="img-modal" src="{{ $product->img }}">
-            </div>
 
-            <div class="col s12 m12 l6">
-                <h4>{{ $product->name }}</h4>
-                <p>{{ $product->description }}</p>
-                <div class="input-field s6 m6 l6 textyellow">
-                    <select>
-                            <option value="" disabled selected>Nombre d'article</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                            <option value="3">6</option>
-                            <option value="3">7</option>
-                            <option value="3">8</option>
-                            <option value="3">9</option>
-                            <option value="3">10</option>
-                        </select>
-                    <button class="btn waves-effect waves-light bg-blue" type="submit" name="action">Ajouter au
-                            panier
-                        </button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-effect#5a86dd btn-flat">Fermer</a>
-    </div>
-
-</div>
 @endsection
- 
+
 @section('scripts')
 <script>
     $('.chips-placeholder').chips({
