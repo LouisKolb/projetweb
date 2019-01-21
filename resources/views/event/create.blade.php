@@ -21,7 +21,7 @@
             <div class="row">
               <div class="col s1">
               </div>
-              <form class="col s10" method="POST" action="/event" id="event_form">
+              <form class="col s10" method="POST" action="/event" id="event_form" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                   <div class="input-field col s12 m12">
@@ -32,14 +32,28 @@
                     <input id="description" type="text" class="validate" name="description">
                     <label for="description">Description de l'événement</label>
                   </div>
-                  <div class="input-field col s12 m12">
-                    <input id="picture" type="text" class="validate" name="picture">
-                    <label for="picture">Lien de l'événement</label>
-                  </div>
+                  
                   <div class="input-field col s12 m12">
                     <input id="date" type="date" class="validate"  name="date">
                     <label for="date">Date de l'événement</label>
                   </div>
+
+                  
+                       <label>Image de présentation</label>
+                       <div class = "file-field input-field">
+                          <div class = "btn">
+                             <span>Rechercher</span>
+                             <input type ="file" name="image"/>
+                          </div>
+                          
+                          <div class = "file-path-wrapper">
+                             <input class = "file-path validate" type = "text" name="imagetext"
+                                placeholder = "Importer un fichier" />
+                          </div>
+                       </div>
+                       
+                       
+                    
 
                   <div class="input-field col s12">
                     <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Créer l'événement</button>
@@ -74,9 +88,9 @@
 
 <script>
 
-$(document).ready(function(){
-    $('select').formSelect();
-  });
+// $(document).ready(function(){
+//     $('select').formSelect();
+//   });
 
 
 
