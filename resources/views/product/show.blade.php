@@ -3,265 +3,76 @@
 
 <section id="section">
     <div class="parallax-container center valign-wrapper border-down">
-        <div class="parallax"><img src="./image/info.jpg">
+        <div class="parallax"><img src="/image/info.jpg">
         </div>
         <div class="container white-text">
             <div class="row">
                 <div class="col s12">
-                    <h5>Lorem ipsum</h5>
+                    <h3>Boutique</h3>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
-<div class="center-align">
-    <h3>Tout nos produits </h3>
-</div>
-
-<div class="container">
+<section>
     <div class="row">
-        <div class="col s6 m6 l6">
-            <div class="chips chips-placeholder"></div>
+        <div class="col s12">
+            <div class="card-panel grey lighten-5 z-depth-1">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="row center-align">
+                            <div class="col s12 m12 l12 left">
+                                <h5>Nom prodruct</h5>
+                            </div>
+                        </div>
+                        <hr class="divider">
+                        <!-- Product Description -->
+                        <div class="col m12">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
+                            nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper
+                            congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non
+                            fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat
+                            in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum
+                            bibendum augue.
+                        </div>
+                        <div class="dropdown-extend col m12 l8">
+                            <div class="input-field">
+                                <select>
+                                        <option value="" disabled selected>Nombre d'article</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="1">4</option>
+                                        <option value="2">5</option>
+                                        <option value="3">6</option>
+                                        <option value="3">7</option>
+                                        <option value="3">8</option>
+                                        <option value="3">9</option>
+                                        <option value="3">10</option>
+                                        </select>
+                            </div>
+                        </div>
+                        <div class="col m12 l4 right-align">
+                            <a class="waves-effect waves-dark btn btn-event"><i class="fas fa-align-right right"></i>Ajouter au panier</a>
+                        </div>
+                    </div>
+                    <!-- Event's pic in a carousel slider for beautyness -->
+                    <div class="col m6 s12">
+                        <img class="store-pic" src="/image/info.jpg">
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="input-field col s6 m6 l6">
-            <select>
-                <option value="" disabled selected>Trier par : </option>
-                <option value="1">Prix croissant</option>
-                <option value="2">Prix décroissant</option>
-                <option value="3">Catégories</option>
-            </select>
-        </div>
-
-
-
     </div>
-</div>
-
-
-<div class="container product">
-    <div class="row">
-        <div class="col s12 m6 l4">
-            <div class="card hoverable ">
-                <div class="card-image ">
-                    <img class="img-product" src="./image/pull.png">
-                    <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger" href="#modal1"><i
-                            class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <span class="card-title black-text">Card Title</span>
-                    <div class="row">
-                        <div class="col s10 m10 l9">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            </p>
-                        </div>
-                        <div class="col s2 m2 l3">
-                            <h5>10 €</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m6 l4">
-            <div class="card hoverable ">
-                <div class="card-image ">
-                    <img class="img-product" src="./image/pull.png">
-                    <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger" href="#modal1"><i
-                            class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <span class="card-title black-text">Card Title</span>
-                    <div class="row">
-                        <div class="col s10 m10 l9">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            </p>
-                        </div>
-                        <div class="col s2 m2 l3">
-                            <h5>10 €</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m6 l4">
-            <div class="card hoverable ">
-                <div class="card-image ">
-                    <img class="img-product" src="./image/pull.png">
-                    <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger" href="#modal1"><i
-                            class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <span class="card-title black-text">Card Title</span>
-                    <div class="row">
-                        <div class="col s10 m10 l9">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            </p>
-                        </div>
-                        <div class="col s2 m2 l3">
-                            <h5>10 €</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m6 l4">
-            <div class="card hoverable ">
-                <div class="card-image ">
-                    <img class="img-product" src="./image/pull.png">
-                    <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger" href="#modal1"><i
-                            class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <span class="card-title black-text">Card Title</span>
-                    <div class="row">
-                        <div class="col s10 m10 l9">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            </p>
-                        </div>
-                        <div class="col s2 m2 l3">
-                            <h5>10 €</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m6 l4">
-            <div class="card hoverable ">
-                <div class="card-image ">
-                    <img class="img-product" src="./image/pull.png">
-                    <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger" href="#modal1"><i
-                            class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <span class="card-title black-text">Card Title</span>
-                    <div class="row">
-                        <div class="col s10 m10 l9">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            </p>
-                        </div>
-                        <div class="col s2 m2 l3">
-                            <h5>10 €</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m6 l4">
-            <div class="card hoverable ">
-                <div class="card-image ">
-                    <img class="img-product" src="./image/pull.png">
-                    <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger" href="#modal1"><i
-                            class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <span class="card-title black-text">Card Title</span>
-                    <div class="row">
-                        <div class="col s10 m10 l9">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            </p>
-                        </div>
-                        <div class="col s2 m2 l3">
-                            <h5>10 €</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col s12 m6 l4">
-            <div class="card hoverable ">
-                <div class="card-image ">
-                    <img class="img-product" src="./image/pull.png">
-                    <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger" href="#modal1"><i
-                            class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <span class="card-title black-text">Card Title</span>
-                    <div class="row">
-                        <div class="col s10 m10 l9">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            </p>
-                        </div>
-                        <div class="col s2 m2 l3">
-                            <h5>10 €</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m6 l4">
-            <div class="card hoverable ">
-                <div class="card-image ">
-                    <img class="img-product" src="./image/pull.png">
-                    <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger" href="#modal1"><i
-                            class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <span class="card-title black-text">Card Title</span>
-                    <div class="row">
-                        <div class="col s10 m10 l9">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            </p>
-                        </div>
-                        <div class="col s2 m2 l3">
-                            <h5>10 €</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m6 l4">
-            <div class="card hoverable ">
-                <div class="card-image ">
-                    <img class="img-product" src="./image/pull.png">
-                    <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger" href="#modal1"><i
-                            class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <span class="card-title black-text">Card Title</span>
-                    <div class="row">
-                        <div class="col s10 m10 l9">
-                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            </p>
-                        </div>
-                        <div class="col s2 m2 l3">
-                            <h5>10 €</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-<div class="container center-align" id="pagination">
-    <ul class="pagination">
-        <li class="disabled"><a href="#!"><i class="material-icons color-blue">chevron_left</i></a></li>
-        <li class="active"><a href="#!">1</a></li>
-        <li class="waves-effect"><a href="#!">2</a></li>
-        <li class="waves-effect"><a href="#!">3</a></li>
-        <li class="waves-effect"><a href="#!">4</a></li>
-        <li class="waves-effect"><a href="#!">5</a></li>
-        <li class="waves-effect"><a href="#!"><i class="material-icons color-blue">chevron_right</i></a></li>
-    </ul>
-</div>
-
-
-
-
-
-
-
 </section>
 @endsection
  
 @section('scripts')
 <script>
-    $('.chips-placeholder').chips({
-    placeholder: 'Rechercher',
-});
+    $(document).ready(function () {
+            $('.parallax').parallax();
+        });
 
 </script>
 @endsection

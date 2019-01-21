@@ -63,9 +63,9 @@ class UserController extends Controller
                 ], 418);
             }
             
-       
-            session()->push('user', request()->username);
-            
+            $user = json_decode($result->getBody());
+            session()->push('user', $user->id);
+            // echo session()->get('user')[0]->id;
             return "Connected :" . $user->username;
         
     }

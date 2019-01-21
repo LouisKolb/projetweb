@@ -4,10 +4,19 @@
 
             <a href="#!" class=""><img id="logo" src="./image/Logo.png" alt=""></a>
             <ul class="right hide-on-med-and-down	">
-                <li class="navitem"><a href="sass.html">Accueil</a></li>
-                <li class="navitem"><a class="active" href="badges.html">Boutique</a></li>
+                <li class="navitem"><a href="/">Accueil</a></li>
+                <li class="navitem"><a class="active" href="/product">Boutique</a></li>
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdown1'>Évènement</a></li>
-                <li class="navitem"><a href="badges.html">Connexion</a></li>
+
+                @if(session()->has('user'))
+                <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownUser'>{{App\user::find(session()->get('user')[0])->username}}</a></li>
+
+                @else
+
+                <li class="navitem"><a href="/login">Connexion</a></li>
+                @endif
+
+
                 <li class="navitem sidenav-trigger " data-target="cart-out"><a href="sass.html"><i class="material-icons">shopping_cart</i></a></li>
             </ul>
             <ul class="navitem sidenav-trigger right hide-on-large-only" data-target="slide-out">
@@ -18,10 +27,43 @@
                 </li>
             </ul>
 
+
         </div>
     </nav>
 
 </header>
+
+<ul id="slide-out" class="sidenav left">
+    <li class="navitem"><a class="active" href="/">Accueil</a></li>
+    <li class="navitem"><a href="/product">Boutique</a></li>
+    <li class="navitem"><a href="/event">Évènement</a></li>
+    <li class="navitem"><a href="/event/idea">Boîte à idées</a></li>
+   
+    @if(session()->has('user'))
+    <li><a href="/">Mon Profil</a></li>
+    <li><a href="/logout">Déconnexion</a></li>
+    @else
+
+    <li class="navitem"><a href="/login">Connexion</a></li>
+    @endif
+
+    <li class="navitem sidenav-trigger sidenav-close" data-target="cart-out"><a href="sass.html"><i class="material-icons white-text">shopping_cart</i></a></li>
+</ul>
+
+
+
+<ul id='dropdown1' class='dropdown-content drop'>
+    <li><a href="/event">Nos évènements</a></li>
+    <li><a href="/event/idea">Boîte à idées</a></li>
+</ul>
+
+
+
+<ul id='dropdownUser' class='dropdown-content drop'>
+    <li><a href="/">Mon Profil</a></li>
+    <li><a href="/logout">Déconnexion</a></li>
+</ul>
+
 
 <section>
 
@@ -116,19 +158,9 @@
 
     </ul>
 
-    <ul id="slide-out" class="sidenav left">
-        <li class="navitem"><a href="sass.html">Accueil</a></li>
-        <li class="navitem"><a class="active" href="badges.html">Boutique</a></li>
-        <li class="navitem"><a class="active" href="badges.html">Évènement</a></li>
-        <li class="navitem"><a class="active" href="badges.html">Boîte à idées</a></li>
-        <li class="navitem"><a href="badges.html">Connexion</a></li>
-        <li class="navitem sidenav-trigger sidenav-close" data-target="cart-out"><a href="sass.html"><i class="material-icons white-text">shopping_cart</i></a></li>
-    </ul>
 
-    <ul id='dropdown1' class='dropdown-content drop'>
-        <li><a href="#!">Nos évènements</a></li>
-        <li><a href="#!">Boîte à idées</a></li>
-    </ul>
+
+
 </section>
 
 
@@ -142,6 +174,7 @@
             $('.modal').modal({ preventScrolling: false, startingTop: 20 });
         });
         $('.dropdown-trigger').dropdown({ constrainWidth: false, coverTrigger: false });
+
         $(document).ready(function () {
             $('.parallax').parallax();
         });
@@ -160,4 +193,5 @@
         $(document).ready(function () {
             $('select').formSelect();
         });
+
 </script>
