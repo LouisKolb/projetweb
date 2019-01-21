@@ -20,13 +20,13 @@
             <div class="row">
 
                 <div class="col m2 offset-m2 s4 center-align">
-                    <a class="white-text" href="/others/mentions"><i>Mentions légales</i></a>
+                    <a class="white-text" href="/legal_mention"><i>Mentions légales</i></a>
                 </div>
                 <div class="col m1 hide-on-small-only center-align">
                     <i>|</i>
                 </div>
                 <div class="col m2 s4 center-align">
-                    <i>Politique de confidentialité</i>
+                    <i>Conditions générales de vente</i>
                 </div>
                 <div class="col m1 hide-on-small-only center-align">
                     <i>|</i>

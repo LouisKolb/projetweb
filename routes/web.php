@@ -47,7 +47,10 @@ Route::post('/product','ProductController@store');
 Route::delete('/product/{product}','ProductController@delete');
 
 
-
+//Route pour pour les mentions légales
+Route::get('/legal_mention', function() {
+    return view('others.mentions');
+});
 
 
 
