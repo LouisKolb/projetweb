@@ -21,7 +21,7 @@ Route::get('/login','UserController@login');
 Route::get('/register','UserController@create');
 Route::post('/login',"UserController@processlogin");
 Route::post('/user','UserController@store');
-Route::post('/logout','UserController@logout');
+Route::get('/logout','UserController@logout');
 
 
 //routes pour les events
