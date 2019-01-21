@@ -20,7 +20,7 @@
             <div class="row">
 
                 <div class="col m2 offset-m2 s4 center-align">
-                    <i>Mentions légales</i>
+                    <a class="white-text" href="/others/mentions"><i>Mentions légales</i></a>
                 </div>
                 <div class="col m1 hide-on-small-only center-align">
                     <i>|</i>
