@@ -54,7 +54,7 @@ class UserController extends Controller
                 
                 $user =json_decode($result->getBody(true));
                 if(empty($user->id)){
-                    array_push($errors,empty($user->id));
+                    array_push($errors,$user->id);
                 }
             if($errors) {
                 
