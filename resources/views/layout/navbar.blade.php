@@ -9,7 +9,7 @@
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdown1'>Évènement</a></li>
                 
                 @if(session()->has('user'))
-            <li class="navitem"><a href="">Connecté</a></li>
+            <li class="navitem"><a href="">{{App\user::find(session()->get('user')[0])->username}}</a></li>
                     
                 @else
                     
