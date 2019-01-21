@@ -51,6 +51,9 @@ Route::delete('/product/{product}','ProductController@delete');
 Route::get('/legal_mention', function() {
     return view('others.mentions');
 });
+Route::get('/GSC', function() {
+    return view('others.gsc');
+});
 
 
 
