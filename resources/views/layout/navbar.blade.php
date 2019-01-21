@@ -2,7 +2,7 @@
     <nav id="top-nav">
         <div class="nav-wrapper top">
 
-            <a href="#!" class=""><img id="logo" src="./image/Logo.png" alt=""></a>
+            <a href="#!" class=""><img id="logo" src="/image/Logo.png" alt=""></a>
             <ul class="right hide-on-med-and-down	">
                 <li class="navitem"><a href="/">Accueil</a></li>
                 <li class="navitem"><a class="active" href="/product">Boutique</a></li>
@@ -71,7 +71,7 @@
         <div class="modal-content">
             <div class="row">
                 <div class="col s12 m12 l6 ">
-                    <img class="img-modal materialboxed" src="./image/info.jpg">
+                    <img class="img-modal materialboxed" src="/image/info.jpg">
                 </div>
 
                 <div class="col s12 m12 l6">
@@ -95,7 +95,6 @@
                         </select>
                         <button class="btn waves-effect waves-light bg-blue" type="submit" name="action">Ajouter au
                             panier
-                            <i class="material-icons right"></i>
                         </button>
 
                     </div>
@@ -117,7 +116,7 @@
                     <div class="collapsible-body">
                         <div class="card hoverable ">
                             <div class="card-image ">
-                                <img class="img-product" src="./image/pull.png">
+                                <img class="img-product" src="/image/pull.png">
                                 <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger" href="#modal1"><i
                                         class="material-icons">add</i></a>
                             </div>
@@ -142,7 +141,7 @@
                 <h6>Total : 150 €</h6>
                 <div class="row">
                     <div class="col s10 m10 l10 ">
-                        <a class="color-blue" href="#">
+                        <a class="color-blue" href="/product/order">
                             <h6>Passer commande</h6>
                         </a>
                     </div>
