@@ -300,3 +300,7 @@ hr.divider {
 .store-pic {
     width: 100%;
 }
+
+.btn-margin {
+    margin: 1.4em;
+}
