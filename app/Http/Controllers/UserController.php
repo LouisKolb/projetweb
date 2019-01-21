@@ -54,7 +54,7 @@ class UserController extends Controller
                 
                 $user =json_decode($result->getBody(true));
                 if(empty($user->id)){
-                    array_push($errors,empty($user->id));
+                    array_push($errors,$user->id);
                 }
             if($errors) {
                 
@@ -191,9 +191,9 @@ class UserController extends Controller
      * @param  \App\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(user $user)
+    public function show()
     {
-        //
+        return view('user.show');
     }
 
     /**

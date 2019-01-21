@@ -21,6 +21,7 @@ Route::get('/login','UserController@login');
 Route::get('/register','UserController@create');
 Route::post('/login',"UserController@processlogin");
 Route::post('/user','UserController@store');
+Route::get('/user/{user}','UserController@show');
 Route::get('/logout','UserController@logout');
 
 
