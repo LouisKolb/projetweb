@@ -122,6 +122,7 @@ class EventController extends Controller
 
         $event = new Event();
         $event->name = request()->name;
+        $event->user_id = session()->get('user')[0];
         $event->description = request()->description;
         $event->date = request()->date;
         // $event->picture = request()->picture;
