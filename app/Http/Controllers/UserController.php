@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use App\centre;
 use App\user;
 use GuzzleHttp\Client;
