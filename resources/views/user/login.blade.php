@@ -62,7 +62,7 @@
                 error = JSON.parse(data.responseText)
 
                 try{
-                    errors = error.errors
+                    errors = ["Les identifiants ne corespondent pas"]
                     for(i=0;i<errors.length;i++){
                     M.toast({html: errors[i] , classes: 'red darken-2' ,displayLength:5000})
                     return
