@@ -1,15 +1,22 @@
-@extends('layout.master')
+@extends('layout.master') 
 @section('content')
+<section id="section">
+    <div class="parallax-container center valign-wrapper border-down">
+        <div class="parallax"><img src="/image/info.jpg">
+        </div>
+        <div class="container white-text">
+            <div class="row">
+                <div class="col s12">
+                    <h3>Connexion</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-
-
-
-    <div class="grey lighten-5 login_waper ">
-
-
-
-
-        <h3 class="center-align">Login</h3>
+<div class="row">
+    <div class="col s10 offset-s1">
+        <h3 class="center-align">Veuillez entrez vos identifiants</h3>
         <form class="col s12" method="POST" action="/login" id="login_form">
             @csrf
             <div class="row">
@@ -17,30 +24,22 @@
                     <input id="username" type="text" class="validate" name="username">
                     <label for="username">Email or username</label>
                 </div>
-
                 <div class="input-field col s12">
                     <input id="password" type="password" class="validate" name="password">
                     <label for="password">Mot de passe</label>
                 </div>
-
-
-                <div class="input-field col s12 ">
-                    <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Se connecter</button>
+                <div class="input-field col s16 left">
+                    <button class="btn waves-effect waves-dark" id="submit" type="submit" name="submit">Se connecter</button>
                 </div>
-
+                <div class="input-field col s16 right">
+                    <a class="btn waves-effect waves-dark" href="/register">S'enregister</a>
+                </div>
             </div>
-
-
         </form>
-
-
-        <a href="/register">Pas encore de compte ? (Inscription)</a>
     </div>
-
-
-
+</div>
 @endsection
-
+ 
 @section('scripts')
 <script>
     $("#login_form").submit(function(e) {
