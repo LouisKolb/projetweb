@@ -5,8 +5,12 @@
             <a href="#!" class=""><img id="logo" src="/image/Logo.png" alt=""></a>
             <ul class="right hide-on-med-and-down	">
                 <li class="navitem"><a href="/">Accueil</a></li>
+                @if(session()->has('user'))
+                <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownStore'>Boutique</a></li>
+                @else
                 <li class="navitem"><a class="active" href="/product">Boutique</a></li>
-                <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdown1'>Évènement</a></li>
+                @endif
+                <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownEvent'>Évènement</a></li>
 
                 @if(session()->has('user'))
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownUser'>{{App\user::find(session()->get('user')[0])->username}}</a></li>
@@ -36,11 +40,14 @@
 <ul id="slide-out" class="sidenav left">
     <li class="navitem"><a class="active" href="/">Accueil</a></li>
     <li class="navitem"><a href="/product">Boutique</a></li>
+    @if(session()->has('user'))
+    <li><a href="/product/create">Ajouter un article</a></li>
+    @endif
     <li class="navitem"><a href="/event">Évènement</a></li>
     <li class="navitem"><a href="/event/idea">Boîte à idées</a></li>
-   
+
     @if(session()->has('user'))
-    <li><a href="/">Mon Profil</a></li>
+    <li><a href="/user/{{session()->get('user')[0]}}">Mon Profil</a></li>
     <li><a href="/logout">Déconnexion</a></li>
     @else
 
@@ -52,15 +59,22 @@
 
 
 
-<ul id='dropdown1' class='dropdown-content drop'>
+<ul id='dropdownEvent' class='dropdown-content drop'>
     <li><a href="/event">Nos évènements</a></li>
     <li><a href="/event/idea">Boîte à idées</a></li>
+    <li><a href="/event/create">Créer un évènements</a></li>
+
 </ul>
+
+<ul id='dropdownStore' class='dropdown-content drop'>
+        <li><a href="/product">Visiter la boutique</a></li>
+        <li><a href="/product/create">Ajouter un article</a></li>   
+    </ul>
 
 
 
 <ul id='dropdownUser' class='dropdown-content drop'>
-    <li><a href="/">Mon Profil</a></li>
+    <li><a href="/user/{{session()->get('user')[0]}}">Mon Profil</a></li>
     <li><a href="/logout">Déconnexion</a></li>
 </ul>
 

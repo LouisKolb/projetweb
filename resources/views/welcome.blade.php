@@ -14,50 +14,36 @@
 
     <!-- Top actualité -->
     <section>
-        <div class="row center-align">
-            <div class="col s12 center-align">
-                <h3>Événements récents</h3>
-            </div>
-            <div class="card-parnel hoverable col l4 m12 s12 offset-l1">
-                <h5>Titre événements</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus
-                    tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
-                    Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec
-                    nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper.
-                    Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in
-                    risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue.</p>
-                <hr class="divider">
-                <div class="col s2 offset-s8 center-align">
-                    <a class="btn-floating disabled right"><i class="far fa-heart"></i></a>
-                </div>
-                <div class="col s2 center-align">
-                    <a class="btn-floating disabled right"><i class="far fa-comment"></i></a>
-                </div>
-            </div>
-            <div class="col m2">
 
-            </div>
-            <div class="hoverable col l4 m12 s12">
-                <h5>Titre événements</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus
-                    tortor,
-                    dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
-                    Maecenas
-                    ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy
-                    molestie,
-                    enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa,
-                    scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat
-                    libero
-                    pharetra tempor. Cras vestibulum bibendum augue.</p>
-                <hr class="divider">
-                <div class="col s2 offset-s8 center-align">
-                    <a class="btn-floating disabled right"><i class="far fa-heart"></i></a>
+              <div class="row center-align">
+                  <div class="col s12 center-align ">
+                      <h3>Prochains événements</h3>
+                  </div>
+                  <?php $today = date('Y-m-d'); $maxevent = 0; ?>
+                  <div class="col l1">
+
+                  </div>
+                  @foreach ($events as $event)
+
+                    @if($event->date >= $today)
+                    @if($maxevent < 2)
+                      <div class="card-parnel hoverable col l5 m12 s12 ">
+                          <h5>{{ $event->name }}</h5>
+                          <p>{{ $event->description }}</p>
+                          <hr class="divider">
+                          <div class="col s2 offset-s8 center-align">
+                              <a class="waves-effect waves-purple btn" href="/event/create" ><i class="far fa-heart "></i></a>
+                          </div>
+                          <div class="col s2 center-align">
+                              <a class="waves-effect waves-red btn" href=""><i class="far fa-comment"></i></a>
+                          </div>
+                    </div>
+                    <?php $maxevent++; ?>
+                    @endif
+                  @endif
+                @endforeach
                 </div>
-                <div class="col s2 center-align">
-                    <a class="btn-floating disabled right"><i class="far fa-comment"></i></a>
-                </div>
-            </div>
-        </div>
+
     </section>
 
     <!-- Top article -->

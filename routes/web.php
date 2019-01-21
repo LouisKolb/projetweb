@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $events = App\event::orderBy('date')->get();
+    return view('welcome',compact('events'));
 });
 
 
