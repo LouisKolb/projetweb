@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         <div class="col m12 l4 right-align">
-                            <a class="waves-effect waves-dark btn btn-event"><i class="fas fa-align-right right"></i>Ajouter au panier</a>
+                            <a class="btn btn-margin waves-effect waves-dark"><i class="fas fa-align-right right"></i>Ajouter au panier</a>
                         </div>
                     </div>
                     <!-- Event's pic in a carousel slider for beautyness -->

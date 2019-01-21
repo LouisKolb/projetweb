@@ -301,13 +301,6 @@ hr.divider {
     width: 100%;
 }
 
-.btn-event {
-    background-color: #ffc252;
-    color: black;
-    margin-top: 1.5em;
-    margin-bottom: 1em;
-}
-
-.btn-event:hover {
-    background: #ffc252;
+.btn-margin {
+    margin: 1.4em;
 }
