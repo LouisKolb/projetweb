@@ -14,7 +14,7 @@
         <div class="container white-text">
             <div class="row">
                 <div class="col s12">
-                    <h2>Autres événements</h2>
+                    <h2>Boite a idée</h2>
                 </div>
             </div>
         </div>
