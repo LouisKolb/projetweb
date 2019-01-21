@@ -113,7 +113,7 @@ class EventController extends Controller
       }
       
       
-      if(empty(request()->name)|| empty(request()->date) ||empty(request()->file('image'))|| empty(request()->description) ){
+      if(empty(request()->name)|| empty(request()->date) || !request()->hasFile('image') || empty(request()->description) ){
           array_push($errors,"Merci de compléter tout les champs et de poster une image");
       }
     
