@@ -141,7 +141,11 @@
 
 /* Dropdoxn max height */
 .dropdown-content {
-    max-height: 150px;
+    max-height: 20vh;
+}
+
+.dropdown-extend .dropdown-content {
+    max-height: 40vh;
 }
 
 /* Modal style, padding, color */
@@ -291,4 +295,19 @@ hr.divider {
 
 .top-article {
     color: black;
+}
+
+.store-pic {
+    width: 100%;
+}
+
+.btn-event {
+    background-color: #ffc252;
+    color: black;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.btn-event:hover {
+    background: #ffc252;
 }
