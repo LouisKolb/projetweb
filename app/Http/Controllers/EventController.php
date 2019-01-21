@@ -13,11 +13,11 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $events= event::orderBy('date','asc')->get();
+    {   $events= event::where('statut',1)->orderBy('date','asc')->get();
         return view("event.all",compact('events'));
     }
     public function idea(){
-        $events =event::where('statut','1')->orderBy('created_at','asc')->get();
+        $events =event::where('statut','0')->orderBy('created_at','asc')->get();
         return view('event.idea',compact('events'));
     }
 
