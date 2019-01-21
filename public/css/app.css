@@ -312,3 +312,7 @@ hr.divider {
 .profile-pic-on-userpage {
     width: 12em;
 }
+
+.margetop {
+    margin-top: 4em;
+}
