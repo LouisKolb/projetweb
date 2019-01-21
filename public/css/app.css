@@ -320,3 +320,8 @@ hr.divider {
 .card-height{
     min-height: 12em;
 }
+
+.page404 {
+    margin-top: 10em;
+    margin-bottom: 10em;
+}
