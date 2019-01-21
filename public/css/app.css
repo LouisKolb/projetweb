@@ -304,3 +304,11 @@ hr.divider {
 .btn-margin {
     margin: 1.4em;
 }
+
+.profile-pic {
+    width: 100%;
+}
+
+.profile-pic-on-userpage {
+    width: 12em;
+}
