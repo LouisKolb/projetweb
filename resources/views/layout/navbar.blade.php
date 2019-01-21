@@ -47,7 +47,7 @@
     <li class="navitem"><a href="/event/idea">Boîte à idées</a></li>
 
     @if(session()->has('user'))
-    <li><a href="/user/{{App\user::find(session()->get('user')[0])->id}}">Mon Profil</a></li>
+    <li><a href="/user/{{session()->get('user')[0]}}">Mon Profil</a></li>
     <li><a href="/logout">Déconnexion</a></li>
     @else
 
@@ -74,7 +74,7 @@
 
 
 <ul id='dropdownUser' class='dropdown-content drop'>
-    <li><a href="/user/{{App\user::find(session()->get('user')[0])->id}}">Mon Profil</a></li>
+    <li><a href="/user/{{session()->get('user')[0]}}">Mon Profil</a></li>
     <li><a href="/logout">Déconnexion</a></li>
 </ul>
 
