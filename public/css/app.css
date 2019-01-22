@@ -359,12 +359,7 @@ a:focus{
 }
 
 .show-event {
-    margin-top: 0.5em;
     width: 100%;
-}
-
-.show-event:hover {
-    color: rebeccapurple;
 }
 
 .btn-heart {

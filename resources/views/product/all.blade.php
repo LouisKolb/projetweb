@@ -47,7 +47,7 @@
         <div class="col s12 m6 l4">
             <div class="card hoverable ">
                 <div class="card-image ">
-                    <img class="img-product" src="{{ $product->img }}">
+                    <img class="img-product" src="/storage/{{$product->picture->link }}">
                         <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger open" data-id="Album" href="#modal{{$product->id}}"><i
                         class="material-icons">add</i></a>
                 </div>
@@ -69,7 +69,7 @@
             <div class="modal-content">
                 <div class="row">
                     <div class="col s12 m12 l6 ">
-                        <img class="img-modal" src="{{ $product->img }}">
+                        <img class="img-modal" src="/storage/{{ $product->picture->link }}">
                     </div>
 
                     <div class="col s12 m12 l6">

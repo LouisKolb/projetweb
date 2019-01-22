@@ -18,27 +18,27 @@
 
 	<h4 class="center-align">Ajouter un produit</h4>
 
-	<form method="POST" action="/product" id="product_form">
+	<form method="POST" action="/product" id="product_form" enctype="multipart/form-data">
 		@csrf
 		<div class="input-field">
-			<input id="name_product" type="text" data-length="25">
+			<input id="name_product" type="text" data-length="25" name="name">
 			<label for="name_product">Nom du produit</label>
 		</div>
 		<div class="input-field">
-			<textarea id="description_product" class="materialize-textarea" data-length="250"></textarea>
+			<textarea id="description_product" class="materialize-textarea" data-length="250" name="description"></textarea>
 			<label for="description_product">Description du produit</label>
 		</div>
 		<div class="input-field ">
-			<input id="picture_product" type="number" class="validate" name="picture">
-			<label for="picture_product">Prix du produit</label>
+			<input id="price" type="number" class="validate" name="price">
+			<label for="price">Prix du produit</label>
 		</div>
 		<div class="input-field">
-			<select multiple>
-				  <option value="" disabled >Catégorie :</option>
-				  <option value="1">Vêtements</option>
-				  <option value="2">Mug et Tasse</option>
-				  <option value="3">Diplôme</option>
-				  <option value="4">Chaussette</option>
+			<select name="category">
+					<option value="" disabled selected>Choisir la catégorie</option>
+				  @foreach ($categorys as $cat)
+					<option value="{{$cat->id}}">{{$cat->name}}</option>
+					  
+				  @endforeach
 
 				</select>
 			<label>Catégorie</label>
@@ -64,8 +64,17 @@
 
 	</form>
 
-	<div id="test-slider"></div>
-
+	@if (count($errors) > 0)
+	<div class="card-panel red lighten-5 login_waper">
+		<ul>
+			@foreach ($errors->all() as $error)
+			<h6>
+				<li class="red-text">{{ $error }}</li>
+			</h6>
+			@endforeach
+		</ul>
+	</div>
+	@endif
 
 
 </section>
