@@ -34,10 +34,21 @@ Route::get('/event/idea','EventController@idea');
 Route::get('/event/{event}','EventController@show');
 Route::get('/event/{event}/edit','EventController@edit');
 Route::put('/event/{event}','EventController@update');
+Route::post('/event/{event}/vote','EventController@vote');
+
+
+
+
+
 
 Route::put('/event/valide/{event}','EventController@accept');
 Route::put('/event/annule/{event}','EventController@annule');
 Route::delete('/event/{event}','EventController@delete');
+
+
+
+
+
 
 //routes pour les products
 Route::get('/product','ProductController@index');
