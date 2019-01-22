@@ -65,7 +65,6 @@ class UserController extends Controller
             
             $user = json_decode($result->getBody());
             session()->push('user', $user->id);
-            // echo session()->get('user')[0]->id;
             return "Connected :" . $user->username;
         
     }
@@ -143,15 +142,15 @@ class UserController extends Controller
                     $body = json_decode($result->getBody());
                     //Si l'utilisateur a bien été créé
                     if(!empty($body->id)){
-                        $user = new User;
+                        $user =  user::find($body->id);
 
                         if(preg_match('/@viacesi\.fr/',request()->email))
                         {
-                            $user->addrole($body->id,"Student");
+                            $user->addrole("Student");
                         
                         }
                         else if(preg_match('/@cesi\.fr/',request()->email)){
-                            $user->addrole($body->id,"Tutor"); 
+                            $user->addrole("Tutor"); 
                         }
 
                         

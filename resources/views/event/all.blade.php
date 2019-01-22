@@ -103,9 +103,9 @@
                                   <!-- Event's pic in a carousel slider for beautyness -->
                                   <div class="col m6 s12">
                                       <div class="carousel carousel-slider">
-                                         {{--@foreach ($pictures as $picture)
-                                           <a class="carousel-item event-pic"><img src="{{$picture->url}}"></a>
-                                         @endforeach--}}
+                                        @foreach (App\event::find($event->id)->pictures as $picture)
+                                        <a class="carousel-item event-pic"><img src="/storage/{{$picture->link}}"></a>
+                                        @endforeach
                                       </div>
                                   </div>
                               </div>
@@ -211,9 +211,9 @@
                             <!-- Event's pic in a carousel slider for beautyness -->
                             <div class="col m6 s12">
                                 <div class="carousel carousel-slider">
-                                   {{--@foreach ($pictures as $picture)
-                                     <a class="carousel-item event-pic"><img src="{{$picture->url}}"></a>
-                                   @endforeach--}}
+                                    @foreach (App\event::find($event->id)->pictures as $picture)
+                                    <a class="carousel-item event-pic"><img src="/storage/{{$picture->link}}"></a>
+                                @endforeach
                                 </div>
                             </div>
                         </div>
@@ -309,8 +309,8 @@
                                 </div>
                             </div>
                             <div class="col s12 right-align">
-                                <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event}}"><i class="fas fa-align-right right"></i>
-                                  Voir la publication
+                                <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}"><i class="fas fa-align-right right"></i>
+                                  Voir la publication {{$event->id}}
                                 </a>
 
                             </div>
@@ -318,9 +318,9 @@
                         <!-- Event's pic in a carousel slider for beautyness -->
                         <div class="col m6 s12">
                             <div class="carousel carousel-slider">
-                               {{--@foreach ($pictures as $picture)
-                                 <a class="carousel-item event-pic"><img src="{{$picture->url}}"></a>
-                               @endforeach--}}
+                                @foreach (App\event::find($event->id)->pictures as $picture)
+                                    <a class="carousel-item event-pic"><img src="/storage/{{$picture->link}}"></a>
+                                @endforeach
                             </div>
                         </div>
                     </div>

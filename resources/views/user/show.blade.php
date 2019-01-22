@@ -1,4 +1,4 @@
-@extends('layout.master') 
+@extends('layout.master')
 @section('content')
 <section id="section">
     <div class="parallax-container center valign-wrapper border-down">
@@ -18,11 +18,11 @@
 <div class="card-panel">
     <div class="row">
         <div class="col s12 center-align">
-            <h4>Nom Prénom</h4>
+            <h4>{{App\user::find(session()->get('user')[0])->first_name}} {{App\user::find(session()->get('user')[0])->last_name}}</h4>
         </div>
         <div class="row">
             <div class="col l6 m12 center-align">
-                <img class="circle responsive-img profile-pic-on-userpage" src="/image/profile.jpg">
+                <img class="circle responsive-img profile-pic-on-userpage" src="{{App\user::find(session()->get('user')[0])->avatar}}">
             </div>
             <div class="col l5 m12 margetop center-align">
                 <p>Modifier mon avatar</p>
@@ -41,7 +41,7 @@
         </div>
         <div class="row center-align">
             <div class="col m12 l6 margetop">
-                <h5>Mon@mail.oui</h5>
+                <h5>{{App\user::find(session()->get('user')[0])->email}}</h5>
             </div>
             <div class="col m12 l5">
                 <p>Modifier mon adresse mail</p>
@@ -67,6 +67,6 @@
     </div>
 </div>
 @endsection
- 
+
 @section('scripts')
 @endsection

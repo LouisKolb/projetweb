@@ -107,14 +107,15 @@ class EventController extends Controller
       $dateevent = date('Y-m-d', $timeevent);
       $datetime = date('Y-m-d');
       $outdated = $dateevent < $datetime;
+      $file = request()->file('image');
         
       if(!session()->has('user')){
           array_push($errors,"Vous devez etre connecté pout proposer un éventment");
       }
       
       
-      if(empty(request()->name)|| empty(request()->date) ||empty(request()->file('image'))|| empty(request()->description) ){
-          array_push($errors,"Merci de compléter tout les champs et de poster une image");
+      if(empty(request()->name)|| empty(request()->date) || empty($file) || empty(request()->description) ){
+          array_push($errors,"Merci de compléter tout les champs et de poster une image ");
       }
     
        if ($outdated) {
@@ -122,15 +123,15 @@ class EventController extends Controller
        }
       
 
-       if(request()->hasFile('image')){
-        $file = request()->file('image');
+       if($file){
+        
            $size = $file->getSize();
            if($size > 5242880){
                 array_push($errors, "La date ne peut pas être antérieur à aujourd'hui");
             }
 
             $ext = $file->getClientOriginalExtension();
-            if(!preg_match('/(jpg|jpeg|gif|png)/g',$ext)){
+            if(!preg_match('/(jpg|jpeg|gif|png)/',$ext)){
                 
                array_push($errors,'Seuls les gif png , jpg ou kpeg sont acceptés');
             }
@@ -143,9 +144,10 @@ class EventController extends Controller
        
 
        if (sizeof($errors)) {
-           return response()->json([
-               'errors' => $errors,
-           ], 418); //Im a tea Pot
+        //    return response()->json([
+        //        'errors' => $errors,
+        //    ], 418); //Im a tea Pot
+        return redirect('event/create')->withErrors($errors)->withInput();
        }
 
        
@@ -159,17 +161,22 @@ class EventController extends Controller
         $event->statut = 0;
 
         $event->save();
-         //pour store l'image
          
         
-        $path = request()->image->store('pictures');
+        //pour store l'image
+        $path = request()->image->store('/public/pictures');
+        $path=str_replace('public/','',$path);
+
+
+
         $image = new picture();
         $image->user_id=session()->get('user')[0];
-        $image->link=$path;
+        $image->link= $path;
         $image->save();
 
         $image=picture::where('link',$path)->first();
-        $event=event::orderBy('created_at','asc')->first();
+        $event=event::orderBy('id','desc')->first();
+        
         $event->addPicture($image->id);
 
 

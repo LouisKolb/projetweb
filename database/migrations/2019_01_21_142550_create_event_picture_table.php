@@ -14,10 +14,9 @@ class CreateEventPictureTable extends Migration
     public function up()
     {
         Schema::create('event_picture', function (Blueprint $table) {
-            $table->increments('id');
+ 
             $table->integer('event_id');
             $table->integer('picture_id');
-            $table->timestamps();
         });
     }
 

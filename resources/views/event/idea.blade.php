@@ -14,7 +14,7 @@
         <div class="container white-text">
             <div class="row">
                 <div class="col s12">
-                    <h2>Autres événements</h2>
+                    <h2>Boite a idée</h2>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
                                             <div class="s12 left comment">
                                               <div class="col s11">
                                                   <div class="s12 left">
-                                                      <a class="black-text" href="event.html">
+                                                      <a class="black-text" href="">
                                                           <p>Prénom Nom</p>
                                                       </a>
                                                   </div>
@@ -104,8 +104,8 @@
                               <input type="submit" value="Supprimer">
                               </form>
                               @endif
-                                <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event}}"><i class="fas fa-align-right right"></i>
-                                  Voir la publication
+                                <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}"><i class="fas fa-align-right right"></i>
+                                  Voir la publication {{$event->id}}
                                 </a>
 
                             </div>
@@ -113,9 +113,12 @@
                         <!-- Event's pic in a carousel slider for beautyness -->
                         <div class="col m6 s12">
                             <div class="carousel carousel-slider">
-                               {{--@foreach ($pictures as $picture)
-                                 <a class="carousel-item event-pic"><img src="{{$picture->url}}"></a>
-                               @endforeach--}}
+                               
+                             
+                               
+                                @foreach (App\event::find($event->id)->pictures as $picture)
+                                 <a class="carousel-item event-pic"><img src="/storage/{{$picture->link}}"></a>
+                               @endforeach
                             </div>
                         </div>
                     </div>
