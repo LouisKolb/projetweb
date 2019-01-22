@@ -55,8 +55,8 @@ Route::post('/order','OrderController@store');
 Route::get('/legal_mention', function() {
     return view('others.mentions');
 });
-Route::get('/GSC', function() {
-    return view('others.gsc');
+Route::get('/gcs', function() {
+    return view('others.gcs');
 });
 
 
