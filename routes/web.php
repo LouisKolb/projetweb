@@ -33,6 +33,7 @@ Route::get('/event','EventController@index');
 Route::get('/event/idea','EventController@idea');
 Route::get('/event/{event}','EventController@show');
 Route::get('/event/{event}/edit','EventController@edit');
+Route::put('/event/{event}','EventController@update');
 
 Route::put('/event/valide/{event}','EventController@accept');
 Route::put('/event/annule/{event}','EventController@annule');
