@@ -31,7 +31,7 @@ Route::get('/event/create','EventController@create');
 Route::post('/event','EventController@store');
 Route::get('/event','EventController@index');
 Route::get('/event/idea','EventController@idea');
-Route::get('/event/show{event}','EventController@show');
+Route::get('/event/{event}','EventController@show');
 Route::get('/event/{event}/edit','EventController@edit');
 
 Route::put('/event/valide/{event}','EventController@accept');
@@ -45,6 +45,10 @@ Route::get('/product/order','ProductController@order');
 Route::get('/product/{product}','ProductController@show');
 Route::post('/product','ProductController@store');
 Route::delete('/product/{product}','ProductController@delete');
+
+
+Route::post('/order','OrderController@store');
+
 
 
 //Route pour pour les mentions légales
