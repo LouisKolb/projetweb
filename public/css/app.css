@@ -305,9 +305,7 @@ hr.divider {
     margin: 1.4em;
 }
 
-.profile-pic {
-    width: 100%;
-}
+
 
 .profile-pic-on-userpage {
     width: 12em;
@@ -383,3 +381,42 @@ a:focus{
 .btn-heart:hover {
     background: none;
 }
+
+.user-info{
+
+    font-size: 1em;
+    margin-left: 2em;
+
+    
+}
+
+.profile-pic {
+    
+    margin-top: 1vh;
+    height: 5.5vh;
+    width: 5.5vh;
+}
+#user-card{
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    height: 4.5em;
+    width: 12em;
+    margin: auto;
+}
+
+#user-pic-contain{
+    margin-left: 0.25em;
+    margin: 0px 0px 0px 0px;
+}
+
+#event-idea-button{
+    padding-top: 1em;
+}
+
+#event-idea-footer{
+    margin-top: 2em; 
+}
+
+
+
+
