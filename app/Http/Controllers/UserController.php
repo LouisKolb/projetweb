@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use Session;
+
 use App\centre;
+use App\order;
 use App\user;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Session;
 
 class UserController extends Controller
 {
@@ -45,28 +47,35 @@ class UserController extends Controller
     {
         $errors = array();
         $client = new Client(); //GuzzleHttp\Client
-          
-                $result = $client->post('http://localhost:3000/user/login',['form_params' =>[
-                    'username' => request()->username,
-                    'password'=>md5(request()->password)
-                ]]);
-                
-                
-                $user =json_decode($result->getBody(true));
-                if(empty($user->id)){
-                    array_push($errors,$user->id);
-                }
-            if($errors) {
-                
-                return response()->json([
-                    'errors' => $errors,
-                ], 418);
-            }
-            
-            $user = json_decode($result->getBody());
-            session()->push('user', $user->id);
-            return "Connected :" . $user->username;
-        
+
+        $result = $client->post('http://localhost:3000/user/login', ['form_params' => [
+            'username' => request()->username,
+            'password' => md5(request()->password),
+        ]]);
+
+        $user = json_decode($result->getBody(true));
+        if (empty($user->id)) {
+            array_push($errors, $user->id);
+        }
+        if ($errors) {
+
+            return response()->json([
+                'errors' => $errors,
+            ], 418);
+        }
+
+        $user = json_decode($result->getBody());
+        session()->push('user', $user->id);
+
+        if (!order::where('user_id', $user->id)->where('validate', 0)->get()->count()) {
+            $order = new order;
+            $order->validate = 0;
+            $order->user_id = $user->id;
+            $order->save();  
+        }
+
+        return "Connected :" . $user->username;
+
     }
     public function logout()
     {
@@ -139,43 +148,35 @@ class UserController extends Controller
                         "validate" => 0,
                     ]]);
 
-                    $body = json_decode($result->getBody());
-                    //Si l'utilisateur a bien été créé
-                    if(!empty($body->id)){
-                        $user =  user::find($body->id);
+                $body = json_decode($result->getBody());
+                //Si l'utilisateur a bien été créé
+                if (!empty($body->id)) {
+                    $user = user::find($body->id);
 
-                        if(preg_match('/@viacesi\.fr/',request()->email))
-                        {
-                            $user->addrole("Student");
-                        
-                        }
-                        else if(preg_match('/@cesi\.fr/',request()->email)){
-                            $user->addrole("Tutor"); 
-                        }
+                    if (preg_match('/@viacesi\.fr/', request()->email)) {
+                        $user->addrole("Student");
 
-                        
-                        
-
-
-                        return response()->json([
-                            'id' => $body->id,
-                        ], 200);
-                    }
-                    else if(!empty($body->errors)){
-                        return response()->json([
-                            'errors' => $body->errors,
-                        ], 418);
+                    } else if (preg_match('/@cesi\.fr/', request()->email)) {
+                        $user->addrole("Tutor");
                     }
 
-                    return ;
-                    //return $result->getBody();
+                    return response()->json([
+                        'id' => $body->id,
+                    ], 200);
+                } else if (!empty($body->errors)) {
+                    return response()->json([
+                        'errors' => $body->errors,
+                    ], 418);
+                }
+
+                return;
+                //return $result->getBody();
 
             } catch (ClientErrorResponseException $exception) {
                 $responseBody = $exception->getResponse()->getBody(true);
             }
 
-
-        }else{
+        } else {
             if ($errors) {
                 return response()->json([
                     'errors' => $errors,
