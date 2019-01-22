@@ -144,9 +144,7 @@ class EventController extends Controller
        
 
        if (sizeof($errors)) {
-        //    return response()->json([
-        //        'errors' => $errors,
-        //    ], 418); //Im a tea Pot
+       
         return redirect('event/create')->withErrors($errors)->withInput();
        }
 
@@ -178,6 +176,7 @@ class EventController extends Controller
         $event=event::orderBy('id','desc')->first();
         
         $event->addPicture($image->id);
+        return redirect("/event/idea");
 
 
 
