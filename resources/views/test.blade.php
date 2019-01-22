@@ -3,7 +3,7 @@
 
 <section id="section">
     <div class="parallax-container center valign-wrapper border-down">
-        <div class="parallax"><img src="./image/info.jpg">
+        <div class="parallax"><img src="/image/info.jpg">
         </div>
         <div class="container white-text">
             <div class="row">

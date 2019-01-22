@@ -339,3 +339,14 @@ a:focus{
     height: 100%;
     width: 100%;
 }
+
+/* Comment styles */
+.comment {
+    font-style: italic;
+}
+
+.event-comment {
+    margin-left: 2em;
+    margin-right: 2em;
+
+}
