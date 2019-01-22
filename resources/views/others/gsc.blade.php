@@ -11,6 +11,11 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col s11 offset-s1">
+        <h4>Clause n°1</h4>
+    </div>
+</div>
 @endsection
  
 @section('scripts')
