@@ -32,8 +32,7 @@
                     <i>|</i>
                 </div>
                 <div class="col m2 s4 center-align">
-
-                    <i>© 2019 CESI</i>
+                    <a class="white-text" href="/legal_mention"><i>© 2019 CESI</i></a>
                 </div>
             </div>
         </div>

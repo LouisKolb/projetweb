@@ -329,3 +329,13 @@ hr.divider {
 a:focus{
    outline:none;
 }
+
+.mentions-container {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.carousel .carousel-item>img{
+    height: 100%;
+    width: 100%;
+}
