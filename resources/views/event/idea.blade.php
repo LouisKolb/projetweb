@@ -90,20 +90,55 @@
                                 </div>
                             </div>
                             <div class="col s12 right-align">
-                              @if(App\user::find($event->user_id)->hasRole('Admin'))
-                              <form class="waves-effect waves-dark btn btn-event" action="/event/valide/{{$event->id}}" method="post">
-                              @csrf
-                              <input type="hidden" value="1" name="validate">
-                              <input type="hidden" name="_method" value="put">
-                              <input type="submit" value="Valider">
-                              </form>
-                              <form class="waves-effect waves-dark btn btn-event" action="/event/valide/{{$event->id}}" method="post">
-                              @csrf
-                              <input type="hidden" value="delete" name="validate">
-                              <input type="hidden" name="_method" value="put">
-                              <input type="submit" value="Supprimer">
-                              </form>
+                              
+                              {{-- Form pour voter pour une idée d'evenement --}}
+                              @if(session()->has('user'))
+                            <form class="waves-effect waves-dark btn btn-event" action="/event/{{$event->id}}/vote" method="post">
+                                @csrf
+                                @if (App\user::find(session()->get('user')[0])->hasVotedForevent($event->id))
+                                <input type="submit" value="Unvote">
+                                
+                                
+                                @else
+                                    
+                                <input type="submit" value="Vote">
+                                @endif
+                                
+                            
+                            
+                                </form>
                               @endif
+                              {{$event->voteCount()}}
+                              
+                              
+                              
+                              
+                              
+                              {{-- Form pour valider quand on est admin --}}
+                            @if(App\user::find($event->user_id)->hasRole('Admin'))
+                              <form class="waves-effect waves-dark btn btn-event" action="/event/valide/{{$event->id}}" method="post">
+                                @csrf
+                                <input type="hidden" value="1" name="validate">
+                                <input type="hidden" name="_method" value="put">
+                                <input type="submit" value="Valider">
+                              </form>
+                              <form class="waves-effect waves-dark btn btn-event" action="/event/valide/{{$event->id}}" method="post">
+                              @csrf
+                                <input type="hidden" value="delete" name="validate">
+                                <input type="hidden" name="_method" value="put">
+                                <input type="submit" value="Supprimer">
+                              </form>
+                              <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}/edit">  <i class="material-icons">edit</i></a>
+                              @endif
+
+
+                              
+
+
+
+
+
+
                                 <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}"><i class="fas fa-align-right right"></i>
                                   Voir la publication {{$event->id}}
                                 </a>

@@ -10,9 +10,20 @@ class event extends Model
     
     public function pictures()
     {
-        // return $this->hasMany('App\picture','event_picture');
+
         return $this->belongsToMany('App\picture','event_picture');
     }
+
+    public function votes(){
+        return $this->belongsToMany('App\event','voteforevent');
+    }
+
+
+    public function voteCount(){
+        return sizeof($this->votes);
+
+    }
+
     public function addPicture($pictureid){
 
         DB::table('event_picture')->insert([
@@ -20,5 +31,14 @@ class event extends Model
         ]);
 
     }
+
+
+
+    
+
+
+
+
+
 }
 
