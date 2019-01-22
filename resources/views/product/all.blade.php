@@ -75,27 +75,29 @@
                     <div class="col s12 m12 l6">
                         <h4>{{ $product->name }}</h4>
                         <p>{{ $product->description }}</p>
-                        <form class="col s10" method="POST" action="/event" id="event_form">
-                          @csrf
-                              <input id="name" type="text" class="validate" name="name">
 
-                            <div class="input-field col s12">
-                              <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Créer l'événement</button>
+
+
+                        <form class="col s10" method="get" action="product/order" id="cart_form">
+                            @csrf
+                            <div class="row">
+                                    <input id="product_id" type="hidden" class="validate" name="product_id" value="{{ $product->id }}">
+                                    <input id="quantity" type="hidden" class="validate" name="quantity">
+                                    <select name="quantity">
+                                      <option value="" disabled selected>Nombre d'article</option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                    </select>
+                                    <input id="user_id" type="hidden" class="validate" name="user_id" value="{{App\user::find(session()->get('user')[0])->id}}">
+                                    <div class="input-field s6 m6 l6 textyellow">
+                                    <button class="btn waves-effect waves-light bg-blue" type="submit">Ajouter au panier</button>
+                                    </div>
+
                             </div>
-
                         </form>
-                        <div class="input-field s6 m6 l6 textyellow">
-                            <select>
-                                    <option value="" disabled selected>Nombre d'article</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            <button class="btn waves-effect waves-light bg-blue" type="submit" name="action">Ajouter au
-                                    panier
-                                </button>
 
-                        </div>
+
                     </div>
                 </div>
             </div>

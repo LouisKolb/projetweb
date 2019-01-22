@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\event;
+use App\user;
 use App\picture;
 use Request;
 
@@ -226,4 +227,27 @@ class EventController extends Controller
     {
         //
     }
+
+
+    public function vote($event){
+        
+        if(session()->has('user')){
+            $user = user::find(session()->get('user')[0]);
+            
+            if(!$user->hasVotedForEvent($event)){
+    
+                $user->voteForEvent($event);
+            }else{
+                $user->unVoteForEvent($event);
+                
+            }
+
+        }
+        return redirect()->back();
+    }
+
+
+
+
+
 }

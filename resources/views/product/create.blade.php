@@ -1,95 +1,86 @@
-@extends('layout.master')
+@extends('layout.master') 
 @section('content')
 
+<div class="parallax-container center valign-wrapper borderdown">
+	<div class="parallax"><img src="/image/background.jpg">
+	</div>
+	<div class="container white-text">
+		<div class="row">
+			<div class="col s12">
+				<h2>BDE Exia Strasbourg</h2>
+			</div>
+		</div>
+	</div>
+</div>
 
 
-  <div class="grey lighten-5 login_waper ">
+<section class="container">
 
-    <h3 class="center-align">Ajouter un produit</h3>
+	<h4 class="center-align">Ajouter un produit</h4>
 
-    <div class="row">
-      <form class="col s12" method="POST" action="/event" id="event_form">
-        @csrf
-        <div class="row">
-          <div class="input-field col s12 m6">
-            <input id="name" type="text" class="validate" name="name">
-            <label for="name">Nom du produit</label>
-          </div>
-          <div class="input-field col s12 m6">
-            <input id="description" type="text" class="validate" name="description">
-            <label for="description">Description du produit</label>
-          </div>
-          <div class="input-field col s12 m6">
-            <input id="picture" type="text" class="validate" name="picture">
-            <label for="picture">Prix du produit</label>
-          </div>
-          <div class="input-field col s12 m6">
-            <input id="picture" type="text" class="validate" name="picture">
-            <label for="picture">Catégorie du produit</label>
-          </div>
+	<form method="POST" action="/product" id="product_form">
+		@csrf
+		<div class="input-field">
+			<input id="name_product" type="text" data-length="25">
+			<label for="name_product">Nom du produit</label>
+		</div>
+		<div class="input-field">
+			<textarea id="description_product" class="materialize-textarea" data-length="250"></textarea>
+			<label for="description_product">Description du produit</label>
+		</div>
+		<div class="input-field ">
+			<input id="picture_product" type="number" class="validate" name="picture">
+			<label for="picture_product">Prix du produit</label>
+		</div>
+		<div class="input-field">
+			<select multiple>
+				  <option value="" disabled >Catégorie :</option>
+				  <option value="1">Vêtements</option>
+				  <option value="2">Mug et Tasse</option>
+				  <option value="3">Diplôme</option>
+				  <option value="4">Chaussette</option>
+
+				</select>
+			<label>Catégorie</label>
+		</div>
+
+		<label>Image de présentation</label>
+		<div class="file-field input-field">
+			<div class="btn">
+				<span>Rechercher</span>
+				<input type="file" name="image" />
+			</div>
+
+			<div class="file-path-wrapper">
+				<input class="file-path validate" type="text" name="imagetext" placeholder="Importer un fichier" />
+			</div>
+		</div>
 
 
-          <div class="input-field col s12">
-            <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Créer l'évenement</button>
-          </div>
 
-        </div>
-      </form>
+		<div class="input-field center-align">
+			<button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Créer l'article</button>
+		</div>
 
-    </div>
+	</form>
 
-  </div>
+	<div id="test-slider"></div>
 
+
+
+</section>
 @endsection
-
+ 
 @section('scripts')
 
 
 <script>
-
-$(document).ready(function(){
+	$(document).ready(function() {
+    $('input#name_product, textarea#description_product').characterCounter();
+  });
+  $(document).ready(function(){
     $('select').formSelect();
   });
-
-
-
-
-  $("#event_form").submit(function(e) {
-  e.preventDefault(); // avoid to execute the actual submit of the form.
-
-  var form = $("#event_form");
-
-  $.ajax({
-            type: form.attr('method'),
-            url: form.attr('action'),
-            data: form.serialize(),
-            success: function (data) {
-                //console.log('Submission was successful.');
-                console.log(data);
-                window.location.replace("/product");
-
-            },
-            error: function (data) {
-                console.log('An error occurred.');
-                console.log(data)
-                try{
-
-                    errors=data.responseJSON
-                    errors = errors.errors;
-                    for(i=0;i<errors.length;i++){
-                      M.toast({html: errors[i] , classes: 'red darken-2' ,displayLength:5000})
-                      console.log(i);
-                      if(i==errors.length-1)return
-                    }
-                }catch(e){
-                    M.toast({html: "Une erreur s'est produite merci de votre compréhension" , classes: 'red darken-2' ,displayLength:5000})
-                }
-                console.log(errors);
-            },
-        });
-
-
-});
 
 </script>
 @endsection
