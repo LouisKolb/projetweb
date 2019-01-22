@@ -335,6 +335,7 @@ a:focus{
     margin-right: 2em;
 }
 
+/* Style for caroussel */
 .carousel .carousel-item>img{
     height: 100%;
     width: 100%;
@@ -348,5 +349,32 @@ a:focus{
 .event-comment {
     margin-left: 2em;
     margin-right: 2em;
+}
 
+.remove-marge-bot {
+    margin-bottom: 0;
+}
+
+/* Event picture and buttons */
+.event-pic {
+    width: 100%; 
+}
+
+.show-event {
+    width: 100%;
+}
+
+.btn-heart {
+    width: 100%;
+    background: none;
+    color: red;
+    box-shadow: none;
+}
+
+.btn-heart:focus {
+    background: black;
+}
+
+.btn-heart:hover {
+    background: none;
 }
