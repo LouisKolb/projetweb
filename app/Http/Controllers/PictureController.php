@@ -20,7 +20,7 @@ class PictureController extends Controller
         return view('picture.all',compact('pictures'));
     }
 
-    
+
 
 
 
@@ -47,7 +47,7 @@ class PictureController extends Controller
      */
     public function store()
     {
-        
+
     }
 
     /**
@@ -97,8 +97,21 @@ class PictureController extends Controller
 
     public function download()
     {
-        $files = glob(public_path('storage/pictures/*'));
-        \Zipper::make(public_path('image_site.zip'))->add($files)->close();
-        return response()->download(public_path('image_site.zip'))->deleteFileAfterSend(true);
+      if(session()->has('user'))
+      {
+        $user = user::find(session()->get('user')[0]);
+
+        if ($user->hasRole('admin') || $user->hasRole('tutor'))
+        {
+          $files = glob(public_path('storage/pictures/*'));
+          \Zipper::make(public_path('image_site.zip'))->add($files)->close();
+          return response()->download(public_path('image_site.zip'))->deleteFileAfterSend(true);
+        }
+      }
+
+      return redirect('/picture');
+
+
+
     }
 }
