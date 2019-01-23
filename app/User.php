@@ -14,7 +14,8 @@ class user extends Model
     public static function find($id)
     {
         $client = new Client(); //GuzzleHttp\Client
-        $result = $response = $client->get("localhost:3000/user/$id");
+        $token = 'L4CduC0neM4raB45580o5TeD';
+        $result = $response = $client->get("localhost:3000/user/$id/$token");
 
         $result = json_decode($result->getBody(), true);
         $user = new user();

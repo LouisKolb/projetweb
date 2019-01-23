@@ -51,6 +51,7 @@ class UserController extends Controller
         $result = $client->post('http://localhost:3000/user/login', ['form_params' => [
             'username' => request()->username,
             'password' => md5(request()->password),
+            'token'=>'L4CduC0neM4raB45580o5TeD'
         ]]);
 
         $user = json_decode($result->getBody(true));
@@ -146,6 +147,7 @@ class UserController extends Controller
                         "centre" => request()->centre,
                         "mailtoken" => bin2hex(random_bytes(30)),
                         "validate" => 0,
+                        "token"=>'L4CduC0neM4raB45580o5TeD'
                     ]]);
 
                 $body = json_decode($result->getBody());
