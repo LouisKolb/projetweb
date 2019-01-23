@@ -22,7 +22,7 @@
         <div class="col m2 l2">
             <p>Nom prénom</p>
         </div>
-        <div class="col m7 l7">
+        <div class="col m7 l7 offset-l1">
             <h4>Nom Évenement</h4>
         </div>
     </div>
