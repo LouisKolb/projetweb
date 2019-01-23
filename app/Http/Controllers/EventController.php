@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\event;
 use App\user;
 use App\picture;
+use Illuminate\Support\Facades\DB;
 use Request;
 
 class EventController extends Controller
@@ -109,23 +110,23 @@ class EventController extends Controller
       $datetime = date('Y-m-d');
       $outdated = $dateevent < $datetime;
       $file = request()->file('image');
-        
+
       if(!session()->has('user')){
           array_push($errors,"Vous devez etre connecté pout proposer un éventment");
       }
-      
-      
+
+
       if(empty(request()->name)|| empty(request()->date) || empty($file) || empty(request()->description) ){
           array_push($errors,"Merci de compléter tout les champs et de poster une image ");
       }
-    
+
        if ($outdated) {
            array_push($errors, "La date ne peut pas être antérieur à aujourd'hui");
        }
-      
+
 
        if($file){
-        
+
            $size = $file->getSize();
            if($size > 5242880){
                 array_push($errors, "La date ne peut pas être antérieur à aujourd'hui");
@@ -133,7 +134,7 @@ class EventController extends Controller
 
             $ext = $file->getClientOriginalExtension();
             if(!preg_match('/(jpg|jpeg|gif|png)/',$ext)){
-                
+
                array_push($errors,'Seuls les gif png , jpg ou kpeg sont acceptés');
             }
 
@@ -142,26 +143,26 @@ class EventController extends Controller
 
        }
 
-       
+
 
        if (sizeof($errors)) {
-       
+
         return redirect('event/create')->withErrors($errors)->withInput();
        }
 
-       
+
 
         $event = new Event();
         $event->name = request()->name;
         $event->user_id = session()->get('user')[0];
         $event->description = request()->description;
         $event->date = request()->date;
-        
+
         $event->statut = 0;
 
         $event->save();
-         
-        
+
+
         //pour store l'image
         $path = request()->image->store('/public/pictures');
         $path=str_replace('public/','',$path);
@@ -175,7 +176,7 @@ class EventController extends Controller
 
         $image=picture::where('link',$path)->first();
         $event=event::orderBy('id','desc')->first();
-        
+
         $event->addPicture($image->id);
         return redirect("/event/idea");
 
@@ -212,9 +213,109 @@ class EventController extends Controller
      * @param  \App\event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, event $event)
+    public function update(event $event)
     {
-        //
+      foreach(request()->all() as $key => $value){
+        if ($value == 'on')
+        {
+          $picture = picture::find($key);
+
+
+          
+
+          DB::table('event_picture')->where('picture_id', $key)->where('event_id',$event->id)->delete();
+
+            $picture->delete();
+        }
+
+      }
+
+
+
+
+
+      $event->id;
+      $errors = array();
+      $timeevent = strtotime(request()->date);
+      $dateevent = date('Y-m-d', $timeevent);
+      $datetime = date('Y-m-d');
+      $outdated = $dateevent < $datetime;
+      $file = request()->file('image');
+
+      if(!session()->has('user')){
+          array_push($errors,"Vous devez etre connecté pout proposer un éventment");
+      }
+
+
+      if(empty(request()->name)|| empty(request()->date) || empty(request()->description) ){
+          array_push($errors,"Merci de compléter tout les champs et de poster une image ");
+      }
+
+       if ($outdated) {
+           array_push($errors, "La date ne peut pas être antérieur à aujourd'hui");
+       }
+
+
+       if($file){
+
+           $size = $file->getSize();
+           if($size > 5242880){
+                array_push($errors, "La date ne peut pas être antérieur à aujourd'hui");
+            }
+
+            $ext = $file->getClientOriginalExtension();
+            if(!preg_match('/(jpg|jpeg|gif|png)/',$ext)){
+
+               array_push($errors,'Seuls les gif png , jpg ou kpeg sont acceptés');
+            }
+
+
+
+
+       }
+
+
+
+       if (sizeof($errors)) {
+
+        return redirect("event/{$event->id}/edit")->withErrors($errors)->withInput();
+       }
+
+
+
+        // $event = new Event();
+        $event->name = request()->name;
+        $event->user_id = session()->get('user')[0];
+        $event->description = request()->description;
+        $event->date = request()->date;
+
+        $event->statut = 0;
+
+        $event->save();
+
+
+        //pour store l'image
+
+
+
+        if (!empty($file)) {
+          $path = request()->image->store('/public/pictures');
+          $path=str_replace('public/','',$path);
+          $image = new picture();
+          $image->user_id=session()->get('user')[0];
+          $image->link= $path;
+          $image->save();
+
+          $image=picture::where('link',$path)->first();
+
+
+          $event->addPicture($image->id);
+        }
+
+        return redirect("/event/idea");
+
+
+
     }
 
     /**
@@ -230,16 +331,16 @@ class EventController extends Controller
 
 
     public function vote($event){
-        
+
         if(session()->has('user')){
             $user = user::find(session()->get('user')[0]);
-            
+
             if(!$user->hasVotedForEvent($event)){
-    
+
                 $user->voteForEvent($event);
             }else{
                 $user->unVoteForEvent($event);
-                
+
             }
 
         }
