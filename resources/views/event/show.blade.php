@@ -69,10 +69,10 @@
                                 <div class="card-panel grey lighten-5 z-depth-1">
                                     {{-- User actually conected profile --}}
                                     <div class="row remove-marge-bot">
-                                        <div class="col s3 m2 l3">
+                                        <div class="col s3 m2 l1">
                                             <img src="/image/simon.jpg" class="circle responsive-img">
                                         </div>
-                                        <div class="col s9 m10 l9">
+                                        <div class="col s9 m10 l11">
                                             <div class="row remove-marge-bot">
                                                 <div class="s12 left">
                                                     <p>Prénom Nom</p>
@@ -95,10 +95,10 @@
                                 <div class="card-panel grey lighten-5 z-depth-1">
                                     <div class="row">
                                         {{-- User's profile who comment in last --}}
-                                        <div class="col s3 m2 l3">
+                                        <div class="col s3 m2 l1">
                                             <img src="/image/simon.jpg" class="circle responsive-img">
                                         </div>
-                                        <div class="col s9 m10 l9">
+                                        <div class="col s9 m10 l11">
                                             <div class="row remove-marge-bot">
                                                 <div class="s12 left">
                                                     <p>Prénom Nom</p>
