@@ -1,4 +1,4 @@
-@extends('layout.master') 
+@extends('layout.master')
 @section('content')
 <div class="parallax-container center valign-wrapper borderdown">
     <div class="parallax"><img src="/image/background.jpg">
@@ -22,23 +22,40 @@
         <div class="row">
             <div class="col s1">
             </div>
-            <form class="col s10" method="POST" action="/event" id="event_form" enctype="multipart/form-data">
+            <form class="col s10" method="POST" action="/event/{{$event->id}}" id="event_form" enctype="multipart/form-data">
+              <input type="hidden" name="_method" value="put">
                 @csrf
                 <div class="row">
+
+
                     <div class="input-field col s12 m12">
-                        <input value="{{$event->name}}" id="event-title" type="text" class="validate">
-                        <label class="active" for="first_name2">Nom de l'évènement</label>
+                        <input id="name" type="text" class="validate" name="name" data-length="50" value="{{$event->name}}">
+                        <label class="active" for="name">Nom de l'évènement</label>
                     </div>
+
+
                     <div class="input-field col s12 m12">
                         <input value="{{$event->description}}" id="description" type="text" class="validate" name="description">
                         <label for="description">Description de l'événement</label>
                     </div>
+
 
                     <div class="input-field col s12 m12">
                         <input value="{{$event->date}}" id="date" type="date" class="validate" name="date">
                         <label for="date">Date de l'événement</label>
                     </div>
 
+                    <label>Image de présentation</label>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Rechercher</span>
+                            <input type="file" name="image" />
+                        </div>
+
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" name="imagetext" placeholder="Importer un fichier" />
+                        </div>
+                    </div>
 
                     {{-- Print all picture of event --}}
                     <div class="row">
@@ -47,8 +64,17 @@
                             <div class="card hoverable ">
                                 <div class="card-image ">
                                     <img class="img-product" src="/storage/{{$p->link}}" alt="/storage/{{$p->link}}">
-                                    <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger open" data-id="Album" href=""><i
-                                        class="material-icons">delete</i></a>
+
+                                    <!-- Switch -->
+                                      <div class="switch">
+                                      <label>
+                                        Garder
+                                        <input type="checkbox" name="{{$p->id}}">
+                                        <span class="lever" ></span>
+                                        Supprimer
+                                      </label>
+                                      </div>
+
                                 </div>
                             </div>
                         </div>
@@ -60,7 +86,7 @@
                     <div class="input-field col s12">
                         <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Modifier l'événement</button>
                     </div>
-                    
+
 
                     @if (count($errors) > 0)
                     <div class="red darken-3">
@@ -94,7 +120,7 @@
     </div>
 </div>
 @endsection
- 
+
 @section('scripts')
 
 
