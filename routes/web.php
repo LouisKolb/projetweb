@@ -36,6 +36,7 @@ Route::get('/event/{event}/edit','EventController@edit');
 Route::put('/event/{event}','EventController@update');
 Route::put('/event/{event}','EventController@update');
 Route::post('/event/{event}/vote','EventController@vote');
+Route::post('/event/{event}/subscribe','EventController@subscribe');
 
 
 

@@ -61,10 +61,24 @@
             </a>
             @else
 
+                @if (session()->has('user'))
+                    <form action="/event/{{$event->id}}/subscribe" method="POST">
+                        @csrf
+                        <button class="waves-effect waves-dark btn" type="submit">
+                            @if (App\user::find(session()->get('user')[0])->hasSubscribedToEvent($event->id))
+                                Se désinscrire
+                            @else
+                                S'inscrire 
+                            @endif
+                            
+                            <i class="fas fa-sign-in-alt right"></i></button>
+                    </form>
+                
+                @else
+                <a href="/login" class="waves-effect waves-dark btn">Vous devez être connecté pour vous inscrire</a>
+                    
+                @endif
             
-            
-            
-            <a class="waves-effect waves-dark btn">S'inscrire <i class="fas fa-sign-in-alt right"></i></a>
 
             @endif
 

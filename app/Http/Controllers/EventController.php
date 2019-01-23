@@ -360,6 +360,24 @@ class EventController extends Controller
     }
 
 
+    public function subscribe($event){
+        
+        if(session()->has('user')){
+            $user = user::find(session()->get('user')[0]);
+            
+            if($user->hasSubscribedToEvent($event)){
+                $user->unSubscribeToEvent($event);
+            }else{
+
+                $user->subscribeToEvent($event);
+            }
+        }
+
+
+        return redirect()->back();
+    }
+
+
 
 
 

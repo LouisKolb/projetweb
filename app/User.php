@@ -102,6 +102,29 @@ class user extends Model
 
     }
 
+    //All interactions with events
+    public function events(){
+        return $this->belongsToMany('App\event','event_user');
+    }
+
+    public function hasSubscribedToEvent($eventid){
+        foreach ($this->events as $e) {
+            if($e->id == $eventid){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function subscribeToEvent($eventid){
+        $this->events()->attach($eventid);
+    }
+    public function unSubscribeToEvent($eventid){
+        $this->events()->detach($eventid);
+    }
+
+
+
 
 
 
