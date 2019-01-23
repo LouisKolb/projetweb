@@ -65,8 +65,8 @@
                             <div class="col m12">
                             </div>
                             <div class="col s12 right-align">
-                                <a class="waves-effect waves-dark btn">S'inscrire <i class="fas fa-sign-in-alt right"></i></a>
-                                <a class="waves-effect waves-dark btn" href="/event/{{$event}}">
+                                
+                                <a class="waves-effect waves-dark btn" href="/event/{{$event->id}}">
                                     <i class="fas fa-align-right right"></i>Voir la publication
                                 </a> 
                             </div>
@@ -167,7 +167,7 @@
                             </div>
                         </div>
                         <div class="col s12 right-align">
-                            <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event}}"><i class="fas fa-align-right right"></i>
+                            <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}"><i class="fas fa-align-right right"></i>
                                       Voir la publication
                                     </a>
 
