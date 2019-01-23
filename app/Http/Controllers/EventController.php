@@ -32,6 +32,11 @@ class EventController extends Controller
      */
     public function create()
     {
+        if(!session()->has('user'))
+        {
+          return redirect("/event");
+        }
+
         return view("event.create");
     }
 

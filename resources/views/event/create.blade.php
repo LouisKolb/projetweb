@@ -1,5 +1,12 @@
-@extends('layout.master') 
+@extends('layout.master')
 @section('content')
+@php
+$connected = false; if(session()->has('user')){
+    $connected = true;
+    $user = App\user::find(session()->get('user')[0]);
+}
+@endphp
+
 <div class="parallax-container center valign-wrapper borderdown">
     <div class="parallax"><img src="/image/background.jpg">
     </div>
@@ -46,15 +53,15 @@
 
     <div class="switch">
         <label>
-            Récurence :                              
+            Récurence :
             </label>
         <label>
-            Quotidienne 
+            Quotidienne
             <input type="checkbox" name="">
-            <span class="lever" ></span>       
+            <span class="lever" ></span>
             </label>
         <label>
-            Mensuel 
+            Mensuel
             <input type="checkbox">
             <span class="lever" ></span>
             </label>
@@ -78,12 +85,15 @@
 
     <div class="input-field center-align">
         <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Proposer son idée</button>
+        @if($connected && $user->hasRole('admin'))
         <form class="waves-effect waves-dark btn btn-event" action="/event/valide/" method="post">
             @csrf
             <input type="hidden" value="1" name="validate">
             <input type="hidden" name="_method" value="put">
             <input type="submit" value="Publier l'évènement">
         </form>
+        @endif
+
     </div>
 
 
@@ -100,7 +110,7 @@
     @endif
 </section>
 @endsection
- 
+
 @section('scripts')
 
 
@@ -114,7 +124,7 @@
     }
   });
 
-    
+
     $(document).ready(function(){
     $('select').formSelect();
   });

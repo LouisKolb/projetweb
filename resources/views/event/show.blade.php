@@ -6,7 +6,7 @@
     <div class="container white-text">
         <div class="row">
             <div class="col s12">
-                <h2>Évenement</h2>
+                <h2>Évenement {{$event->name}}</h2>
             </div>
         </div>
     </div>
@@ -74,15 +74,23 @@
             </form>
         </div>
     </div>
+
+    @foreach ($event->pictures as $picture)
+        
+    
     <div class="row">
         <div class="col s12 l6 center-align">
+            
+            
+            
+            
             <ul class="collapsible">
                 <li>
                     {{-- Collapside with comment --}}
                     <div class="collapsible-header">
                         <div class="row remove-marge-bot">
                             <div class="col s12 ">
-                                <img class="circle responsive-img profile-pic" src="/image/simon.jpg">
+                                <img class="circle responsive-img profile-pic" src="/storage/{{$picture->link}}">
                             </div>
                         </div>
                         <div class="col s1n2 left-alig">
@@ -92,7 +100,7 @@
                     <div class="collapsible-header">
                         <div class="row">
                             <div class="col s12">
-                                <img class="materialboxed event-pic" src="/image/event.jpg">
+                                <img class="materialboxed event-pic" src="/storage/{{$picture->link}}">
                             </div>
                             <div class="show-event">
                                 <i class="fas fa-chevron-down"></i>
@@ -157,6 +165,8 @@
                 </li>
             </ul>
         </div>
+
+        @endforeach
 </section>
 @endsection
  
