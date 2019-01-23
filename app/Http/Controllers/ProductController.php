@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\product;
 use App\picture;
 use App\category;
+use App\user;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -27,8 +28,21 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categorys = category::get();
-        return view("product.create",compact('categorys'));
+
+      if(!session()->has('user'))
+      {
+        return redirect("/product");
+      }
+
+      $user = user::find(session()->get('user')[0]);
+
+      if (!$user->hasRole('admin'))
+      {
+        return redirect("/product");
+      }
+
+      $categorys = category::get();
+      return view("product.create",compact('categorys'));
     }
 
     /**
@@ -52,26 +66,26 @@ class ProductController extends Controller
         }
 
         if($file){
-        
+
             $size = $file->getSize();
             if($size > 5242880){
                  array_push($errors, "Le fichier est trop volumineux");
              }
- 
+
              $ext = $file->getClientOriginalExtension();
              if(!preg_match('/(jpg|jpeg|gif|png)$/',$ext)){
-                 
+
                 array_push($errors,'Seuls les gif png , jpg ou kpeg sont acceptés');
              }
- 
+
         }
          if (sizeof($errors)) {
-       
+
             return redirect('product/create')->withErrors($errors)->withInput();
            }
 
            //var_dump(request()->all());
-           
+
 
            $product = new product();
            $product->name = request()->name;
@@ -86,10 +100,10 @@ class ProductController extends Controller
             $image = new picture();
             $image->user_id=session()->get('user')[0];
             $image->link= $path;
-            
+
             $image->save();
-            
-            
+
+
             $product->image=picture::where('link',$path)->first()->id;
             $product->save();
 
