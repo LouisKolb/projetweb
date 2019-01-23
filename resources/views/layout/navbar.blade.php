@@ -6,9 +6,9 @@
             <ul class="right hide-on-med-and-down	">
                 <li class="navitem"><a href="/">Accueil</a></li>
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownStore'>Boutique</a></li>
-               
+
                 <li class="navitem"><a class="" href="/product">Boutique</a></li>
-                
+
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownEvent'>Évènement</a></li>
 
                 @if(session()->has('user'))
@@ -34,9 +34,9 @@
 <ul id="slide-out" class="sidenav left">
     <li class="navitem"><a class="active" href="/">Accueil</a></li>
     <li class="navitem"><a href="/product">Boutique</a></li>
-    
+
     <li><a href="/product/create">Ajouter un article à la boutique</a></li>
-    
+
     <li class="navitem"><a href="/event">Évènement</a></li>
     <li class="navitem"><a href="/event/idea">Boîte à idées</a></li>
     <li><a href="/event/create">Proposer un évènement</a></li>
@@ -125,7 +125,12 @@
 
     </ul>
 
-
+    <!-- Social network bar -->
+    <div class="icon-bar">
+        <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
 
 
 </section>
