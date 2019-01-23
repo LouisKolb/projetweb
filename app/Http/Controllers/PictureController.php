@@ -14,6 +14,8 @@ class PictureController extends Controller
      */
     public function index()
     {
+        $Path = public_path('image_site.zip');
+        \Zipper::make($Path)->extractTo('Appdividend');
         $pictures= picture::get();
         return view('picture.all',compact('pictures'));
     }
@@ -32,7 +34,9 @@ class PictureController extends Controller
      */
     public function create()
     {
-        //
+        $files = glob(public_path('storage/pictures/*'));
+        \Zipper::make(public_path('image_site.zip'))->add($files)->close();
+        return response()->download(public_path('image_site.zip'))->deleteFileAfterSend(true);
     }
 
     /**
@@ -89,5 +93,12 @@ class PictureController extends Controller
     public function destroy(picture $picture)
     {
         //
+    }
+
+    public function download()
+    {
+        $files = glob(public_path('storage/pictures/*'));
+        \Zipper::make(public_path('image_site.zip'))->add($files)->close();
+        return response()->download(public_path('image_site.zip'))->deleteFileAfterSend(true);
     }
 }

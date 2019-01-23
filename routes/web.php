@@ -40,8 +40,6 @@ Route::post('/event/{event}/vote','EventController@vote');
 
 
 
-
-
 Route::put('/event/valide/{event}','EventController@accept');
 Route::put('/event/annule/{event}','EventController@annule');
 Route::delete('/event/{event}','EventController@delete');
@@ -66,7 +64,7 @@ Route::delete('/order/{product}','OrderController@deletefromcart');
 
 
 
-
+Route::get('/picture/download','PictureController@download');
 Route::get('/picture','PictureController@index');
 Route::get('/picture/{picture}','PictureController@show');
 

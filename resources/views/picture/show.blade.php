@@ -20,7 +20,6 @@
                 </div>
                 <div class="card-action">
                     <a class="waves-effect waves-light btn btn-social"><i class="far fa-heart"></i></a>
-                    <a class="waves-effect waves-light btn btn-social"><i class="fas fa-download"></i></a>
                 </div>
                 {{-- Comment section --}}
                 <div class="card-action">

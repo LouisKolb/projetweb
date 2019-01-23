@@ -14,6 +14,15 @@
 
 <section>
     <div class="row">
+        <div class="col l12 m12 s12 center-align">
+            <h6>Télécharger toutes les images du site</h6>
+        </div>
+        <div class="col l12 m12 s12 center-align">
+            <a class="waves-effect waves-light btn btn-social" href="/picture/download"><i class="fas fa-download"></i></a>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col s12 m6 l4">
             <div class="card">
                 <div class="card-image">
