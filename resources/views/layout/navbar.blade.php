@@ -1,23 +1,39 @@
+@php 
+$connected = false; if(session()->has('user')){ 
+    $connected = true;
+    $user = App\user::find(session()->get('user')[0]);
+} 
+@endphp
+
+
+
+{{-- Top nav --}}
 <header>
     <nav id="top-nav">
         <div class="nav-wrapper top">
 
             <a href="/" class=""><img id="logo" src="/image/Logo.png" alt=""></a>
             <ul class="right hide-on-med-and-down	">
-                <li class="navitem"><a href="/">Accueil</a></li>
-                <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownStore'>Boutique</a></li>
 
-                <li class="navitem"><a class="" href="/product">Boutique</a></li>
+                {{-- Everybody --}}
+                <li class="navitem"><a href="/">Accueil</a></li>
+
+
+                @if($connected && $user->hasRole('admin'))
+                    <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownStore'>Boutique</a></li>
+                @else
+                    <li class="navitem"><a class="" href="/product">Boutique</a></li>
+                @endif
 
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownEvent'>Évènement</a></li>
-
-                @if(session()->has('user'))
-                <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownUser'>{{App\user::find(session()->get('user')[0])->username}}</a></li>
+                @if($connected)
+                    <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownUser'>{{$user->username}}</a></li>
                 @else
-                <li class="navitem"><a href="/login">Connexion</a></li>
+                    <li class="navitem"><a href="/login">Connexion</a></li>
                 @endif
                 <li class="navitem sidenav-trigger " data-target="cart-out"><a href="/"><i class="material-icons">shopping_cart</i></a></li>
             </ul>
+
             <ul class="navitem sidenav-trigger right hide-on-large-only" data-target="slide-out">
                 <li class="navitem">
                     <a href="#">
@@ -25,27 +41,30 @@
                     </a>
                 </li>
             </ul>
-
         </div>
     </nav>
-
 </header>
 
+
+{{-- Moblie Side-nav --}}
 <ul id="slide-out" class="sidenav left">
+
     <li class="navitem"><a class="active" href="/">Accueil</a></li>
     <li class="navitem"><a href="/product">Boutique</a></li>
 
-    <li><a href="/product/create">Ajouter un article à la boutique</a></li>
+    @if($connected && $user->hasRole('admin'))
+        <li><a href="/product/create">Ajouter un article à la boutique</a></li>
+    @endif
 
     <li class="navitem"><a href="/event">Évènement</a></li>
     <li class="navitem"><a href="/event/idea">Boîte à idées</a></li>
-    <li><a href="/event/create">Proposer un évènement</a></li>
-
-    @if(session()->has('user'))
-    <li><a href="/user/{{session()->get('user')[0]}}">Mon Profil : {{App\user::find(session()->get('user')[0])->username}}</a></li>
-    <li><a href="/logout">Déconnexion</a></li>
+    @if($connected)
+        <li><a href="/event/create">Proposer un évènement</a></li>
+    @endif @if($connected)
+        <li><a href="/user/{{$user->id}}">Mon Profil : {{$user->username}}</a></li>
+        <li><a href="/logout">Déconnexion</a></li>
     @else
-    <li class="navitem"><a href="/login">Connexion</a></li>
+        <li class="navitem"><a href="/login">Connexion</a></li>
     @endif
 
     <li class="navitem sidenav-trigger sidenav-close" data-target="cart-out"><a href="sass.html"><i class="material-icons white-text">shopping_cart</i></a></li>
@@ -53,19 +72,21 @@
 
 
 
+
+
+{{-- Dropdown --}}
 <ul id='dropdownEvent' class='dropdown-content drop'>
     <li><a href="/event">Nos évènements</a></li>
     <li><a href="/event/idea">Boîte à idées</a></li>
-    <li><a href="/event/create">Proposer un évènement</a></li>
-
+    @if ($connected)
+        <li><a href="/event/create">Proposer un évènement</a></li>
+    @endif
 </ul>
 
 <ul id='dropdownStore' class='dropdown-content drop'>
     <li><a href="/product">Visiter la boutique</a></li>
     <li><a href="/product/create">Ajouter un article</a></li>
 </ul>
-
-
 
 <ul id='dropdownUser' class='dropdown-content drop'>
     <li><a href="/user/{{session()->get('user')[0]}}">Mon Profil</a></li>
@@ -74,33 +95,26 @@
 
 
 <section>
-@php
-    $connected = session()->has('user');
-    if($connected){
-        $user = App\user::find(session()->get('user')[0]);
+
+
+@php 
+    $connected = session()->has('user'); 
+    if($connected){ 
+        $user = App\user::find(session()->get('user')[0]); 
         $cart = $user->cart();
-        $products = $cart->products;
-    }
+        $products = $cart->products; 
+    } 
 @endphp
 
 
-
-    </div>
+{{-- Cart side-nav --}}
     <ul id="cart-out" class="sidenav right">
         <li class="cart">
             <h4>@if(!$connected) Vous devez être conecté pour voir @endif Votre Panier</h4>
-            
-            @if ($connected)
-                
-            
-            
-            @foreach ($products as $product)
-                
-            
-            
+            @if ($connected) @foreach ($products as $product)
             <ul class="collapsible">
                 <li>
-                <div class="collapsible-header">{{$product->name}}</div>
+                    <div class="collapsible-header">{{$product->name}}</div>
 
                     <div class="collapsible-body">
                         <div class="card hoverable ">
@@ -146,8 +160,9 @@
 
         @endif
     </ul>
+    
 
-    <!-- Social network bar -->
+<!-- Social network bar -->
     <div class="icon-bar">
         <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
         <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
