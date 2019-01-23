@@ -45,13 +45,13 @@
             </div>
             <div class="col m12 l5">
                 <p>Modifier mon adresse mail</p>
-                <div class="row">
+                <div class="row valign-wrapper">
                     <div class="input-field col s10">
                         <input id="email" type="email" class="validate">
                         <label for="email">Email</label>
                     </div>
                     <div class="col s2 hide-on-small-only">
-                        <a class="waves-effect waves-light btn-large"><i class="fab fa-telegram-plane"></i></a>
+                        <a class="waves-effect waves-light btn"><i class="fab fa-telegram-plane"></i></a>
                     </div>
                     <div class="col s2 hide-on-med-and-up">
                         <a class="waves-effect waves-light btn"><i class="fab fa-telegram-plane"></i></a>
@@ -60,8 +60,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s10 offset-s1 right-align">
-                <a class="waves-effect waves-light btn-large"><i class="fas fa-key"></i> Modifier mon mot de passe</a>
+            <div class="col s12 m10 offset-m1 right-align">
+                <a class="waves-effect waves-light btn"><i class="fas fa-key"></i> Modifier mon mot de passe</a>
             </div>
         </div>
     </div>
