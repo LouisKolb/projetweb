@@ -6,6 +6,7 @@ use App\event;
 use App\user;
 use App\picture;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Request;
 
 class EventController extends Controller
@@ -220,8 +221,14 @@ class EventController extends Controller
         {
           $picture = picture::find($key);
 
+          foreach ($event->pictures as $p) {
+            if($p->id==$key){
+              $thefile = $p->link;
+              $delfile = str_replace("pictures/","","$thefile");
+              unlink(storage_path('app\public\pictures\\'.$delfile));
+            }
+          }
 
-          
 
           DB::table('event_picture')->where('picture_id', $key)->where('event_id',$event->id)->delete();
 
