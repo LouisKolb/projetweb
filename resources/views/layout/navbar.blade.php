@@ -16,7 +16,7 @@
                 @else
                 <li class="navitem"><a href="/login">Connexion</a></li>
                 @endif
-                <li class="navitem sidenav-trigger " data-target="cart-out"><a href="sass.html"><i class="material-icons">shopping_cart</i></a></li>
+                <li class="navitem sidenav-trigger " data-target="cart-out"><a href="/"><i class="material-icons">shopping_cart</i></a></li>
             </ul>
             <ul class="navitem sidenav-trigger right hide-on-large-only" data-target="slide-out">
                 <li class="navitem">
@@ -109,7 +109,7 @@
                 <h6>Total : 150 €</h6>
                 <div class="row">
                     <div class="col s10 m10 l10 ">
-                        <a class="color-blue" href="/product/order">
+                        <a class="color-blue" href="/order">
                             <h6>Passer commande</h6>
                         </a>
                     </div>

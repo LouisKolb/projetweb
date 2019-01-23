@@ -42,11 +42,50 @@
                     <input class="file-path validate" type="text" name="imagetext" placeholder="Importer un fichier" />
                 </div>
             </div>
-            <div class="input-field center-align">
-                <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Créer l'événement</button>
-            </div>
-        </div>
     </form>
+
+    <div class="switch">
+        <label>
+            Récurence :                              
+            </label>
+        <label>
+            Quotidienne 
+            <input type="checkbox" name="">
+            <span class="lever" ></span>       
+            </label>
+        <label>
+            Mensuel 
+            <input type="checkbox">
+            <span class="lever" ></span>
+            </label>
+    </div>
+    <div class="switch">
+            <label>
+              Off
+              <input id="price_switch" type="checkbox">
+              <span class="lever"></span>
+              On
+            </label>
+          </div>
+    <div id= "price_case" class="row hide">
+        <div class="col l2 m2 s2 input-field">
+            <input id="p" type="number" step="any" class="validate" name="price">
+            <label for="p">Prix</label>
+        </div>
+    </div>
+
+
+
+    <div class="input-field center-align">
+        <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Proposer son idée</button>
+        <form class="waves-effect waves-dark btn btn-event" action="/event/valide/" method="post">
+            @csrf
+            <input type="hidden" value="1" name="validate">
+            <input type="hidden" name="_method" value="put">
+            <input type="submit" value="Publier l'évènement">
+        </form>
+    </div>
+
 
     @if (count($errors) > 0)
     <div class="card-panel red lighten-5 login_waper">
@@ -66,6 +105,16 @@
 
 
 <script>
+
+    $("#price_switch").click(function() {
+    if($(this).is(":checked")) {
+        $( "#price_case" ).removeClass( "hide" );    }
+    else {
+        $( "#price_case" ).addClass( "hide" );
+    }
+  });
+
+    
     $(document).ready(function(){
     $('select').formSelect();
   });

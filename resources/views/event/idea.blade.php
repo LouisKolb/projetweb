@@ -41,7 +41,6 @@
             <div class="row">
                 <p> {{ $event->description }} </p>
             </div>
-            <hr class="divider">
             <div id="event-idea-footer" class="row">
                 <div id="user-card" class="col l3 m2 s12">
                     <div class="col l12 m12 s12 user-info">
@@ -54,7 +53,7 @@
                     </div>
 
                 </div>
-                <div id="event-idea-button" class="col l9 m10 s12">
+                <div class="col l9 m10 s12">
 
                     <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}">👁️</a> @if(session()->has('user'))
                     <form class="waves-effect waves-dark btn btn-event" action="/event/{{$event->id}}/vote" method="post">
@@ -62,13 +61,9 @@
                         <input type="submit" class="white-text" value="👎🏻"> @else
                         <input type="submit" class="white-text" value="👍🏻"> @endif
                     </form>
-                    @if(App\user::find($event->user_id)->hasRole('Admin'))
-                    <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}/edit"> ✏️</a> 
-                    @endif 
-                    @endif
-
-                </div>
-                <div id="event-idea-button" class="col l9 m10 s12">
+                    {{-- @if(App\user::find($event->user_id)->hasRole('Admin')) --}}
+                    <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}/edit"> ✏️</a> @endif 
+                    {{-- @endif --}}
 
                 </div>
             </div>
@@ -76,11 +71,11 @@
         <div class="col l5 hide-on-med-and-down">
             <div class="carousel carousel-slider">
                 @foreach (App\event::find($event->id)->pictures as $picture)
-                <a class="carousel-item img-carousel"><img src="/storage/{{$picture->link}}"></a> @endforeach
+                <a class="carousel-item event-pic"><img src="/storage/{{$picture->link}}"></a> @endforeach
             </div>
         </div>
     </div>
-@endforeach
+    @endforeach
 
 
 
@@ -89,6 +84,8 @@
  
 @section('scripts')
 <script>
+
+
     $(document).ready(function () {
             $('.parallax').parallax();
         });
