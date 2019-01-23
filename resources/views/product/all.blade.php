@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.master') 
 @section('content')
 
 <section id="section">
@@ -43,12 +43,15 @@
 
 <div class="container product">
     <div class="row">
-        @foreach ($products as $product)
+        @foreach ($products as $product) {{-- Pour tour les produits --}}
+
+
+
         <div class="col s12 m6 l4">
             <div class="card hoverable ">
                 <div class="card-image ">
                     <img class="img-product" src="/storage/{{$product->picture->link}}">
-                        <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger open" data-id="Album" href="#modal{{$product->id}}"><i
+                    <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger open" data-id="Album" href="#modal{{$product->id}}"><i
                         class="material-icons">add</i></a>
                 </div>
                 <div class="card-content card-height">
@@ -65,7 +68,9 @@
                 </div>
             </div>
         </div>
+        {{-- MODAL --}}
         <div id="modal{{$product->id}}" class="modal">
+
             <div class="modal-content">
                 <div class="row">
                     <div class="col s12 m12 l6 ">
@@ -76,25 +81,43 @@
                         <h4>{{$product->name}}</h4>
                         <p>{{$product->description}}</p>
 
-
-
-                        <form class="col s10" method="get" action="product/order" id="cart_form">
+                        @php
+                            if(session()->has('user')){
+                                $user = App\user::find(session()->get('user')[0]);
+                                $cart = $user->cart();
+                            }
+                        @endphp
+                        
+                        
+                        @if (session()->has('user'))
+                            
+                        <form class="col s10" method="post" action="/order/{{$cart->id}}" id="cart_form">
+                        @endif
+                            
+                            
                             @csrf
+                            <input type="hidden" name="_method" value="put">
                             <div class="row">
-                                    <input id="product_id" type="hidden" class="validate" name="product_id" value="{{$product->id}}">
-                                    <input id="quantity" type="hidden" class="validate" name="quantity">
-                                    <select name="quantity">
-                                      <option value="" disabled selected>Nombre d'article</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
+                                <input id="product_id" type="hidden" class="validate" name="product_id" value="{{$product->id}}">
+                               
+                                <select name="quantity">
+                                        @for ($i = 1; $i < 10; $i++)
+                                        
+                                            <option value="{{$i}}">{{$i}}</option>
+                                            
+                                        @endfor
+
                                     </select>
-                                    <div class="input-field s6 m6 l6 textyellow">
+                                <div class="input-field s6 m6 l6 textyellow">
                                     <button class="btn waves-effect waves-light bg-blue" type="submit">Ajouter au panier</button>
-                                    </div>
+                                </div>
 
                             </div>
+                        
+                        
+                            @if (session()->has('user'))
                         </form>
+                        @endif
 
 
                     </div>
@@ -104,12 +127,29 @@
                 <a href="#!" class="modal-close waves-effect waves-effect#5a86dd btn-flat">Fermer</a>
             </div>
 
+            {{-- end modal --}}
+
         </div>
 
-        @endforeach
+
+        {{-- End pour tout les produits --}} @endforeach
     </div>
 
 </div>
+@if (count($errors) > 0)
+    <div class="card-panel red lighten-5 login_waper">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <h6>
+                <li class="red-text">{{ $error }}</li>
+            </h6>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+
+{{-- pagination --}}
 <div class="container center-align" id="pagination">
     <ul class="pagination">
         <li class="disabled"><a href="#!"><i class="material-icons color-blue">chevron_left</i></a></li>
@@ -123,28 +163,13 @@
 </div>
 
 </section>
-
-<div id="modalEditClient" class="modal">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-            <input type="text" name="nom">
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-    </div>
-
-
-
 @endsection
-
+ 
 @section('scripts')
 <script>
     $('.chips-placeholder').chips({
     placeholder: 'Rechercher',
 });
-
 
 </script>
 @endsection
