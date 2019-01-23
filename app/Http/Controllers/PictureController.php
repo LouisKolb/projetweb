@@ -35,8 +35,8 @@ class PictureController extends Controller
     public function create()
     {
         $files = glob(public_path('storage/pictures/*'));
-        \Zipper::make(public_path('image_site.zip'))->add($files)->close();
-        return response()->download(public_path('image_site.zip'))->deleteFileAfterSend(true);
+        \Zipper::make(public_path('storage/image_site.zip'))->add($files)->close();
+        return response()->download(public_path('storage/image_site.zip'))->deleteFileAfterSend(true);
     }
 
     /**
@@ -98,7 +98,7 @@ class PictureController extends Controller
     public function download()
     {
         $files = glob(public_path('storage/pictures/*'));
-        \Zipper::make(public_path('image_site.zip'))->add($files)->close();
-        return response()->download(public_path('image_site.zip'))->deleteFileAfterSend(true);
+        \Zipper::make(public_path('storage/image_site.zip'))->add($files)->close();
+        return response()->download(public_path('storage/image_site.zip'))->deleteFileAfterSend(true);
     }
 }
