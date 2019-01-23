@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <input id="username" type="text" class="validate" name="username">
-                    <label for="username">Email or username</label>
+                    <label for="username">Username</label>
                 </div>
                 <div class="input-field col s12">
                     <input id="password" type="password" class="validate" name="password">
@@ -53,8 +53,8 @@
             success: function (data) {
                 //console.log('Submission was successful.');
                 console.log(data);
-                window.location.replace("/");
-
+               
+                window.history.go(-1);
             },
             error: function (data) {
                 console.log('An error occurred.');
