@@ -116,6 +116,17 @@
 .img-product{
     max-width: 15em;
     max-height: 15em;
+    min-height: 15em;
+    min-width: 15em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-carousel{
+    max-width: 25em;
+    max-height: 25em;
+    min-height: 25em;
+    min-width: 25em;
     margin-left: auto;
     margin-right: auto;
 }
@@ -377,20 +388,6 @@ a:focus{
     background: none;
 }
 
-/* Styles for social button (like, download, edit, etc...) */
-.btn {
-    color: black;
-    background: #ffc252;
-}
-
-.btn:hover {
-  background: #ffc252;
-}
-
-.btn:focus {
-    background: #ffc252;
-}
-
 .user-info{
 
     font-size: 1em;
@@ -427,5 +424,16 @@ a:focus{
 }
 
 
+/* Styles for social button (like, download, edit, etc...) */
+.btn {
+    color: black;
+    background: #ffc252;
+}
 
+.btn:hover {
+  background: #ffc252;
+}
 
+.btn:focus {
+    background: #ffc252;
+}
