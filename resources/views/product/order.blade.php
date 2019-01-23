@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.master') 
 @section('content')
 
 <section id="section">
@@ -16,132 +16,109 @@
 </section>
 
 <section class="container center">
-    <h4>Votre panier</h4>
+    <h4>@if(!session()->has('user')) Voud devez etre connecté pour acceder à @endif Votre panier </h4>
     <ul class="collapsible">
+
+        @if(session()->has('user')) @php $user = App\user::find(session()->get('user')[0]); $cart = $user->cart(); $products = $cart->products;
+        
+@endphp @foreach ($products as $product)
+
+
+
         <li>
             <div class="collapsible-header">
-                <h6> Votre article </h6>
-                @php
-                $product = $_GET['product_id'];
-                $quantity = $_GET['quantity'];
-                $user = $_GET['user_id'];
-                @endphp
-            </div>
-        </li>
-        <li>
-            <div class="collapsible-header">
-                <h6> Votre article </h6>
+                <h6> {{$product->name}} </h6>
             </div>
 
             <div class="collapsible-body">
+            <form method="post" action="/order/{{$cart->id}}">
+                @csrf
+                    <input type="hidden" name="_method" value="put">
+                    <input type="hidden" name="product_id" value="{{$product->id}}">
                 <div class="row">
                     <div class="col s6 m6 l6">
-                        <h5>Titre article</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae repellendus sunt blanditiis, eaque
-                            impedit laboriosam ab nihil obcaecati provident animi voluptatum ratione ducimus saepe asperiores
-                            quos inventore ullam. Quis, doloribus?</p>
+                        <h5>{{$product->name}} x {{$product->pivot->quantity}}</h5>
+                        <p>{{$product->description}}</p>
                         <div class="col s6 m6 l6">
 
-                            <select>
-                                        <option value="" disabled selected>Nombre d'article</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                        <option value="3">6</option>
-                                        <option value="3">7</option>
-                                        <option value="3">8</option>
-                                        <option value="3">9</option>
-                                        <option value="3">10</option>
-                                    </select>
+                            <select name=quantity>
+                                @for ($i = 1; $i < 10; $i++)
+                                
+                                @if($product->pivot->quantity == $i)
+                                <option value="{{$i}}" selected="selected">{{$i}}</option>
+                                @else
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endif
+                                
+                                
+                                
+                                @endfor
+                                
+
+                            </select>
                         </div>
 
                         <div class="col s6 m6 l6">
-
-                            <button class="btn waves-effect waves-light bg-blue" type="submit" name="action">
-                                        Supprimer
-                                    </button>
-                        </div>
-
-                    </div>
-                    <div class="col s6 m6 l6">
-                        <img class="img-product" src="/image/pull.png">
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="collapsible-header">
-                <h6> Votre article </h6>
-            </div>
-
-            <div class="collapsible-body">
-                <div class="row">
-                    <div class="col s6 m6 l6">
-                        <h5>Titre article</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae repellendus sunt blanditiis, eaque
-                            impedit laboriosam ab nihil obcaecati provident animi voluptatum ratione ducimus saepe asperiores
-                            quos inventore ullam. Quis, doloribus?</p>
-                        <div class="col s6 m6 l6">
-
-                            <select>
-                            <option value="" disabled selected>Nombre d'article</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                            <option value="3">6</option>
-                            <option value="3">7</option>
-                            <option value="3">8</option>
-                            <option value="3">9</option>
-                            <option value="3">10</option>
-                        </select>
-                        </div>
-
-                        <div class="col s6 m6 l6">
-
-                            <button class="btn waves-effect waves-light bg-blue" type="submit" name="action">
-                                Supprimer
+                            <button class="btn waves-effect waves-light bg-blue" type="submit" name="submit">
+                                        Modifier
                             </button>
+                            
                         </div>
-
+                        
                     </div>
                     <div class="col s6 m6 l6">
-                        <img class="img-product" src="/image/pull.png">
+                        <img class="img-product" src="/storage/{{$product->picture->link}}">
                     </div>
                 </div>
+                
+            </form>
+
+            <form action="/order/{{$product->id}}" method="post">
+                @csrf
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="btn waves-effect waves-light bg-blue" >
+                        Supprimer
+                    </button>
+            </form>
+                
             </div>
         </li>
+    
+        @endforeach
+
+
+
+
+
 
     </ul>
 
     <div class="row">
         <div class="col s6 m6 l6">
-            <h6>Total article : 12</h6>
+            <h6>Nombres articles : {{$cart->totalarticles()}}</h6>
         </div>
         <div class="col s6 m6 l6">
             <button class="btn waves-effect waves-light bg-blue" type="submit" name="action">
-                Passer la commande
+                Passer la commande (en construction)
             </button>
         </div>
     </div>
 
     <div class="row">
         <div class="col s6 m6 l6">
-            <h6>Total : 150 €</h6>
+            <h6>Total : {{$cart->price()}} €</h6>
         </div>
-        <div class="col s6 m6 l6">
+        {{-- <div class="col s6 m6 l6">
             <button class="btn waves-effect waves-light bg-blue" type="submit" name="action">
                 Retour
             </button>
-            <input id="supprimer" type="hidden" class="validate" name="supprimer" action="setcookie('panier','', time() + 365*24*3600, null, null, false, true);">
-            <button class="btn waves-effect waves-light bg-blue" type="submit" name="supprimer" >
+            <button class="btn waves-effect waves-light bg-blue" type="submit" name="supprimer">
                 Supprimer
             </button>
 
-        </div>
+        </div> --}}
     </div>
+
+    @endif
 </section>
 @endsection

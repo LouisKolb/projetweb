@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\order;
+use App\product;
+use App\user;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -67,9 +69,31 @@ class OrderController extends Controller
      * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, order $order)
+    public function update(order $order)
     {
-        //
+        $errors = array();
+        $productexist = product::where('id',request()->product_id)->count();
+        if(!$productexist){
+            array_push($errors,"Le produit n'existe pas");
+        }
+        if(request()->quantity<0){
+            array_push($errors,"Nope petit malin vous ne pouvez pas mettre une quantitée négative");
+        }
+
+        if($errors){
+            return redirect()->back()->withErrors($errors)->withInput();
+        }
+        
+        
+        
+        
+        
+        $order->addProduct(request()->product_id,request()->quantity);
+
+
+
+        
+        return redirect()->back();
     }
 
     /**
@@ -82,4 +106,15 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function deletefromcart(product $product){
+        $cart = user::find(session()->get('user')[0])->cart();
+        DB::table('product_order')->where('product_id',$product->id)->where('order_id',$cart->id)->delete();
+        return redirect()->back();
+    }
+
+
+
+
+
 }

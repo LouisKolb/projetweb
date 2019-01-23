@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\order;
 use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -81,5 +81,29 @@ class user extends Model
         }
         return false;
     }
+
+
+
+    public function orders(){
+        return $this->hasMany('App\order','user_id');
+    }
+ 
+    public function cart(){
+        foreach ($this->orders as $order) {
+            if(!$order->validate){
+                return $order;
+            }
+        }
+        $cart = new order();
+        $cart->validate=0;
+        $cart->user_id=$this->id;
+        $cart->save();
+        return $cart;
+
+    }
+
+
+
+
 
 }
