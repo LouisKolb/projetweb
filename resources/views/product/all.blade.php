@@ -47,19 +47,19 @@
         <div class="col s12 m6 l4">
             <div class="card hoverable ">
                 <div class="card-image ">
-                    <img class="img-product" src="/storage/{{$product->picture->link }}">
+                    <img class="img-product" src="/storage/{{$product->picture->link}}">
                         <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger open" data-id="Album" href="#modal{{$product->id}}"><i
                         class="material-icons">add</i></a>
                 </div>
                 <div class="card-content card-height">
-                    <span class="card-title black-text">{{ $product->name }}</span>
+                    <span class="card-title black-text">{{$product->name}}</span>
                     <div class="row">
                         <div class="col s10 m10 l9">
-                            <p>{{ $product->description }}
+                            <p>{{$product->description}}
                             </p>
                         </div>
                         <div class="col s2 m2 l3">
-                            <h6>{{ $product->price }} €</h6>
+                            <h6>{{$product->price}} €</h6>
                         </div>
                     </div>
                 </div>
@@ -69,19 +69,19 @@
             <div class="modal-content">
                 <div class="row">
                     <div class="col s12 m12 l6 ">
-                        <img class="img-modal" src="/storage/{{ $product->picture->link }}">
+                        <img class="img-modal" src="/storage/{{$product->picture->link}}">
                     </div>
 
                     <div class="col s12 m12 l6">
-                        <h4>{{ $product->name }}</h4>
-                        <p>{{ $product->description }}</p>
+                        <h4>{{$product->name}}</h4>
+                        <p>{{$product->description}}</p>
 
 
 
                         <form class="col s10" method="get" action="product/order" id="cart_form">
                             @csrf
                             <div class="row">
-                                    <input id="product_id" type="hidden" class="validate" name="product_id" value="{{ $product->id }}">
+                                    <input id="product_id" type="hidden" class="validate" name="product_id" value="{{$product->id}}">
                                     <input id="quantity" type="hidden" class="validate" name="quantity">
                                     <select name="quantity">
                                       <option value="" disabled selected>Nombre d'article</option>
@@ -89,7 +89,6 @@
                                       <option value="2">2</option>
                                       <option value="3">3</option>
                                     </select>
-                                    <input id="user_id" type="hidden" class="validate" name="user_id" value="{{App\user::find(session()->get('user')[0])->id}}">
                                     <div class="input-field s6 m6 l6 textyellow">
                                     <button class="btn waves-effect waves-light bg-blue" type="submit">Ajouter au panier</button>
                                     </div>

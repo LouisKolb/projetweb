@@ -8,7 +8,7 @@
                 @if(session()->has('user'))
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownStore'>Boutique</a></li>
                 @else
-                <li class="navitem"><a class="active" href="/product">Boutique</a></li>
+                <li class="navitem"><a class="" href="/product">Boutique</a></li>
                 @endif
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownEvent'>Évènement</a></li>
 
@@ -42,6 +42,7 @@
     <li class="navitem"><a href="/product">Boutique</a></li>
     @if(session()->has('user'))
     <li><a href="/product/create">Ajouter un article</a></li>
+    <li><a href="/event/create">Proposer un evenement</a></li>
     @endif
     <li class="navitem"><a href="/event">Évènement</a></li>
     <li class="navitem"><a href="/event/idea">Boîte à idées</a></li>

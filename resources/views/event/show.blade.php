@@ -48,7 +48,6 @@
                             <div class="show-event">
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            
                         </div>
 
                     </div>
