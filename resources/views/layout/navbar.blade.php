@@ -5,11 +5,10 @@
             <a href="/" class=""><img id="logo" src="/image/Logo.png" alt=""></a>
             <ul class="right hide-on-med-and-down	">
                 <li class="navitem"><a href="/">Accueil</a></li>
-                @if(session()->has('user') &&(App\user::find($event->user_id)->hasRole('Admin')))
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownStore'>Boutique</a></li>
-                @else
+               
                 <li class="navitem"><a class="" href="/product">Boutique</a></li>
-                @endif
+                
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownEvent'>Évènement</a></li>
 
                 @if(session()->has('user'))
@@ -35,9 +34,9 @@
 <ul id="slide-out" class="sidenav left">
     <li class="navitem"><a class="active" href="/">Accueil</a></li>
     <li class="navitem"><a href="/product">Boutique</a></li>
-    @if(session()->has('user')&&(App\user::find($event->user_id)->hasRole('Admin')))
+    
     <li><a href="/product/create">Ajouter un article à la boutique</a></li>
-    @endif
+    
     <li class="navitem"><a href="/event">Évènement</a></li>
     <li class="navitem"><a href="/event/idea">Boîte à idées</a></li>
     <li><a href="/event/create">Proposer un évènement</a></li>
