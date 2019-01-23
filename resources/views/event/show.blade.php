@@ -45,13 +45,46 @@
                 lectus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus.Lorem ipsum
                 dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus.</p>
         </div>
+        <div class="col s12 center-align">
+            {{-- Open a modal to add image if you were present on the event --}}
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement</a>
+        </div>
     </div>
-
+    {{-- Modal Structure to add an photo--}}
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Ajouter une ou plusieurs photo</h4>
+            <br>
+            <form action="#">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+                        <input type="file" accept="image/*">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Sélectionner une ou plusieurs photos">
+                    </div>
+                </div>
+                <a href="#!" class="modal-close waves-effect waves-green btn">Ajouter</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn">Annuler</a>
+            </form>
+        </div>
+    </div>
     <div class="row">
         <div class="col s12 l6 center-align">
             <ul class="collapsible">
                 <li>
                     {{-- Collapside with comment --}}
+                    <div class="collapsible-header">
+                        <div class="row remove-marge-bot">
+                            <div class="col s12 ">
+                                <img class="circle responsive-img profile-pic" src="/image/simon.jpg">
+                            </div>
+                        </div>
+                        <div class="col s1n2 left-alig">
+                            <p>Nom Prénom</p>
+                        </div>
+                    </div>
                     <div class="collapsible-header">
                         <div class="row">
                             <div class="col s12">
