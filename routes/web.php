@@ -54,13 +54,14 @@ Route::delete('/event/{event}','EventController@delete');
 //routes pour les products
 Route::get('/product','ProductController@index');
 Route::get('/product/create','ProductController@create');
-Route::get('/product/order','ProductController@order');
+Route::get('/order','ProductController@order');
 Route::get('/product/{product}','ProductController@show');
 Route::post('/product','ProductController@store');
 Route::delete('/product/{product}','ProductController@delete');
 
 
-Route::post('/order','OrderController@store');
+Route::put('/order/{order}','OrderController@update');
+Route::delete('/order/{product}','OrderController@deletefromcart');
 
 
 
