@@ -1,5 +1,13 @@
 @extends('layout.master') 
 @section('content')
+
+@php
+    $creator = App\user::find($event->user_id); 
+@endphp
+
+
+
+
 <div class="parallax-container center valign-wrapper borderdown">
     <div class="parallax"><img src="/image/background.jpg">
     </div>
@@ -20,7 +28,7 @@
             <img class="circle responsive-img profile-pic" src="/image/simon.jpg">
         </div>
         <div class="col m2 l2">
-            <p>Nom prénom</p>
+            <p>{{$creator->first_name}} {{$creator->last_name}}</p>
         </div>
         <div class="col m7 l7 offset-l1">
             <h4>Nom Évenement</h4>
@@ -41,17 +49,27 @@
     <hr class="divider"> {{-- Description of the event --}}
     <div class="row">
         <div class="col s12 l10 offset-l1">
-            <p>This is a description of an event : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse
-                lectus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus.Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus.</p>
+            <p>Description de l'eventment : {{$event->description}}</p>
         </div>
         <div class="col s12 center-align">
             {{-- Open a modal to add image if you were present on the event --}}
+            
+            
+            @if($event->date <now())
             <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
                 <i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement
             </a>
+            @else
 
+            
+            
+            
             <a class="waves-effect waves-dark btn">S'inscrire <i class="fas fa-sign-in-alt right"></i></a>
+
+            @endif
+
+
+
         </div>
     </div>
     {{-- Modal Structure to add an photo--}}
