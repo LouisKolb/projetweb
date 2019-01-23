@@ -51,9 +51,13 @@
 
                     <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}">👁️</a> @if(session()->has('user'))
                     <form class="waves-effect waves-dark btn btn-event" action="/event/{{$event->id}}/vote" method="post">
-                        @csrf @if (App\user::find(session()->get('user')[0])->hasVotedForevent($event->id))
-                        <input type="submit" class="white-text" value="👎🏻"> @else
-                        <input type="submit" class="white-text" value="👍🏻"> @endif
+                        @csrf 
+                        
+                        @if (App\user::find(session()->get('user')[0])->hasVotedForevent($event->id))
+                        <input type="submit" class="black-text" value="👎🏻{{$event->voteCount()}}"> @else
+                        <input type="submit" class="black-text" value="👍🏻{{$event->voteCount()}}"> @endif
+                    
+                    
                     </form>
                     {{-- @if(App\user::find($event->user_id)->hasRole('Admin')) --}}
                     <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}/edit"> ✏️</a> @endif 

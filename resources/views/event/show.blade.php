@@ -47,7 +47,11 @@
         </div>
         <div class="col s12 center-align">
             {{-- Open a modal to add image if you were present on the event --}}
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement</a>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
+                <i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement
+            </a>
+
+            <a class="waves-effect waves-dark btn">S'inscrire <i class="fas fa-sign-in-alt right"></i></a>
         </div>
     </div>
     {{-- Modal Structure to add an photo--}}
