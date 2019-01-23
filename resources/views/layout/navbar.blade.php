@@ -74,28 +74,47 @@
 
 
 <section>
+@php
+    $connected = session()->has('user');
+    if($connected){
+        $user = App\user::find(session()->get('user')[0]);
+        $cart = $user->cart();
+        $products = $cart->products;
+    }
+@endphp
+
+
 
     </div>
     <ul id="cart-out" class="sidenav right">
         <li class="cart">
-            <h4>Vos articles</h4>
+            <h4>@if(!$connected) Vous devez être conecté pour voir @endif Votre Panier</h4>
+            
+            @if ($connected)
+                
+            
+            
+            @foreach ($products as $product)
+                
+            
+            
             <ul class="collapsible">
                 <li>
-                    <div class="collapsible-header">Titre article</div>
+                <div class="collapsible-header">{{$product->name}}</div>
 
                     <div class="collapsible-body">
                         <div class="card hoverable ">
                             <div class="card-image ">
-                                <img class="img-product" src="/image/pull.png">
+                                <img class="img-product" src="/storage/{{$product->picture->link}}">
                             </div>
                             <div class="card-content">
-                                <span class="card-title black-text">Card Title</span>
+                                <span class="card-title black-text">{{$product->name}}</span>
                                 <div class="row">
                                     <div class="col s10 m10 l8">
-                                        <p>Quantité : 2</p>
+                                        <p>Quantité : {{$product->pivot->quantity}}</p>
                                     </div>
                                     <div class="col s2 m2 l4">
-                                        <p>10 €</p>
+                                        <p>{{$product->pivot->quantity *$product->price}} €</p>
                                     </div>
                                 </div>
                             </div>
@@ -103,10 +122,13 @@
                     </div>
                 </li>
             </ul>
+            @endforeach
+
+
         </li>
         <li class="cart">
             <div id="bottom-cart">
-                <h6>Total : 150 €</h6>
+                <h6>Total : {{$cart->price()}}€</h6>
                 <div class="row">
                     <div class="col s10 m10 l10 ">
                         <a class="color-blue" href="/order">
@@ -122,7 +144,7 @@
             </div>
         </li>
 
-
+        @endif
     </ul>
 
     <!-- Social network bar -->
