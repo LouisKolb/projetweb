@@ -15,7 +15,7 @@ class PictureController extends Controller
     public function index()
     {
         $pictures= picture::get();
-        return view('picture.show',compact('pictures'));
+        return view('picture.all',compact('pictures'));
     }
 
     
@@ -54,7 +54,7 @@ class PictureController extends Controller
      */
     public function show(picture $picture)
     {
-        //
+        return view('picture.show',compact('picture'));
     }
 
     /**

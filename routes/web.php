@@ -63,6 +63,16 @@ Route::post('/order','OrderController@store');
 
 
 
+
+
+Route::get('/picture','PictureController@index');
+Route::get('/picture/{picture}','PictureController@show');
+
+
+
+
+
+
 //Route pour pour les mentions légales
 Route::get('/legal_mention', function() {
     return view('others.mentions');
