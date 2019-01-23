@@ -5,7 +5,7 @@
             <a href="/" class=""><img id="logo" src="/image/Logo.png" alt=""></a>
             <ul class="right hide-on-med-and-down	">
                 <li class="navitem"><a href="/">Accueil</a></li>
-                @if(session()->has('user'))
+                @if(session()->has('user') &&(App\user::find($event->user_id)->hasRole('Admin')))
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownStore'>Boutique</a></li>
                 @else
                 <li class="navitem"><a class="" href="/product">Boutique</a></li>
@@ -14,13 +14,9 @@
 
                 @if(session()->has('user'))
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownUser'>{{App\user::find(session()->get('user')[0])->username}}</a></li>
-
                 @else
-
                 <li class="navitem"><a href="/login">Connexion</a></li>
                 @endif
-
-
                 <li class="navitem sidenav-trigger " data-target="cart-out"><a href="sass.html"><i class="material-icons">shopping_cart</i></a></li>
             </ul>
             <ul class="navitem sidenav-trigger right hide-on-large-only" data-target="slide-out">
@@ -31,7 +27,6 @@
                 </li>
             </ul>
 
-
         </div>
     </nav>
 
@@ -40,18 +35,17 @@
 <ul id="slide-out" class="sidenav left">
     <li class="navitem"><a class="active" href="/">Accueil</a></li>
     <li class="navitem"><a href="/product">Boutique</a></li>
-    @if(session()->has('user'))
-    <li><a href="/product/create">Ajouter un article</a></li>
-    <li><a href="/event/create">Proposer un evenement</a></li>
+    @if(session()->has('user')&&(App\user::find($event->user_id)->hasRole('Admin')))
+    <li><a href="/product/create">Ajouter un article à la boutique</a></li>
     @endif
     <li class="navitem"><a href="/event">Évènement</a></li>
     <li class="navitem"><a href="/event/idea">Boîte à idées</a></li>
+    <li><a href="/event/create">Proposer un évènement</a></li>
 
     @if(session()->has('user'))
-    <li><a href="/user/{{session()->get('user')[0]}}">Mon Profil</a></li>
+    <li><a href="/user/{{session()->get('user')[0]}}">Mon Profil : {{App\user::find(session()->get('user')[0])->username}}</a></li>
     <li><a href="/logout">Déconnexion</a></li>
     @else
-
     <li class="navitem"><a href="/login">Connexion</a></li>
     @endif
 
@@ -63,14 +57,14 @@
 <ul id='dropdownEvent' class='dropdown-content drop'>
     <li><a href="/event">Nos évènements</a></li>
     <li><a href="/event/idea">Boîte à idées</a></li>
-    <li><a href="/event/create">Créer un évènement</a></li>
+    <li><a href="/event/create">Proposer un évènement</a></li>
 
 </ul>
 
 <ul id='dropdownStore' class='dropdown-content drop'>
-        <li><a href="/product">Visiter la boutique</a></li>
-        <li><a href="/product/create">Ajouter un article</a></li>
-    </ul>
+    <li><a href="/product">Visiter la boutique</a></li>
+    <li><a href="/product/create">Ajouter un article</a></li>
+</ul>
 
 
 
@@ -94,8 +88,6 @@
                         <div class="card hoverable ">
                             <div class="card-image ">
                                 <img class="img-product" src="/image/pull.png">
-                                <!-- <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger" href="#modal"><i
-                                        class="material-icons">add</i></a> -->
                             </div>
                             <div class="card-content">
                                 <span class="card-title black-text">Card Title</span>
