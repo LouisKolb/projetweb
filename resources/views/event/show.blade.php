@@ -122,11 +122,14 @@
                     <div class="collapsible-header">
                         <div class="row remove-marge-bot">
                             <div class="col s12 ">
-                                <img class="circle responsive-img profile-pic" src="/storage/{{$picture->link}}">
+                                <img class="circle responsive-img profile-pic" src="https://www.numerama.com/content/uploads/2018/05/slider-facebook-new-profile.jpg">
                             </div>
                         </div>
                         <div class="col s1n2 left-alig">
-                            <p>Nom Prénom</p>
+                                @php
+                                $comentuser = App\user::find($picture->user_id) 
+                            @endphp
+                            <p>{{$comentuser->first_name}} {{$comentuser->last_name}}</p>
                         </div>
                     </div>
                     <div class="collapsible-header">
