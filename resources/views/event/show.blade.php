@@ -14,21 +14,33 @@
 
 <br> {{-- Single event header with user profile and name of the event --}}
 <section>
-    <div class="row valign-wrapper">
-        <div class="col s1 offset-s1">
+    {{-- Event header for tablet and desktop --}}
+    <div class="row hide-on-small-only">
+        <div class="col m2 l1 offset-l1 right-align">
             <img class="circle responsive-img profile-pic" src="/image/simon.jpg">
         </div>
-        <div class="col s2">
+        <div class="col m2 l2">
             <p>Nom prénom</p>
         </div>
-
-        <div class="col s7">
+        <div class="col m7 l7 offset-l1">
+            <h4>Nom Évenement</h4>
+        </div>
+    </div>
+    {{-- Event eader for mobile --}}
+    <div class="row hide-on-med-and-up">
+        <div class="col s2">
+            <img class="circle responsive-img profile-pic" src="/image/simon.jpg">
+        </div>
+        <div class="col s10">
+            <p>Nom Prénom</p>
+        </div>
+        <div class="col s12 center-align">
             <h4>Nom Évenement</h4>
         </div>
     </div>
     <hr class="divider"> {{-- Description of the event --}}
     <div class="row">
-        <div class="col s10 offset-s1">
+        <div class="col s12 l10 offset-l1">
             <p>This is a description of an event : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse
                 lectus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus.Lorem ipsum
                 dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus.</p>
@@ -36,20 +48,19 @@
     </div>
 
     <div class="row">
-        <div class="col l4 center-align">
-            <ul class="collapsible popout">
+        <div class="col s12 l6 center-align">
+            <ul class="collapsible">
                 <li>
                     {{-- Collapside with comment --}}
                     <div class="collapsible-header">
                         <div class="row">
-                            <div class="col l12">
+                            <div class="col s12">
                                 <img class="materialboxed event-pic" src="/image/event.jpg">
                             </div>
                             <div class="show-event">
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                         </div>
-
                     </div>
                     <div class="collapsible-body">
                         {{-- Input to write a comment --}}
@@ -58,11 +69,11 @@
                                 <div class="card-panel grey lighten-5 z-depth-1">
                                     {{-- User actually conected profile --}}
                                     <div class="row remove-marge-bot">
-                                        <div class="col s2">
+                                        <div class="col s3 m2 l1">
                                             <img src="/image/simon.jpg" class="circle responsive-img">
                                         </div>
-                                        <div class="col s10">
-                                            <div class="row">
+                                        <div class="col s9 m10 l11">
+                                            <div class="row remove-marge-bot">
                                                 <div class="s12 left">
                                                     <p>Prénom Nom</p>
                                                 </div>
@@ -84,11 +95,11 @@
                                 <div class="card-panel grey lighten-5 z-depth-1">
                                     <div class="row">
                                         {{-- User's profile who comment in last --}}
-                                        <div class="col s2">
+                                        <div class="col s3 m2 l1">
                                             <img src="/image/simon.jpg" class="circle responsive-img">
                                         </div>
-                                        <div class="col s10">
-                                            <div class="s12 left">
+                                        <div class="col s9 m10 l11">
+                                            <div class="row remove-marge-bot">
                                                 <div class="s12 left">
                                                     <p>Prénom Nom</p>
                                                 </div>
