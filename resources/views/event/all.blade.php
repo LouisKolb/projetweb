@@ -73,7 +73,7 @@
 
                 </div>
                 <!-- Event's pic in a carousel slider for beautyness -->
-                <div class="col m12 s12 l6">
+                <div class="col m12 s12 l6 carousel-all-event">
                     <div class="carousel carousel-slider">
                         @foreach (App\event::find($event->id)->pictures as $picture)
                         <div class="event-pic center-align">
@@ -152,8 +152,8 @@
 
                     </div>
                     <!-- Event's pic in a carousel slider for beautyness -->
-                    <div class="col m12 s12 l6">
-                        <div class="carousel carousel-slider">
+                    <div class="col m12 s12 l6 carousel-all-event">
+                        <div class="carousel carousel-slider ">
                             @foreach (App\event::find($event->id)->pictures as $picture)
                             <div class="event-pic center-align">
                                 <a class="carousel-item" style="background-color:" href="/picture/{{$picture->id}}"><img src="/storage/{{$picture->link}}"></a>                                @endforeach
@@ -235,7 +235,7 @@
 
                     </div>
                     <!-- Event's pic in a carousel slider for beautyness -->
-                    <div class="col m12 s12 l6">
+                    <div class="col m12 s12 l6 carousel-all-event">
                         <div class="carousel carousel-slider">
                             @foreach (App\event::find($event->id)->pictures as $picture)
                             <div class="event-pic center-align">

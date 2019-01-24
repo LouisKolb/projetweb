@@ -1,8 +1,5 @@
 @extends('layout.master') 
-@section('content')
-
-@php
-    $creator = App\user::find($event->user_id); 
+@section('content') @php $creator = App\user::find($event->user_id); 
 @endphp
 
 
@@ -52,19 +49,15 @@
             <p>Description de l'eventment : {{$event->description}}</p>
         </div>
         <div class="col s12 center-align">
-            {{-- Open a modal to add image if you were present on the event --}}
-            
-            
-            @if($event->date <now())
-            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
+            {{-- Open a modal to add image if you were present on the event --}} @if($event->date
+            <now()) <a class="waves-effect waves-light btn modal-trigger"
+                href="#modal1">
                 <i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement
-            </a>
-            @else
-
-                @if (session()->has('user'))
-                    <form action="/event/{{$event->id}}/subscribe" method="POST">
-                        @csrf
-                        <button class="waves-effect waves-dark btn" type="submit">
+                </a>
+                @else @if (session()->has('user'))
+                <form action="/event/{{$event->id}}/subscribe" method="POST">
+                    @csrf
+                    <button class="waves-effect waves-dark btn" type="submit">
                             @if (App\user::find(session()->get('user')[0])->hasSubscribedToEvent($event->id))
                                 Se désinscrire
                             @else
@@ -72,15 +65,11 @@
                             @endif
                             
                             <i class="fas fa-sign-in-alt right"></i></button>
-                    </form>
-                
-                @else
-                <a href="/login" class="waves-effect waves-dark btn">Vous devez être connecté pour vous inscrire</a>
-                    
-                @endif
-            
+                </form>
 
-            @endif
+                @else
+                <a href="/login" class="waves-effect waves-dark btn">Vous devez être connecté pour vous inscrire</a> @endif
+                @endif
 
 
 
@@ -108,14 +97,14 @@
     </div>
 
     @foreach ($event->pictures as $picture)
-        
-    
+
+
     <div class="row">
         <div class="col s12 l6 center-align">
-            
-            
-            
-            
+
+
+
+
             <ul class="collapsible">
                 <li>
                     {{-- Collapside with comment --}}
@@ -126,21 +115,21 @@
                             </div>
                         </div>
                         <div class="col s1n2 left-alig">
-                                @php
-                                $comentuser = App\user::find($picture->user_id) 
-                            @endphp
+                            @php $comentuser = App\user::find($picture->user_id) 
+@endphp
                             <p>{{$comentuser->first_name}} {{$comentuser->last_name}}</p>
                         </div>
                     </div>
-                    <div class="collapsible-header">
-                        <div class="row">
-                            <div class="col s12">
-                                <img class="materialboxed event-pic" src="/storage/{{$picture->link}}">
-                            </div>
-                            <div class="show-event">
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                        </div>
+                    <div class="collapsible-header test">
+                        
+                            <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}">
+
+                        
+                        {{-- <div class="col l12 m12 s12 event-pic-show"> --}}
+                        {{-- </div> --}}
+                        {{-- <div class="show-event">
+                            <i class="fas fa-chevron-down"></i>
+                        </div> --}}
                     </div>
                     <div class="collapsible-body">
                         {{-- Input to write a comment --}}

@@ -347,15 +347,34 @@ a:focus{
 }
 
 /* Style for caroussel */
-.carousel .carousel-item>img{
+.carousel-all-event .carousel .carousel-item>img{
     height: 25em;
     width: auto;
     max-width: 40em;
 }
 
-.carousel-item{
+.event-pic-show{
+    height: 25em;
+    width: auto;
+    max-width: 40em;  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel-all-event .carousel-item{
     max-height: 10vh;
     width: auto;
+}
+.test{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel-welcome .carousel .carousel-item>img{
+    height: 100%;
+    width: 100%;
 }
 
 /* Comment styles */
@@ -373,7 +392,7 @@ a:focus{
 }
 
 /* Event picture and buttons */
-.event-pic {
+.carousel-all-event .event-pic {
     width: 100%; 
 }
 

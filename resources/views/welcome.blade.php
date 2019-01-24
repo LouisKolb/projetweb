@@ -61,7 +61,7 @@
         </div>
         <br>
         <div class="row">
-            <div class="col s12">
+            <div class="col s12 carousel-welcome">
                 <div class="carousel center-align" data-indicators="true">
                     <a href="#one!" class="carousel-item">
                         <img class="resize" src="./image/pull.jpg">
