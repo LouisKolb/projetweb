@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\user;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -32,8 +32,16 @@ class event extends Model
 
     }
 
-    public function participants(){
-        return $this->belongsToMany('App\user','event_user');
+    public function participants()
+    {
+        $participants = array();
+        $rows = DB::table('event_user')->where('event_id',$this->id)->get();
+        foreach ($rows as $participation) {
+            array_push($participants,user::find($participation->user_id));
+        }
+        
+        return $participants;
+        
     }
 
 
