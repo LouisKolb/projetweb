@@ -1,4 +1,4 @@
-@extends('layout.master') 
+@extends('layout.master')
 @section('content')
 
 <!-- Parallax pic with border -->
@@ -21,8 +21,9 @@
         <div class="row card">
             <div class="col l7 m12 s12 card-content">
                 <div class="row">
-                    <p>Le : {{ $event->date }}
-                    </p>
+                    <p>Le : {{ $event->date }}</p>
+                    <p>Recurence : {{ $event->recurrence}}</p>
+                    <p>prix : {{ $event->price}} €</p>
                     <h5 class="center-align">{{ $event->name }}</h5>
                 </div>
                 <hr class="divider hide-on-large-only">
@@ -82,7 +83,7 @@
 
 </section>
 @endsection
- 
+
 @section('scripts')
 <script>
     $(document).ready(function () {

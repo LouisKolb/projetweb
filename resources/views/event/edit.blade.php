@@ -55,6 +55,21 @@
                             <input class="file-path validate" type="text" name="imagetext" placeholder="Importer un fichier" />
                         </div>
                     </div>
+
+                    <div>
+                      <select name="recurrence">
+                          <option value="Aucune" selected>Pas de récurence</option>
+                          <option value="toutes les semaines">Toutes les semaines</option>
+                          <option value="tous les mois">Tous les mois</option>
+                          <option value="tous les an">Tous les an</option>
+                      </select>
+                    <label>Récurence</label>
+                    <div class="input-field">
+                        <input id="price" type="number" class="validate " name="price">
+                        <label for="price">Prix</label>
+                    </div>
+
+                    </div>
             </form>
 
             {{-- Print all picture of event --}}
