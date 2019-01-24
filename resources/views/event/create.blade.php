@@ -80,19 +80,19 @@ $connected = false; if(session()->has('user')){
             <label for="p">Prix</label>
         </div>
     </div>
-
+    @if($connected && $user->hasRole('admin'))
+    <p>
+      <label>
+        <input type="checkbox" class="filled-in" name="direct" value="1" />
+          <span>Publier directement</span>
+        </label>
+      </p>
+    @endif
 
 
     <div class="input-field center-align">
         <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Proposer son idée</button>
-        @if($connected && $user->hasRole('admin'))
-        <form class="waves-effect waves-dark btn btn-event" action="/event/valide/" method="post">
-            @csrf
-            <input type="hidden" value="1" name="validate">
-            <input type="hidden" name="_method" value="put">
-            <input type="submit" value="Publier l'évènement">
-        </form>
-        @endif
+
 
     </div>
 
