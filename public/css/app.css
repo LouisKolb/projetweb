@@ -330,6 +330,7 @@ hr.divider {
 
 .card-height{
     min-height: 42vh;
+    text-align:justify;
 }
 
 .page404 {
