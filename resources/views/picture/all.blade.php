@@ -33,27 +33,21 @@ $connected = false; if(session()->has('user')){
   @endif
 
     <div class="row">
-        <div class="col s12 m6 l4">
-            <div class="card">
-                <div class="card-image">
-                    <img src="image/event.jpg">
+        
+        @foreach ($pictures as $p)
+            
+        
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/picture/{{$p->id}}"><img src="/storage/{{$p->link}}"></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col s12 m6 l4">
-            <div class="card">
-                <div class="card-image">
-                    <img src="image/event.jpg">
-                </div>
-            </div>
-        </div>
-        <div class="col s12 m6 l4">
-            <div class="card">
-                <div class="card-image">
-                    <img src="image/event.jpg">
-                </div>
-            </div>
-        </div>
+        
+        @endforeach
+
+
     </div>
 
 </section>

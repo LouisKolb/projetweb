@@ -16,7 +16,7 @@
         <div class="col s12 m10 offset-m1 l8 offset-l2">
             <div class="card">
                 <div class="card-image">
-                    <img src="/image/event.jpg">
+                    <img src="/storage/{{$picture->link}}">
                 </div>
                 <div class="card-action">
                     <a class="waves-effect waves-light btn btn-social"><i class="far fa-heart"></i></a>
