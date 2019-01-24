@@ -23,60 +23,91 @@
                 </div>
                 {{-- Comment section --}}
                 <div class="card-action">
+                    
+                    @php
+                        $connected = session()->has('user');
+                        if($connected){
+                            $user = App\user::find(session()->get('user')[0]);
+                        }
+                    @endphp
+                    
+
+                    @if ($connected)
+                        
                     {{-- Write a comment --}}
-                    <div class="row">
-                        <div class="event-comment">
-                            <div class="card-panel grey lighten-5 z-depth-1">
-                                {{-- User actually conected profile --}}
-                                <div class="row remove-marge-bot">
-                                    <div class="col s4 m2 l1">
-                                        <img src="/image/simon.jpg" class="circle responsive-img">
-                                    </div>
-                                    <div class="col s8 m10 l11">
-                                        <div class="row">
-                                            <div class="s12 left">
-                                                <p>Prénom Nom</p>
+                    <form action="/comment" method="POST">
+                        @csrf
+                        <input type="hidden" name="picture" value="{{$picture->id}}">
+                        
+                        <div class="row">
+                            <div class="event-comment">
+                                <div class="card-panel grey lighten-5 z-depth-1">
+                                    {{-- User actually conected profile --}}
+                                    <div class="row remove-marge-bot">
+                                        <div class="col s4 m2 l1">
+                                            <img src="/image/simon.jpg" class="circle responsive-img">
+                                        </div>
+                                        <div class="col s8 m10 l11">
+                                            <div class="row">
+                                                <div class="s12 left">
+                                                    <p>{{$user->first_name}} {{$user->last_name}}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col s12 left">
-                                        <div class="input-field">
-                                            <i class="fas fa-pen prefix"></i>
-                                            <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
-                                            <label for="textarea1">Commentaire</label>
+                                        <div class="col s12 left">
+                                            <div class="input-field">
+                                                <i class="fas fa-pen prefix"></i>
+                                                <textarea id="textarea1" class="materialize-textarea" data-length="120" name="comment"></textarea>
+                                                <label for="textarea1">Commentaire</label>
+                                            </div>
+                                            <div class="input-field">
+                                                    <button class="btn">Commenter</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
+                    
+                    @endif
+                    
+
+
+
                     {{-- Others comments --}}
-                    <div class="row">
-                        <div class="event-comment">
-                            <div class="card-panel grey lighten-5 z-depth-1">
-                                <div class="row">
-                                    {{-- User's profile who comment in last --}}
-                                    <div class="col s4 m2 l1">
-                                        <img src="/image/simon.jpg" class="circle responsive-img">
-                                    </div>
-                                    <div class="col s8 m10 l11">
-                                        <div class="s12 left">
+                    @foreach ($picture->comments as $comment)
+                        @php
+                            $writer =$comment->writer();
+                        @endphp
+                    
+                        <div class="row">
+                            <div class="event-comment">
+                                <div class="card-panel grey lighten-5 z-depth-1">
+                                    <div class="row">
+                                        {{-- User's profile who comment in last --}}
+                                        <div class="col s4 m2 l1">
+                                            <img src="/image/simon.jpg" class="circle responsive-img">
+                                        </div>
+                                        <div class="col s8 m10 l11">
                                             <div class="s12 left">
-                                                <p>Prénom Nom</p>
+                                                <div class="s12 left">
+                                                    <p>{{$writer->first_name}} {{$writer->last_name}}</p>
+                                                </div>
                                             </div>
                                         </div>
+                                        {{-- Comment text --}}
+                                        <div class="s12 left">
+                                            <p class="comment left"> {{$comment->content}}</p>
+                                        </div>
                                     </div>
-                                    {{-- Comment text --}}
-                                    <div class="s12 left">
-                                        <p class="comment left"> This is a comment : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                            non risus. Suspendisse lectus.Lorem ipsum dolor sit amet, consectetur adipiscing
-                                            elit. Sed non risus. Suspendisse lectus.Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing elit. Sed non risus. Suspendisse lectus.</p>
-                                    </div>
+                                    {{-- Date --}}
+                                    {{$comment->created_at}}
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
@@ -85,7 +116,5 @@
 @endsection
  
 @section('scripts')
-<script>
 
-</script>
 @endsection
