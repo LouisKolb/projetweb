@@ -11,7 +11,7 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container" style="text-align: justify;">
     <h4>Conditions générales de vente</h4>
     <h5>Préambule</h5>
     <p>Les présentes conditions générales de vente s'appliquent à toutes les ventes conclues sur le site Internet BDE du CESI
