@@ -123,7 +123,7 @@
 
     </div>
 </section>
-<div class="parallax-container center valign-wrapper borderdown">
+<div class="parallax-container center valign-wrapper blueborders">
     <div class="parallax"><img src="/image/info.jpg">
     </div>
     <div class="container white-text">
