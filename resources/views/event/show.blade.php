@@ -50,8 +50,7 @@
         </div>
         <div class="col s12 center-align">
             {{-- Open a modal to add image if you were present on the event --}} @if($event->date
-            <now()) <a class="waves-effect waves-light btn modal-trigger"
-                href="#modal1">
+            <now()) <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
                 <i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement
                 </a>
                 @else @if (session()->has('user'))
@@ -116,82 +115,61 @@
                         </div>
                         <div class="col s1n2 left-alig">
                             @php $pictureuser = App\user::find($picture->user_id) 
-                            @endphp
+@endphp
                             <p>{{$pictureuser->first_name}} {{$pictureuser->last_name}}</p>
                         </div>
                     </div>
                     <div class="collapsible-header test">
-                        
-                            <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}">
 
-                        
-                        {{-- <div class="col l12 m12 s12 event-pic-show"> --}}
-                        {{-- </div> --}}
+                        <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}"> {{--
+                        <div class="col l12 m12 s12 event-pic-show">
+                            --}} {{-- </div> --}}
                         <div class="show-event">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
                     <div class="collapsible-body">
-                            {{-- Input to write a comment --}}
-                            
-                            
-                            @php
-                            $connected = session()->has('user');
-                            if($connected){
-                                $user = App\user::find(session()->get('user')[0]);
-                            }
-                        @endphp
-                        
+                        {{-- Input to write a comment --}} @php $connected = session()->has('user'); if($connected){ $user = App\user::find(session()->get('user')[0]);
+                        } 
+@endphp @if ($connected) {{-- Write a comment --}}
+                        <form action="/comment" method="POST">
+                            @csrf
+                            <input type="hidden" name="picture" value="{{$picture->id}}">
 
-                        @if ($connected)
-                            
-                            {{-- Write a comment --}}
-                            <form action="/comment" method="POST">
-                                @csrf
-                                <input type="hidden" name="picture" value="{{$picture->id}}">
-                                
-                                <div class="row">
-                                    <div class="event-comment">
-                                        <div class="card-panel grey lighten-5 z-depth-1">
-                                            {{-- User actually conected profile --}}
-                                            <div class="row remove-marge-bot">
-                                                <div class="col s4 m2 l1">
-                                                    <img src="/image/simon.jpg" class="circle responsive-img">
-                                                </div>
-                                                <div class="col s8 m10 l11">
-                                                    <div class="row">
-                                                        <div class="s12 left">
-                                                            <p>{{$user->first_name}} {{$user->last_name}}</p>
-                                                        </div>
+                            <div class="row">
+                                <div class="event-comment">
+                                    <div class="card-panel grey lighten-5 z-depth-1">
+                                        {{-- User actually conected profile --}}
+                                        <div class="row remove-marge-bot">
+                                            <div class="col s4 m2 l1">
+                                                <img src="/image/simon.jpg" class="circle responsive-img">
+                                            </div>
+                                            <div class="col s8 m10 l11">
+                                                <div class="row">
+                                                    <div class="s12 left">
+                                                        <p>{{$user->first_name}} {{$user->last_name}}</p>
                                                     </div>
                                                 </div>
-                                                <div class="col s12 left">
-                                                    <div class="input-field">
-                                                        <i class="fas fa-pen prefix"></i>
-                                                        <textarea id="textarea1" class="materialize-textarea" data-length="120" name="comment"></textarea>
-                                                        <label for="textarea1">Commentaire</label>
-                                                    </div>
-                                                    <div class="input-field">
-                                                            <button class="btn">Commenter</button>
-                                                    </div>
+                                            </div>
+                                            <div class="col s12 left">
+                                                <div class="input-field">
+                                                    <i class="fas fa-pen prefix"></i>
+                                                    <textarea id="textarea1" class="materialize-textarea" data-length="120" name="comment"></textarea>
+                                                    <label for="textarea1">Commentaire</label>
+                                                </div>
+                                                <div class="input-field">
+                                                    <button class="btn">Commenter</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        
-                        @endif
+                            </div>
+                        </form>
 
+                        @endif @foreach ($picture->comments as $comment) @php $writer =$comment->writer(); 
+@endphp
 
-
-
-
-                        @foreach ($picture->comments as $comment)
-                        @php
-                            $writer =$comment->writer();
-                        @endphp
-                    
                         <div class="row">
                             <div class="event-comment">
                                 <div class="card-panel grey lighten-5 z-depth-1">
@@ -212,24 +190,30 @@
                                             <p class="comment left"> {{$comment->content}}</p>
                                         </div>
                                     </div>
-                                    {{-- Date --}}
-                                    {{$comment->created_at}}
+                                    <div class="row remove-marge-bot">
+                                        <div class="col s6 left-align">
+                                            {{-- Date --}} {{$comment->created_at}}
+                                        </div>
+                                        <div class="col s6 right-align">
+                                            <a class="waves-effect waves-light btn"><i class="fas fa-exclamation-triangle"></i></a>
+                                            <a class="waves-effect waves-light btn"><i class="fas fa-ban"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            @endforeach
+
+
+
+
+
+
                         </div>
-                    @endforeach
-
-
-
-
-
-
-                    </div>
                 </li>
             </ul>
-        </div>
+            </div>
 
-        @endforeach
+            @endforeach
 </section>
 @endsection
  

@@ -12,9 +12,8 @@
         </div>
     </div>
 
-    <!-- Top actualité -->
+    {{-- Next 2 events sections --}}
     <section>
-
               <div class="row center-align">
                   <div class="col s12 center-align ">
                       <h3>Prochains événements</h3>
@@ -23,6 +22,7 @@
                   <div class="col l1">
 
                   </div>
+                  {{-- Look for events in DB --}}
                   @foreach ($events as $event)
 
                     @if($event->date >= $today)
@@ -32,10 +32,10 @@
                           <p>{{ $event->description }}</p>
                           <hr class="divider">
                           <div class="col s2 offset-s8 center-align">
-                              <a class="waves-effect waves-purple btn" href="/event/create" ><i class="far fa-heart "></i></a>
+                              <a class="waves-effect btn" href="/event/create" ><i class="far fa-heart "></i></a>
                           </div>
                           <div class="col s2 center-align">
-                              <a class="waves-effect waves-red btn" href=""><i class="far fa-comment"></i></a>
+                              <a class="waves-effect btn" href=""><i class="far fa-comment"></i></a>
                           </div>
                     </div>
                     <?php $maxevent++; ?>
@@ -46,7 +46,7 @@
 
     </section>
 
-    <!-- Top article -->
+    {{-- 5 most sold article in a carousel--}}
     <section>
         <div class="parallax-container center valign-wrapper blueborders">
             <div class="parallax"><img src="./image/background.jpg">

@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"
     />
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    {{-- Popup cookie appear only once when someone connect to the server --}}
     <script>
         window.addEventListener("load", function(){
         window.cookieconsent.initialise({

@@ -16,36 +16,31 @@
 
 <div class="row datatable">
     <div class="col m12 l10 offset-l1">
+        
+        
+        
+        
+        
         <table id='tab' class='display'>
-            <caption>Fromages</caption>
+            <caption>Articles dans la boutique</caption>
             <thead>
                 <tr>
                     <th>Nom</th>
-                    <th>Lait</th>
+                    <th>Description</th>
                     <th>Prix</th>
+                    <th>Caché</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Roquefort</td>
-                    <td>brebis</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>Morbier</td>
-                    <td>vache</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Raclette</td>
-                    <td>vache</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>St Nectaire</td>
-                    <td>vache</td>
-                    <td>2</td>
-                </tr>
+            <tbody id="producttable">
+                
+
+                {{-- AJAAAAAAAAX --}}
+
+               {{-- C'est rempli avec de l'ajax --}}
+
+
+                {{-- Fin de l'AJAAAX --}}
+                
             </tbody>
         </table>
     </div>
@@ -55,15 +50,36 @@
 @section('scripts')
 <script>
 $(document).ready(function() {
-    $('#tab').DataTable( {
-        "language": {
-            "url": "http://cdn.datatables.net/plug-ins/1.10.9/i18n/French.json"
-        }
-    } );
-} );
+    
+//fonction pour remplir
 
-    $(document).ready(function () {
-        $('#tab').DataTable();
+ 
+
+    
+    
+    $('#tab').DataTable( {
+            "language": {
+                "url": "http://cdn.datatables.net/plug-ins/1.10.9/i18n/French.json"
+            },
+            "ajax": "/api/product",
+                "columns": [
+                    { "data": "name" },
+                    { "data": "description" },
+                    { "data": "price" },
+                    { "data": "hide" },
+                    
+                ]
+
+
+        });
+       
+
+
+        
+            
+
+
+
     });
 
 </script>
