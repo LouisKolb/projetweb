@@ -53,8 +53,8 @@
             success: function (data) {
                 //console.log('Submission was successful.');
                 console.log(data);
-               
-                window.history.go(-1);
+                location.replace(document.referrer);
+                //window.history.go(-1);
             },
             error: function (data) {
                 console.log('An error occurred.');
