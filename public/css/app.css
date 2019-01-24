@@ -329,7 +329,7 @@ hr.divider {
 }
 
 .card-height{
-    min-height: 12em;
+    min-height: 42vh;
 }
 
 .page404 {
@@ -536,3 +536,5 @@ a:focus{
 .datatable {       
     margin-top: 2em;   
 }
+
+/* Product card size */

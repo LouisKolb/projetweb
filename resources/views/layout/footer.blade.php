@@ -1,7 +1,7 @@
 <footer class="page-footer black">
+    {{-- Social network section with icons --}}
     <div class="container">
         <div class="row">
-
             <div class="col m2 offset-m3 s4 center-align">
                 <a class="grey-text text-lighten-3" href="#!"><i class="fab fa-facebook-square zoom"></i></a>
             </div>
@@ -15,6 +15,7 @@
             </div>
         </div>
     </div>
+    {{-- Footer section for legal mention --}}
     <div class="footer-copyright">
         <div class="container">
             <div class="row">

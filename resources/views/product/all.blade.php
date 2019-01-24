@@ -70,12 +70,19 @@ $connected = false; if(session()->has('user')){
                             <h6>{{$product->price}} €</h6>
                         </div>
                     </div>
+                    @if($user->hasRole('Admin'))
                     <div class="row">
                       <a class="waves-effect waves-dark btn btn-event" href="/product/{{$product->id}}/edit"> ✏️</a>
                     </div>
+                    @endif
                     @if($product->hide == 1)
                     <div class="row">
-                      <p>Ce produit est caché</p>
+                      <p style="color : red">Produit indisponible</p>
+                    </div>
+                    @endif
+                    @if($product->hide == 0 && $user->hasRole('Admin'))
+                    <div class="row">
+                      <p style="color : green" >Produit disponible</p>
                     </div>
                     @endif
                 </div>

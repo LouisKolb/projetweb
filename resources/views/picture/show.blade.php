@@ -101,8 +101,15 @@
                                             <p class="comment left"> {{$comment->content}}</p>
                                         </div>
                                     </div>
-                                    {{-- Date --}}
-                                    {{$comment->created_at}}
+                                    <div class="row remove-marge-bot">
+                                            <div class="col s6 left-align">
+                                                {{-- Date --}} {{$comment->created_at}}
+                                            </div>
+                                            <div class="col s6 right-align">
+                                                <a class="waves-effect waves-light btn"><i class="fas fa-exclamation-triangle"></i></a>
+                                                <a class="waves-effect waves-light btn"><i class="fas fa-ban"></i></a>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
