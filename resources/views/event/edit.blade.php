@@ -40,7 +40,7 @@
 
 
                     <div class="input-field col s12 m12">
-                        <input value="{{$event->date}}" id="date" type="date" class="validate" name="date">
+                        <input value="{{$event->date}}" id="date" type="text" class="validate datepicker" name="date">
                         <label for="date">Date de l'événement</label>
                     </div>
 
@@ -68,11 +68,10 @@
                             <!-- Switch -->
                             <div class="switch">
                                 <label>
-                                        Garder
-                                        <input type="checkbox" name="{{$p->id}}">
-                                        <span class="lever" ></span>
-                                        Supprimer
-                                      </label>
+                                    Supprimer
+                                    <input type="checkbox" name="{{$p->id}}">
+                                    <span class="lever" ></span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -159,7 +158,24 @@
     $('.prev').click(function () {
         $('.carousel').carousel('prev');
     });
+    
 });
+
+$(document).ready(function(){
+    $('.datepicker').datepicker({
+        i18n: {
+        months: [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
+		monthsShort: [ 'Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec' ],
+		weekdays: [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi' ],
+		weekdaysShort: [ 'Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam' ],
+        weekdaysAbbrev: [ 'D', 'L', 'M', 'M', 'J', 'V', 'S' ],
+		today: 'Aujourd\'hui',
+		clear: 'Réinitialiser',
+        close: 'Fermer'
+        },
+        format: 'yyyy-mm-dd'
+    });
+  });
 
 </script>
 @endsection
