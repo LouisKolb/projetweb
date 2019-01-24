@@ -78,7 +78,7 @@ Route::get('/picture/{picture}','PictureController@show');
 
 
 
-
+Route::post('/comment','CommentController@store');
 
 Route::get('/admin',function(){
     if(session()->has('user')){
