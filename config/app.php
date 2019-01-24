@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         'Chumper\Zipper\ZipperServiceProvider',
+        Barryvdh\DomPDF\ServiceProvider::class,
+
 
     ],
 
@@ -225,6 +227,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Zipper' => 'Chumper\Zipper\Zipper',
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
 
     ],
 

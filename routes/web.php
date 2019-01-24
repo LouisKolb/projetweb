@@ -45,6 +45,9 @@ Route::put('/event/valide/{event}','EventController@accept');
 Route::put('/event/annule/{event}','EventController@annule');
 Route::delete('/event/{event}','EventController@delete');
 
+Route::get('/event/{event}/pdf', 'pdfController@print');
+
+
 
 
 
