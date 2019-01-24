@@ -34,7 +34,6 @@ Route::get('/event/idea','EventController@idea');
 Route::get('/event/{event}','EventController@show');
 Route::get('/event/{event}/edit','EventController@edit');
 Route::put('/event/{event}','EventController@update');
-Route::put('/event/{event}','EventController@update');
 Route::post('/event/{event}/vote','EventController@vote');
 Route::post('/event/{event}/subscribe','EventController@subscribe');
 
@@ -60,6 +59,9 @@ Route::get('/order','ProductController@order');
 Route::get('/product/{product}','ProductController@show');
 Route::post('/product','ProductController@store');
 Route::delete('/product/{product}','ProductController@delete');
+Route::get('/product/{product}/edit','ProductController@edit');
+Route::put('/product/{product}','ProductController@update');
+
 
 
 Route::put('/order/{order}','OrderController@update');
