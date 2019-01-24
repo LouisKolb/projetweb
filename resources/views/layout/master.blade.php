@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/css/app.css">
     <script src="/js/jquery.js"></script>
     <script src="/js/materialize.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 </head>
 <body>
     @include('layout.navbar')
