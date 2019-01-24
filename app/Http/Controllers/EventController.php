@@ -115,6 +115,10 @@ class EventController extends Controller
       $dateevent = date('Y-m-d', $timeevent);
       $datetime = date('Y-m-d');
       $outdated = $dateevent < $datetime;
+
+
+
+
       $file = request()->file('image');
 
       if(!session()->has('user')){
@@ -122,7 +126,7 @@ class EventController extends Controller
       }
 
 
-      if(empty(request()->name)|| empty(request()->date) || empty($file) || empty(request()->description) ){
+      if(empty(request()->name)|| empty(request()->date) || empty($file) || empty(request()->description) || empty(request()->recurrence)|| empty(request()->price) ){
           array_push($errors,"Merci de compléter tout les champs et de poster une image ");
       }
 
@@ -169,11 +173,23 @@ class EventController extends Controller
        }
 
         $event = new Event();
+        foreach(request()->all() as $key => $value){
+          if ($key == 'recurrence') {
+            $event->recurrence = $value;
+          }
+          if ($key == 'price') {
+            $event->price = $value;
+          }
+          // echo $key;
+          // echo ' : ';
+          // echo $value;
+          // echo '<br>';
+          }
         $event->name = request()->name;
         $event->user_id = session()->get('user')[0];
         $event->description = request()->description;
         $event->date = request()->date;
-        
+
         $event->statut = $stat;
 
         $event->save();
@@ -194,6 +210,7 @@ class EventController extends Controller
         $event=event::orderBy('id','desc')->first();
 
         $event->addPicture($image->id);
+
         return redirect("/event/idea");
 
 
@@ -269,7 +286,7 @@ class EventController extends Controller
       }
 
 
-      if(empty(request()->name)|| empty(request()->date) || empty(request()->description) ){
+      if(empty(request()->name)|| empty(request()->date) || empty(request()->description) || empty(request()->recurrence)|| empty(request()->price) ){
           array_push($errors,"Merci de compléter tout les champs et de poster une image ");
       }
 
@@ -306,6 +323,14 @@ class EventController extends Controller
 
 
         // $event = new Event();
+        foreach(request()->all() as $key => $value){
+          if ($key == 'recurrence') {
+            $event->recurrence = $value;
+          }
+          if ($key == 'price') {
+            $event->price = $value;
+          }
+        }
         $event->name = request()->name;
         $event->user_id = session()->get('user')[0];
         $event->description = request()->description;

@@ -27,7 +27,7 @@
                     <i>|</i>
                 </div>
                 <div class="col m2 s4 center-align">
-                    <a class="white-text" href="/GSC"><i>Conditions générales de vente</i></a>
+                    <a class="white-text" href="/gcs"><i>Conditions générales de vente</i></a>
                 </div>
                 <div class="col m1 hide-on-small-only center-align">
                     <i>|</i>
