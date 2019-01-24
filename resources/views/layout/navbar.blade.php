@@ -63,6 +63,9 @@ $connected = false; if(session()->has('user')){
     @endif @if($connected)
         <li><a href="/user/{{$user->id}}">Mon Profil : {{$user->username}}</a></li>
         <li><a href="/logout">Déconnexion</a></li>
+    @if($connected && $user->hasRole('admin'))
+        <li><a class="red-text" href="/admin">Admin</a></li>
+    @endif
     @else
         <li class="navitem"><a href="/login">Connexion</a></li>
     @endif
@@ -91,6 +94,9 @@ $connected = false; if(session()->has('user')){
 <ul id='dropdownUser' class='dropdown-content drop'>
     <li><a href="/user/{{session()->get('user')[0]}}">Mon Profil</a></li>
     <li><a href="/logout">Déconnexion</a></li>
+    @if($connected && $user->hasRole('admin'))
+        <li><a class="red-text" href="/admin">Admin</a></li>
+    @endif
 </ul>
 
 
