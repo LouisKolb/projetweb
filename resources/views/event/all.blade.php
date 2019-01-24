@@ -23,71 +23,72 @@
 
 <!-- <div class="row center-align"> -->
 
-<p>
-    @foreach ($events as $event)
-    <?php $today = date('Y-m-d'); ?> @if($event->date >= $today)
-    <section>
-        <div class="row">
-            <div class="col s12">
-                <!-- User who created the event profile-->
-                <div class="card-panel grey lighten-5 z-depth-1">
+@foreach ($events as $event)
+<?php $today = date('Y-m-d'); ?> @if($event->date >= $today)
+<section>
+    <div class="col s12">
+        <!-- User who created the event profile-->
+        <div class="card-panel grey lighten-5 z-depth-1">
+            <div class="row">
+                <div class="col s12 m12 l6">
+                    <div class="row valign-wrapper">
+                        <div class="col s3 m3 l1">
+                            <a class="black-text" href="/user/{{$event->user_id}}">
+                                            <img class="circle profile-pic" src="/image/simon.jpg">
+                                        </a>
+                        </div>
+                        <div class="col s3 m3 l1 left-align">
+                            <p>{{App\user::find($event->user_id)->first_name}} {{App\user::find($event->user_id)->last_name
+                                }}
+                            </p>
+                        </div>
+                        <div class="col s8 m8 l10 right-align">
+                            <p>{{ $event->date }}</p>
+                        </div>
+                    </div>
                     <div class="row">
-                        <div class="col s12 m6">
-                            <div class="row valign-wrapper">
-                                <div class="col s2 m2 l1">
-                                    <a class="black-text">
-                                                  <img class="circle responsive-img profile-pic" src="{{App\user::find($event->user_id)->avatar}}">
-                                              </a>
-                                </div>
-                                <div class="col s3 m3 l3">
-                                    <a class="black-text">
-                                                  {{App\user::find($event->user_id)->first_name}} {{App\user::find($event->user_id)->last_name }}
-                                              </a>
-                                </div>
-                                <div class="col s7 m7 l6">
-                                    <a class="black-text">
-                                        <h5>{{ $event->name }}</h5>
-                                    </a>
-                                </div>
-                                <div class="col l2 right">
-                                    {{ $event->date }}
-                                </div>
-                            </div>
-                            <hr class="divider">
-                            <!-- Event Description -->
-                            <div class="col m12">
+                        <div class="col s12 m12 l12 center-align">
+                            <a class="black-text">
+                                <h5>{{ $event->name }}</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <hr class="divider">
+                    <!-- Event Description -->
+                    <div>
+                        <div class="row">
+                            <div class="col s12 m12 l12">
                                 <a class="black-text">
-                                              {{ $event->description }}
-                                          </a>
+                                                {{ $event->description }}
+                                            </a>
                             </div>
 
-                            <!-- Last comment on event display only on pc-->
-                            <div class="col m12">
-                            </div>
-                            <div class="col s12 right-align">
-                                
-                                <a class="waves-effect waves-dark btn" href="/event/{{$event->id}}">
-                                    <i class="fas fa-align-right right"></i>Voir la publication
-                                </a> 
+
+                            <div class="col s12 m12 l12 right-align ">
+                                <a class="waves-effect waves-dark btn btn-event see" href="/event/{{$event->id}}"><i class="fas fa-eye right"></i>
+                                        Voir l'évènement                                </a>
                             </div>
                         </div>
-                        <!-- Event's pic in a carousel slider for beautyness -->
-                        <div class="col m6 s12">
-                            <div class="carousel carousel-slider">
-                                @foreach (App\event::find($event->id)->pictures as $picture)
-                                <a class="carousel-item event-pic"><img src="/storage/{{$picture->link}}"></a> @endforeach
-                            </div>
+                    </div>
+
+                </div>
+                <!-- Event's pic in a carousel slider for beautyness -->
+                <div class="col m12 s12 l6">
+                    <div class="carousel carousel-slider">
+                        @foreach (App\event::find($event->id)->pictures as $picture)
+                        <div class="event-pic center-align">
+                            <a class="carousel-item" style="background-color:" href="/picture/{{$picture->id}}"><img src="/storage/{{$picture->link}}"></a>                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    @break @endif @endforeach
-</p>
+    </div>
+</section>
+@break @endif @endforeach
 
 <!-- Parallax pic with border -->
-<div class="parallax-container center valign-wrapper blueborders">
+<div class="parallax-container center valign-wrapper diviser blueborders">
     <div class="parallax"><img src="/image/background.jpg">
     </div>
     <div class="container white-text">
@@ -100,96 +101,76 @@
 </div>
 
 
-<!-- Event finished -->
+<!-- Event futur -->
+@foreach ($events as $event) @if($event->date >= $today)
 <section>
-    @foreach ($events as $event) @if($event->date >= $today)
     <div class="row">
         <div class="col s12">
             <!-- User who created the event profile-->
             <div class="card-panel grey lighten-5 z-depth-1">
                 <div class="row">
-                    <div class="col s12 m6">
+                    <div class="col s12 m12 l6">
                         <div class="row valign-wrapper">
-                            <div class="col s2 m2 l1">
-                                <a class="black-text">
-                                            <img class="circle responsive-img profile-pic" src="{{App\user::find($event->user_id)->avatar}}">
-                                        </a>
+                            <div class="col s3 m3 l1">
+                                <a class="black-text" href="/user/{{$event->user_id}}">
+                                    <img class="circle profile-pic" src="/image/simon.jpg">
+                                </a>
                             </div>
-                            <div class="col s3 m3 l3">
-                                <a class="black-text">
-                                            {{App\user::find($event->user_id)->first_name}} {{App\user::find($event->user_id)->last_name }}
-                                        </a>
+                            <div class="col s3 m3 l1 left-align">
+                                <p>{{App\user::find($event->user_id)->first_name}} {{App\user::find($event->user_id)->last_name
+                                    }}
+                                </p>
                             </div>
-                            <div class="col s7 m7 l6">
+                            <div class="col s8 m8 l10 right-align">
+                                <p>{{ $event->date }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m12 l12 center-align">
                                 <a class="black-text">
                                     <h5>{{ $event->name }}</h5>
                                 </a>
                             </div>
-                            <div class="col l2 right">
-                                {{ $event->date }}
-                            </div>
                         </div>
                         <hr class="divider">
                         <!-- Event Description -->
-                        <div class="col m12">
-                            <a class="black-text">
+                        <div>
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <a class="black-text">
                                         {{ $event->description }}
                                     </a>
-                        </div>
+                                </div>
 
-                        <!-- Last comment on event display only on pc-->
-                        <div class="col m12">
-                            <div class=" card-panel grey lighten-5 z-depth-1 hide-on-med-and-down">
-                                <div class="row">
-                                    <div class="col s1">
-                                        <a class="black-text">
-                                                    <img src="{{App\user::find($event->user_id)->avatar}}" alt="" class="circle responsive-img">
-                                                </a>
-                                    </div>
-                                    <div class="col s11">
-                                        <div class="s12 left comment">
-                                            <div class="col s11">
-                                                <div class="s12 left">
-                                                    <a class="black-text">
-                                                        <p>Prénom Nom</p>
-                                                    </a>
-                                                </div>
-                                                <div class="s12 left comment">
-                                                    This is a comment : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus.Lorem ipsum
-                                                    dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse
-                                                    lectus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-                                                    risus. Suspendisse lectus.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                <div class="col s12 m12 l12 right-align ">
+                                    <a class="waves-effect waves-dark btn btn-event see" href="/event/{{$event->id}}"><i class="fas fa-eye right"></i>
+                                Voir l'évènement                                </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 right-align">
-                            <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}"><i class="fas fa-align-right right"></i>
-                                      Voir la publication
-                                    </a>
 
-                        </div>
                     </div>
                     <!-- Event's pic in a carousel slider for beautyness -->
-                    <div class="col m6 s12">
+                    <div class="col m12 s12 l6">
                         <div class="carousel carousel-slider">
                             @foreach (App\event::find($event->id)->pictures as $picture)
-                            <a class="carousel-item event-pic"><img src="/storage/{{$picture->link}}"></a> @endforeach
+                            <div class="event-pic center-align">
+                                <a class="carousel-item" style="background-color:" href="/picture/{{$picture->id}}"><img src="/storage/{{$picture->link}}"></a>                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @endif @endforeach
 </section>
+@endif @endforeach
+
 
 
 <!-- Parallax pic with border -->
-<div class="parallax-container center valign-wrapper blueborders">
+<div class="parallax-container center valign-wrapper diviser blueborders">
     <div class="parallax"><img src="/image/background.jpg">
     </div>
     <div class="container white-text">
@@ -203,91 +184,71 @@
 
 
 <!-- Event finished -->
-<section>
-    @foreach ($events as $event) @if($event->date
-    < $today) <div class="row">
+@foreach ($events as $event) @if($event->date
+    < $today)
+    <section>
+     <div class="row">
         <div class="col s12">
             <!-- User who created the event profile-->
             <div class="card-panel grey lighten-5 z-depth-1">
                 <div class="row">
-                    <div class="col s12 m6">
+                    <div class="col s12 m12 l6">
                         <div class="row valign-wrapper">
-                            <div class="col s2 m2 l1">
-                                <a class="black-text">
-                                        <img class="circle responsive-img profile-pic" src="{{App\user::find($event->user_id)->avatar}}">
+                            <div class="col s3 m3 l1">
+                                <a class="black-text" href="/user/{{$event->user_id}}">
+                                        <img class="circle profile-pic" src="/image/simon.jpg">
                                     </a>
                             </div>
-                            <div class="col s3 m3 l3">
-                                <a class="black-text">
-                                        {{App\user::find($event->user_id)->first_name}} {{App\user::find($event->user_id)->last_name }}
-                                    </a>
+                            <div class="col s3 m3 l1 left-align">
+                                <p>{{App\user::find($event->user_id)->first_name}} {{App\user::find($event->user_id)->last_name
+                                    }}
+                                </p>
                             </div>
-                            <div class="col s7 m7 l6">
+                            <div class="col s8 m8 l10 right-align">
+                                <p>{{ $event->date }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m12 l12 center-align">
                                 <a class="black-text">
                                     <h5>{{ $event->name }}</h5>
                                 </a>
                             </div>
-                            <div class="col l2 right">
-                                {{ $event->date }}
-                            </div>
                         </div>
                         <hr class="divider">
                         <!-- Event Description -->
-                        <div class="col m12">
-                            <a class="black-text">
-                                    {{ $event->description }}
-                                </a>
-                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <a class="black-text">
+                                            {{ $event->description }}
+                                        </a>
+                                </div>
 
-                        <!-- Last comment on event display only on pc-->
-                        <div class="col m12">
-                            <div class=" card-panel grey lighten-5 z-depth-1 hide-on-med-and-down">
-                                <div class="row">
-                                    <div class="col s1">
-                                        <a class="black-text">
-                                                <img src="{{App\user::find($event->user_id)->avatar}}" alt="" class="circle responsive-img">
-                                            </a>
-                                    </div>
-                                    <div class="col s11">
-                                        <div class="s12 left comment">
-                                            <div class="col s11">
-                                                <div class="s12 left">
-                                                    <a class="black-text">
-                                                        <p>Prénom Nom</p>
-                                                    </a>
-                                                </div>
-                                                <div class="s12 left comment">
-                                                    This is a comment : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus.Lorem ipsum
-                                                    dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse
-                                                    lectus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-                                                    risus. Suspendisse lectus.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                <div class="col s12 m12 l12 right-align ">
+                                    <a class="waves-effect waves-dark btn btn-event see" href="/event/{{$event->id}}"><i class="fas fa-eye right"></i>
+                                    Voir l'évènement                                </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 right-align">
-                            <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}"><i class="fas fa-align-right right"></i>
-                                  Voir la publication {{$event->id}}
-                                </a>
 
-                        </div>
                     </div>
                     <!-- Event's pic in a carousel slider for beautyness -->
-                    <div class="col m6 s12">
+                    <div class="col m12 s12 l6">
                         <div class="carousel carousel-slider">
                             @foreach (App\event::find($event->id)->pictures as $picture)
-                            <a class="carousel-item event-pic"><img src="/storage/{{$picture->link}}"></a> @endforeach
+                            <div class="event-pic center-align">
+                                <a class="carousel-item" style="background-color:" href="/picture/{{$picture->id}}"><img src="/storage/{{$picture->link}}"></a>                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        @endif @endforeach
+        
 </section>
+@endif @endforeach
 @endsection
  
 @section('scripts')
@@ -300,6 +261,11 @@
             fullWidth: true,
             indicators: true
         });
+        autoplay();
+        function autoplay() {
+        $('.carousel').carousel('next');
+        setTimeout(autoplay, 3000);
+}
 
         $(document).ready(function () {
             $('.sidenav.right').sidenav({ edge: 'right', preventScrolling: false });
