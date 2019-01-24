@@ -49,11 +49,18 @@
             <p>Description de l'eventment : {{$event->description}}</p>
         </div>
         <div class="col s12 center-align">
-            {{-- Open a modal to add image if you were present on the event --}} @if($event->date
-            <now()) <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
-                <i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement
-                </a>
-                @else @if (session()->has('user'))
+            {{-- Open a modal to add image if you were present on the event --}} 
+            @php
+                $conneted=false;
+                if(session()->has('user')){
+                    $connected =true;
+                    $user = App\user::find(session()->get('user')[0]);
+                }
+            @endphp
+            
+            @if($event->date <now() && $connected && $user->hasSubscribedToEvent($event->id)) 
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement</a>
+            @elseif($connected)
                 <form action="/event/{{$event->id}}/subscribe" method="POST">
                     @csrf
                     <button class="waves-effect waves-dark btn" type="submit">
@@ -66,9 +73,17 @@
                             <i class="fas fa-sign-in-alt right"></i></button>
                 </form>
 
-                @else
-                <a href="/login" class="waves-effect waves-dark btn">Vous devez être connecté pour vous inscrire</a> @endif
-                @endif
+            @else
+                <a href="/login" class="waves-effect waves-dark btn">Vous devez être connecté pour vous inscrire</a>
+            @endif
+
+
+
+
+
+
+
+
                 @if (count($errors) > 0)
                     <div class="card-panel red lighten-5 login_waper">
                         <ul>

@@ -413,6 +413,11 @@ class EventController extends Controller
         $errors = array();
         if(empty(request()->event)){
             array_push($errors,"Merci de remplir tour les camps");
+        }else{
+            $event=event::find(request()->event);
+            if(!$event->validate){
+                array_push($errors,"Vous ne pouvez pas poster de photos sur les idées d'evenements"); 
+            }
         }
         
         if(session()->has('user')){
@@ -424,6 +429,8 @@ class EventController extends Controller
         }else{
             array_push($errors,"Vous devez etre conecté pour effectuer cela");
         }
+
+        
         
         $images = request()->images;
         //pour toutes les images de la requete
@@ -444,7 +451,7 @@ class EventController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        $event=event::find(request()->event);
+        
         foreach($images as $image) {
             $path = $image->store('/public/pictures');
             $path=str_replace('public/','',$path);
