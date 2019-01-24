@@ -69,6 +69,17 @@
                 @else
                 <a href="/login" class="waves-effect waves-dark btn">Vous devez être connecté pour vous inscrire</a> @endif
                 @endif
+                @if (count($errors) > 0)
+                    <div class="card-panel red lighten-5 login_waper">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <h6>
+                                    <li class="red-text">{{ $error }}</li>
+                                </h6>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
 
 
@@ -79,17 +90,19 @@
         <div class="modal-content">
             <h4>Ajouter une ou plusieurs photo</h4>
             <br>
-            <form action="#">
+            <form action="/event/upload" method="POST"  enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="event" value="{{$event->id}}">
                 <div class="file-field input-field">
                     <div class="btn">
                         <span>File</span>
-                        <input type="file" accept="image/*">
+                        <input type="file" multiple  name ="images[]"  accept="image/*">
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text" placeholder="Sélectionner une ou plusieurs photos">
                     </div>
                 </div>
-                <a href="#!" class="modal-close waves-effect waves-green btn">Ajouter</a>
+                <button class="modal-close waves-effect waves-green btn" >Ajouter</button>
                 <a href="#!" class="modal-close waves-effect waves-green btn">Annuler</a>
             </form>
         </div>

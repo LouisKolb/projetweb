@@ -139,7 +139,7 @@ class EventController extends Controller
 
            $size = $file->getSize();
            if($size > 5242880){
-                array_push($errors, "La date ne peut pas être antérieur à aujourd'hui");
+                array_push($errors, "La taille ne peut pas etre superieur a 5Mo");
             }
 
             $ext = $file->getClientOriginalExtension();
@@ -268,10 +268,6 @@ class EventController extends Controller
         }
 
       }
-
-
-
-
 
       $event->id;
       $errors = array();
@@ -410,6 +406,62 @@ class EventController extends Controller
 
 
         return redirect()->back();
+    }
+
+    //for uploadding multiple photos
+    public function upload(){
+        $errors = array();
+        if(empty(request()->event)){
+            array_push($errors,"Merci de remplir tour les camps");
+        }
+        
+        if(session()->has('user')){
+            $user = user::find(session()->get('user')[0]);
+            if(!$user->hasSubscribedToEvent(request()->event)){
+                array_push($errors,"Vous devez avoir participé a l'evenement pour cela");
+            }
+            
+        }else{
+            array_push($errors,"Vous devez etre conecté pour effectuer cela");
+        }
+        
+        $images = request()->images;
+        //pour toutes les images de la requete
+        foreach($images as $image) {
+            $ext = $image->getClientOriginalExtension();
+            if(!preg_match('/(jpg|jpeg|gif|png)/',$ext)){
+
+               array_push($errors,'Seuls les gif png , jpg ou kpeg sont acceptés');
+            }
+            $size = $image->getSize();
+           if($size > 5242880){
+                array_push($errors, "Superieur a 5 Mo");
+            }
+
+        }
+
+        if($errors){
+            return redirect()->back()->withErrors($errors);
+        }
+
+        $event=event::find(request()->event);
+        foreach($images as $image) {
+            $path = $image->store('/public/pictures');
+            $path=str_replace('public/','',$path);
+            $picture = new picture();
+            $picture->user_id=session()->get('user')[0];
+            $picture->link= $path;
+            $picture->save();
+            $event->addPicture($picture->id);
+
+
+        }
+
+        return redirect()->back();
+
+
+
+
     }
 
 
