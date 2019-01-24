@@ -115,9 +115,9 @@
                             </div>
                         </div>
                         <div class="col s1n2 left-alig">
-                            @php $comentuser = App\user::find($picture->user_id) 
-@endphp
-                            <p>{{$comentuser->first_name}} {{$comentuser->last_name}}</p>
+                            @php $pictureuser = App\user::find($picture->user_id) 
+                            @endphp
+                            <p>{{$pictureuser->first_name}} {{$pictureuser->last_name}}</p>
                         </div>
                     </div>
                     <div class="collapsible-header test">
@@ -127,64 +127,103 @@
                         
                         {{-- <div class="col l12 m12 s12 event-pic-show"> --}}
                         {{-- </div> --}}
-                        {{-- <div class="show-event">
+                        <div class="show-event">
                             <i class="fas fa-chevron-down"></i>
-                        </div> --}}
+                        </div>
                     </div>
                     <div class="collapsible-body">
-                        {{-- Input to write a comment --}}
-                        <div class="row">
-                            <div class="event-comment">
-                                <div class="card-panel grey lighten-5 z-depth-1">
-                                    {{-- User actually conected profile --}}
-                                    <div class="row remove-marge-bot">
-                                        <div class="col s3 m2 l1">
-                                            <img src="/image/simon.jpg" class="circle responsive-img">
-                                        </div>
-                                        <div class="col s9 m10 l11">
+                            {{-- Input to write a comment --}}
+                            
+                            
+                            @php
+                            $connected = session()->has('user');
+                            if($connected){
+                                $user = App\user::find(session()->get('user')[0]);
+                            }
+                        @endphp
+                        
+
+                        @if ($connected)
+                            
+                            {{-- Write a comment --}}
+                            <form action="/comment" method="POST">
+                                @csrf
+                                <input type="hidden" name="picture" value="{{$picture->id}}">
+                                
+                                <div class="row">
+                                    <div class="event-comment">
+                                        <div class="card-panel grey lighten-5 z-depth-1">
+                                            {{-- User actually conected profile --}}
                                             <div class="row remove-marge-bot">
-                                                <div class="s12 left">
-                                                    <p>Prénom Nom</p>
+                                                <div class="col s4 m2 l1">
+                                                    <img src="/image/simon.jpg" class="circle responsive-img">
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col s12 left">
-                                            <div class="input-field">
-                                                <i class="fas fa-pen prefix"></i>
-                                                <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
-                                                <label for="textarea1">Commentaire</label>
+                                                <div class="col s8 m10 l11">
+                                                    <div class="row">
+                                                        <div class="s12 left">
+                                                            <p>{{$user->first_name}} {{$user->last_name}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col s12 left">
+                                                    <div class="input-field">
+                                                        <i class="fas fa-pen prefix"></i>
+                                                        <textarea id="textarea1" class="materialize-textarea" data-length="120" name="comment"></textarea>
+                                                        <label for="textarea1">Commentaire</label>
+                                                    </div>
+                                                    <div class="input-field">
+                                                            <button class="btn">Commenter</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </form>
+                        
+                        @endif
+
+
+
+
+
+                        @foreach ($picture->comments as $comment)
+                        @php
+                            $writer =$comment->writer();
+                        @endphp
+                    
                         <div class="row">
                             <div class="event-comment">
                                 <div class="card-panel grey lighten-5 z-depth-1">
                                     <div class="row">
                                         {{-- User's profile who comment in last --}}
-                                        <div class="col s3 m2 l1">
+                                        <div class="col s4 m2 l1">
                                             <img src="/image/simon.jpg" class="circle responsive-img">
                                         </div>
-                                        <div class="col s9 m10 l11">
-                                            <div class="row remove-marge-bot">
+                                        <div class="col s8 m10 l11">
+                                            <div class="s12 left">
                                                 <div class="s12 left">
-                                                    <p>Prénom Nom</p>
+                                                    <p>{{$writer->first_name}} {{$writer->last_name}}</p>
                                                 </div>
                                             </div>
                                         </div>
                                         {{-- Comment text --}}
                                         <div class="s12 left">
-                                            <p class="comment left"> This is a comment : Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Sed non risus. Suspendisse lectus.Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Sed non risus. Suspendisse lectus.Lorem ipsum dolor sit
-                                                amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus.</p>
+                                            <p class="comment left"> {{$comment->content}}</p>
                                         </div>
                                     </div>
+                                    {{-- Date --}}
+                                    {{$comment->created_at}}
                                 </div>
                             </div>
                         </div>
+                    @endforeach
+
+
+
+
+
+
                     </div>
                 </li>
             </ul>
