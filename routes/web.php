@@ -74,6 +74,26 @@ Route::get('/picture/{picture}','PictureController@show');
 
 
 
+
+Route::get('/admin',function(){
+    if(session()->has('user')){
+        if(!App\user::find(session()->get('user')[0])->hasRole('admin')){
+            return view('admin.main');
+        }else{
+
+            return redirect("/");
+        }
+    }else
+    {
+        return redirect("/");
+    }
+
+
+});
+
+
+
+
 //Route pour pour les mentions légales
 Route::get('/legal_mention', function() {
     return view('others.mentions');

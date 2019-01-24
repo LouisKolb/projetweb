@@ -32,6 +32,10 @@ class event extends Model
 
     }
 
+    public function participants(){
+        return $this->belongsToMany('App\user','event_user');
+    }
+
 
 
     
