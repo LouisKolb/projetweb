@@ -49,37 +49,22 @@ $connected = false; if(session()->has('user')){
                     <input class="file-path validate" type="text" name="imagetext" placeholder="Importer un fichier" />
                 </div>
             </div>
-    </form>
+            <div>
+              <select name="recurrence">
+                  <option value="Aucune" selected>Pas de récurence</option>
+                  <option value="toutes les semaines">Toutes les semaines</option>
+                  <option value="tous les mois">Tous les mois</option>
+                  <option value="tous les an">Tous les an</option>
+              </select>
+            <label>Récurence</label>
+            <div class="input-field">
+                <input id="price" type="number" class="validate " name="price">
+                <label for="price">Prix</label>
+            </div>
 
-    <div class="switch">
-        <label>
-            Récurence :
-            </label>
-        <label>
-            Quotidienne
-            <input type="checkbox" name="">
-            <span class="lever" ></span>
-            </label>
-        <label>
-            Mensuel
-            <input type="checkbox">
-            <span class="lever" ></span>
-            </label>
-    </div>
-    <div class="switch">
-            <label>
-              Off
-              <input id="price_switch" type="checkbox">
-              <span class="lever"></span>
-              On
-            </label>
-          </div>
-    <div id= "price_case" class="row hide">
-        <div class="col l2 m2 s2 input-field">
-            <input id="p" type="number" step="any" class="validate" name="price">
-            <label for="p">Prix</label>
-        </div>
-    </div>
+            </div>
+
+    </form>
     @if($connected && $user->hasRole('admin'))
     <p>
       <label>
@@ -88,6 +73,8 @@ $connected = false; if(session()->has('user')){
         </label>
       </p>
     @endif
+
+
 
 
     <div class="input-field center-align">

@@ -19,6 +19,8 @@ class CreateEventsTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->date('date');
+            $table->string('recurrence');
+            $table->integer('price');
             $table->boolean('statut');
             $table->timestamps();
         });
