@@ -1,4 +1,4 @@
-@extends('layout.master') 
+@extends('layout.master')
 @section('content')
 <div class="parallax-container center valign-wrapper borderdown">
     <div class="parallax"><img src="/image/background.jpg">
@@ -82,19 +82,22 @@
 
 
             <div class="input-field col s12">
-                <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Modifier l'événement</button>                
-                <form class="waves-effect waves-dark btn btn-event " action="/event/valide/{{$event->id}}" method="post">
+                <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Modifier l'événement</button>
+
+                <form  action="/event/valide/{{$event->id}}" method="post">
                     @csrf
                     <input type="hidden" value="delete" name="validate">
                     <input type="hidden" name="_method" value="put">
-                    <input type="submit" value="Supprimer l'évènement">
+                    <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Supprimer l'évènement</button>
                 </form>
-                <form class="waves-effect waves-dark btn btn-event" action="/event/valide/{{$event->id}}" method="post">
+
+                <form  action="/event/valide/{{$event->id}}" method="post">
                     @csrf
                     <input type="hidden" value="1" name="validate">
                     <input type="hidden" name="_method" value="put">
-                    <input type="submit" value="Publier l'évènement">
+                    <button class="btn waves-effect waves-light" id="submit" type="submit" name="validate">Publier l'évènement</button>
                 </form>
+
             </div>
 
 
@@ -131,7 +134,7 @@
     </div>
 </div>
 @endsection
- 
+
 @section('scripts')
 
 
@@ -158,7 +161,7 @@
     $('.prev').click(function () {
         $('.carousel').carousel('prev');
     });
-    
+
 });
 
 $(document).ready(function(){

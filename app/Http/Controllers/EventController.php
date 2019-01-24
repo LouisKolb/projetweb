@@ -156,15 +156,25 @@ class EventController extends Controller
         return redirect('event/create')->withErrors($errors)->withInput();
        }
 
+       $stat = 0;
+       foreach(request()->all() as $key => $value){
+         if ($key == 'direct')
+         {
+           if ($value == '1') {
+             $stat = 1;
+             echo 'c bon';
+           }
+         }
 
+       }
 
         $event = new Event();
         $event->name = request()->name;
         $event->user_id = session()->get('user')[0];
         $event->description = request()->description;
         $event->date = request()->date;
-
-        $event->statut = 0;
+        
+        $event->statut = $stat;
 
         $event->save();
 
@@ -361,10 +371,10 @@ class EventController extends Controller
 
 
     public function subscribe($event){
-        
+
         if(session()->has('user')){
             $user = user::find(session()->get('user')[0]);
-            
+
             if($user->hasSubscribedToEvent($event)){
                 $user->unSubscribeToEvent($event);
             }else{
