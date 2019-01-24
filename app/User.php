@@ -3,6 +3,8 @@
 namespace App;
 use App\order;
 use GuzzleHttp\Client;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -122,6 +124,43 @@ class user extends Model
     }
     public function unSubscribeToEvent($eventid){
         $this->events()->detach($eventid);
+    }
+
+
+    public function sendMail($subject,$content){
+        
+        $mail = new PHPMailer(true); // notice the \  you have to use root namespace here
+            try {
+                $mail->isSMTP(); // tell to use smtp
+                $mail->CharSet = "utf-8"; // set charset to utf8
+                $mail->SMTPAuth = true;  // use smpt auth
+                $mail->SMTPSecure = "ssl"; // or ssl
+                $mail->Host = "smtp.gmail.com";
+                $mail->Port = 465; // most likely something different for you. This is the mailtrap.io port i use for testing. 
+                $mail->Username = env('MAIL_USERNAME');  //Je sais c'est pas bien faut le mettre dans le env
+                $mail->Password = env('MAIL_PASSWORD');//Je sais c'est pas bien faut le mettre dans le env
+                $mail->setFrom("neverreply.nams@gmail.com ", "Noreply");
+                $mail->Subject = $subject;
+                $usermail = $this;
+                
+                $vue = view("mail.main",compact('usermail','content'));
+                
+                $mail->MsgHTML($vue,  $advanced=true);
+                
+                
+                
+                
+                
+                $mail->addAddress($this->email, $this->username);
+                $mail->send();
+            } catch (phpmailerException $e) {
+                dd($e);
+            } catch (Exception $e) {
+                dd($e);
+            }
+            die('success');
+            
+    
     }
 
 
