@@ -18,10 +18,10 @@ class CreateProductsTable extends Migration
           $table->string('name');
           $table->longText('description');
           $table->float('price');
-          
+          $table->boolean('hide')->default(0);
           $table->string('category');
           $table->integer('image');
-          
+
           $table->timestamps();
         });
     }

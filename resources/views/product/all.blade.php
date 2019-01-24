@@ -1,5 +1,11 @@
-@extends('layout.master') 
+@extends('layout.master')
 @section('content')
+@php
+$connected = false; if(session()->has('user')){
+    $connected = true;
+    $user = App\user::find(session()->get('user')[0]);
+}
+@endphp
 
 <section id="section">
     <div class="parallax-container center valign-wrapper border-down">
@@ -43,10 +49,9 @@
 
 <div class="container product">
     <div class="row">
-        @foreach ($products as $product) {{-- Pour tour les produits --}}
+        @foreach ($products as $product) {{-- Pour tous les produits --}}
 
-
-
+        @if($user->hasRole('Admin') || $product->hide == 0)
         <div class="col s12 m6 l4">
             <div class="card hoverable ">
                 <div class="card-image ">
@@ -65,6 +70,14 @@
                             <h6>{{$product->price}} €</h6>
                         </div>
                     </div>
+                    <div class="row">
+                      <a class="waves-effect waves-dark btn btn-event" href="/product/{{$product->id}}/edit"> ✏️</a>
+                    </div>
+                    @if($product->hide == 1)
+                    <div class="row">
+                      <p>Ce produit est caché</p>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -87,24 +100,24 @@
                                 $cart = $user->cart();
                             }
                         @endphp
-                        
-                        
+
+
                         @if (session()->has('user'))
-                            
+
                         <form class="col s10" method="post" action="/order/{{$cart->id}}" id="cart_form">
                         @endif
-                            
-                            
+
+
                             @csrf
                             <input type="hidden" name="_method" value="put">
                             <div class="row">
                                 <input id="product_id" type="hidden" class="validate" name="product_id" value="{{$product->id}}">
-                               
+
                                 <select name="quantity">
                                         @for ($i = 1; $i < 10; $i++)
-                                        
+
                                             <option value="{{$i}}">{{$i}}</option>
-                                            
+
                                         @endfor
 
                                     </select>
@@ -113,8 +126,8 @@
                                 </div>
 
                             </div>
-                        
-                        
+
+
                             @if (session()->has('user'))
                         </form>
                         @endif
@@ -131,7 +144,7 @@
 
         </div>
 
-
+        @endif
         {{-- End pour tout les produits --}} @endforeach
     </div>
 
@@ -164,7 +177,7 @@
 
 </section>
 @endsection
- 
+
 @section('scripts')
 <script>
     $('.chips-placeholder').chips({

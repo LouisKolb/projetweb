@@ -6,6 +6,8 @@ use App\product;
 use App\picture;
 use App\category;
 use App\user;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -92,6 +94,7 @@ class ProductController extends Controller
            $product->description=request()->description;
            $product->price = request()->price;
            $product->category=request()->category;
+           $product->hide=0;
 
 
             //pour store l'image
@@ -150,7 +153,7 @@ class ProductController extends Controller
      */
     public function edit(product $product)
     {
-        //
+        return view('product.edit',compact('product'));
     }
 
     /**
@@ -160,10 +163,53 @@ class ProductController extends Controller
      * @param  \App\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, product $product)
-    {
-        //
-    }
+     public function update(product $product)
+     {
+
+       $product->id;
+       $errors = array();
+       $theprod = 'leproduit';
+
+
+       foreach(request()->all() as $key => $value){
+         if ($key == 'montrer')
+         {
+           if ($value == 'on') {
+             $product->hide = 0;
+           }
+           if ($value == 'off') {
+             $product->hide = 1;
+           }
+         }
+         // echo $key;
+         // echo ' : ';
+         // echo $value;
+         // echo '<br>';
+         //echo $theprod;
+         //var_dump(request()->all());
+       }
+
+       if(!session()->has('user')){
+           array_push($errors,"Vous devez etre connecté pour ajouter un produit");
+       }
+
+       if(empty(request()->price) || empty(request()->description) ){
+           array_push($errors,"Merci de compléter tout les champs!");
+       }
+
+       if (sizeof($errors)) {
+         return redirect("product/{$product->id}/edit")->withErrors($errors)->withInput();
+       }
+
+      $product->name = request()->name;
+      $product->description = request()->description;
+      $product->price = request()->price;
+
+      $product->save();
+
+      return redirect("/product");
+
+     }
 
     /**
      * Remove the specified resource from storage.
