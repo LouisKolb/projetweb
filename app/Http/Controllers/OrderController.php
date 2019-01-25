@@ -69,30 +69,29 @@ class OrderController extends Controller
      * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
+
+    //function to update an order
     public function update(order $order)
     {
         $errors = array();
+        //try to cath the product id
         $productexist = product::where('id',request()->product_id)->count();
+        //if empty
         if(!$productexist){
             array_push($errors,"Le produit n'existe pas");
         }
+        //quantity need to be bigger than 0
         if(request()->quantity<0){
             array_push($errors,"Nope petit malin vous ne pouvez pas mettre une quantitée négative");
         }
-
+        //if error, go to
         if($errors){
             return redirect()->back()->withErrors($errors)->withInput();
         }
-        
-        
-        
-        
-        
+        //else update the order
         $order->addProduct(request()->product_id,request()->quantity);
 
 
-
-        
         return redirect()->back();
     }
 
@@ -106,15 +105,13 @@ class OrderController extends Controller
     {
         //
     }
-
+    //discard an order
     public function deletefromcart(product $product){
         $cart = user::find(session()->get('user')[0])->cart();
+        //delete product from the database
         DB::table('product_order')->where('product_id',$product->id)->where('order_id',$cart->id)->delete();
         return redirect()->back();
     }
-
-
-
 
 
 }
