@@ -458,6 +458,11 @@ a:focus{
     background: #ffc252;
 }
 
+.active {
+    color: #ffc252 !important;
+    background: black !important;
+}
+
 .btn:hover {
   background: #ffc252;
 }

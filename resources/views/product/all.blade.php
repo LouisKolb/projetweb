@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('content')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Shuffle/5.2.1/shuffle.js"></script>
+<script src="/js/shuffle.js"></script>
 </head>
 @php
 $connected = false; if(session()->has('user')){
@@ -25,7 +25,7 @@ $connected = false; if(session()->has('user')){
 
 
 <div class="center-align">
-    <h3>Tout nos produits </h3>
+    <h3>Tous nos produits</h3>
 </div>
 
 <div class="row">
@@ -42,7 +42,7 @@ $connected = false; if(session()->has('user')){
                 <p class="filter-label">Filtrer par :</p>
                 <div class="btn-group filter-options">
                     @foreach ($categories as $category)
-                        <button class="btn active btn--primary" data-group="{{$category->name}}">{{$category->name}}</button>
+                        <button class="btn waves-effect" data-group="{{$category->name}}">{{$category->name}}</button>
                     @endforeach
                 </div>
             </div>
@@ -50,11 +50,13 @@ $connected = false; if(session()->has('user')){
             <div class="col l5 filters-group">
                 <p class="filter-label">Trier par : </p>
                 <div class="btn-group sort-options">
-                    <label class="btn active">
+                    <label class="btn waves-effect active">
                     <input type="radio" name="sort-value" value="dom" checked />Défaut</label>
-                    <label class="btn">
+                    <label class="btn waves-effect">
                     <input type="radio" name="sort-value" value="title" />Nom</label>
-                    <label class="btn">
+                    <label class="btn waves-effect">
+                    <input type="radio" name="sort-value" value="date-created" />Date</label>
+                    <label class="btn waves-effect">
                     <input type="radio" name="sort-value" value="price" />Prix</label>
                 </div>
             </div>
@@ -65,7 +67,7 @@ $connected = false; if(session()->has('user')){
         @foreach ($products as $product) {{-- Pour tous les produits --}}
 
         @if($user->hasRole('Admin') || $product->hide == 0)
-        <div class="col s12 m6 l4 picture-item" data-groups="[&quot;{{$product->categoryName()}}&quot;]" data-date-created="2017-04-30" data-title="{{$product->name}}">
+        <div class="col s12 m6 l4 picture-item" data-groups="[&quot;{{$product->categoryName()}}&quot;]" data-date-created="2017-04-30" data-price="{{$product->price}}" data-title="{{$product->name}}">
             <div class="card hoverable picture-item__inner">
                 <div class="card-image aspect__inner">
                     <img class="img-product aspect__inner" src="/storage/{{$product->picture->link}}">
@@ -181,20 +183,6 @@ $connected = false; if(session()->has('user')){
         </ul>
     </div>
     @endif
-
-
-{{-- pagination --}}
-<div class="container center-align" id="pagination">
-    <ul class="pagination">
-        <li class="disabled"><a href="#!"><i class="material-icons color-blue">chevron_left</i></a></li>
-        <li class="active"><a href="#!">1</a></li>
-        <li class="waves-effect"><a href="#!">2</a></li>
-        <li class="waves-effect"><a href="#!">3</a></li>
-        <li class="waves-effect"><a href="#!">4</a></li>
-        <li class="waves-effect"><a href="#!">5</a></li>
-        <li class="waves-effect"><a href="#!"><i class="material-icons color-blue">chevron_right</i></a></li>
-    </ul>
-</div>
 
 </section>
 <script src="/js/mainshuffle.js"></script>

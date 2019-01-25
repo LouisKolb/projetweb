@@ -99,6 +99,9 @@ class Demo {
     function sortByTitle(element) {
       return element.getAttribute('data-title').toLowerCase();
     }
+    function sortByPrice(element) {
+      return element.getAttribute('data-price').toLowerCase();
+    }
     
     if (value === 'date-created') {
       options = {
@@ -108,6 +111,10 @@ class Demo {
     } else if (value === 'title') {
       options = {
         by: sortByTitle,
+      };
+    }else if (value === 'price') {
+      options = {
+        by: sortByPrice,
       };
     }
     this.shuffle.sort(options);
