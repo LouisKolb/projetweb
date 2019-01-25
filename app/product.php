@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class product extends Model
@@ -10,6 +10,7 @@ class product extends Model
         return $this->hasOne('App\Picture','id');
     }
     public function categoryName(){
-        return $this->hasOne('App\category','id');
+        $cat = DB::table('categories')->where('id',$this->category)->first();
+        return $cat->name;
     }
 }

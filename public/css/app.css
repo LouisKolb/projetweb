@@ -538,4 +538,26 @@ a:focus{
     margin-top: 2em;   
 }
 
-/* Product card size */
+/* Style for Shopping Shuffle */
+.aspect__inner {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.picture-item {
+    padding: 2em;
+}
+
+.picture-item__inner {
+    display: inline;
+}
+
+.picture-item__details {
+    padding-bottom: 5em;
+    
+}
+
+.picture-item__title a {
+    color: black;
+    font-size: 1.5em;
+}

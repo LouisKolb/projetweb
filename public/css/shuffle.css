@@ -637,3 +637,8 @@ $item-height: 220px;
     width: 100%;
   }
 }
+
+.picture-item {
+  padding: 1em;
+  width: 400px;
+}

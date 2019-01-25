@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
+
 class ProductController extends Controller
 {
     /**
@@ -20,7 +21,8 @@ class ProductController extends Controller
     public function index()
     {
         $products= product::get();
-        return view("product.all", compact('products'));
+        $categories=category::get();
+        return view("product.all", compact('products', 'categories'));
     }
 
     /**
