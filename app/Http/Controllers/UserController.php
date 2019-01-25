@@ -107,6 +107,9 @@ class UserController extends Controller
         if (request()->email != request()->email_confirm) {
             array_push($errors, "Les Email ne corespondent pas");
         }
+        if (empty(request()->accept)) {
+            array_push($errors, "Merci d'accepter les conditions général d'utilisations");
+        }
         //les emails n'ont pas le bon format
         if (!filter_var(request()->email, FILTER_VALIDATE_EMAIL)) {
             array_push($errors, "Le format de mail n'est pas valide");

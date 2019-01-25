@@ -67,16 +67,17 @@
 					<select name="centre">
               <option value="" disabled selected>Choisis ton centre</option>
               
-              @foreach ($centres as $centre)
-                  
-                <option value="{{$centre->id}}">{{$centre->name}}</option>
-              @endforeach
-              
-              
-            </select>
+					@foreach ($centres as $centre)
+						
+						<option value="{{$centre->id}}">{{$centre->name}}</option>
+					@endforeach
+            	</select>
 					<label>Centre</label>
 				</div>
-
+						<label>
+						<input type="checkbox" name="accept"/>
+						<span><a href="/gcs">En vous inscrivant vous acceptez les CGU</a> </span>
+					  </label>
 
 				<div class="input-field col s12">
 					<button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">S'inscrire</button>
