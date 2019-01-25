@@ -80,8 +80,19 @@ $creator = App\user::find($event->user_id);
                                 S'inscrire
                             @endif
 
-                            <i class="fas fa-sign-in-alt right"></i></button>
+                            <i class="fas fa-sign-in-alt right"></i>
+                    </button>
                 </form>
+                @if($user->hasRole('Admin'))
+                <form action="/event/{{$event->id}}/pdf" method="GET">
+                    @csrf
+                    <button class="waves-effect waves-dark btn" type="submit">
+                            Télécharger la liste des inscrits
+
+                            <i class="fas fa-download right"></i>
+                    </button>
+                </form>
+                @endif
 
             @else
                 <a href="/login" class="waves-effect waves-dark btn">Vous devez être connecté pour vous inscrire</a>
@@ -152,28 +163,28 @@ $creator = App\user::find($event->user_id);
                             </div>
                         </div>
                         <div class="col s1n2 left-alig">
-                            @php 
-                                $pictureuser = App\user::find($picture->user_id) 
-                            
+                            @php
+                                $pictureuser = App\user::find($picture->user_id)
+
                             @endphp
                             <p>{{$pictureuser->first_name}} {{$pictureuser->last_name}}</p>
                         </div>
                     </div>
                     <div class="collapsible-header test">
 
-                        <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}"> 
-                            
-                        
+                        <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}">
+
+
                         @if ($connected)
                             {{-- Like button --}}
                             <form action="/picture/{{$picture->id}}/like" class="like">
-                                
+
                                     <i   class="likebtn @if($user->haveLikedPicture($picture->id)) fas @else far @endif fa-heart" style="color:red"></i>
-                                
+
                                 {{--End like button--}}
                             </form>
-                        
-                            
+
+
                             @else
                             <p>Vous devez etre conecté pour liker déja</p>
                             @endif
@@ -194,15 +205,15 @@ $creator = App\user::find($event->user_id);
                         </div>
                     </div>
                     <div class="collapsible-body">
-                        {{-- Input to write a comment --}} 
-                        
-                        @php $connected = session()->has('user'); 
+                        {{-- Input to write a comment --}}
+
+                        @php $connected = session()->has('user');
                         if($connected)
-                        { 
+                        {
                             $user = App\user::find(session()->get('user')[0]);
-                        } 
-                        @endphp 
-                        
+                        }
+                        @endphp
+
                         @if ($connected) {{-- Write a comment --}}
                         <form action="/comment" method="POST">
                             @csrf
@@ -291,41 +302,41 @@ $creator = App\user::find($event->user_id);
 
 @section('scripts')
 <script>
-    $(document).ready(function(){ 
-        $('.materialboxed').materialbox(); 
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
         $('input#input_text, textarea#textarea1').characterCounter();
         var bool = true;
         //Ajax request to like the picture
         $(".likebtn").click(function(){
-            
+
             $(this).parent().trigger('submit')
-            $(this).toggleClass('far') 
+            $(this).toggleClass('far')
             $(this).toggleClass('fas')
             bool =$(this).hasClass('fas')
-            
+
         })
-    
-        $(".like").each(function(){ 
-            $(this).submit(function(e) { 
+
+        $(".like").each(function(){
+            $(this).submit(function(e) {
                 e.preventDefault(); // avoid to execute the actual submit of the
-                var form = $(this); 
-                
-                $.ajax({ type: form.attr('method'), url: form.attr('action'), 
-                data: form.serialize(), success: function (data) { 
+                var form = $(this);
+
+                $.ajax({ type: form.attr('method'), url: form.attr('action'),
+                data: form.serialize(), success: function (data) {
                     console.log(data);
-                    
+
                     if(bool){
 
                         M.toast({html:"Vous etes le "+ data +"e a avoir liké"})
                     }
-                    
-                    
-                    }, 
-                    error: function (data) { 
-                        console.log('An error occurred.'); 
-                        }, 
-                    }); 
-            }) 
+
+
+                    },
+                    error: function (data) {
+                        console.log('An error occurred.');
+                        },
+                    });
+            })
         });
 
 
