@@ -1,5 +1,13 @@
-@extends('layout.master') 
+@extends('layout.master')
 @section('content')
+@php
+$connected = false;
+if(session()->has('user'))
+{
+    $connected = true;
+    $user = App\user::find(session()->get('user')[0]);
+}
+@endphp
 <!-- Social network bar -->
 <!-- <div class="icon-bar">
         <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
@@ -246,11 +254,11 @@
                 </div>
             </div>
         </div>
-        
+
 </section>
 @endif @endforeach
 @endsection
- 
+
 @section('scripts')
 <script>
     $(document).ready(function () {

@@ -1,5 +1,15 @@
-@extends('layout.master') 
-@section('content') @php $creator = App\user::find($event->user_id); 
+@extends('layout.master')
+@section('content')
+@php
+$connected = false;
+if(session()->has('user'))
+{
+    $connected = true;
+    $user = App\user::find(session()->get('user')[0]);
+}
+@endphp
+@php
+$creator = App\user::find($event->user_id);
 @endphp
 
 
@@ -49,7 +59,7 @@
             <p>Description de l'eventment : {{$event->description}}</p>
         </div>
         <div class="col s12 center-align">
-            {{-- Open a modal to add image if you were present on the event --}} 
+            {{-- Open a modal to add image if you were present on the event --}}
             @php
                 $conneted=false;
                 if(session()->has('user')){
@@ -57,8 +67,8 @@
                     $user = App\user::find(session()->get('user')[0]);
                 }
             @endphp
-            
-            @if($event->date <now() && $connected && $user->hasSubscribedToEvent($event->id)) 
+
+            @if($event->date <now() && $connected && $user->hasSubscribedToEvent($event->id))
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement</a>
             @elseif($connected)
                 <form action="/event/{{$event->id}}/subscribe" method="POST">
@@ -67,9 +77,9 @@
                             @if (App\user::find(session()->get('user')[0])->hasSubscribedToEvent($event->id))
                                 Se désinscrire
                             @else
-                                S'inscrire 
+                                S'inscrire
                             @endif
-                            
+
                             <i class="fas fa-sign-in-alt right"></i></button>
                 </form>
 
@@ -142,7 +152,7 @@
                             </div>
                         </div>
                         <div class="col s1n2 left-alig">
-                            @php $pictureuser = App\user::find($picture->user_id) 
+                            @php $pictureuser = App\user::find($picture->user_id)
 @endphp
                             <p>{{$pictureuser->first_name}} {{$pictureuser->last_name}}</p>
                         </div>
@@ -158,7 +168,7 @@
                     </div>
                     <div class="collapsible-body">
                         {{-- Input to write a comment --}} @php $connected = session()->has('user'); if($connected){ $user = App\user::find(session()->get('user')[0]);
-                        } 
+                        }
 @endphp @if ($connected) {{-- Write a comment --}}
                         <form action="/comment" method="POST">
                             @csrf
@@ -195,7 +205,7 @@
                             </div>
                         </form>
 
-                        @endif @foreach ($picture->comments as $comment) @php $writer =$comment->writer(); 
+                        @endif @foreach ($picture->comments as $comment) @php $writer =$comment->writer();
 @endphp
 
                         <div class="row">
@@ -244,7 +254,7 @@
             @endforeach
 </section>
 @endsection
- 
+
 @section('scripts')
 <script>
     $(document).ready(function(){

@@ -1,7 +1,9 @@
 @extends('layout.master')
 @section('content')
 @php
-$connected = false; if(session()->has('user')){
+$connected = false;
+if(session()->has('user'))
+{
     $connected = true;
     $user = App\user::find(session()->get('user')[0]);
 }
@@ -14,7 +16,7 @@ $connected = false; if(session()->has('user')){
         <div class="container white-text">
             <div class="row">
                 <div class="col s12">
-                    <h5>Lorem ipsum</h5>
+                    <h5>Boutique</h5>
                 </div>
             </div>
         </div>
@@ -51,6 +53,7 @@ $connected = false; if(session()->has('user')){
     <div class="row">
         @foreach ($products as $product) {{-- Pour tous les produits --}}
 
+        @if($connected == true)
         @if($user->hasRole('Admin') || $product->hide == 0)
         <div class="col s12 m6 l4">
             <div class="card hoverable ">
@@ -150,7 +153,7 @@ $connected = false; if(session()->has('user')){
             {{-- end modal --}}
 
         </div>
-
+        @endif
         @endif
         {{-- End pour tout les produits --}} @endforeach
     </div>
