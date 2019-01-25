@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @extends('layout.master')
 @section('content')
 @php
@@ -11,12 +10,6 @@ if(session()->has('user'))
 @endphp
 @php
 $creator = App\user::find($event->user_id);
-=======
-@extends('layout.master') 
-@section('content') 
-@php 
-    $creator = App\user::find($event->user_id); 
->>>>>>> like
 @endphp
 
 
@@ -159,15 +152,10 @@ $creator = App\user::find($event->user_id);
                             </div>
                         </div>
                         <div class="col s1n2 left-alig">
-<<<<<<< HEAD
-                            @php $pictureuser = App\user::find($picture->user_id)
-@endphp
-=======
                             @php 
                                 $pictureuser = App\user::find($picture->user_id) 
                             
                             @endphp
->>>>>>> like
                             <p>{{$pictureuser->first_name}} {{$pictureuser->last_name}}</p>
                         </div>
                     </div>
@@ -206,11 +194,6 @@ $creator = App\user::find($event->user_id);
                         </div>
                     </div>
                     <div class="collapsible-body">
-<<<<<<< HEAD
-                        {{-- Input to write a comment --}} @php $connected = session()->has('user'); if($connected){ $user = App\user::find(session()->get('user')[0]);
-                        }
-@endphp @if ($connected) {{-- Write a comment --}}
-=======
                         {{-- Input to write a comment --}} 
                         
                         @php $connected = session()->has('user'); 
@@ -221,7 +204,6 @@ $creator = App\user::find($event->user_id);
                         @endphp 
                         
                         @if ($connected) {{-- Write a comment --}}
->>>>>>> like
                         <form action="/comment" method="POST">
                             @csrf
                             <input type="hidden" name="picture" value="{{$picture->id}}">
