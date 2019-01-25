@@ -93,7 +93,11 @@ Route::get('/gcs', function() {
     return view('others.gcs');
 });
 
-
+Route::get('/shuffle', function() {
+    $products = App\product::get();
+    $categories=App\category::get();
+    return view('others.shuffle',compact('products','categories'));
+});
 
 
 Route::get('/test',function(){return view('test');});
