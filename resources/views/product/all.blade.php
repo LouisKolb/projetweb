@@ -16,7 +16,7 @@ $connected = false; if(session()->has('user')){
         <div class="container white-text">
             <div class="row">
                 <div class="col s12">
-                    <h5>Lorem ipsum</h5>
+                    <h3>Boutique</h3>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@ $connected = false; if(session()->has('user')){
 <div class="row">
         <div class="col s5 offset-s1 l3 offset-l1">
             <div class="filters-group">
-                <label for="filters-search-input" class="filter-label">Search</label>
+                <label for="filters-search-input" class="filter-label">Rechercher un article</label>
                 <input class="textfield filter__search js-shuffle-search" type="search" id="filters-search-input" />
             </div>
         </div>
@@ -39,7 +39,7 @@ $connected = false; if(session()->has('user')){
 
     <div class="row filters-group-wrap valign-wrapper">
             <div class="col l5 offset-l1 filters-group">
-                <p class="filter-label">Filter</p>
+                <p class="filter-label">Filtrer par :</p>
                 <div class="btn-group filter-options">
                     @foreach ($categories as $category)
                         <button class="btn active btn--primary" data-group="{{$category->name}}">{{$category->name}}</button>
@@ -48,14 +48,14 @@ $connected = false; if(session()->has('user')){
             </div>
     
             <div class="col l5 filters-group">
-                <legend class="filter-label">Sort</legend>
+                <p class="filter-label">Trier par : </p>
                 <div class="btn-group sort-options">
                     <label class="btn active">
-                    <input type="radio" name="sort-value" value="dom" checked />Default</label>
+                    <input type="radio" name="sort-value" value="dom" checked />Défaut</label>
                     <label class="btn">
-                    <input type="radio" name="sort-value" value="title" /> Title</label>
+                    <input type="radio" name="sort-value" value="title" />Nom</label>
                     <label class="btn">
-                    <input type="radio" name="sort-value" value="date-created" />Date Created</label>
+                    <input type="radio" name="sort-value" value="price" />Prix</label>
                 </div>
             </div>
         </div>
