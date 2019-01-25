@@ -19,8 +19,9 @@ $connected = false; if(session()->has('user')){
 </div>
 
 <section>
-  @if($connected)
-    @if($user->hasRole('tutor') || $user->hasRole('admin'))
+    @if($connected)
+        {{--// || $user->hasRole('admin')--}}
+    @if($user->hasRole('tutor'))
       <div class="row">
           <div class="col l12 m12 s12 center-align">
               <h6>Télécharger toutes les images du site</h6>
@@ -41,6 +42,7 @@ $connected = false; if(session()->has('user')){
                 <div class="card">
                     <div class="card-image">
                         <a href="/picture/{{$p->id}}"><img src="/storage/{{$p->link}}"></a>
+                        <p>Nombres de likes : {{$p->likeCount()}}</p>
                     </div>
                 </div>
             </div>

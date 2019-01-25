@@ -165,6 +165,29 @@ class user extends Model
 
 
 
+    public function likes(){        
+            return $this->belongsToMany('App\picture','likes','user_id','picture_id');
+
+    }
+
+    public function haveLikedPicture($pictureid){
+        foreach ($this->likes as $p) {
+            if($p->id == $pictureid){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function likePicture($pictureid){
+        $this->likes()->attach($pictureid);
+    }
+    public function unLikePicture($pictureid){
+        $this->likes()->detach($pictureid);
+    }
+
+
+
 
 
 
