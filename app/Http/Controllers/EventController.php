@@ -126,7 +126,7 @@ class EventController extends Controller
       }
 
 
-      if(empty(request()->name)|| empty(request()->date) || empty($file) || empty(request()->description) || empty(request()->recurrence)|| empty(request()->price) ){
+      if(empty(request()->name)|| empty(request()->date) || empty($file) || empty(request()->description) || empty(request()->recurrence) ){
           array_push($errors,"Merci de compléter tout les champs et de poster une image ");
       }
 
@@ -173,6 +173,8 @@ class EventController extends Controller
        }
 
         $event = new Event();
+
+
         foreach(request()->all() as $key => $value){
           if ($key == 'recurrence') {
             $event->recurrence = $value;
@@ -180,11 +182,8 @@ class EventController extends Controller
           if ($key == 'price') {
             $event->price = $value;
           }
-          // echo $key;
-          // echo ' : ';
-          // echo $value;
-          // echo '<br>';
-          }
+        }
+
         $event->name = request()->name;
         $event->user_id = session()->get('user')[0];
         $event->description = request()->description;
@@ -282,7 +281,7 @@ class EventController extends Controller
       }
 
 
-      if(empty(request()->name)|| empty(request()->date) || empty(request()->description) || empty(request()->recurrence)|| empty(request()->price) ){
+      if(empty(request()->name)|| empty(request()->date) || empty(request()->description) || empty(request()->recurrence) ){
           array_push($errors,"Merci de compléter tout les champs et de poster une image ");
       }
 
@@ -416,22 +415,22 @@ class EventController extends Controller
         }else{
             $event=event::find(request()->event);
             if(!$event->statut){
-                array_push($errors,"Vous ne pouvez pas poster de photos sur les idées d'evenements"); 
+                array_push($errors,"Vous ne pouvez pas poster de photos sur les idées d'evenements");
             }
         }
-        
+
         if(session()->has('user')){
             $user = user::find(session()->get('user')[0]);
             if(!$user->hasSubscribedToEvent(request()->event)){
                 array_push($errors,"Vous devez avoir participé a l'evenement pour cela");
             }
-            
+
         }else{
             array_push($errors,"Vous devez etre conecté pour effectuer cela");
         }
 
-        
-        
+
+
         $images = request()->images;
         //pour toutes les images de la requete
         foreach($images as $image) {
@@ -451,7 +450,7 @@ class EventController extends Controller
             return redirect()->back()->withErrors($errors);
         }
 
-        
+
         foreach($images as $image) {
             $path = $image->store('/public/pictures');
             $path=str_replace('public/','',$path);

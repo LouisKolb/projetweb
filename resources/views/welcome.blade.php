@@ -24,21 +24,21 @@
                   </div>
                   {{-- Look for events in DB --}}
                   @foreach ($events as $event)
-
+                    @if($event->statut == 1)
                     @if($event->date >= $today)
                     @if($maxevent < 2)
                       <div class="card-parnel hoverable col l5 m12 s12 ">
                           <h5>{{ $event->name }}</h5>
                           <p>{{ $event->description }}</p>
                           <hr class="divider">
-                          <div class="col s2 offset-s8 center-align">
-                              <a class="waves-effect btn" href="/event/create" ><i class="far fa-heart "></i></a>
-                          </div>
-                          <div class="col s2 center-align">
-                              <a class="waves-effect btn" href=""><i class="far fa-comment"></i></a>
+                          <div class="col s4 center-align">
+                              <a class="waves-effect btn" href="/event/{{$event->id}}">
+                                Voir l'évènement
+                              </a>
                           </div>
                     </div>
                     <?php $maxevent++; ?>
+                    @endif
                     @endif
                   @endif
                 @endforeach

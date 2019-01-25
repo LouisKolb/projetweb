@@ -53,12 +53,12 @@ $connected = false; if(session()->has('user')){
               <select name="recurrence">
                   <option value="Aucune" selected>Pas de récurence</option>
                   <option value="toutes les semaines">Toutes les semaines</option>
-                  <option value="tous les mois">Tous les mois</option>
-                  <option value="tous les an">Tous les an</option>
+                  <option value="tous les mois" >Tous les mois</option>
+                  <option value="tous les ans" >Tous les ans</option>
               </select>
             <label>Récurence</label>
             <div class="input-field">
-                <input id="price" type="number" class="validate " name="price">
+                <input id="price" type="number" class="validate " name="price" value="0">
                 <label for="price">Prix</label>
             </div>
 
