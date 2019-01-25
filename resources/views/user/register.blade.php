@@ -35,7 +35,17 @@
 				</div>
 
 
-
+				<div class="input-field col s12 m6">
+						<select name="centre">
+							  <option value="" disabled selected>Choisis ton centre</option>
+				  
+						@foreach ($centres as $centre)
+							
+							<option value="{{$centre->id}}">{{$centre->name}}</option>
+						@endforeach
+						</select>
+						<label>Centre</label>
+					</div>
 
 				<div class="input-field col s12 m6">
 					<i class="material-icons prefix">lock</i>
@@ -62,21 +72,9 @@
 					<label for="email_confirmation">Confirmation</label>
 				</div>
 
-
-				<div class="input-field col s12 m6">
-					<select name="centre">
-              <option value="" disabled selected>Choisis ton centre</option>
-              
-					@foreach ($centres as $centre)
-						
-						<option value="{{$centre->id}}">{{$centre->name}}</option>
-					@endforeach
-            	</select>
-					<label>Centre</label>
-				</div>
 						<label>
 						<input type="checkbox" name="accept" value="true"/>
-						<span><a href="/gcs">En vous inscrivant vous acceptez les CGU</a> </span>
+						<span class="black-text">Je reconnais avoir lu et compris les <a href="/gcu">CGU</a> et je les accepte.</span>
 					  </label>
 
 				<div class="input-field col s12">

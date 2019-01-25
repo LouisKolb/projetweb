@@ -17,10 +17,10 @@
     <br>
     <br> Les présentes conditions générales d'utilisation (dites " CGU ") ont pour objet l'encadrement juridique des modalités
     de mise à disposition du site et des services par et de définir les conditions d'accès et d'utilisation des services
-    par " l'Utilisateur ".Les présentes CGU sont accessibles sur le site à la rubrique "CGU".Toute inscription ou utilisation
+    par "l'Utilisateur".Les présentes CGU sont accessibles sur le site à la rubrique "CGU".Toute inscription ou utilisation
     du site implique l'acceptation sans aucune réserve ni restriction des présentes CGU par l'utilisateur. Lors de l'inscription
     sur le site via le Formulaire d'inscription, chaque utilisateur accepte expressément les présentes CGU en cochant la
-    case précédant le texte suivant : " Je reconnais avoir lu etcompris les CGU et je les accepte ". En cas de non-acceptation
+    case précédant le texte suivant : "Je reconnais avoir lu et compris les CGU et je les accepte". En cas de non-acceptation
     des CGU stipulées dans le présent contrat, l'Utilisateur se doit de renoncer à l'accèsdes services proposés par le site.www.bdecesistrasbourg.fr
     se réserve le droit de modifier unilatéralement et à tout moment le contenu desprésentes CGU.
     <br>
