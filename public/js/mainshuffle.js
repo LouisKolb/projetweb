@@ -11,7 +11,7 @@ class Demo {
 
     // Log events.
     this.addShuffleEventListeners();
-    this._activeFilters = [];
+    this._shuffleactiveFilters = [];
     this.addFilterButtons();
     this.addSorting();
     this.addSearchFilter();
@@ -45,27 +45,27 @@ class Demo {
 
   _handleFilterClick(evt) {
     const btn = evt.currentTarget;
-    const isActive = btn.classList.contains('active');
+    const isshuffleactive = btn.classList.contains('shuffleactive');
     const btnGroup = btn.getAttribute('data-group');
     
-    this._removeActiveClassFromChildren(btn.parentNode);
+    this._removeshuffleactiveClassFromChildren(btn.parentNode);
     
     let filterGroup;
-    if (isActive) {
-      btn.classList.remove('active');
+    if (isshuffleactive) {
+      btn.classList.remove('shuffleactive');
       filterGroup = Shuffle.ALL_ITEMS;
     } else {
-      btn.classList.add('active');
+      btn.classList.add('shuffleactive');
       filterGroup = btnGroup;
     }
     
     this.shuffle.filter(filterGroup);
   }
 
-  _removeActiveClassFromChildren(parent) {
+  _removeshuffleactiveClassFromChildren(parent) {
     const { children } = parent;
     for (let i = children.length - 1; i >= 0; i--) {
-      children[i].classList.remove('active');
+      children[i].classList.remove('shuffleactive');
     }
   }
 
@@ -78,13 +78,13 @@ class Demo {
   }
 
   _handleSortChange(evt) {
-    // Add and remove `active` class from buttons.
+    // Add and remove `shuffleactive` class from buttons.
     const buttons = Array.from(evt.currentTarget.children);
     buttons.forEach((button) => {
       if (button.querySelector('input').value === evt.target.value) {
-        button.classList.add('active');
+        button.classList.add('shuffleactive');
       } else {
-        button.classList.remove('active');
+        button.classList.remove('shuffleactive');
       }
     });
     
