@@ -75,7 +75,7 @@
 					<label>Centre</label>
 				</div>
 						<label>
-						<input type="checkbox" name="accept"/>
+						<input type="checkbox" name="accept" value="true"/>
 						<span><a href="/gcs">En vous inscrivant vous acceptez les CGU</a> </span>
 					  </label>
 
