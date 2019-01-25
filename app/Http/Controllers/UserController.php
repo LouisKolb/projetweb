@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        if (session()->has('username')) {
+        if (session()->has('user')) {
             return redirect("/");
         }
         $centres = Centre::get();
@@ -72,7 +72,7 @@ class UserController extends Controller
             $order = new order;
             $order->validate = 0;
             $order->user_id = $user->id;
-            $order->save();  
+            $order->save();
         }
 
         return "Connected :" . $user->username;

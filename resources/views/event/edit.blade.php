@@ -1,5 +1,13 @@
 @extends('layout.master')
 @section('content')
+@php
+$connected = false;
+if(session()->has('user'))
+{
+    $connected = true;
+    $user = App\user::find(session()->get('user')[0]);
+}
+@endphp
 <div class="parallax-container center valign-wrapper borderdown">
     <div class="parallax"><img src="/image/background.jpg">
     </div>

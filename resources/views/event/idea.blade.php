@@ -1,6 +1,13 @@
 @extends('layout.master')
 @section('content')
-
+@php
+$connected = false;
+if(session()->has('user'))
+{
+    $connected = true;
+    $user = App\user::find(session()->get('user')[0]);
+}
+@endphp
 <!-- Parallax pic with border -->
 <div class="parallax-container center valign-wrapper border-down">
     <div class="parallax"><img src="/image/background.jpg">
@@ -61,7 +68,7 @@
 
 
                         </form>
-                        @if(App\user::find($event->user_id)->hasRole('Admin'))
+                        @if($user->hasRole('admin'))
                         <a class="waves-effect waves-dark btn btn-event" href="/event/{{$event->id}}/edit"> ✏️</a> @endif
                         @endif
 

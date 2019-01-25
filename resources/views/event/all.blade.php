@@ -8,13 +8,6 @@ if(session()->has('user'))
     $user = App\user::find(session()->get('user')[0]);
 }
 @endphp
-<!-- Social network bar -->
-<!-- <div class="icon-bar">
-        <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-    </div> -->
-
 <!-- Parralax image with border -->
 
 <div class="parallax-container center valign-wrapper borderdown">
