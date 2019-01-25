@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layout.master')
 @section('content')
 @php
@@ -10,6 +11,12 @@ if(session()->has('user'))
 @endphp
 @php
 $creator = App\user::find($event->user_id);
+=======
+@extends('layout.master') 
+@section('content') 
+@php 
+    $creator = App\user::find($event->user_id); 
+>>>>>>> like
 @endphp
 
 
@@ -152,24 +159,69 @@ $creator = App\user::find($event->user_id);
                             </div>
                         </div>
                         <div class="col s1n2 left-alig">
+<<<<<<< HEAD
                             @php $pictureuser = App\user::find($picture->user_id)
 @endphp
+=======
+                            @php 
+                                $pictureuser = App\user::find($picture->user_id) 
+                            
+                            @endphp
+>>>>>>> like
                             <p>{{$pictureuser->first_name}} {{$pictureuser->last_name}}</p>
                         </div>
                     </div>
                     <div class="collapsible-header test">
 
-                        <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}"> {{--
-                        <div class="col l12 m12 s12 event-pic-show">
-                            --}} {{-- </div> --}}
+                        <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}"> 
+                            
+                        
+                        @if ($connected)
+                            {{-- Like button --}}
+                            <form action="/picture/{{$picture->id}}/like" class="like">
+                                
+                                    <i   class="likebtn @if($user->haveLikedPicture($picture->id)) fas @else far @endif fa-heart" style="color:red"></i>
+                                
+                                {{--End like button--}}
+                            </form>
+                        
+                            
+                            @else
+                            <p>Vous devez etre conecté pour liker déja</p>
+                            @endif
+
+
+
+
+
+
+
+
+
+
+
+
                         <div class="show-event">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
                     <div class="collapsible-body">
+<<<<<<< HEAD
                         {{-- Input to write a comment --}} @php $connected = session()->has('user'); if($connected){ $user = App\user::find(session()->get('user')[0]);
                         }
 @endphp @if ($connected) {{-- Write a comment --}}
+=======
+                        {{-- Input to write a comment --}} 
+                        
+                        @php $connected = session()->has('user'); 
+                        if($connected)
+                        { 
+                            $user = App\user::find(session()->get('user')[0]);
+                        } 
+                        @endphp 
+                        
+                        @if ($connected) {{-- Write a comment --}}
+>>>>>>> like
                         <form action="/comment" method="POST">
                             @csrf
                             <input type="hidden" name="picture" value="{{$picture->id}}">
@@ -257,13 +309,54 @@ $creator = App\user::find($event->user_id);
 
 @section('scripts')
 <script>
-    $(document).ready(function(){
-        $('.materialboxed').materialbox();
+    $(document).ready(function(){ 
+        $('.materialboxed').materialbox(); 
+        $('input#input_text, textarea#textarea1').characterCounter();
+        var bool = true;
+        //Ajax request to like the picture
+        $(".likebtn").click(function(){
+            
+            $(this).parent().trigger('submit')
+            $(this).toggleClass('far') 
+            $(this).toggleClass('fas')
+            bool =$(this).hasClass('fas')
+            
+        })
+    
+        $(".like").each(function(){ 
+            $(this).submit(function(e) { 
+                e.preventDefault(); // avoid to execute the actual submit of the
+                var form = $(this); 
+                
+                $.ajax({ type: form.attr('method'), url: form.attr('action'), 
+                data: form.serialize(), success: function (data) { 
+                    console.log(data);
+                    
+                    if(bool){
+
+                        M.toast({html:"Vous etes le "+ data +"e a avoir liké"})
+                    }
+                    
+                    
+                    }, 
+                    error: function (data) { 
+                        console.log('An error occurred.'); 
+                        }, 
+                    }); 
+            }) 
+        });
+
+
+
+
     });
 
-    $(document).ready(function() {
-        $('input#input_text, textarea#textarea1').characterCounter();
-    });
+
+
+
+
+
+
 
 </script>
 @endsection

@@ -116,4 +116,28 @@ class PictureController extends Controller
 
     }
 
+
+
+
+    public function like($pictureid){
+        
+
+            if(session()->has('user')){
+                $user = user::find(session()->get('user')[0]);
+    
+                if($user->haveLikedPicture($pictureid)){
+                    $user->unLikePicture($pictureid);
+                }else{
+    
+                    $user->LikePicture($pictureid);
+                }
+                return response()->json(picture::find($pictureid)->likeCount());
+            }
+    
+    
+            return redirect()->back();
+        }
+        
+    
+
 }

@@ -458,6 +458,11 @@ a:focus{
     background: #ffc252;
 }
 
+.active {
+    color: #ffc252 !important;
+    background: black !important;
+}
+
 .btn:hover {
   background: #ffc252;
 }
@@ -538,4 +543,31 @@ a:focus{
     margin-top: 2em;   
 }
 
-/* Product card size */
+/* Style for Shopping Shuffle */
+.aspect__inner {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.picture-item {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  }
+  
+  .picture-item:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+
+.picture-item__inner {
+    display: inline;
+}
+
+.picture-item__details {
+    padding-bottom: 5em;
+    
+}
+
+.picture-item__title a {
+    color: black;
+    font-size: 1.5em;
+}

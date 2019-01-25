@@ -1,5 +1,7 @@
 @extends('layout.master')
 @section('content')
+<script src="/js/shuffle.js"></script>
+</head>
 @php
 $connected = false;
 if(session()->has('user'))
@@ -16,7 +18,7 @@ if(session()->has('user'))
         <div class="container white-text">
             <div class="row">
                 <div class="col s12">
-                    <h5>Boutique</h5>
+                    <h3>Boutique</h3>
                 </div>
             </div>
         </div>
@@ -25,69 +27,84 @@ if(session()->has('user'))
 
 
 <div class="center-align">
-    <h3>Tout nos produits </h3>
+    <h3>Tous nos produits</h3>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col s6 m6 l6">
-            <div class="chips chips-placeholder"></div>
+<div class="row">
+        <div class="col s5 offset-s1 l3 offset-l1">
+            <div class="filters-group">
+                <label for="filters-search-input" class="filter-label">Rechercher un article</label>
+                <input class="textfield filter__search js-shuffle-search" type="search" id="filters-search-input" />
+            </div>
         </div>
-
-        <div class="input-field col s6 m6 l6">
-            <select>
-                <option value="" disabled selected>Trier par : </option>
-                <option value="1">Prix croissant</option>
-                <option value="2">Prix décroissant</option>
-                <option value="3">Catégories</option>
-            </select>
-        </div>
-
-
-
     </div>
-</div>
 
-
-<div class="container product">
-    <div class="row">
+    <div class="row filters-group-wrap valign-wrapper">
+            <div class="col l5 offset-l1 filters-group">
+                <p class="filter-label">Filtrer par :</p>
+                <div class="btn-group filter-options">
+                    @foreach ($categories as $category)
+                        <button class="btn waves-effect" data-group="{{$category->name}}">{{$category->name}}</button>
+                    @endforeach
+                </div>
+            </div>
+    
+            <div class="col l5 filters-group">
+                <p class="filter-label">Trier par : </p>
+                <div class="btn-group sort-options">
+                    <label class="btn waves-effect active">
+                    <input type="radio" name="sort-value" value="dom" checked />Défaut</label>
+                    <label class="btn waves-effect">
+                    <input type="radio" name="sort-value" value="title" />Nom</label>
+                    <label class="btn waves-effect">
+                    <input type="radio" name="sort-value" value="date-created" />Date</label>
+                    <label class="btn waves-effect">
+                    <input type="radio" name="sort-value" value="price" />Prix</label>
+                </div>
+            </div>
+        </div>
+    
+<div id="azerty" class="row">
+    <div id="grid" class="col s10 offset-s1 my-shuffle-container">
         @foreach ($products as $product) {{-- Pour tous les produits --}}
 
         @if($connected == true)
         @if($user->hasRole('Admin') || $product->hide == 0)
-        <div class="col s12 m6 l4">
-            <div class="card hoverable ">
-                <div class="card-image ">
-                    <img class="img-product" src="/storage/{{$product->picture->link}}">
+        <div class="col s12 m6 l4 picture-item" data-groups="[&quot;{{$product->categoryName()}}&quot;]" data-date-created="2017-04-30" data-price="{{$product->price}}" data-title="{{$product->name}}">
+            <div class="card hoverable picture-item__inner">
+                <div class="card-image aspect__inner">
+                    <img class="img-product aspect__inner" src="/storage/{{$product->picture->link}}">
                     <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger open" data-id="Album" href="#modal{{$product->id}}"><i
                         class="material-icons">add</i></a>
                 </div>
-                <div class="card-content card-height">
-                    <span class="card-title black-text">{{$product->name}}</span>
-                    <div class="row">
-                        <div class="col s10 m10 l9">
-                            <p>{{$product->description}}
-                            </p>
+                <div class="card-content card-height picture-item__details">
+                    <div class="picture-item__title">
+                        <span class="card-title black-text">{{$product->name}}</span>
+                        <div class="row">
+                            <div class="col s10 m10 l9">
+                                <p>{{$product->description}}
+                                </p>
+                            </div>
+                            <div class="col s2 m2 l3">
+                                <h6>{{$product->price}} €</h6>
+                            </div>
                         </div>
-                        <div class="col s2 m2 l3">
-                            <h6>{{$product->price}} €</h6>
+                        @if($user->hasRole('Admin'))
+                        <div class="row">
+                          <a class="waves-effect waves-dark btn btn-event" href="/product/{{$product->id}}/edit"> ✏️</a>
                         </div>
+                        @endif
+                        @if($product->hide == 1)
+                        <div class="row">
+                          <p style="color : red">Produit indisponible</p>
+                        </div>
+                        @endif
+                        @if($product->hide == 0 && $user->hasRole('Admin'))
+                        <div class="row">
+                          <p style="color : green" >Produit disponible</p>
+                        </div>
+                        @endif
                     </div>
-                    @if($user->hasRole('Admin'))
-                    <div class="row">
-                      <a class="waves-effect waves-dark btn btn-event" href="/product/{{$product->id}}/edit"> ✏️</a>
-                    </div>
-                    @endif
-                    @if($product->hide == 1)
-                    <div class="row">
-                      <p style="color : red">Produit indisponible</p>
-                    </div>
-                    @endif
-                    @if($product->hide == 0 && $user->hasRole('Admin'))
-                    <div class="row">
-                      <p style="color : green" >Produit disponible</p>
-                    </div>
-                    @endif
                 </div>
             </div>
         </div>
@@ -116,7 +133,6 @@ if(session()->has('user'))
 
                         <form class="col s10" method="post" action="/order/{{$cart->id}}" id="cart_form">
                         @endif
-
 
                             @csrf
                             <input type="hidden" name="_method" value="put">
@@ -171,24 +187,12 @@ if(session()->has('user'))
     </div>
     @endif
 
-
-{{-- pagination --}}
-<div class="container center-align" id="pagination">
-    <ul class="pagination">
-        <li class="disabled"><a href="#!"><i class="material-icons color-blue">chevron_left</i></a></li>
-        <li class="active"><a href="#!">1</a></li>
-        <li class="waves-effect"><a href="#!">2</a></li>
-        <li class="waves-effect"><a href="#!">3</a></li>
-        <li class="waves-effect"><a href="#!">4</a></li>
-        <li class="waves-effect"><a href="#!">5</a></li>
-        <li class="waves-effect"><a href="#!"><i class="material-icons color-blue">chevron_right</i></a></li>
-    </ul>
-</div>
-
 </section>
+<script src="/js/mainshuffle.js"></script>
 @endsection
 
 @section('scripts')
+
 <script>
     $('.chips-placeholder').chips({
     placeholder: 'Rechercher',
