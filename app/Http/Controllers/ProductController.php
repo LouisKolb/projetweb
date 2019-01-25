@@ -153,7 +153,19 @@ class ProductController extends Controller
      */
     public function edit(product $product)
     {
-        return view('product.edit',compact('product'));
+      if(!session()->has('user'))
+      {
+          return redirect("/product");
+      }
+
+      $user = user::find(session()->get('user')[0]);
+
+      if (!$user->hasRole('admin'))
+      {
+        return redirect("/product");
+      }
+
+      return view('product.edit',compact('product'));
     }
 
     /**
@@ -192,6 +204,8 @@ class ProductController extends Controller
        if(!session()->has('user')){
            array_push($errors,"Vous devez etre connecté pour ajouter un produit");
        }
+
+
 
        if(empty(request()->price) || empty(request()->description) ){
            array_push($errors,"Merci de compléter tout les champs!");

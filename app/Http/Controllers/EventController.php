@@ -77,6 +77,18 @@ class EventController extends Controller
 
     public function accept($id){
       //place errors inside an array
+      if(!session()->has('user'))
+      {
+          return redirect("/product");
+      }
+
+      $user = user::find(session()->get('user')[0]);
+
+      if (!$user->hasRole('admin'))
+      {
+        return redirect("/product");
+      }
+
       $errors = array();
 
       if ($errors) {
