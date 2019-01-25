@@ -415,7 +415,7 @@ class EventController extends Controller
             array_push($errors,"Merci de remplir tour les camps");
         }else{
             $event=event::find(request()->event);
-            if(!$event->validate){
+            if(!$event->statut){
                 array_push($errors,"Vous ne pouvez pas poster de photos sur les idées d'evenements"); 
             }
         }
