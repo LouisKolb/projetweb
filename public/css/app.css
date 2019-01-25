@@ -458,7 +458,7 @@ a:focus{
     background: #ffc252;
 }
 
-.active {
+.shuffleactive {
     color: #ffc252 !important;
     background: black !important;
 }

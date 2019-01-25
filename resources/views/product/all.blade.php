@@ -52,7 +52,7 @@ if(session()->has('user'))
             <div class="col l5 filters-group">
                 <p class="filter-label">Trier par : </p>
                 <div class="btn-group sort-options">
-                    <label class="btn waves-effect active">
+                    <label class="btn waves-effect shuffleactive">
                     <input type="radio" name="sort-value" value="dom" checked />Défaut</label>
                     <label class="btn waves-effect">
                     <input type="radio" name="sort-value" value="title" />Nom</label>
