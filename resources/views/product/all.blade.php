@@ -48,7 +48,7 @@ if(session()->has('user'))
                     @endforeach
                 </div>
             </div>
-    
+
             <div class="col l5 filters-group">
                 <p class="filter-label">Trier par : </p>
                 <div class="btn-group sort-options">
@@ -63,14 +63,13 @@ if(session()->has('user'))
                 </div>
             </div>
         </div>
-    
+
 <div id="azerty" class="row">
     <div id="grid" class="col s10 offset-s1 my-shuffle-container">
         @foreach ($products as $product) {{-- Pour tous les produits --}}
 
-        @if($connected == true)
-        @if($user->hasRole('Admin') || $product->hide == 0)
-    <div class="col s12 m6 l4 picture-item" data-groups="[&quot;{{$product->categoryName()}}&quot;]" data-date-created="{{$product->created_at}}" data-price="{{$product->price}}" data-title="{{$product->name}}">
+        @if($product->hide == 0)
+        <div class="col s12 m6 l4 picture-item" data-groups="[&quot;{{$product->categoryName()}}&quot;]" data-date-created="2017-04-30" data-price="{{$product->price}}" data-title="{{$product->name}}">
             <div class="card hoverable picture-item__inner">
                 <div class="card-image aspect__inner">
                     <img class="img-product aspect__inner" src="/storage/{{$product->picture->link}}">
@@ -89,20 +88,24 @@ if(session()->has('user'))
                                 <h6>{{$product->price}} €</h6>
                             </div>
                         </div>
+                        @if($connected)
                         @if($user->hasRole('Admin'))
                         <div class="row">
                           <a class="waves-effect waves-dark btn btn-event" href="/product/{{$product->id}}/edit"> ✏️</a>
                         </div>
+                        @endif
                         @endif
                         @if($product->hide == 1)
                         <div class="row">
                           <p style="color : red">Produit indisponible</p>
                         </div>
                         @endif
+                        @if($connected)
                         @if($product->hide == 0 && $user->hasRole('Admin'))
                         <div class="row">
                           <p style="color : green" >Produit disponible</p>
                         </div>
+                        @endif
                         @endif
                     </div>
                 </div>
@@ -169,7 +172,6 @@ if(session()->has('user'))
             {{-- end modal --}}
 
         </div>
-        @endif
         @endif
         {{-- End pour tout les produits --}} @endforeach
     </div>
