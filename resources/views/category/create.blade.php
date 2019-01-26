@@ -7,7 +7,7 @@
         <div class="container white-text">
             <div class="row">
                 <div class="col s12">
-                    <h5>Lorem ipsum</h5>
+                    <h5>Création de catégorie</h5>
                 </div>
             </div>
         </div>
