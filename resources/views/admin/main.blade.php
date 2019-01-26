@@ -1,4 +1,12 @@
 @extends('layout.master') 
+
+@section('additionalheader')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script   src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+@endsection
+
+
+
 @section('content')
 <section id="section">
     <div class="parallax-container center valign-wrapper border-down">
@@ -27,7 +35,7 @@
                 <tr>
                     <th>Nom</th>
                     <th>Description</th>
-                    <th>Prix</th>
+                    <th>Prix €</th>
                     <th>Caché</th>
                 </tr>
             </thead>
