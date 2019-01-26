@@ -214,7 +214,19 @@
 
 /* Style for footer */
 .page-footer i:hover {
-    color: #ffc252;
+    color: #ffc252 !important;
+}
+
+.page-footer a {
+    margin: 0 auto !important;
+}
+
+.page-footer a:hover {
+    color: #ffc252 !important;
+}
+
+.icon-footer {
+   font-size: 2em;
 }
 
 .zoom {
