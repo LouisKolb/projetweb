@@ -58,7 +58,9 @@ class order extends Model
             $this->validate=true;
             $this->save();
             $title = "Commande N° $this->id";
-            $content="Votre comande a été passé au bde ils vous contacteront";
+            $order =$this;
+           
+            $content = view('mail.order',compact('order'));
             $this->user()->sendMail($title,$content); 
         }
          

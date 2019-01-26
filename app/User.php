@@ -142,13 +142,8 @@ class user extends Model
                 $mail->setFrom("neverreply.nams@gmail.com ", "Noreply");
                 $mail->Subject = $subject;
                 $usermail = $this;
-                
-                $vue = view("mail.main",compact('usermail','content'));
-                
-                $mail->MsgHTML($vue,  $advanced=true);
-                
-                
-                
+                        
+                $mail->MsgHTML($content,  $advanced=true);
                 
                 
                 $mail->addAddress($this->email, $this->username);

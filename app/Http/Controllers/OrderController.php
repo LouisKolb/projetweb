@@ -120,7 +120,7 @@ class OrderController extends Controller
             $connected=true;
             $cart = $user->cart();
             $cart->purchase();
-            echo "Ca yest";
+            
         }else{
             return redirect()->back();
         }
