@@ -32,6 +32,50 @@ class user extends Model
 
     }
 
+
+    public static function get()
+    {
+        $client = new Client(); //GuzzleHttp\Client
+        $token = 'L4CduC0neM4raB45580o5TeD';
+        $result = $response = $client->get("localhost:3000/user/show/$token");
+
+        $result = json_decode($result->getBody(), true);
+        $users = array();
+        foreach ($result as $person) {
+            $user = new user();
+            $user->id = $person['id'];
+            $user->username = $person['username'];
+            $user->last_name = $person['last_name'];
+            $user->first_name = $person['first_name'];
+            $user->email = $person['email'];
+            $user->mailtoken = $person['mailtoken'];
+            array_push($users,$user);
+            
+        }
+
+        return $users;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function roles()
     {
         return $this->belongsToMany('App\Role', 'role_user');
