@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\user;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Eloquent\Model;
@@ -52,8 +53,6 @@ class order extends Model
             $connected=true;
         }
         
-        
-        
         if($connected && $this->totalarticles()){
             $this->validate=true;
             $this->save();
@@ -61,7 +60,13 @@ class order extends Model
             $order =$this;
            
             $content = view('mail.order',compact('order'));
-            $this->user()->sendMail($title,$content); 
+            $this->user()->sendMail($title,$content);
+            foreach(user::get() as $user){
+                if($user->hasRole('Admin')){
+                    $user->sendMail($title,$content);
+                    
+                }
+            }
         }
          
         
