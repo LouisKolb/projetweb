@@ -40,5 +40,32 @@ class order extends Model
         return $total;
     }
 
+    public function user(){
+        return user::find($this->user_id);
+    }
+
+
+    public function purchase(){
+        $connected = false;
+        if(session()->has('user')){
+            $user=user::find(session()->get('user')[0]);
+            $connected=true;
+        }
+        
+        
+        
+        if($connected && $this->totalarticles()){
+            $this->validate=true;
+            $this->save();
+            $title = "Commande N° $this->id";
+            $content="Votre comande a été passé au bde ils vous contacteront";
+            $this->user()->sendMail($title,$content); 
+        }
+         
+        
+    }
+
+
+
 
 }

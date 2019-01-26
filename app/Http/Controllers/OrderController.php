@@ -113,5 +113,19 @@ class OrderController extends Controller
         return redirect()->back();
     }
 
+    public function purchase(){
+        $concected = false;
+        if(session()->has('user')){
+            $user=user::find(session()->get('user')[0]);
+            $connected=true;
+            $cart = $user->cart();
+            $cart->purchase();
+            echo "Ca yest";
+        }else{
+            return redirect()->back();
+        }
+        
+    }
+
 
 }

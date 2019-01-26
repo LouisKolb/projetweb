@@ -98,9 +98,12 @@
             <h6>Nombres articles : {{$cart->totalarticles()}}</h6>
         </div>
         <div class="col s6 m6 l6">
-            <button class="btn waves-effect waves-light bg-blue" type="submit" name="action">
-                Passer la commande (en construction)
-            </button>
+            <a href="/order/purchase">
+                <button class="btn waves-effect waves-light bg-blue" type="submit" name="action">
+                    Passer la commande (en construction)
+                </button>
+                
+            </a>
         </div>
     </div>
 
@@ -108,15 +111,7 @@
         <div class="col s6 m6 l6">
             <h6>Total : {{$cart->price()}} €</h6>
         </div>
-        {{-- <div class="col s6 m6 l6">
-            <button class="btn waves-effect waves-light bg-blue" type="submit" name="action">
-                Retour
-            </button>
-            <button class="btn waves-effect waves-light bg-blue" type="submit" name="supprimer">
-                Supprimer
-            </button>
-
-        </div> --}}
+        
     </div>
 
     @endif

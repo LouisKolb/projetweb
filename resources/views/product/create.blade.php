@@ -43,6 +43,7 @@
 				</select>
 			<label>Catégorie</label>
 		</div>
+		<p>Pour créer une catégorie cliquez <a href="/category/create">ici</a><p>
 
 		<label>Image de présentation</label>
 		<div class="file-field input-field">

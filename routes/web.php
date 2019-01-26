@@ -61,9 +61,10 @@ Route::post('/product','ProductController@store');
 Route::delete('/product/{product}','ProductController@delete');
 Route::get('/product/{product}/edit','ProductController@edit');
 Route::put('/product/{product}','ProductController@update');
+Route::get('/category/create','CategoryController@create');
+Route::post('/category','CategoryController@store');
 
-
-
+Route::get('/order/purchase','OrderController@purchase');
 Route::put('/order/{order}','OrderController@update');
 Route::delete('/order/{product}','OrderController@deletefromcart');
 
