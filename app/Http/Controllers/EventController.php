@@ -23,6 +23,25 @@ class EventController extends Controller
     {
       //order by date validated events
       $events= event::where('statut',1)->orderBy('date','asc')->get();
+      $today = date('Y-m-d');
+      $modif = false;
+      foreach ($events as $event) {
+          if($event->recurency() && $event->date < $today){
+              $date = new \DateTime($event->date);
+              $recurency=$event->recurency();
+              $date->modify("+$recurency day");
+              $event->date=$date;
+              $event->save();
+              $modif=true;
+          }
+      }
+      if($modif){
+        $events= event::where('statut',1)->orderBy('date','asc')->get();
+      }
+
+
+
+
       return view("event.all",compact('events'));
     }
 
@@ -69,6 +88,7 @@ class EventController extends Controller
        }
 
        //cath the event id and delete it
+       $event->removeRecurency();
        $event = Event::destroy($id);
        return redirect('/event');
 
@@ -160,7 +180,7 @@ class EventController extends Controller
       }
 
       //error if one of fields belows is not completed
-      if(empty(request()->name)|| empty(request()->date) || empty($file) || empty(request()->description) || empty(request()->recurrence) ){
+      if(empty(request()->name)|| empty(request()->date) || empty($file) || empty(request()->description) || empty(request()->recurency) ){
           array_push($errors,"Merci de compléter tout les champs et de poster une image ");
       }
 
@@ -188,44 +208,42 @@ class EventController extends Controller
 
        //print the error in event create page
        if (sizeof($errors)) {
-        return redirect('event/create')->withErrors($errors)->withInput();
+        return redirect('event/create')->withErrors($errors)->withInput(request()->input());
        }
 
        //check if the event need to be directly validate
-       $stat = 0;
-       foreach(request()->all() as $key => $value){
-         if ($key == 'direct')
-         {
-           if ($value == '1') {
-             $stat = 1;
+       $statut = 0;
+       $user= user::find(session()->get('user')[0]);
+       if($user->hasRole('admin')){
+           if(!empty(request()->direct)){
+               $statut=1;
            }
-         }
+           
+       }else{
+           array_push($errors,"Vous n'etes pas Admin");
+            return redirect('event/create')->withErrors($errors)->withInput(request()->input());
        }
+
 
        //create a new event object
         $event = new Event();
 
-        //check the keys
-        foreach(request()->all() as $key => $value){
-          //if the recurrence key exist return the value to the object
-          if ($key == 'recurrence') {
-            $event->recurrence = $value;
-          }
-          //same with price
-          if ($key == 'price') {
-            $event->price = $value;
-          }
-        }
+        //add price and recurrency
+        
+        $event->price =request()->price;
+
+
+    
 
         //complete the field with the data
         $event->name = request()->name;
         $event->user_id = session()->get('user')[0];
         $event->description = request()->description;
         $event->date = request()->date;
-        $event->statut = $stat;
+        $event->statut = $statut;
         //save all
         $event->save();
-
+        $event->addRecurency(request()->recurency);
 
         //store the picture
         $path = request()->image->store('/public/pictures');
@@ -238,10 +256,7 @@ class EventController extends Controller
         $image->link= $path;
         $image->save();
 
-        //link of the picture
-        $image=picture::where('link',$path)->first();
-        //order
-        $event=event::orderBy('id','desc')->first();
+        
         //add picture to an event
         $event->addPicture($image->id);
         //go to event idea
@@ -284,27 +299,7 @@ class EventController extends Controller
      //update an event
     public function update(event $event)
     {
-      foreach(request()->all() as $key => $value){
-        //if the user delete the picture
-        if ($value == 'on')
-        {
-          $picture = picture::find($key);
-          //delete the file of the picture
-          foreach ($event->pictures as $p) {
-            if($p->id==$key){
-              $thefile = $p->link;
-              $delfile = str_replace("pictures/","","$thefile");
-              unlink(storage_path('app\public\pictures\\'.$delfile));
-            }
-          }
-
-          //delete the picture link from the table
-          DB::table('event_picture')->where('picture_id', $key)->where('event_id',$event->id)->delete();
-            //delete
-            $picture->delete();
-        }
-
-      }
+      
       //Same as the function store
       $event->id;
       $errors = array();
@@ -317,10 +312,15 @@ class EventController extends Controller
 
       if(!session()->has('user')){
           array_push($errors,"Vous devez etre connecté pout proposer un éventment");
+      }else{
+          $user = user::find(session()->get('user')[0]);
+          if(!$user->hasRole('admin')){
+            array_push($errors,"Vous n'avez pas la permission d'editer cet evenement");
+          }
       }
 
 
-      if(empty(request()->name)|| empty(request()->date) || empty(request()->description) || empty(request()->recurrence) ){
+      if(empty(request()->name)|| empty(request()->date) || empty(request()->description) || empty(request()->recurency) ){
           array_push($errors,"Merci de compléter tout les champs et de poster une image ");
       }
 
@@ -335,36 +335,39 @@ class EventController extends Controller
            if($size > 5242880){
                 array_push($errors, "La date ne peut pas être antérieur à aujourd'hui");
             }
-
             $ext = $file->getClientOriginalExtension();
             if(!preg_match('/(jpg|jpeg|gif|png)/',$ext)){
 
                array_push($errors,'Seuls les gif png , jpg ou kpeg sont acceptés');
             }
-
-
-
-
        }
-
-
 
        if (sizeof($errors)) {
 
         return redirect("event/{$event->id}/edit")->withErrors($errors)->withInput();
        }
 
-
-
-        // $event = new Event();
-        foreach(request()->all() as $key => $value){
-          if ($key == 'recurrence') {
-            $event->recurrence = $value;
-          }
-          if ($key == 'price') {
-            $event->price = $value;
-          }
+       foreach (request()->all() as $key => $value) {
+            //if the user delete the picture
+            if ($value == 'on') {
+                $picture = picture::find($key);
+                //delete the file of the picture
+                foreach ($event->pictures as $p) {
+                    if ($p->id == $key) {
+                        $p->removeFromStorage(); //remove from storage
+                        DB::table('event_picture')->where('picture_id', $key)->where('event_id', $event->id)->delete(); //remove link schema
+                        $p->delete(); //delete picture in db
+                    }
+                }
+            }
         }
+
+
+
+
+      
+
+        $event->price=request()->price;
         $event->name = request()->name;
         $event->user_id = session()->get('user')[0];
         $event->description = request()->description;
@@ -373,6 +376,8 @@ class EventController extends Controller
         $event->statut = 0;
 
         $event->save();
+        $event->removeRecurency();
+        $event->addRecurency(request()->recurency);
 
 
         //store the picture

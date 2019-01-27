@@ -26,35 +26,35 @@ $connected = false; if(session()->has('user')){
         @csrf
         <div class="row">
             <div class="input-field">
-                <input id="name" type="text" class="validate" name="name" data-length="50">
+                <input id="name" type="text" class="validate" name="name" data-length="50" value="{{old('name')}}"">
                 <label for="name">Nom de l'événement</label>
             </div>
             <div class="input-field">
-                <textarea id="description" class="validate materialize-textarea" name="description" data-length="500"></textarea>
+                <textarea id="description" class="validate materialize-textarea" name="description" data-length="500" value="{{old('description')}}"></textarea>
                 <label for="description">Description de l'événement</label>
             </div>
 
             <div class="input-field">
-                <input id="date" type="text" class="validate datepicker" name="date">
+                <input id="date" type="text" class="validate datepicker" name="date" value="{{old('date')}}">
                 <label for="date">Date de l'événement</label>
             </div>
             <label>Image de présentation</label>
             <div class="file-field input-field">
                 <div class="btn">
                     <span>Rechercher</span>
-                    <input type="file" name="image" />
+                    <input type="file" name="image" {{old('image')}}/>
                 </div>
 
                 <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" name="imagetext" placeholder="Importer un fichier" />
+                    <input class="file-path validate" type="text" name="imagetext" placeholder="Importer un fichier" value="{{old('imagetext')}}" />
                 </div>
             </div>
             <div>
-              <select name="recurrence">
-                  <option value="Aucune" selected>Pas de récurence</option>
-                  <option value="toutes les semaines">Toutes les semaines</option>
-                  <option value="tous les mois" >Tous les mois</option>
-                  <option value="tous les ans" >Tous les ans</option>
+              <select name="recurency" value="{{old('recurency')}}">
+                  <option value="0" selected>Pas de récurence</option>
+                  <option value="7">Toutes les semaines</option>
+                  <option value="28" >Tous les mois</option>
+                  <option value="364" >Tous les ans</option>
               </select>
             <label>Récurence</label>
             <div class="input-field">

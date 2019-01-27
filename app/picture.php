@@ -24,4 +24,12 @@ class picture extends Model
         
         return $counter;
     }
+
+    public function removeFromStorage(){
+        $thefile = $this->link;
+        $delfile = str_replace("pictures/","","$thefile");
+        unlink(storage_path('app\public\pictures\\'.$delfile));
+    }
+
+
 }

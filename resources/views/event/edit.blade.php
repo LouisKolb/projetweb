@@ -65,11 +65,14 @@ if(session()->has('user'))
                     </div>
 
                     <div>
-                      <select name="recurrence">
-                          <option value="Aucune" @if($event->recurrence=="Aucune") selected @endif >Pas de récurence</option>
-                          <option value="toutes les semaines" @if($event->recurrence=="toutes les semaines") selected @endif >Toutes les semaines</option>
-                          <option value="tous les mois" @if($event->recurrence=="tous les mois") selected @endif >Tous les mois</option>
-                          <option value="tous les ans" @if($event->recurrence=="tous les ans") selected @endif >Tous les ans</option>
+                        @php
+                            $r = $event->recurency();
+                        @endphp
+                      <select name="recurency">
+                          <option value="0" @if($r==0) selected @endif>Pas de récurence</option>
+                          <option value="7"@if($r==7) selected @endif>Toutes les semaines</option>
+                          <option value="28" @if($r==28) selected @endif>Tous les mois</option>
+                          <option value="364" @if($r==364) selected @endif>Tous les ans</option>
                       </select>
                     <label>Récurence</label>
                     <div class="input-field">
