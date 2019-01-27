@@ -101,6 +101,13 @@ class EventController extends Controller
       $event = Event::find($id);
       //turn the boolean to true if the event is validate (1 for true)
       $event->statut=1;
+      
+      $user = user::find($event->user_id);
+      $content = view('mail.validevent',compact('event','user'));
+      $user->sendMail('Idée acceptée',$content);
+      
+      
+      
       //save
       $event->save();
       //return to the event page
