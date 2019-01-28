@@ -240,10 +240,8 @@
                 </li>
             </ul>
         </div>
-    </div>
-
-
     @endforeach
+    </div>
 </section>
 @endsection
  
