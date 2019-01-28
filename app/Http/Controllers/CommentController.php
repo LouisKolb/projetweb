@@ -103,7 +103,7 @@ class CommentController extends Controller
 
     public function signal(){
         $title = "Signalement";
-        $link = 'http://localhost:8000/coment/'.$this->id;
+        $link = 'http://localhost:8000/comment/'.$this->id;
         $content =view('mail.signal',compact('link'));
         
         foreach(user::get() as $user){

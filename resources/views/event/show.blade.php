@@ -1,6 +1,11 @@
 @extends('layout.master') 
-@section('content') @php $connected = false; if(session()->has('user')) { $connected = true; $user
-= App\user::find(session()->get('user')[0]); } $creator = App\user::find($event->user_id); 
+@section('content') @php $connected = false; 
+if(session()->has('user')) { 
+    $connected = true; 
+    $user= App\user::find(session()->get('user')[0]); 
+} 
+    
+    $creator = App\user::find($event->user_id); 
 @endphp
 
 
@@ -124,62 +129,47 @@
 
     <div class="row">
         @foreach ($event->pictures as $picture)
-        <div class="col s12 l6 center-align">
-
-
-
-
-            <ul class="collapsible">
-                <li>
+            <div class="col s12 l6 center-align">
+                <ul class="collapsible">
+                    <li>
                     {{-- Collapside with comment --}}
-                    <div class="collapsible-header">
-                        <div class="row remove-marge-bot">
-                            <div class="col s12 ">
-                                <img class="circle responsive-img profile-pic" src="https://www.numerama.com/content/uploads/2018/05/slider-facebook-new-profile.jpg"
-                                    alt="User's avatar">
+                        <div class="collapsible-header">
+                            <div class="row remove-marge-bot">
+                                <div class="col s12 ">
+                                    <img class="circle responsive-img profile-pic" src="https://www.numerama.com/content/uploads/2018/05/slider-facebook-new-profile.jpg"
+                                        alt="User's avatar">
+                                </div>
+                            </div>
+                            <div class="col s1n2 left-alig">
+                                @php $pictureuser = App\user::find($picture->user_id) @endphp
+                                <p>{{$pictureuser->first_name}} {{$pictureuser->last_name}}</p>
                             </div>
                         </div>
-                        <div class="col s1n2 left-alig">
-                            @php $pictureuser = App\user::find($picture->user_id) @endphp
-                            <p>{{$pictureuser->first_name}} {{$pictureuser->last_name}}</p>
-                        </div>
-                    </div>
-                    <div class="collapsible-header test">
-                        <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}" alt="Comment picture">                        @if ($connected) {{-- Like button --}}
-                        <form action="/picture/{{$picture->id}}/like" class="like">
+                        <div class="collapsible-header test">
+                            <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}" alt="Comment picture">
 
-                        <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}">
+                            @if ($connected)
+                                {{-- Like button --}}
+                                <form action="/picture/{{$picture->id}}/like" class="like">
 
+                                        <i   class="likebtn @if($user->haveLikedPicture($picture->id)) fas @else far @endif fa-heart" style="color:red"></i>
 
-                        @if ($connected)
-                            {{-- Like button --}}
-                            <form action="/picture/{{$picture->id}}/like" class="like">
-
-                                    <i   class="likebtn @if($user->haveLikedPicture($picture->id)) fas @else far @endif fa-heart" style="color:red"></i>
-
-                                {{--End like button--}}
-                            </form>
-                            @if($user->hasRole('admin'))
-                                
-
-                                <a href="/picture/{{$picture->id}}/signal"><i class="signal fas fa-exclamation"></a></i>
-
+                                    {{--End like button--}}
+                                </form>
+                                @if($user->hasRole('admin'))
                                     
-                               
+
+                                    <a href="/picture/{{$picture->id}}/signal"><i class="signal fas fa-exclamation"></a></i>
+                                @endif
+
+                            @else
+                                <p>Vous devez etre conecté pour liker déja</p>
                             @endif
 
-
-
-
-
-                        @else
-                        <p>Vous devez etre conecté pour liker déja</p>
-                        @endif
-
-                        <div class="show-event">
-                            <i class="fas fa-chevron-down"></i>
+                            <div class="show-event">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
                         </div>
-                    </div>
                     <div class="collapsible-body">
                         {{-- Input to write a comment --}} @if ($connected) {{-- Write a comment --}}
                         <form action="/comment" method="POST">
@@ -248,7 +238,7 @@
                                         </div>
                                         <div class="col s6 right-align">
                                             <a class="waves-effect waves-light btn"><i class="fas fa-exclamation-triangle"></i></a>
-                                            <a class="waves-effect waves-light btn"><i class="fas fa-ban"></i></a>
+                                            <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/signal"><i class="fas fa-ban"></i></a>
                                         </div>
                                     </div>
                                 </div>
