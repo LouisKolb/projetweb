@@ -3,7 +3,7 @@
 if(session()->has('user')) { 
     $connected = true; 
     $user= App\user::find(session()->get('user')[0]); 
-    } 
+} 
     $creator = App\user::find($event->user_id); 
 @endphp
 
@@ -56,12 +56,13 @@ if(session()->has('user')) {
         </div>
         <div class="col s12 center-align">
             {{-- Open a modal to add image if you were present on the event --}} 
-            @if($event->date<now() && $connected && $user->hasSubscribedToEvent($event->id))
+            @if($event->date<now() && $connected)
+                 @if($user->hasSubscribedToEvent($event->id))
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement</a>                @elseif($connected)
                 <form action="/event/{{$event->id}}/subscribe" method="POST">
                     @csrf
                     <button class="waves-effect waves-dark btn" type="submit">
-                            @if (App\user::find(session()->get('user')[0])->hasSubscribedToEvent($event->id))
+                            @if ($user)->hasSubscribedToEvent($event->id))
                                 Se désinscrire
                             @else
                                 S'inscrire
@@ -70,14 +71,16 @@ if(session()->has('user')) {
                     </button>
                 </form>
                 @if($user->hasRole('Admin'))
-                <form action="/event/{{$event->id}}/pdf" method="GET">
-                    @csrf
-                    <button class="waves-effect waves-dark btn" type="submit">
-                        Télécharger la liste des inscrits
-                        <i class="fas fa-download right"></i>
-                    </button>
-                </form>
-                @endif @else
+                    <form action="/event/{{$event->id}}/pdf" method="GET">
+                        @csrf
+                        <button class="waves-effect waves-dark btn" type="submit">
+                            Télécharger la liste des inscrits
+                            <i class="fas fa-download right"></i>
+                        </button>
+                    </form>
+                @endif 
+                @endif
+            @else
                 <a href="/login" class="waves-effect waves-dark btn">Vous devez être connecté pour vous inscrire</a> @endif
                 @if (count($errors) > 0)
                 <div class="card-panel red lighten-5 login_waper">
