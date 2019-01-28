@@ -171,8 +171,8 @@ $connected = false; if(session()->has('user')){
 <!-- Social network bar -->
     <div class="icon-bar">
         <a class="facebook" href="https://www.facebook.com/BdeExiaStrasbourg/" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="instagram" href="https://twitter.com/BdeExiaStrg" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+        <a class="instagram" href="https://twitter.com/BdeExiaStrg" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a class="twitter"><i class="fab fa-twitter"></i></a>
     </div>
 
 
