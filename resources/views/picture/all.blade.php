@@ -7,7 +7,7 @@ $connected = false; if(session()->has('user')){
 }
 @endphp
 <div class="parallax-container center valign-wrapper borderdown">
-    <div class="parallax"><img src="/image/background.jpg">
+    <div class="parallax"><img src="/image/background.jpg" alt="Parallax brackground">
     </div>
     <div class="container white-text">
         <div class="row">
@@ -41,7 +41,7 @@ $connected = false; if(session()->has('user')){
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
-                        <a href="/picture/{{$p->id}}"><img src="/storage/{{$p->link}}"></a>
+                        <a href="/picture/{{$p->id}}"><img src="/storage/{{$p->link}}" alt="Picture from the site"></a>
                         <p>Nombres de likes : {{$p->likeCount()}}</p>
                     </div>
                 </div>

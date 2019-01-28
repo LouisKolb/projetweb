@@ -1,7 +1,7 @@
 @extends('layout.master') 
 @section('content')
 <div class="parallax-container center valign-wrapper borderdown">
-    <div class="parallax"><img src="/image/background.jpg">
+    <div class="parallax"><img src="/image/background.jpg" alt="Parallax background">
     </div>
     <div class="container white-text">
         <div class="row">
@@ -16,24 +16,20 @@
         <div class="col s12 m10 offset-m1 l8 offset-l2">
             <div class="card">
                 <div class="card-image">
-                    <img src="/storage/{{$picture->link}}">
+                    <img src="/storage/{{$picture->link}}" alt="Event's picture">
                 </div>
                 <div class="card-action">
                     <a class="waves-effect waves-light btn btn-social"><i class="far fa-heart"></i></a>
                 </div>
                 {{-- Comment section --}}
-                <div class="card-action">
-                    
+                <div class="card-action"> 
                     @php
                         $connected = session()->has('user');
                         if($connected){
                             $user = App\user::find(session()->get('user')[0]);
                         }
                     @endphp
-                    
-
                     @if ($connected)
-                        
                     {{-- Write a comment --}}
                     <form action="/comment" method="POST">
                         @csrf
@@ -45,7 +41,7 @@
                                     {{-- User actually conected profile --}}
                                     <div class="row remove-marge-bot">
                                         <div class="col s4 m2 l1">
-                                            <img src="/image/simon.jpg" class="circle responsive-img">
+                                            <img src="/image/simon.jpg" class="circle responsive-img" alt="User's avatar">
                                         </div>
                                         <div class="col s8 m10 l11">
                                             <div class="row">
@@ -71,10 +67,6 @@
                     </form>
                     
                     @endif
-                    
-
-
-
                     {{-- Others comments --}}
                     @foreach ($picture->comments as $comment)
                         @php
@@ -87,7 +79,7 @@
                                     <div class="row">
                                         {{-- User's profile who comment in last --}}
                                         <div class="col s4 m2 l1">
-                                            <img src="/image/simon.jpg" class="circle responsive-img">
+                                            <img src="/image/simon.jpg" class="circle responsive-img" alt="User's avatar">
                                         </div>
                                         <div class="col s8 m10 l11">
                                             <div class="s12 left">
