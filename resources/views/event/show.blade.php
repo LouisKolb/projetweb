@@ -88,9 +88,7 @@ if(session()->has('user')) {
                         </form>
                 @endif
             @endif
-           
-                
-                
+               
             
                 @if (count($errors) > 0)
                 <div class="card-panel red lighten-5 login_waper">
@@ -238,9 +236,8 @@ if(session()->has('user')) {
                                         </div>
                                     </div>
                                 </div>
-                              </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
                 </li>
             </ul>
