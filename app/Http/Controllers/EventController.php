@@ -180,8 +180,9 @@ class EventController extends Controller
       }
 
       //error if one of fields belows is not completed
-      if(empty(request()->name)|| empty(request()->date) || empty($file) || empty(request()->description) || empty(request()->recurency) ){
+      if(empty(request()->name)|| empty(request()->date) || empty($file) || empty(request()->description) || request()->recurency  <0 ){
           array_push($errors,"Merci de compléter tout les champs et de poster une image ");
+
       }
 
       //error if the date given by the user is outdated
@@ -214,15 +215,20 @@ class EventController extends Controller
        //check if the event need to be directly validate
        $statut = 0;
        $user= user::find(session()->get('user')[0]);
-       if($user->hasRole('admin')){
-           if(!empty(request()->direct)){
-               $statut=1;
-           }
+       
+
+       if (!empty(request()->direct)) {
+            $statut = 1;
+            if (!$user->hasRole('admin')) {
+                array_push($errors, "Vous n'etes pas Admin");
+                return redirect('event/create')->withErrors($errors)->withInput(request()->input());
+            }
+        }
+
+       
            
-       }else{
-           array_push($errors,"Vous n'etes pas Admin");
-            return redirect('event/create')->withErrors($errors)->withInput(request()->input());
-       }
+           
+       
 
 
        //create a new event object
