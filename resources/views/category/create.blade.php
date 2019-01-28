@@ -1,8 +1,9 @@
 @extends('layout.master') 
 @section('content')
-<section id="section">
+{{-- Parallax header --}}
+<section>
     <div class="parallax-container center valign-wrapper border-down">
-        <div class="parallax"><img src="/image/info.jpg">
+        <div class="parallax"><img src="/image/info.jpg" alt="background-parallax">
         </div>
         <div class="container white-text">
             <div class="row">
@@ -14,7 +15,10 @@
     </div>
 </section>
 
+{{-- Add new category --}}
 <section class="container center">
+    <h5 class>Ajouter une nouvelle catégorie</h5>
+    {{-- form to add a new category --}}
     <form action="/category" method="post">
         <div class="row">
             @csrf
@@ -40,11 +44,5 @@
     @endif
 
 </section>
-<section id="section">
-    <div class="parallax-container center valign-wrapper blueborders">
-        <div class="parallax"><img src="/image/info.jpg">
-        </div>
 
-    </div>
-</section>
 @endsection

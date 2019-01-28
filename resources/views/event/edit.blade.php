@@ -108,20 +108,20 @@ if(session()->has('user'))
 
 
             <div class="input-field col s12">
-                <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Modifier l'événement</button>
+                <button class="btn waves-effect waves-light margin-top-button" id="submit" type="submit" name="submit">Modifier l'événement</button>
 
                 <form  action="/event/valide/{{$event->id}}" method="post">
                     @csrf
                     <input type="hidden" value="delete" name="validate">
                     <input type="hidden" name="_method" value="put">
-                    <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Supprimer l'évènement</button>
+                    <button class="btn waves-effect waves-light margin-top-button" id="submit" type="submit" name="submit">Supprimer l'évènement</button>
                 </form>
 
                 <form  action="/event/valide/{{$event->id}}" method="post">
                     @csrf
                     <input type="hidden" value="1" name="validate">
                     <input type="hidden" name="_method" value="put">
-                    <button class="btn waves-effect waves-light" id="submit" type="submit" name="validate">Publier l'évènement</button>
+                    <button class="btn waves-effect waves-light margin-top-button" id="submit" type="submit" name="validate">Publier l'évènement</button>
                 </form>
 
             </div>
