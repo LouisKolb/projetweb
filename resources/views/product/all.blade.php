@@ -76,7 +76,10 @@ if(session()->has('user'))
             {{-- Display product, when user is Admin or product not hide --}}
 
             @if($product->hide == 0 ||  ($connected && $user->hasRole('Admin')))
-            <div class="col s12 m6 l4 picture-item" data-groups="[&quot;{{$product->categoryName()}}&quot;]" data-date-created="{{$product->created_at}}" data-price="{{$product->price}}" data-title="{{$product->name}}">
+            @php
+                $price = $product->cheatPrice();
+            @endphp
+            <div class="col s12 m6 l4 picture-item" data-groups="[&quot;{{$product->categoryName()}}&quot;]" data-date-created="{{$product->created_at}}" data-price="{{$price}}" data-title="{{$product->name}}">
                 <div class="card hoverable picture-item__inner">
                     <div class="card-image aspect__inner">
                     <img class="img-product aspect__inner" src="/storage/{{$product->picture->link}}" alt="{{$product->name}}">
