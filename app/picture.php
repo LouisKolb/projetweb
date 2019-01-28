@@ -31,5 +31,18 @@ class picture extends Model
         unlink(storage_path('app\public\pictures\\'.$delfile));
     }
 
+    public function signal(){
+        $title = "Signalement";
+        $link = 'http://localhost:8000/picture/'.$this->id;
+        $content =view('mail.signal',compact('link'));
+        
+        foreach(user::get() as $user){
+            if($user->hasRole('Admin')){
+                $user->sendMail($title,$content);
+                
+            }
+        }
+    }
+
 
 }

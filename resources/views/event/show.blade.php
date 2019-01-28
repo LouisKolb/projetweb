@@ -148,8 +148,29 @@
                         <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}" alt="Comment picture">                        @if ($connected) {{-- Like button --}}
                         <form action="/picture/{{$picture->id}}/like" class="like">
 
-                            <i class="likebtn @if($user->haveLikedPicture($picture->id)) fas @else far @endif fa-heart" style="color:red"></i>                            {{--End like button--}}
-                        </form>
+                        <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}">
+
+
+                        @if ($connected)
+                            {{-- Like button --}}
+                            <form action="/picture/{{$picture->id}}/like" class="like">
+
+                                    <i   class="likebtn @if($user->haveLikedPicture($picture->id)) fas @else far @endif fa-heart" style="color:red"></i>
+
+                                {{--End like button--}}
+                            </form>
+                            @if($user->hasRole('admin'))
+                                
+
+                                <a href="/picture/{{$picture->id}}/signal"><i class="signal fas fa-exclamation"></a></i>
+
+                                    
+                               
+                            @endif
+
+
+
+
 
                         @else
                         <p>Vous devez etre conecté pour liker déja</p>

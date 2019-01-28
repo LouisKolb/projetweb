@@ -64,7 +64,7 @@ class CommentController extends Controller
      */
     public function show(comment $comment)
     {
-        //
+        return view('comment.show',compact('comment'));
     }
 
     /**
@@ -100,4 +100,18 @@ class CommentController extends Controller
     {
         //
     }
+
+    public function signal(){
+        $title = "Signalement";
+        $link = 'http://localhost:8000/coment/'.$this->id;
+        $content =view('mail.signal',compact('link'));
+        
+        foreach(user::get() as $user){
+            if($user->hasRole('Admin')){
+                $user->sendMail($title,$content);
+                
+            }
+        }
+    }
+
 }

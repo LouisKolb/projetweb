@@ -138,6 +138,23 @@ class PictureController extends Controller
             return redirect()->back();
         }
         
+
+        public function signal($pictureid){
+            $connected = false;
+            if(session()->has('user')){
+                $user = user::find(session()->get('user')[0]);
+                if($user->hasRole('Admin')){
+                    $picture = picture::find($pictureid);
+                    $picture->signal();
+                    echo "L'image a ete signalé";
+
+                }
+            }
+            
+            
+            
+            
+        }
     
 
 }
