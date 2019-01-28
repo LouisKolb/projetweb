@@ -174,6 +174,17 @@ $creator = App\user::find($event->user_id);
 
                                 {{--End like button--}}
                             </form>
+                            @if($user->hasRole('admin'))
+                                
+
+                                <a href="/picture/{{$picture->id}}/signal"><i class="signal fas fa-exclamation"></a></i>
+
+                                    
+                               
+                            @endif
+
+
+
 
 
                         @else

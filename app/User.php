@@ -197,7 +197,6 @@ class user extends Model
             } catch (Exception $e) {
                 dd($e);
             }
-            die('Votre commande a été passé');
             
     
     }

@@ -75,6 +75,8 @@ Route::get('/picture/download','PictureController@download');
 Route::get('/picture','PictureController@index');
 Route::get('/picture/{picture}','PictureController@show');
 Route::get('/picture/{picture}/like','PictureController@like');
+Route::get('/picture/{picture}/signal','PictureController@signal');
+
 
 
 
