@@ -1,8 +1,9 @@
 @extends('layout.master') 
 @section('content')
 
+{{-- Parallax header --}}
 <div class="parallax-container center valign-wrapper borderdown">
-	<div class="parallax"><img src="/image/background.jpg">
+	<div class="parallax"><img src="/image/background.jpg" alt="background-parallax">
 	</div>
 	<div class="container white-text">
 		<div class="row">
@@ -13,11 +14,11 @@
 	</div>
 </div>
 
-
+{{-- Add product --}}
 <section class="container">
-
 	<h4 class="center-align">Ajouter un produit</h4>
 
+	{{-- Form to add product --}}
 	<form method="POST" action="/product" id="product_form" enctype="multipart/form-data">
 		@csrf
 		<div class="input-field">
@@ -35,10 +36,9 @@
 		<div class="input-field">
 			<select name="category">
 					<option value="" disabled selected>Choisir la catégorie</option>
-				  @foreach ($categorys as $cat)
-					<option value="{{$cat->id}}">{{$cat->name}}</option>
-					  
-				  @endforeach
+					@foreach ($categorys as $cat)
+						<option value="{{$cat->id}}">{{$cat->name}}</option>  
+					@endforeach
 
 				</select>
 			<label>Catégorie</label>
@@ -56,14 +56,14 @@
 				<input class="file-path validate" type="text" name="imagetext" placeholder="Importer un fichier" />
 			</div>
 		</div>
-
-
-
+		{{-- button to create article --}}
 		<div class="input-field center-align">
 			<button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Créer l'article</button>
 		</div>
 
 	</form>
+
+	{{-- If there are any errors, they are posted here --}}
 
 	@if (count($errors) > 0)
 	<div class="card-panel red lighten-5 login_waper">
