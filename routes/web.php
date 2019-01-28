@@ -46,7 +46,8 @@ Route::delete('/event/{event}','EventController@delete');
 
 Route::get('/event/{event}/pdf', 'pdfController@print');
 
-
+//Routes pour les commentaires
+Route::get('/comment/{comment}','CommentController@show');
 
 
 
