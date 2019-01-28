@@ -14,7 +14,7 @@ if(session()->has('user')) {
     <div class="container white-text">
         <div class="row">
             <div class="col s12">
-                <h2>Évenement {{$event->name}}</h2>
+                <h2>Évenement</h2>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@ if(session()->has('user')) {
             <p>{{$creator->first_name}} {{$creator->last_name}}</p>
         </div>
         <div class="col m7 l7 offset-l1">
-            <h4>Nom Évenement</h4>
+            <h4>{{$event->name}}</h4>
         </div>
     </div>
     {{-- Event eader for mobile --}}
@@ -40,10 +40,10 @@ if(session()->has('user')) {
             <img class="circle responsive-img profile-pic" src="/image/simon.jpg" alt="User's avatar">
         </div>
         <div class="col s10">
-            <p>Nom Prénom</p>
+            <p>{{$creator->first_name}} {{$creator->last_name}}</p>
         </div>
         <div class="col s12 center-align">
-            <h4>Nom Évenement</h4>
+            <h4>{{$event->name}}</h4>
         </div>
     </div>
     <hr class="divider"> {{-- Description of the event --}}
@@ -60,7 +60,7 @@ if(session()->has('user')) {
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement</a>                @elseif($connected)
                 <form action="/event/{{$event->id}}/subscribe" method="POST">
                     @csrf
-                    <button class="waves-effect waves-dark btn" type="submit">
+                    <button class="waves-effect waves-dark btn margin-top-button" type="submit">
                             @if (App\user::find(session()->get('user')[0])->hasSubscribedToEvent($event->id))
                                 Se désinscrire
                             @else
