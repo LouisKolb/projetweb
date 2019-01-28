@@ -101,17 +101,21 @@ class CommentController extends Controller
         //
     }
 
-    public function signal(){
-        $title = "Signalement";
-        $link = 'http://localhost:8000/comment/'.$this->id;
-        $content =view('mail.signal',compact('link'));
-        
-        foreach(user::get() as $user){
+    public function signal($comment){
+        $connected = false;
+        if(session()->has('user')){
+            $user = user::find(session()->get('user')[0]);
             if($user->hasRole('Admin')){
-                $user->sendMail($title,$content);
-                
+                $comment = comment::find($comment);
+                $comment->signal();
+                echo "Le commentaire a ete signalé";
+
             }
         }
+        
+        
+        
+        
     }
 
 }

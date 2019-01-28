@@ -156,14 +156,14 @@ if(session()->has('user')) {
 
                                     {{--End like button--}}
                                 </form>
-                                @if($user->hasRole('admin'))
+                                @if($user->hasRole('tutor'))
                                     
 
                                     <a href="/picture/{{$picture->id}}/signal"><i class="signal fas fa-exclamation"></a></i>
                                 @endif
 
                             @else
-                                <p>Vous devez etre conecté pour liker déja</p>
+                                <p>Vous devez être connecté pour liker</p>
                             @endif
 
                             <div class="show-event">
@@ -209,40 +209,56 @@ if(session()->has('user')) {
 
                         @endif 
                         @foreach ($picture->comments as $comment) 
-                        @php $writer =$comment->writer();
-                        @endphp
+                            @php 
+                                $writer =$comment->writer();
+                            @endphp
 
-                        <div class="row">
-                            <div class="event-comment">
-                                <div class="card-panel grey lighten-5 z-depth-1">
-                                    <div class="row">
-                                        {{-- User's profile who comment in last --}}
-                                        <div class="col s4 m2 l1">
-                                            <img src="/image/simon.jpg" class="circle responsive-img" alt="User's avatar">
-                                        </div>
-                                        <div class="col s8 m10 l11">
-                                            <div class="s12 left">
+                            <div class="row">
+                                <div class="event-comment">
+                                    <div class="card-panel grey lighten-5 z-depth-1">
+                                        <div class="row">
+                                            {{-- User's profile who comment in last --}}
+                                            <div class="col s4 m2 l1">
+                                                <img src="/image/simon.jpg" class="circle responsive-img" alt="User's avatar">
+                                            </div>
+                                            <div class="col s8 m10 l11">
                                                 <div class="s12 left">
-                                                    <p>{{$writer->first_name}} {{$writer->last_name}}</p>
+                                                    <div class="s12 left">
+                                                        <p>{{$writer->first_name}} {{$writer->last_name}}</p>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            {{-- Comment text --}}
+                                            <div class="s12 left">
+                                                <p class="comment left"> {{$comment->content}}</p>
+                                            </div>
                                         </div>
-                                        {{-- Comment text --}}
-                                        <div class="s12 left">
-                                            <p class="comment left"> {{$comment->content}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row remove-marge-bot">
-                                        <div class="col s6 left-align">
-                                            {{-- Date --}} {{$comment->created_at}}
-                                        </div>
+                                        <div class="row remove-marge-bot">
+                                            <div class="col s6 left-align">
+                                                {{-- Date --}} {{$comment->created_at}}
+                                            </div>
                                         <div class="col s6 right-align">
-                                            <a class="waves-effect waves-light btn"><i class="fas fa-exclamation-triangle"></i></a>
-                                            <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/signal"><i class="fas fa-ban"></i></a>
+                                            
+                                            
+                                            @if($user->hasRole('tutor'))
+                                                <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/signal"><i class="fas fa-exclamation-triangle"></i></a>
+                                            @endif
+                                            @if($user->hasRole('admin'))
+                                                <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/delete"><i class="fas fa-ban"></i></a>
+                                            @endif
+                                            
+                                            
+                                        
+                                        
+                                        
                                         </div>
+
+
+
+
                                     </div>
                                 </div>
-                            </div>
+                              </div>
                             @endforeach
                         </div>
 

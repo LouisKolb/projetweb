@@ -82,6 +82,8 @@ Route::get('/picture/{picture}/signal','PictureController@signal');
 
 
 Route::post('/comment','CommentController@store');
+Route::get('/comment/{comment}/signal','CommentController@signal');
+Route::get('/comment/{comment}/delete','CommentController@destroy');
 
 Route::get('/admin','AdminController@show');
 
