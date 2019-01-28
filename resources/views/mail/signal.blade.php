@@ -1,1 +1,1 @@
-<p>Bojour <a href="{{$link}}">ce media</a>  a été signalé comme nuisible à l'image de l'école</p>
+<p>Bonjour, <a href="{{$link}}">ce media</a>  a été signalé comme nuisible à l'image de l'école</p>

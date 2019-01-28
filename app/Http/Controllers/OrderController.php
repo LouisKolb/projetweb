@@ -110,22 +110,31 @@ class OrderController extends Controller
         $cart = user::find(session()->get('user')[0])->cart();
         //delete product from the database
         DB::table('product_order')->where('product_id',$product->id)->where('order_id',$cart->id)->delete();
+        //go to the previous page
         return redirect()->back();
     }
 
     public function purchase(){
+        //set the connection to false
         $concected = false;
+        //check if the user is connected
         if(session()->has('user')){
+          //get the user
             $user=user::find(session()->get('user')[0]);
+            //set the connection to true
             $connected=true;
+            //get the cart of the user
             $cart = $user->cart();
+            //buy the cart
             $cart->purchase();
-            
-        }else{
+
+        }
+
+        else
+        {
+            //go to the previous page
             return redirect()->back();
         }
-        
+
     }
-
-
 }
