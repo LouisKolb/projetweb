@@ -24,6 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        //go to the wiew category create
         return view('category.create');
     }
 
@@ -35,49 +36,64 @@ class CategoryController extends Controller
      */
     public function store()
     {
-        $conectet=false;
+        //set $connected to false
+        $connected=false;
+        //put error inside an array
         $errors = array();
-        
-        if(session()->has('user')){
+
+        //check if the user is connected
+        if(session()->has('user'))
+        {
+            //set $connected to true
             $connected = true;
+            //get the user in the database
             $user = user::find(session()->get('user')[0]);
-        }else{
-            array_push($errors,'Vous devez etre conecté pour acceder a cette fonctionalité');
+        }
+
+        else
+        {
+            //return error
+            array_push($errors,'Vous devez etre connecté pour accéder a cette fonctionalité');
         }
 
 
 
-
+        //if $connected is true
         if($connected){
+          //check if the user is admin
             if($user->hasRole('admin')){
-        
-                
-                
-                if(category::where('name',request()->category)->count()){
-                    array_push($errors,'Cette catégorie existe déja'); 
-                echo "Oui";  
+
+                //check if the category exist
+                if(category::where('name',request()->category)->count())
+                {
+                    //returns an error
+                    array_push($errors,'Cette catégorie existe déja');
                 }
 
-            
-            }else{
-                array_push($errors,'Vous devez etre conecté pour acceder a cette fonctionalité'); 
             }
-            
+
+            else
+            {
+                //returns an error
+                array_push($errors,'Vous devez être conecté pour accéder a cette fonctionalité');
+            }
+
         }
-       
 
 
-
-
+        //if errors
         if(sizeof($errors)){
             return redirect()->back()->withErrors($errors)->withInput(request()->input());
         }
 
+        //create a new category
         $cat = new category();
+                //get the name
                 $cat->name=request()->category;
+                //save the new category
                 $cat->save();
-        
-        
+
+        //go to product/create
         return redirect('/product/create');
     }
 
