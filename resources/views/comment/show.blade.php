@@ -15,15 +15,14 @@
     </div>
 </section>
 <section>
-
-    
+    <h5 class="center-align">Commentaire n°{{$comment->id}}</h5>
         <div class="row">
             <div class="event-comment">
                 <div class="card-panel grey lighten-5 z-depth-1">
                     <div class="row">
                         {{-- User's profile who comment in last --}}
                         <div class="col s4 m2 l1">
-                            <img src="/image/simon.jpg" class="circle responsive-img">
+                            <img src="/image/simon.jpg" class="circle responsive-img" alt="Photo de l'utilisateur">
                         </div>
                         <div class="col s8 m10 l11">
                             <div class="s12 left">

@@ -8,9 +8,11 @@
 
 
 @section('content')
+
+{{-- Parallax header --}}
 <section id="section">
     <div class="parallax-container center valign-wrapper border-down">
-        <div class="parallax"><img src="/image/info.jpg">
+        <div class="parallax"><img src="/image/info.jpg" alt="background-parallax">
         </div>
         <div class="container white-text">
             <div class="row">
@@ -22,13 +24,9 @@
     </div>
 </section>
 
+{{-- DataTable with some info --}}
 <div class="row datatable">
-    <div class="col m12 l10 offset-l1">
-        
-        
-        
-        
-        
+    <div class="col m12 l10 offset-l1">        
         <table id='tab' class='display'>
             <caption>Articles dans la boutique</caption>
             <thead>
@@ -40,15 +38,9 @@
                 </tr>
             </thead>
             <tbody id="producttable">
-                
-
-                {{-- AJAAAAAAAAX --}}
-
-               {{-- C'est rempli avec de l'ajax --}}
-
-
-                {{-- Fin de l'AJAAAX --}}
-                
+                {{-- AJAX --}}
+                {{-- filled with ajax --}}
+                {{-- End of AJAX --}}
             </tbody>
         </table>
     </div>
@@ -56,16 +48,11 @@
 @endsection
  
 @section('scripts')
+{{-- Script for filling the table in ajax --}}
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
     
-//fonction pour remplir
-
- 
-
-    
-    
-    $('#tab').DataTable( {
+        $('#tab').DataTable( {
             "language": {
                 "url": "http://cdn.datatables.net/plug-ins/1.10.9/i18n/French.json"
             },
@@ -74,20 +61,9 @@ $(document).ready(function() {
                     { "data": "name" },
                     { "data": "description" },
                     { "data": "price" },
-                    { "data": "hide" },
-                    
+                    { "data": "hide" },   
                 ]
-
-
         });
-       
-
-
-        
-            
-
-
-
     });
 
 </script>
