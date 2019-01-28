@@ -105,7 +105,7 @@ class CommentController extends Controller
         $connected = false;
         if(session()->has('user')){
             $user = user::find(session()->get('user')[0]);
-            if($user->hasRole('Admin')){
+            if($user->hasRole('tutor')){
                 $comment = comment::find($comment);
                 $comment->signal();
                 echo "Le commentaire a ete signalé";

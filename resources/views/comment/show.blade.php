@@ -41,10 +41,26 @@
                             <div class="col s6 left-align">
                                 {{-- Date --}} {{$comment->created_at}}
                             </div>
+                            
+                            @php
+                                $connected=false;
+                                if(session()->has('user')){
+                                    $connected = true;
+                                    $user = App\user::find(session()->get('user')[0]);
+                                }
+                            @endphp
+                            @if($connected)
                             <div class="col s6 right-align">
-                                <a class="waves-effect waves-light btn"><i class="fas fa-exclamation-triangle"></i></a>
-                                <a class="waves-effect waves-light btn"><i class="fas fa-ban"></i></a>
+                                
+                                @if($user->hasRole('tutor'))
+                                    <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/signal"><i class="fas fa-exclamation-triangle"></i></a>
+                                @endif
+                                @if($user->hasRole('admin'))
+                                    <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/delete"><i class="fas fa-ban"></i></a>
+                                @endif
+
                             </div>
+                            @endif
                         </div>
                 </div>
             </div>

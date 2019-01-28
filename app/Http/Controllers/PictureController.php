@@ -143,7 +143,7 @@ class PictureController extends Controller
             $connected = false;
             if(session()->has('user')){
                 $user = user::find(session()->get('user')[0]);
-                if($user->hasRole('Admin')){
+                if($user->hasRole('tutor')){
                     $picture = picture::find($pictureid);
                     $picture->signal();
                     echo "L'image a ete signalé";
