@@ -1,7 +1,7 @@
 @extends('layout.master')
 @section('content')
 <div class="parallax-container center valign-wrapper borderdown">
-        <div class="parallax"><img src="/image/background.jpg">
+        <div class="parallax"><img src="/image/background.jpg" alt="background parallax">
         </div>
         <div class="container white-text">
             <div class="row">
@@ -49,7 +49,7 @@
     {{-- 5 most sold article in a carousel--}}
     <section>
         <div class="parallax-container center valign-wrapper blueborders">
-            <div class="parallax"><img src="./image/background.jpg">
+            <div class="parallax"><img src="./image/background.jpg" alt="background parallax">
             </div>
             <div class="container white-text">
                 <div class="row">
@@ -64,31 +64,31 @@
             <div class="col s12 carousel-welcome">
                 <div class="carousel center-align" data-indicators="true">
                     <a href="#one!" class="carousel-item">
-                        <img class="resize" src="./image/pull.jpg">
+                        <img class="resize" src="./image/pull.jpg" alt="Top article">
                         <div>
                             <p class="top-article">Nom top article 1</p>
                         </div>
                     </a>
                     <a href="#two!" class="carousel-item">
-                        <img class="resize" src="./image/pull.png">
+                        <img class="resize" src="./image/pull.png" alt="Top article">
                         <div>
                             <p class="top-article">Nom top article 2</p>
                         </div>
                     </a>
                     <a href="#three!" class="carousel-item">
-                        <img class="resize" src="./image/huete.png">
+                        <img class="resize" src="./image/huete.png" alt="Top article">
                         <div>
                             <p class="top-article">Nom top article 3</p>
                         </div>
                     </a>
                     <a href="#four!" class="carousel-item">
-                        <img class="resize" src="./image/dorito.png">
+                        <img class="resize" src="./image/dorito.png" alt="Top article">
                         <div>
                             <p class="top-article">Nom top article 4</p>
                         </div>
                     </a>
                     <a href="#five!" class="carousel-item">
-                        <img class="resize" src="./image/article.png">
+                        <img class="resize" src="./image/article.png" alt="Top article">
                         <div>
                             <p class="top-article">Nom top article 5</p>
                         </div>

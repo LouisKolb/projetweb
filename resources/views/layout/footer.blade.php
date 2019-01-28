@@ -2,23 +2,23 @@
     {{-- Social network section with icons --}}
     <div class="container">
         <div class="row">
-            <div class="col l3" style="text-align: justify;">
-                <h6>PRÉSENTATION</h6>
+            <div class="col l3 offset-l1" style="text-align: justify;">
+                <h6 class="center-align">PRÉSENTATION</h6>
                 <p>Le Bureau Des Exars de Strasbourg (BDE) est une association de loi de 1908 qui regroupe l'ensemble des étudiants
                     du CESI École d'ingénieurs de Strasbourg et organise les différentes activités associatives de l'école.
                 </p>
             </div>
             <div class="col l3 offset-l1" style="text-align: justify;">
-                <h6>CONTACT</h6>
+                <h6 class="center-align">CONTACT</h6>
                 <ul>
                     <li><i class="fas fa-map-marked-alt"></i> 2 Allée des Foulons</li>
-                    <li>67380 Lingolsheim</li><br>
-                    <li><i class="fas fa-envelope"></i> bde.cesi.strasbourg@viacesi.fr</li><br>
-                    <li><i class="fas fa-phone"></i> 03 92 68 60 20</li><br>
+                    <li>67380 Lingolsheim</li>
+                    <li><i class="fas fa-envelope"></i> bde.cesi.strasbourg@viacesi.fr</li>
+                    <li><i class="fas fa-phone"></i> 03 92 68 60 20</li>
                 </ul>
             </div>
-            <div class="col l4 offset-l1" style="text-align: justify;">
-                <h6>REJOINS NOUS</h6>
+            <div class="col l4 offset-l" style="text-align: justify;">
+                <h6 class="center-align">REJOINS NOUS</h6>
                 <br>
                 <div class="row">
                     <div class="col s12">
