@@ -22,7 +22,7 @@
     </div>
 </div>
 <section>
-    
+    @foreach ($events as $event)
         @php $today = date('Y-m-d');
             $user=App\user::find($event->user_id);
         @endphp 
