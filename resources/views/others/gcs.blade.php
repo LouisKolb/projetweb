@@ -55,7 +55,7 @@
     d'une manière lisible et compréhensible, des présentes conditions générales de vente et de toutes les informations listées
     à l'Article L. 221-5 du code de la consommation.
     <br> Sont transmises à l'acheteur, de manière claire et compréhensible, les informations suivantes :
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - les caractéristiques essentielles du bien ; - le prix du bien et/ou le mode de calcli du prix - et, s'il y a lieu,
+    <br> - les caractéristiques essentielles du bien ; - le prix du bien et/ou le mode de calcli du prix - et, s'il y a lieu,
     tous les frais supplémentaires de transport, de livraison ou d'affranchissement et tous les autres frais éventuels exigibles.
     - en l'absence d'exécution immédiate du contrat, la date ou le délai auquel le vendeur s'engage à livrer le bien, quel
     que soit son prix ; - les informations relatives à l'identité du vendeur, à ses coordonnées postales, téléphoniques et
@@ -72,9 +72,9 @@
     <br> Pour que la commande soit validée, l'acheteur devra accepter, en cliquant à l'endroit indiqué, les présentes conditions
     générales. Il devra aussi choisir l'adresse et le mode de livraison, et enfin valider le mode de paiement.
     <br> La vente sera considérée comme définitive :
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - après l'envoi à l'acheteur de la confirmation de l'acceptation de la commande par le vendeur par courrier électronique
+    <br> - après l'envoi à l'acheteur de la confirmation de l'acceptation de la commande par le vendeur par courrier électronique
     ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - et après encaissement par le vendeur de l'intégralité du prix.
+    <br> - et après encaissement par le vendeur de l'intégralité du prix.
     <br> Toute commande vaut acceptation des prix et descriptions des produits disponibles à la vente. Toute contestation
     sur ce point interviendra dans le cadre d'un éventuel échange et des garanties ci-dessous mentionnées.
     <br> Dans certains cas, notamment défaut de paiement, adresse erronée ou autre problème sur le compte de l'acheteur,
@@ -87,8 +87,8 @@
     <h5>Article 5 - Signature électronique</h5>
     <br> La fourniture en ligne du numéro de carte bancaire de l'acheteur et la validation finale de la commande vaudront
     preuve de l'accord de l'acheteur :
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - exigibilité des sommes dues au titre du bon de commande,
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - signature et acception expresse de toutes les opérations effectuées.
+    <br> - exigibilité des sommes dues au titre du bon de commande,
+    <br> - signature et acception expresse de toutes les opérations effectuées.
     <br> En cas d'utilisation fraudlieuse de la carte bancaire, l'acheteur est invité, dès le constat de cette utilisation,
     à contacter le vendeur au numéro de téléphone suivant: .
 
@@ -193,8 +193,8 @@
     la livraison, toute réclamation d'erreur de livraison et/ou de non-conformité des produits en nature ou en qualité par
     rapport aux indications figurant sur le bon de commande. Toute réclamation formulée au-delà de ce délai sera rejetée.
     <br> La réclamation pourra être faite, au choix de l'acheteur :
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - numéro de téléphone :;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - adresse e-mail : .
+    <br> - numéro de téléphone :;
+    <br> - adresse e-mail : .
     <br> Toute réclamation non effectuée dans les règles définies ci-dessus et dans les délais impartis ne pourra être prise
     en compte et dégagera le vendeur de toute responsabilité vis-à-vis de l'acheteur.
     <br> A réception de la réclamation, le vendeur attribuera un numéro d'échange du ou des produit(s) concerné(s) et le
@@ -208,10 +208,10 @@
     <br> Le vendeur est garant de la conformité du bien vendu au contrat, permettant à l'acheteur de formuler une demande
     au titre de la garantie légale de conformité prévue aux articles L. 217-4 et suivants du code de la consommation.
     <br> En cas de mise en oeuvre de la garantie légale de conformité, il est rappelé que :
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - l'acheteur bénéficie d'un délai de 2 ans à compter de la délivrance du bien pour agir ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - l'acheteur peut choisir entre la réparation ou le remplacement du bien, sous réserve des conditions de coût prévues
+    <br> - l'acheteur bénéficie d'un délai de 2 ans à compter de la délivrance du bien pour agir ;
+    <br> - l'acheteur peut choisir entre la réparation ou le remplacement du bien, sous réserve des conditions de coût prévues
     par l'article L. 217-17 du code de la consommation ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - l'acheteur n’a pas à apporter la preuve de la non-conformité du bien durant les 24 mois en cas de biens neufs
+    <br> - l'acheteur n’a pas à apporter la preuve de la non-conformité du bien durant les 24 mois en cas de biens neufs
     (6 mois en cas de biens d'occasion), suivant la délivrance du bien.
 
     <br> 14-2 Garantie légales des vices cachés Conformément aux articles 1641 et suivants du code civil, le vendeur est
@@ -240,19 +240,19 @@
     les conditions prévues ci-dessus.
     <br> Exceptions
     <br> Selon l'article L221-28 du Code de la consommation, le droit de rétractation ne peut pas être exercé pour les contrats
-    :<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - de fourniture de biens dont le prix dépend de fluctuations sur le marché financier échappant au contrôle du professionnel
+    :<br> - de fourniture de biens dont le prix dépend de fluctuations sur le marché financier échappant au contrôle du professionnel
     et susceptibles de se produire pendant le délai de rétractation ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - de fourniture de biens confectionnés selon les spécifications du consommateur ou nettement personnalisés ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - de fourniture de biens susceptibles de se détériorer ou de se périmer rapidement ;<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - de fourniture de biens
+    <br> - de fourniture de biens confectionnés selon les spécifications du consommateur ou nettement personnalisés ;
+    <br> - de fourniture de biens susceptibles de se détériorer ou de se périmer rapidement ;<br> - de fourniture de biens
     qui ont été descellés par le consommateur après la livraison et qui ne peuvent être renvoyés pour des raisons d'hygiène
-    ou de protection de la santé ;<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - de fourniture de biens qui, après avoir été livrés et de par leur nature, sont mélangés
-    de manière indissociable avec d'autres articles ;<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - de fourniture de boissons alcoolisées dont la livraison est différée
+    ou de protection de la santé ;<br> - de fourniture de biens qui, après avoir été livrés et de par leur nature, sont mélangés
+    de manière indissociable avec d'autres articles ;<br> - de fourniture de boissons alcoolisées dont la livraison est différée
     au-delà de trente jours et dont la valeur convenue à la conclusion du contrat dépend de fluctuations sur le marché échappant
-    au contrôle du professionnel ;<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - de travaux d'entretien ou de réparation à réaliser en urgence au domicile du consommateur
+    au contrôle du professionnel ;<br> - de travaux d'entretien ou de réparation à réaliser en urgence au domicile du consommateur
     et expressément sollicités par lui, dans la limite des pièces de rechange et travaux strictement nécessaires pour répondre
-    à l'urgence ;<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - de fourniture d'enregistrements audio ou vidéo ou de logiciels informatiques lorsqu'ils ont été descellés
-    par le consommateur après la livraison ;<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - de fourniture d'un journal, d'un périodique ou d'un magazine, sauf pour
-    les contrats d'abonnement à ces publications ;<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - de fourniture d'un contenu numérique non fourni sur un support matériel
+    à l'urgence ;<br> - de fourniture d'enregistrements audio ou vidéo ou de logiciels informatiques lorsqu'ils ont été descellés
+    par le consommateur après la livraison ;<br> - de fourniture d'un journal, d'un périodique ou d'un magazine, sauf pour
+    les contrats d'abonnement à ces publications ;<br> - de fourniture d'un contenu numérique non fourni sur un support matériel
     dont l'exécution a commencé après accord préalable exprès du consommateur et renoncement exprès à son droit de rétractation.<br>
     <br><br><h5>Article 16 - Force majeure</h5>
     <br> Toutes circonstances indépendantes de la volonté des parties empêchant l'exécution dans des conditions normales
@@ -328,32 +328,32 @@
     <br> Les données personnelles collectées auprès des utilisateurs ont pour objectif la mise à disposition des services
     du site web, leur amélioration et le maintien d'un environnement sécurisé. Plus précisément, les utilisations sont les
     suivantes :
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - accès et utilisation du site web par l'utilisateur ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - gestion du fonctionnement et optimisation du site web ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - organisation des conditions d'utilisation des Services de paiement ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - vérification, identification et authentification des données transmises par l'utilisateur ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - proposition à l'utilisateur de la possibilité de communiquer avec d'autres utilisateurs du site web ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - mise en oeuvre d'une assistance utilisateurs ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - personnalisation des services en affichant des publicités en fonction de l'historique de navigation de l'utilisateur,
+    <br> - accès et utilisation du site web par l'utilisateur ;
+    <br> - gestion du fonctionnement et optimisation du site web ;
+    <br> - organisation des conditions d'utilisation des Services de paiement ;
+    <br> - vérification, identification et authentification des données transmises par l'utilisateur ;
+    <br> - proposition à l'utilisateur de la possibilité de communiquer avec d'autres utilisateurs du site web ;
+    <br> - mise en oeuvre d'une assistance utilisateurs ;
+    <br> - personnalisation des services en affichant des publicités en fonction de l'historique de navigation de l'utilisateur,
     selon ses préférences ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - prévention et détection des fraudes, malwares (malicious softwares ou logiciels malveillants) et gestion des incidents
+    <br> - prévention et détection des fraudes, malwares (malicious softwares ou logiciels malveillants) et gestion des incidents
     de sécurité ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - gestion des éventuels litiges avec les utilisateurs ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - envoi d'informations commerciales et publicitaires, en fonction des préférences de l'utilisateur.
+    <br> - gestion des éventuels litiges avec les utilisateurs ;
+    <br> - envoi d'informations commerciales et publicitaires, en fonction des préférences de l'utilisateur.
     <br> Partage des données personnelles avec des tiers
     <br> Les données personnelles peuvent être partagées avec des sociétés tierces, dans les cas suivants :
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - quand l'utilisateur utilise les services de paiement, pour la mise en oeuvre de ces services, le site web est
+    <br> - quand l'utilisateur utilise les services de paiement, pour la mise en oeuvre de ces services, le site web est
     en relation avec des sociétés bancaires et financières tierces avec lesquelles elle a passé des contrats ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - lorsque l'utilisateur publie, dans les zones de commentaires libres du site web, des informations accessibles
+    <br> - lorsque l'utilisateur publie, dans les zones de commentaires libres du site web, des informations accessibles
     au public ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - quand l'utilisateur autorise le site web d'un tiers à accéder à ses données ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - quand le site web recourt aux services de prestataires pour fournir l'assistance utilisateurs, la publicité et
+    <br> - quand l'utilisateur autorise le site web d'un tiers à accéder à ses données ;
+    <br> - quand le site web recourt aux services de prestataires pour fournir l'assistance utilisateurs, la publicité et
     les services de paiement. Ces prestataires disposent d'un accès limité aux données de l'utilisateur, dans le cadre de
     l'exécution de ces prestations, et ont une obligation contractuelle de les utiliser en conformité avec les dispositions
     de la réglementation applicable en matière protection des données à caractère personnel ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - si la loi l'exige, le site web peut effectuer la transmission de données pour donner suite aux réclamations présentées
+    <br> - si la loi l'exige, le site web peut effectuer la transmission de données pour donner suite aux réclamations présentées
     contre le site web et se conformer aux procédures administratives et judiciaires ;
-    <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - si le site web est impliquée dans une opération de fusion, acquisition, cession d'actifs ou procédure de redressement
+    <br> - si le site web est impliquée dans une opération de fusion, acquisition, cession d'actifs ou procédure de redressement
     judiciaire, elle pourra être amenée à céder ou partager tout ou partie de ses actifs, y compris les données à caractère
     personnel. Dans ce cas, les utilisateurs seraient informés, avant que les données à caractère personnel ne soient transférées
     à une tierce partie.
