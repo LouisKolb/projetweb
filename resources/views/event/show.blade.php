@@ -58,30 +58,37 @@ if(session()->has('user')) {
             {{-- Open a modal to add image if you were present on the event --}} 
             @if($event->date<now() && $connected)
                  @if($user->hasSubscribedToEvent($event->id))
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement</a>                @elseif($connected)
-                <form action="/event/{{$event->id}}/subscribe" method="POST">
-                    @csrf
-                    <button class="waves-effect waves-dark btn" type="submit">
-                            @if ($user)->hasSubscribedToEvent($event->id))
-                                Se désinscrire
-                            @else
-                                S'inscrire
-                            @endif
-                            <i class="fas fa-sign-in-alt right"></i>
-                    </button>
-                </form>
-                @if($user->hasRole('Admin'))
-                    <form action="/event/{{$event->id}}/pdf" method="GET">
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement</a>                @elseif($connected)
+                    <form action="/event/{{$event->id}}/subscribe" method="POST">
                         @csrf
                         <button class="waves-effect waves-dark btn" type="submit">
-                            Télécharger la liste des inscrits
-                            <i class="fas fa-download right"></i>
+                                @if ($user->hasSubscribedToEvent($event->id))
+                                    Se désinscrire
+                                @else
+                                    S'inscrire
+                                @endif
+                                <i class="fas fa-sign-in-alt right"></i>
                         </button>
                     </form>
-                @endif 
                 @endif
             @else
-                <a href="/login" class="waves-effect waves-dark btn">Vous devez être connecté pour vous inscrire</a> @endif
+                @if ($connected)
+                    @if($user->hasRole('Admin'))
+                        <form action="/event/{{$event->id}}/pdf" method="GET">
+                            @csrf
+                            <button class="waves-effect waves-dark btn" type="submit">
+                                Télécharger la liste des inscrits
+                                <i class="fas fa-download right"></i>
+                            </button>
+                        </form>
+                    @endif
+                @else
+                    <a href="/login" class="waves-effect waves-dark btn">Vous devez être connecté pour vous inscrire</a>
+                @endif
+            @endif
+                
+                
+            
                 @if (count($errors) > 0)
                 <div class="card-panel red lighten-5 login_waper">
                     <ul>
