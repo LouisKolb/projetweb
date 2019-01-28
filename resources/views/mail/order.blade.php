@@ -19,13 +19,11 @@
         }
         </style>
 
-
-
 <h1>Commande n°{{$order->id}}</h1>
 
-<p>Cette ce mail a été envoyé automatiquement par le systeme d'nformation</p>
-<p>Il est distribué à l'utilisateur passant la commande {{$order->user()->first_name}} {{$order->user()->last_name}} {{$order->user()->email}}</p>
-<p>Ainsi qu'au membres du bde pour vous mettre en relation</p>
+<p>Ce mail a été envoyé automatiquement par le systeme d'information</p>
+<p>Il est distribué à l'utilisateur passant la commande ({{$order->user()->first_name}} {{$order->user()->last_name}} {{$order->user()->email}})</p>
+<p>Ainsi qu'au membres du BDE</p>
 
 
 <h2>Contenu de la commande :</h2>
