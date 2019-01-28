@@ -3,7 +3,7 @@
 
 <section id="section">
     <div class="parallax-container center valign-wrapper border-down">
-        <div class="parallax"><img src="/image/info.jpg">
+        <div class="parallax"><img src="/image/info.jpg" alt="background-parallax">
         </div>
         <div class="container white-text">
             <div class="row">
@@ -23,43 +23,48 @@
                     <div class="col s12 m6">
                         <div class="row center-align">
                             <div class="col s12 m12 l12 left">
-                                <h5>Nom prodruct</h5>
+                                <h5>{{$product->name}}</h5>
                             </div>
                         </div>
                         <hr class="divider">
                         <!-- Product Description -->
                         <div class="col m12">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
-                            nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper
-                            congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non
-                            fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat
-                            in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum
-                            bibendum augue.
+                            <p>{{$product->description}}</p>
                         </div>
-                        <div class="dropdown-extend col m12 l8">
-                            <div class="input-field">
-                                <select>
-                                        <option value="" disabled selected>Nombre d'article</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                        <option value="3">6</option>
-                                        <option value="3">7</option>
-                                        <option value="3">8</option>
-                                        <option value="3">9</option>
-                                        <option value="3">10</option>
-                                        </select>
+                        {{-- The shopping cart is assigned to the user --}}
+                        @php
+                        if(session()->has('user')){
+                            $user = App\user::find(session()->get('user')[0]);
+                            $cart = $user->cart();
+                        }
+                        @endphp
+
+                        {{-- If the user is logged in, his shopping cart is displayed. --}}
+                        @if (session()->has('user'))
+                            <form class="col s10" method="post" action="/order/{{$cart->id}}">
+                        @endif
+                            @csrf
+                            <input type="hidden" name="_method" value="put">
+                            <div class="row">
+                                <input type="hidden" class="validate" name="product_id" value="{{$product->id}}">
+                                    <select name="quantity">
+                                        @for ($i = 1; $i < 10; $i++)
+                                            <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                <div class="input-field s6 m6 l6 textyellow">
+                                    <button class="btn waves-effect waves-light bg-blue" type="submit">Ajouter au panier</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col m12 l4 right-align">
-                            <a class="btn btn-margin waves-effect waves-dark"><i class="fas fa-align-right right"></i>Ajouter au panier</a>
-                        </div>
+
+                        @if (session()->has('user'))
+                            </form>
+                        @endif
                     </div>
-                    <!-- Event's pic in a carousel slider for beautyness -->
-                    <div class="col m6 s12">
-                        <img class="store-pic" src="/image/info.jpg">
+
+                    {{-- Product picture --}}
+                    <div class="col s12 m12 l6 ">
+                            <img class="img-modal" src="/storage/{{$product->picture->link}}" alt="{{$product->name}}">
                     </div>
                 </div>
             </div>
@@ -72,7 +77,7 @@
 <script>
     $(document).ready(function () {
             $('.parallax').parallax();
-        });
+    });
 
 </script>
 @endsection
