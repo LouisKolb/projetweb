@@ -48,7 +48,7 @@
                     <i>|</i>
                 </div>
                 <div class="col m2 s4 center-align">
-                    <a class="white-text" href="/gcs"><i>Conditions générales d'utilisation</i></a>
+                    <a class="white-text" href="/gcu"><i>Conditions générales d'utilisation</i></a>
                 </div>
                 <div class="col m1 hide-on-small-only center-align">
                     <i>|</i>

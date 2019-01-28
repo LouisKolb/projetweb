@@ -3,13 +3,9 @@
 if(session()->has('user')) { 
     $connected = true; 
     $user= App\user::find(session()->get('user')[0]); 
-} 
-    
+    } 
     $creator = App\user::find($event->user_id); 
 @endphp
-
-
-
 
 <div class="parallax-container center valign-wrapper borderdown">
     <div class="parallax">
@@ -56,13 +52,11 @@ if(session()->has('user')) {
             <p>Description de l'eventment : {{$event->description}}</p>
             @if ($event->recurency())
             <p>Cet Evenement a lieu tout les {{$event->recurency()}} Jours</p>
-
             @endif
-
         </div>
         <div class="col s12 center-align">
-            {{-- Open a modal to add image if you were present on the event --}} @if($event->date
-            <now() && $connected && $user->hasSubscribedToEvent($event->id))
+            {{-- Open a modal to add image if you were present on the event --}} 
+            @if($event->date<now() && $connected && $user->hasSubscribedToEvent($event->id))
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add_a_photo</i>Publier une ou plusieurs photos de l'événement</a>                @elseif($connected)
                 <form action="/event/{{$event->id}}/subscribe" method="POST">
                     @csrf
@@ -72,7 +66,6 @@ if(session()->has('user')) {
                             @else
                                 S'inscrire
                             @endif
-
                             <i class="fas fa-sign-in-alt right"></i>
                     </button>
                 </form>
@@ -80,9 +73,8 @@ if(session()->has('user')) {
                 <form action="/event/{{$event->id}}/pdf" method="GET">
                     @csrf
                     <button class="waves-effect waves-dark btn" type="submit">
-                            Télécharger la liste des inscrits
-
-                            <i class="fas fa-download right"></i>
+                        Télécharger la liste des inscrits
+                        <i class="fas fa-download right"></i>
                     </button>
                 </form>
                 @endif @else
@@ -91,16 +83,11 @@ if(session()->has('user')) {
                 <div class="card-panel red lighten-5 login_waper">
                     <ul>
                         @foreach ($errors->all() as $error)
-                        <h6>
-                            <li class="red-text">{{ $error }}</li>
-                        </h6>
+                        <h6><li class="red-text">{{ $error }}</li></h6>
                         @endforeach
                     </ul>
                 </div>
-                @endif
-
-
-
+            @endif
         </div>
     </div>
     {{-- Modal Structure to add an photo--}}
@@ -125,57 +112,50 @@ if(session()->has('user')) {
             </form>
         </div>
     </div>
+</section>
 
-
+<section>
     <div class="row">
         @foreach ($event->pictures as $picture)
-            <div class="col s12 l6 center-align">
-                <ul class="collapsible">
-                    <li>
-                    {{-- Collapside with comment --}}
-                        <div class="collapsible-header">
-                            <div class="row remove-marge-bot">
-                                <div class="col s12 ">
-                                    <img class="circle responsive-img profile-pic" src="https://www.numerama.com/content/uploads/2018/05/slider-facebook-new-profile.jpg"
-                                        alt="User's avatar">
-                                </div>
-                            </div>
-                            <div class="col s1n2 left-alig">
-                                @php $pictureuser = App\user::find($picture->user_id) @endphp
-                                <p>{{$pictureuser->first_name}} {{$pictureuser->last_name}}</p>
+        <div class="col s12 l6 center-align">
+            <ul class="collapsible">
+                <li>
+                {{-- Collapside with comment --}}
+                    <div class="collapsible-header">
+                        <div class="row remove-marge-bot">
+                            <div class="col s12 ">
+                                <img class="circle responsive-img profile-pic" src="https://www.numerama.com/content/uploads/2018/05/slider-facebook-new-profile.jpg"
+                                    alt="User's avatar">
                             </div>
                         </div>
-                        <div class="collapsible-header test">
-                            <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}" alt="Comment picture">
-
-                            @if ($connected)
-                                {{-- Like button --}}
-                                <form action="/picture/{{$picture->id}}/like" class="like">
-
-                                        <i   class="likebtn @if($user->haveLikedPicture($picture->id)) fas @else far @endif fa-heart" style="color:red"></i>
-
-                                    {{--End like button--}}
-                                </form>
-                                @if($user->hasRole('tutor'))
-                                    
-
-                                    <a href="/picture/{{$picture->id}}/signal"><i class="signal fas fa-exclamation"></a></i>
-                                @endif
-
-                            @else
-                                <p>Vous devez être connecté pour liker</p>
+                        <div class="col s1n2 left-alig">
+                            @php $pictureuser = App\user::find($picture->user_id) @endphp
+                            <p>{{$pictureuser->first_name}} {{$pictureuser->last_name}}</p>
+                        </div>
+                    </div>
+                    <div class="collapsible-header test">
+                        <img class="materialboxed event-pic-show" src="/storage/{{$picture->link}}" alt="Comment picture">
+                        @if ($connected)
+                            {{-- Like button --}}
+                            <form action="/picture/{{$picture->id}}/like" class="like">
+                                <i   class="likebtn @if($user->haveLikedPicture($picture->id)) fas @else far @endif fa-heart" style="color:red"></i>
+                            {{--End like button--}}
+                            </form>
+                            @if($user->hasRole('tutor'))
+                                <a href="/picture/{{$picture->id}}/signal"><i class="signal fas fa-exclamation"></a></i>
                             @endif
-
-                            <div class="show-event">
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
+                        @else
+                            <p>Vous devez être connecté pour liker</p>
+                        @endif
+                        <div class="show-event">
+                            <i class="fas fa-chevron-down"></i>
                         </div>
+                    </div>
                     <div class="collapsible-body">
                         {{-- Input to write a comment --}} @if ($connected) {{-- Write a comment --}}
                         <form action="/comment" method="POST">
                             @csrf
                             <input type="hidden" name="picture" value="{{$picture->id}}">
-
                             <div class="row">
                                 <div class="event-comment">
                                     <div class="card-panel grey lighten-5 z-depth-1">
@@ -206,13 +186,11 @@ if(session()->has('user')) {
                                 </div>
                             </div>
                         </form>
-
                         @endif 
                         @foreach ($picture->comments as $comment) 
                             @php 
                                 $writer =$comment->writer();
                             @endphp
-
                             <div class="row">
                                 <div class="event-comment">
                                     <div class="card-panel grey lighten-5 z-depth-1">
@@ -237,39 +215,27 @@ if(session()->has('user')) {
                                             <div class="col s6 left-align">
                                                 {{-- Date --}} {{$comment->created_at}}
                                             </div>
-                                        <div class="col s6 right-align">
-                                            
-                                            
+                                        <div class="col s6 right-align"> 
                                             @if($user->hasRole('tutor'))
                                                 <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/signal"><i class="fas fa-exclamation-triangle"></i></a>
                                             @endif
                                             @if($user->hasRole('admin'))
                                                 <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/delete"><i class="fas fa-ban"></i></a>
-                                            @endif
-                                            
-                                            
-                                        
-                                        
-                                        
+                                            @endif         
                                         </div>
-
-
-
-
                                     </div>
                                 </div>
                               </div>
                             @endforeach
                         </div>
-
                     </div>
-
                 </li>
             </ul>
         </div>
-    @endforeach
+        @endforeach
     </div>
 </section>
+
 @endsection
  
 @section('scripts')
