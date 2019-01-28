@@ -2,7 +2,7 @@
 @section('content')
 <section id="section">
 	<div class="parallax-container center valign-wrapper border-down">
-		<div class="parallax"><img src="/image/info.jpg">
+		<div class="parallax"><img src="/image/info.jpg" alt="background parallax">
 		</div>
 		<div class="container white-text">
 			<div class="row">
@@ -36,7 +36,7 @@
 
 
 				<div class="input-field col s12 m6">
-						<select name="centre">
+					<select name="centre">
 							  <option value="" disabled selected>Choisis ton centre</option>
 				  
 						@foreach ($centres as $centre)
@@ -44,20 +44,7 @@
 							<option value="{{$centre->id}}">{{$centre->name}}</option>
 						@endforeach
 						</select>
-						<label>Centre</label>
-					</div>
-
-				<div class="input-field col s12 m6">
-					<i class="material-icons prefix">lock</i>
-					<input id="password" type="password" class="validate" name="password">
-					<label for="password">Mot de passe</label>
-				</div>
-
-
-				<div class="input-field col s12 m6">
-					<i class="material-icons prefix">lock</i>
-					<input id="password_confirm" type="password" class="validate" name="password_confirm">
-					<label for="password_confirm">Confirmation</label>
+					<label>Centre</label>
 				</div>
 
 				<div class="input-field col s12 m6">
@@ -69,10 +56,21 @@
 				<div class="input-field col s12 m6">
 					<i class="material-icons prefix">email</i>
 					<input id="email_confirm" type="email" class="validate" name="email_confirm">
-					<label for="email_confirmation">Confirmation</label>
+					<label for="email_confirm">Confirmation</label>
 				</div>
 
-						<label>
+				<div class="input-field col s12 m6">
+					<i class="material-icons prefix">lock</i>
+					<input id="password" type="password" class="validate" name="password">
+					<label for="password">Mot de passe</label>
+				</div>
+
+				<div class="input-field col s12 m6">
+					<i class="material-icons prefix">lock</i>
+					<input id="password_confirm" type="password" class="validate" name="password_confirm">
+					<label for="password_confirm">Confirmation</label>
+				</div>
+				<label>
 						<input type="checkbox" name="accept" value="true"/>
 						<span class="black-text">Je reconnais avoir lu et compris les <a href="/gcu">CGU</a> et je les accepte.</span>
 					  </label>
