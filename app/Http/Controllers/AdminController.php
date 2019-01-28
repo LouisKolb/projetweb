@@ -8,25 +8,37 @@ use App\product;
 
 class AdminController extends Controller
 {
-    public function show(){
+    //function show
+    public function show()
+    {
+        //check if the user is connected
         $connected = session()->has('user');
+
+        //if the user is connected ( connected == true)
         if($connected){
 
+            //find the user and watch if the user is admin
             if(user::find(session()->get('user')[0])->hasRole('admin')){
-                
-                $products = product::get(); 
-                
+                //get products
+                $products = product::get();
+                //return view admin.main with products
                 return view('admin.main',compact('products'));
             }
-            else{
-    
+
+            else
+            {
+                //go to home page
                 return redirect("/");
-            
             }
-        
-        }else{
+
+        }
+
+        else
+        {
+            //go to home page
             return redirect("/");
         }
+
     }
 
 
