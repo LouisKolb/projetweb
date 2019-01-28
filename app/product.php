@@ -14,14 +14,10 @@ class product extends Model
         return $cat->name;
     }
     public function cheatPrice(){
-        
-        
         $cheat = $this->price;
         while(strlen($cheat)<6){
             $cheat='0'.$cheat;
         }
-
-
         return $cheat;
     }
 }

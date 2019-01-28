@@ -38,8 +38,17 @@ if(session()->has('user'))
     <div class="row">
             <div class="col s5 offset-s1 l3 offset-l1">
                 <div class="filters-group">
-                    <label for="filters-search-input" class="filter-label">Rechercher un article</label>
-                    <input class="textfield filter__search js-shuffle-search" type="search" id="filters-search-input" />
+                    <label for="filters-search-input" class="filter-label" >Rechercher un article</label>
+                    <input class="textfield filter__search js-shuffle-search" type="search" id="filters-search-input" list="titles" />
+                    <datalist id="titles">
+                        @foreach ($products as $product)   
+                        <option value="{{$product->name}}">
+                        @endforeach    
+                            
+                    </datalist>
+
+
+
                 </div>
             </div>
         </div>
@@ -49,7 +58,7 @@ if(session()->has('user'))
                     <p class="filter-label">Filtrer par :</p>
                     <div class="btn-group filter-options">
                         @foreach ($categories as $category)
-                            <button class="btn waves-effect" data-group="{{$category->name}}">{{$category->name}}</button>
+                            <button class="btn waves-effect margin-top-button" data-group="{{$category->name}}">{{$category->name}}</button>
                         @endforeach
                     </div>
                 </div>
@@ -57,13 +66,13 @@ if(session()->has('user'))
                 <div class="col l5 filters-group">
                     <p class="filter-label">Trier par : </p>
                     <div class="btn-group sort-options">
-                        <label class="btn waves-effect shuffleactive">
-                        <input type="radio" name="sort-value" value="dom" checked />Défaut</label>
-                        <label class="btn waves-effect">
+                        <label class="btn waves-effect shuffleactive margin-top-button">
+                        <input class="padding" type="radio" name="sort-value" value="dom" checked />Défaut</label>
+                        <label class="btn waves-effect margin-top-button">
                         <input type="radio" name="sort-value" value="title" />Nom</label>
-                        <label class="btn waves-effect">
+                        <label class="btn waves-effect margin-top-button">
                         <input type="radio" name="sort-value" value="date-created" />Date</label>
-                        <label class="btn waves-effect">
+                        <label class="btn waves-effect margin-top-button">
                         <input type="radio" name="sort-value" value="price" />Prix</label>
                     </div>
                 </div>
@@ -210,7 +219,7 @@ if(session()->has('user'))
 
 @section('scripts')
 
-<script src="/js/mainshuffle.js">
+<script src="/js/mainshuffle.js"></script>
+ 
 
-</script>
 @endsection
