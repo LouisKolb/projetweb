@@ -98,7 +98,14 @@ class CommentController extends Controller
      */
     public function destroy(comment $comment)
     {
-        //
+        
+        if(session()->has('user')){
+          if(user::find(session()->get('user')[0])->hasRole('admin')){
+            $comment->delete();
+          }
+        }
+        return redirect()->back();
+        
     }
 
     public function signal($comment){
@@ -112,10 +119,6 @@ class CommentController extends Controller
 
             }
         }
-        
-        
-        
-        
     }
 
 }
