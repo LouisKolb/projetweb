@@ -125,7 +125,7 @@ $connected = false; if(session()->has('user')){
                     <div class="collapsible-body">
                         <div class="card hoverable ">
                             <div class="card-image ">
-                                <img class="img-product" src="/storage/{{$product->picture->link}}" alt="{{$product->name}}">
+                                <img class="img-product" src="/storage/{{$product->picture()->link}}" alt="{{$product->name}}">
                             </div>
                             <div class="card-content">
                                 <span class="card-title black-text">{{$product->name}}</span>
