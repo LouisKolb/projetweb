@@ -152,7 +152,7 @@ if(session()->has('user')) {
                             {{--End like button--}}
                             </form>
                             @if($user->hasRole('tutor'))
-                                <a href="/picture/{{$picture->id}}/signal"><i class="signal fas fa-exclamation"></a></i>
+                                <a href="/picture/{{$picture->id}}/signal"><i class="signal fas fa-exclamation"></i></a>
                             @endif
                         @else
                             <p>Vous devez être connecté pour liker</p>
@@ -238,7 +238,8 @@ if(session()->has('user')) {
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </li>
             </ul>
