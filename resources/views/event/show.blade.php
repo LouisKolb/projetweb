@@ -50,7 +50,7 @@ if(session()->has('user')) {
     <div class="row">
         <div class="col s12 l10 offset-l1">
             <p>Description de l'eventment : {{$event->description}}</p>
-            @if($event->recurency()) <p>Cet evenement à lieu tout  les {{$event->recurency()}} Jours @endif</p>
+            @if($event->recurency()) <p>Cet evenement à lieu tout  les {{$event->recurency()}} Jours</p>@endif
             <p>prix : {{ $event->price}} €</p>
         </div>
         <div class="col s12 center-align">
@@ -236,10 +236,10 @@ if(session()->has('user')) {
                                             @endif        
                                         </div>
                                     </div>
+                                    </div>
                                 </div>
                             </div>
-                            @endforeach
-                        </div>
+                        @endforeach           
                     </div>
                 </li>
             </ul>
