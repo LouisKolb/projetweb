@@ -43,7 +43,7 @@
                                 <input type="hidden" name="_method" value="put">
                                 <input type="hidden" name="product_id" value="{{$product->id}}">
                             <div class="row">
-                                <div class="col s6 m6 l6">
+                                <div class="col s12 m6 l6">
                                     <h5>{{$product->name}} x {{$product->pivot->quantity}}</h5>
                                     <p>{{$product->description}}</p>
 
@@ -65,7 +65,7 @@
                                         </button>
                                     </div>                            
                                 </div>
-                                <div class="col s6 m6 l6">
+                                <div class="col s12 m6 l6">
                                     <img class="img-product" src="/storage/{{$product->picture->link}}" alt="{{$product->name}}">
                                 </div>
                             </div>
@@ -86,10 +86,10 @@
 
         {{-- Display the different totals --}}
         <div class="row">
-            <div class="col s6 m6 l6">
+            <div class="col s12 m6 l6">
                 <h6>Nombres articles : {{$cart->totalarticles()}}</h6>
             </div>
-            <div class="col s6 m6 l6">
+            <div class="col s12 m6 l6">
                 <form action="/order/purchase" method="get">
                     @csrf
                     {{-- Place the order --}}
