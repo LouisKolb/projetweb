@@ -1,5 +1,7 @@
 <?php
 use App\product;
+use App\user;
+use App\event;
 use Illuminate\Http\Request;
 
 /*
@@ -20,7 +22,48 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/product',function(){
     $data = new stdClass();
-    $data->data = product::get();
+    $products = product::get();
+    $data->data=$products;
+    return response()->json($data);
+});
+
+Route::get('/events',function(){
+    $data = new stdClass();
+    $events= event::get();
+    $arr = array();
+    $count = 0;
+    foreach ($events as $p) {
+        $p->recurency= $p->recurency();
+        array_push($arr,$p);
+      
+    }
+    $data->data=$arr;
+    
+    return response()->json($data);
+});
+
+
+
+
+
+
+
+Route::get('/users',function(){
+    $data = new stdClass();
+    $users= user::get();
+    $arr = array();
+    foreach ($users as $u) {
+        $roles = "";
+        foreach ($u->roles as $r) {
+            $roles .=$r->name.' ';
+        }
+        $u->rolesstring = $roles;
+        array_push($arr,$u);
+      
+    }
+    $data->data=$arr;
+    
+    return response()->json($data);
     
     return response()->json($data);
 });
