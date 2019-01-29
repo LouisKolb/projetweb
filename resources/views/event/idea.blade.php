@@ -28,7 +28,7 @@ if(session()->has('user'))
         @php
             $creator = App\user::find($event->user_id);
         @endphp
-        <div class="col s12">
+        <div class="col s12 m12 l12 card">
                 <div class="col l7 m12 s12"> 
                     <div class="row">
                         <p>Le : {{ $event->date }}</p>
@@ -50,7 +50,7 @@ if(session()->has('user'))
                     <div class="row">
                         <p> {{ $event->description }} </p>
                     </div>
-                    <div id="event-idea-footer" class="row">
+                    <div class="row event-idea-footer">
                         <div id="user-card" class="col l3 m2 s12">
                             <div class="col l12 m12 s12 user-info">
                                 <p class="user-info"> Proposé par : {{$creator->first_name}} {{$creator->last_name }}</p>
@@ -83,6 +83,7 @@ if(session()->has('user'))
                     </div>
                 </div> 
         </div>
+        
     @endforeach
 </div>
    

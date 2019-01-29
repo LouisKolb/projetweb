@@ -173,6 +173,7 @@
 }
 
 
+
 #pagination ul li a{
     font-size: 1.2em;
     color: black;   
@@ -461,7 +462,7 @@ a:focus{
     padding-top: 1em;
 }
 
-#event-idea-footer{
+.event-idea-footer{
     margin-top: 2em; 
 }
 

@@ -60,9 +60,11 @@
                                             <div class="col s12 m12 l12">
                                             <p>{{ $event->description }}</p>
                                                 @if ($event->recurency())
-                                                    <br><p>Récurrence : {{$event->recurency()}} Jours</p>
+                                                    <p>Récurrence : {{$event->recurency()}} Jours</p>
                                                 @endif
+                                            <p>Prix : {{$event->price}} €</p>
                                             </div>
+                                            
                                             <div class="col s12 m12 l12 right-align ">
                                                 <a class="waves-effect waves-dark btn btn-event see" href="/event/{{$event->id}}"><i class="fas fa-eye right"></i>Voir l'évènement</a>
                                             </div>
@@ -141,8 +143,9 @@
                                     <div class="col s12 m12 l12">
                                         <p>{{ $event->description }}</p>
                                         @if ($event->recurency())
-                                        <br><p>Récurrence : {{$event->recurency()}} Jours</p>
+                                        <p>Récurrence : {{$event->recurency()}} Jours</p>
                                         @endif
+                                        <p>Prix : {{$event->price}} €</p>
                                     </div>
                                     <div class="col s12 m12 l12 right-align ">
                                         <a class="waves-effect waves-dark btn btn-event see" href="/event/{{$event->id}}"><i class="fas fa-eye right"></i>Voir l'évènement</a>
@@ -220,8 +223,9 @@
                                         <div class="col s12 m12 l12">
                                          <p>{{$event->description}}</p>
                                             @if ($event->recurency())
-                                            <br><p>Récurrence : {{$event->recurency()}} Jours</p>
+                                            <p>Récurrence : {{$event->recurency()}} Jours</p>
                                             @endif
+                                            <p>Prix : {{$event->price}} €</p>
                                         </div>
                                         <div class="col s12 m12 l12 right-align ">
                                             <a class="waves-effect waves-dark btn btn-event see" href="/event/{{$event->id}}"><i class="fas fa-eye right"></i>Voir l'évènement</a>
