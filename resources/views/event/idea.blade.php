@@ -32,7 +32,7 @@ if(session()->has('user'))
             <div class="col l7 m12 s12 card-content">
                 <div class="row">
                     <p>Le : {{ $event->date }}</p>
-                    <p>Recurence : {{ $event->recurrence}}</p>
+                    @if($event->recurency()) <p>Tout les {{$event->recurency()}} Jours @endif</p>
                     <p>prix : {{ $event->price}} €</p>
                     <h5 class="center-align">{{ $event->name }}</h5>
                 </div>

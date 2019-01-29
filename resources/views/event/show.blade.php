@@ -50,9 +50,8 @@ if(session()->has('user')) {
     <div class="row">
         <div class="col s12 l10 offset-l1">
             <p>Description de l'eventment : {{$event->description}}</p>
-            @if ($event->recurency())
-            <p>Cet Evenement a lieu tout les {{$event->recurency()}} Jours</p>
-            @endif
+            @if($event->recurency()) <p>Cet evenement à lieu tout  les {{$event->recurency()}} Jours @endif</p>
+            <p>prix : {{ $event->price}} €</p>
         </div>
         <div class="col s12 center-align">
             {{-- Open a modal to add image if you were present on the event --}} 
