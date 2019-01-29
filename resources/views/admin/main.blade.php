@@ -54,7 +54,7 @@
                     <div class="container white-text">
                         <div class="row">
                             <div class="col s12">
-                                <h3>Evenement</h3>
+                                <h3>Événements</h3>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
 <div class="row datatable">
     <div class="col m12 l10 offset-l1"> 
         <table id='events' class='display'>
-            <caption>Evenement</caption>
+            <caption>Événements</caption>
             <thead>
                 <tr>
                     <th>Nom</th>
@@ -88,7 +88,7 @@
             <div class="container white-text">
                 <div class="row">
                     <div class="col s12">
-                        <h3>Evenement</h3>
+                        <h3>Utilisateurs</h3>
                     </div>
                 </div>
             </div>
