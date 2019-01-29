@@ -247,10 +247,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
      //function show
-    public function show()
+    public function show($user)
     {
+        $user = user::find($user);
        //return the user profil
-        return view('user.show');
+        return view('user.show',compact('user'));
     }
 
     /**
