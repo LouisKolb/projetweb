@@ -125,40 +125,22 @@ if(session()->has('user'))
                 </form>
 
             </div>
-
-
-
-
+        </div>
+    </div>
             @if (count($errors) > 0)
-            <div class="red darken-3">
+            <div class="card-panel red lighten-5 login_waper">
                 <ul>
                     @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <h6><li class="red-text">{{ $error }}</li></h6>
                     @endforeach
                 </ul>
             </div>
             @endif
-
-            </div>
-
-        </div>
-
-        <!-- <div class="col m2">
-
-            </div> -->
-
-    </div>
+           
 </section>
-<div class="parallax-container center valign-wrapper blueborders">
-    <div class="parallax"><img src="/image/info.jpg">
-    </div>
-    <div class="container white-text">
-        <div class="row">
-            <div class="col s12">
-            </div>
-        </div>
-    </div>
-</div>
+
+    
+
 @endsection
 
 @section('scripts')
