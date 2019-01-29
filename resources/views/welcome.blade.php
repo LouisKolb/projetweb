@@ -69,7 +69,7 @@
                         
                     
                         <a href="#one!" class="carousel-item">
-                            <img class="resize" src="/storage/{{$product->picture->link}}" alt="Top article">
+                            <img class="resize" src="/storage/{{$product->picture()->link}}" alt="Top article">
                             <div>
                                 <p class="top-article">{{$product->name}}</p>
                             </div>

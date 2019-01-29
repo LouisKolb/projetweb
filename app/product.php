@@ -13,7 +13,7 @@ class product extends Model
 
 
     public function picture(){
-        return $this->hasOne('App\Picture','id');
+        return picture::find($this->image);
     }
     public function categoryName(){
         $cat = DB::table('categories')->where('id',$this->category)->first();
