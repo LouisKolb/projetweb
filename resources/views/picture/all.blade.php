@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+<script src="/js/shuffle.js"></script>
 @php
 $connected = false; if(session()->has('user')){
     $connected = true;
@@ -33,16 +34,21 @@ $connected = false; if(session()->has('user')){
     @endif
   @endif
 
-    <div class="row">
+  <div id="azerty" class="row">
+    <div id="grid" class="col s12 m10 offset-m1 my-shuffle-container">
         
         @foreach ($pictures as $p)
             
         
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <a href="/picture/{{$p->id}}"><img src="/storage/{{$p->link}}" alt="Picture from the site"></a>
-                        <p>Nombres de likes : {{$p->likeCount()}}</p>
+            <div class="col s12 m6 l4 picture-item">
+                <div class="card picture-item__inner">
+                    <div class="card-image aspect__inner">
+                        <a class="aspect__inner" href="/picture/{{$p->id}}"><img style="display: inline-block; max-height:25vh; width: auto" src="/storage/{{$p->link}}" alt="Picture from the site"></a>
+                    </div>
+                    <div class="picture-item__details">
+                        <div class="picture-item__title">
+                            <p>Nombres de likes : {{$p->likeCount()}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,7 +62,8 @@ $connected = false; if(session()->has('user')){
 @endsection
 
 @section('scripts')
-<script>
 
-</script>
+<script src="/js/mainshuffle.js"></script>
+ 
+
 @endsection
