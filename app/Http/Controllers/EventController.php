@@ -125,9 +125,9 @@ class EventController extends Controller
       $user = user::find($event->user_id);
       $content = view('mail.validevent',compact('event','user'));
       $user->sendMail('Idée acceptée',$content);
-      
-      
-      
+
+
+
       //save
       $event->save();
       //return to the event page
@@ -215,7 +215,7 @@ class EventController extends Controller
        //check if the event need to be directly validate
        $statut = 0;
        $user= user::find(session()->get('user')[0]);
-       
+
 
        if (!empty(request()->direct)) {
             $statut = 1;
@@ -225,21 +225,21 @@ class EventController extends Controller
             }
         }
 
-       
-           
-           
-       
+
+
+
+
 
 
        //create a new event object
         $event = new Event();
 
         //add price and recurrency
-        
+
         $event->price =request()->price;
 
 
-    
+
 
         //complete the field with the data
         $event->name = request()->name;
@@ -262,7 +262,7 @@ class EventController extends Controller
         $image->link= $path;
         $image->save();
 
-        
+
         //add picture to an event
         $event->addPicture($image->id);
         //go to event idea
@@ -305,7 +305,7 @@ class EventController extends Controller
      //update an event
     public function update(event $event)
     {
-      
+
       //Same as the function store
       $event->id;
       $errors = array();
@@ -317,17 +317,21 @@ class EventController extends Controller
       $file = request()->file('image');
 
       if(!session()->has('user')){
-          array_push($errors,"Vous devez etre connecté pout proposer un éventment");
+          array_push($errors,"Vous devez être connecté pout proposer un événement");
       }else{
           $user = user::find(session()->get('user')[0]);
           if(!$user->hasRole('admin')){
-            array_push($errors,"Vous n'avez pas la permission d'editer cet evenement");
+            array_push($errors,"Vous n'avez pas la permission d'editer cet événement");
           }
       }
 
 
-      if(empty(request()->name)|| empty(request()->date) || empty(request()->description) || empty(request()->recurency) ){
+      if(empty(request()->name)|| empty(request()->date) || empty(request()->description)){
           array_push($errors,"Merci de compléter tout les champs et de poster une image ");
+      }
+
+      if(request()->recurency <= 0){
+        array_push($errors, "La récurrence ne peut pas être inférieur ou égale à 0");
       }
 
        if ($outdated) {
@@ -344,7 +348,7 @@ class EventController extends Controller
             $ext = $file->getClientOriginalExtension();
             if(!preg_match('/(jpg|jpeg|gif|png)/',$ext)){
 
-               array_push($errors,'Seuls les gif png , jpg ou kpeg sont acceptés');
+               array_push($errors,'Seuls les gif png , jpg ou jpeg sont acceptés');
             }
        }
 
@@ -371,7 +375,7 @@ class EventController extends Controller
 
 
 
-      
+
 
         $event->price=request()->price;
         $event->name = request()->name;
