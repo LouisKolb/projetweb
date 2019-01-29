@@ -28,10 +28,10 @@
                     <input id="password" type="password" class="validate" name="password">
                     <label for="password">Mot de passe</label>
                 </div>
-                <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12 m12 l2">
                     <button class="btn waves-effect waves-dark" id="submit" type="submit" name="submit">Se connecter</button>
                 </div>
-                <div class="input-field col s12 m6 l6 ">
+                <div class="input-field col s12 m12 l2 offset-l8 right-align">
                     <a class="btn waves-effect waves-dark" href="/register">S'enregister</a>
                 </div>
             </div>

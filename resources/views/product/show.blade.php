@@ -64,7 +64,7 @@
 
                     {{-- Product picture --}}
                     <div class="col s12 m12 l6 ">
-                            <img class="img-modal" src="/storage/{{$product->picture->link}}" alt="{{$product->name}}">
+                            <img class="img-modal" src="/storage/{{$product->picture()->link}}" alt="{{$product->name}}">
                     </div>
                 </div>
             </div>
