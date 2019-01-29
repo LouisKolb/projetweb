@@ -13,7 +13,7 @@
 @section('content')
 <section id="section">
     <div class="parallax-container center valign-wrapper border-down">
-        <div class="parallax"><img src="/image/info.jpg">
+        <div class="parallax"><img src="/image/info.jpg" alt="background-parallax">
         </div>
         <div class="container white-text">
             <div class="row">
@@ -33,91 +33,48 @@
         </div>
         <div class="row">
             <div class="col l6 m12 center-align">
-                <img class="circle responsive-img profile-pic-on-userpage" src="{{$user->avatar}}">
+                <img class="circle responsive-img profile-pic-on-userpage" src="/image/simon.jpg" alt="profil-picture">
             </div>
-            {{-- <div class="col l5 m12 margetop center-align">
-                <p>Modifier mon avatar</p>
-                <div class="row">
-                    <div class=" file-field input-field">
-                        <div class="btn">
-                            <span>Browse</span>
-                            <input type="file" />
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" placeholder="Upload file" />
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
         <div class="row center-align">
             <div class="col m12 l6 margetop">
                 <h6>{{$user->email}}</h6>
             </div>
-            {{-- <div class="col m12 l5">
-                <p>Modifier mon adresse mail</p>
-                <div class="row valign-wrapper">
-                    <div class="input-field col s10">
-                        <input id="email" type="email" class="validate">
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="col s2 hide-on-small-only">
-                        <a class="waves-effect waves-light btn"><i class="fab fa-telegram-plane"></i></a>
-                    </div>
-                    <div class="col s2 hide-on-med-and-up">
-                        <a class="waves-effect waves-light btn"><i class="fab fa-telegram-plane"></i></a>
-                    </div>
-                </div>
-            </div> --}}
         </div>
-        {{-- <div class="row">
-            <div class="col s12 m10 offset-m1 right-align">
-                <a class="waves-effect waves-light btn"><i class="fas fa-key"></i> Modifier mon mot de passe</a>
-            </div>
-        </div> --}}
-    </div>
-    @if ($connected)
-        
-    
+@if ($connected)
     @if ($user->id == $connecteduser->id)
-    
     @foreach ($orders as $order)
-    @if ($order->validate)
-        
-   
-    <ul class="collapsible">
-            <div class="collapsible-header">
+        @if ($order->validate)
+        <div class="collapsible">
+                <div class="collapsible-header">
                     <h6> N° de commande : {{$order->id}} Total : {{$order->price()}} €</h6>
-                    
-            </div>
+                </div>
         @foreach ($order->products as $product)
-        
-   
-    <ul class="collapsible">
+        <ul class="collapsible">
             <li>
                 <div class="collapsible-header">
                     <h6> {{$product->name}} </h6>
                 </div>
                 <div class="collapsible-body">
-                    
-                        <div class="row">
-                            <div class="col s12 m6 l6">
-                                <h5>{{$product->name}} x {{$product->pivot->quantity}}</h5>
-                                <p>{{$product->description}}</p>                    
-                            </div>
-                            <div class="col s12 m6 l6">
-                                <img class="img-product" src="/storage/{{$product->picture()->link}}" alt="{{$product->name}}">
-                            </div>
-                        </div>   
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <h5>{{$product->name}} x {{$product->pivot->quantity}}</h5>
+                            <p>{{$product->description}}</p>                    
+                        </div>
+                        <div class="col s12 m6 l6">
+                            <img class="img-product" src="/storage/{{$product->picture()->link}}" alt="{{$product->name}}">
+                        </div>
+                    </div>   
                 </div>
             </li>
         </ul>
-    @endforeach
-    </ul>
-    @endif
+        @endforeach
+        </div>
+        @endif
     @endforeach
     @endif
 @endif
+    </div>
 </div>
 @endsection
 
