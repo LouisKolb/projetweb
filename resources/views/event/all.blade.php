@@ -6,6 +6,7 @@
         $connected = true;
         $user = App\user::find(session()->get('user')[0]);
     }
+    $n=0;
 @endphp
 
 <!-- Parralax image with border -->
@@ -27,61 +28,66 @@
             $user=App\user::find($event->user_id);
         @endphp 
         @if($event->date >= $today)
-            <div class="row">
-                <div class="col s12">
-                    <!-- User who created the event profile-->
-                    <div class="card-panel grey lighten-5 z-depth-1">
-                        <div class="row">
-                            <div class="col s12 m12 l6">
-                                <div class="row valign-wrapper">
-                                    <div class="col s3 m3 l1">
-                                        <a class="black-text" href="/user/{{$event->user_id}}">
-                                            <img class="circle profile-pic" src="/image/simon.jpg"  alt="User's pic">
-                                        </a>
+            @if($n==0)
+                <div class="row">
+                    <div class="col s12">
+                        <!-- User who created the event profile-->
+                        <div class="card-panel grey lighten-5 z-depth-1">
+                            <div class="row">
+                                <div class="col s12 m12 l6">
+                                    <div class="row valign-wrapper">
+                                        <div class="col s3 m3 l1">
+                                            <a class="black-text" href="/user/{{$event->user_id}}">
+                                                <img class="circle profile-pic" src="/image/simon.jpg"  alt="User's pic">
+                                            </a>
+                                        </div>
+                                        <div class="col s3 m3 l1 left-align">
+                                            <p>{{$user->first_name}} {{$user->last_name}}</p>
+                                        </div>
+                                        <div class="col s8 m8 l10 right-align">
+                                            <p>{{ $event->date }}</p>
+                                        </div>
                                     </div>
-                                    <div class="col s3 m3 l1 left-align">
-                                        <p>{{$user->first_name}} {{$user->last_name}}</p>
-                                    </div>
-                                    <div class="col s8 m8 l10 right-align">
-                                        <p>{{ $event->date }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12 m12 l12 center-align">
-                                        <h5>{{ $event->name }}</h5>
-                                    </div>
-                                </div>
-                                <hr class="divider">
-                                <!-- Event Description -->
-                                <div>
                                     <div class="row">
-                                        <div class="col s12 m12 l12">
-                                           <p>{{ $event->description }}</p>
-                                            @if ($event->recurency())
-                                                <br><p>Récurrence : {{$event->recurency()}} Jours</p>
-                                            @endif
+                                        <div class="col s12 m12 l12 center-align">
+                                            <h5>{{ $event->name }}</h5>
                                         </div>
-                                        <div class="col s12 m12 l12 right-align ">
-                                            <a class="waves-effect waves-dark btn btn-event see" href="/event/{{$event->id}}"><i class="fas fa-eye right"></i>Voir l'évènement</a>
+                                    </div>
+                                    <hr class="divider">
+                                    <!-- Event Description -->
+                                    <div>
+                                        <div class="row">
+                                            <div class="col s12 m12 l12">
+                                            <p>{{ $event->description }}</p>
+                                                @if ($event->recurency())
+                                                    <br><p>Récurrence : {{$event->recurency()}} Jours</p>
+                                                @endif
+                                            </div>
+                                            <div class="col s12 m12 l12 right-align ">
+                                                <a class="waves-effect waves-dark btn btn-event see" href="/event/{{$event->id}}"><i class="fas fa-eye right"></i>Voir l'évènement</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Event's pic in a carousel slider for beautyness -->
-                            <div class="col m12 s12 l6 carousel-all-event">
-                                <div class="carousel carousel-slider">
-                                    @foreach ($event->pictures as $picture)
-                                    <div class="event-pic center-align">
-                                        <a class="carousel-item" href="/picture/{{$picture->id}}"><img src="/storage/{{$picture->link}}"  alt="Event pic"></a>                            
+                                <!-- Event's pic in a carousel slider for beautyness -->
+                                <div class="col m12 s12 l6 carousel-all-event">
+                                    <div class="carousel carousel-slider">
+                                        @foreach ($event->pictures as $picture)
+                                        <div class="event-pic center-align">
+                                            <a class="carousel-item" href="/picture/{{$picture->id}}"><img src="/storage/{{$picture->link}}"  alt="Event pic"></a>                            
+                                        </div>
+                                        @endforeach
                                     </div>
-                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endif 
+                @php
+                $n++;
+                @endphp
+            @endif
+        @endif
    @endforeach 
 </section>
     
