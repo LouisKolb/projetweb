@@ -50,7 +50,7 @@ if(session()->has('user')) {
     <div class="row">
         <div class="col s12 l10 offset-l1">
             <p>Description de l'eventment : {{$event->description}}</p>
-            @if($event->recurency()) <p>Cet evenement à lieu tout  les {{$event->recurency()}} Jours @endif</p>
+            @if($event->recurency()) <p>Cet evenement à lieu tout  les {{$event->recurency()}} Jours</p>@endif
             <p>prix : {{ $event->price}} €</p>
         </div>
         <div class="col s12 center-align">
@@ -152,7 +152,7 @@ if(session()->has('user')) {
                             {{--End like button--}}
                             </form>
                             @if($user->hasRole('tutor'))
-                                <a href="/picture/{{$picture->id}}/signal"><i class="signal fas fa-exclamation"></a></i>
+                                <a href="/picture/{{$picture->id}}/signal"><i class="signal fas fa-exclamation"></i></a>
                             @endif
                         @else
                             <p>Vous devez être connecté pour liker</p>
@@ -236,9 +236,10 @@ if(session()->has('user')) {
                                             @endif        
                                         </div>
                                     </div>
+                                    </div>
                                 </div>
                             </div>
-                        @endforeach
+                        @endforeach           
                     </div>
                 </li>
             </ul>

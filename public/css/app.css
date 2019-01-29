@@ -118,6 +118,7 @@
     max-height: 15em;
     min-height: 15em;
     min-width: 15em;
+    margin-top:10px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -137,8 +138,9 @@
 
 /* Modal img size and margin */
 .img-modal{
-    width:90%;
-    height:90%;
+    max-height: 35vh;
+    min-height: 35vh;
+    width: auto;
     display:block;
     margin-left: auto;
     margin-right: auto;
