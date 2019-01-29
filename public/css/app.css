@@ -596,6 +596,10 @@ a:focus{
         max-width: 37vh;
     }
 
+  }
+
+  @media screen and (max-width: 1200px) {
+
     .event-pic-show{
         height: 25vh;
         width: auto;

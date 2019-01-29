@@ -139,7 +139,7 @@ if(session()->has('user')) {
                                     alt="User's avatar">
                             </div>
                         </div>
-                        <div class="col s1n2 left-alig">
+                        <div class="col s12 left-align">
                             @php $pictureuser = App\user::find($picture->user_id) @endphp
                             <p>{{$pictureuser->first_name}} {{$pictureuser->last_name}}</p>
                         </div>
