@@ -55,7 +55,7 @@ if(session()->has('user')) {
         </div>
         <div class="col s12 center-align">
             {{-- Open a modal to add image if you were present on the event --}} 
-            @if($event->date<now() && $connected)
+            @if(($event->date<now() || $event->recurency())        && $connected && $event->statut)
                  @if($user->hasSubscribedToEvent($event->id))
                  <div class="col l12 m12 s12">
                      <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
@@ -65,7 +65,7 @@ if(session()->has('user')) {
                  <div class="col l12 m12 s12"></div>
                     
                  @endif
-            @elseif($connected)
+            @elseif($connected && $event->statut)
                 <form action="/event/{{$event->id}}/subscribe" method="POST">
                     @csrf
                     <button class="waves-effect waves-dark btn" type="submit">
