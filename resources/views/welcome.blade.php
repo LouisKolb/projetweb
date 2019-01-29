@@ -83,13 +83,13 @@
         </div>
         <div class="row hide-on-med-and-down">
             <div class="col m3 offset-m2 s6 center-align">
-                <div class="btn-flat prev"><i class="material-icons">chevron_left</i></div>
+                <div class="btn-flat prev"><i class="fas fa-chevron-left"></i></div>
             </div>
             <div class="col m2">
 
             </div>
             <div class="col m3 s6 center-align">
-                <div class="btn-flat next"><i class="material-icons">chevron_right</i></div>
+                <div class="btn-flat next"><i class="fas fa-chevron-right"></i></div>
             </div>
         </div>
     </section>
