@@ -57,9 +57,13 @@ if(session()->has('user')) {
             {{-- Open a modal to add image if you were present on the event --}} 
             @if($event->date<now() && $connected)
                  @if($user->hasSubscribedToEvent($event->id))
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
+                 <div class="col l12 m12 s12">
+                     <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
                         <i class="material-icons left">add_a_photo</i>
                         Publier une ou plusieurs photos de l'événement</a>
+                 </div>
+                 <div class="col l12 m12 s12"></div>
+                    
                  @endif
             @elseif($connected)
                 <form action="/event/{{$event->id}}/subscribe" method="POST">
@@ -71,6 +75,7 @@ if(session()->has('user')) {
                                 S'inscrire
                             @endif
                             <i class="fas fa-sign-in-alt right"></i>
+                            <div class="col l12 m12 s12"></div>
                     </button>
                 </form>
             @else
@@ -78,6 +83,7 @@ if(session()->has('user')) {
             @endif
             @if ($connected)
                 @if($user->hasRole('Admin'))
+                <div class="col l12 m12 s12">
                         <form action="/event/{{$event->id}}/pdf" method="GET">
                             @csrf
                             <button class="waves-effect waves-dark btn" type="submit">
@@ -85,6 +91,8 @@ if(session()->has('user')) {
                                 <i class="fas fa-download right"></i>
                             </button>
                         </form>
+                </div>
+                        
                 @endif
             @endif
                
