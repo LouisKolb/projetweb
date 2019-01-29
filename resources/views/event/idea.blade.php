@@ -42,7 +42,7 @@ if(session()->has('user'))
                         @foreach (App\event::find($event->id)->pictures as $picture)
                             <div class="event-pic center-align">
                                 <a class="carousel-item"  href="/picture/{{$picture->id}}"><img src="/storage/{{$picture->link}}" alt="Some picture"></a>
-                            </div> 
+                            </div>
                         @endforeach
                     </div>
                 </div>
@@ -53,7 +53,7 @@ if(session()->has('user'))
                 <div id="event-idea-footer" class="row">
                     <div id="user-card" class="col l3 m2 s12">
                         <div class="col l12 m12 s12 user-info">
-                            <p class="user-info"> Proposé par : {{$creator->first_name}}{{$creator->last_name }}</p>
+                            <p class="user-info"> Proposé par : {{$creator->first_name}} {{$creator->last_name }}</p>
                         </div>
 
                     </div>
