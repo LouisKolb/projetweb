@@ -66,7 +66,8 @@
                                     </div>                            
                                 </div>
                                 <div class="col s12 m6 l6">
-                                    <img class="img-product" src="/storage/{{$product->picture->link}}" alt="{{$product->name}}">
+                                    <img class="img-product" src="/storage/{{$product->picture()->link}}" alt="{{$product->name}}">
+                                    
                                 </div>
                             </div>
                         </form>
