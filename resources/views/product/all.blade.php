@@ -91,7 +91,7 @@ if(session()->has('user'))
             <div class="col s12 m6 l4 picture-item" data-groups="[&quot;{{$product->categoryName()}}&quot;]" data-date-created="{{$product->created_at}}" data-price="{{$price}}" data-title="{{$product->name}}">
                 <div class="card hoverable picture-item__inner">
                     <div class="card-image aspect__inner">
-                    <img class="img-product aspect__inner" src="/storage/{{$product->picture->link}}" alt="{{$product->name}}">
+                    <img class="img-product aspect__inner" src="/storage/{{$product->picture()->link}}" alt="{{$product->name}}">
                         <a class="btn-floating halfway-fab waves-effect orange accent-3 modal-trigger open" data-id="Album" href="#modal{{$product->id}}"><i
                             class="material-icons">add</i></a>
                     </div>
@@ -140,7 +140,7 @@ if(session()->has('user'))
                 <div class="modal-content">
                     <div class="row">
                         <div class="col s12 m12 l6 ">
-                            <img class="img-modal" src="/storage/{{$product->picture->link}}" alt="{{$product->name}}">
+                            <img class="img-modal" src="/storage/{{$product->picture()->link}}" alt="{{$product->name}}">
                         </div>
 
                         <div class="col s12 m12 l6">

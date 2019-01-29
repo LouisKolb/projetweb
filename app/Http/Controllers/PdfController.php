@@ -16,17 +16,23 @@ class PdfController extends Controller
       //check if the user is connected
       if(!session()->has('user'))
       {
+          //go to the previous page
           return redirect()->back();
       }
-      //check if admin
+      //get the user
       $user = user::find(session()->get('user')[0]);
-      if (!$user->hasRole('admin')) {
+      //check if admin
+      if (!$user->hasRole('admin'))
+      {
+        //go to the previous page
         return redirect()->back();
       }
-      //dowload the pdf
+        //find the id
         $event= event::find($id);
         $pdf = PDF::loadView('event.pdf', compact('event'));
+        //change the name of the pdf
         $name = "commandeNo-".$event->id.".pdf";
+        //dowload the pdf
         return $pdf->download($name);
     }
 }

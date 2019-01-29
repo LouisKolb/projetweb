@@ -171,6 +171,11 @@ class UserController extends Controller
         if (strlen(request()->password) < 8) {
             array_push($errors, "Le mot de passe doit d'être de 8 caracteres minimims");
         }
+        //check the password reliability
+        if (!preg_match("/^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/",request()->password)) {
+            array_push($errors, "Le mot de passe doit contenir au moisns une majuscule , minuscule et un chiffre");
+        }
+        
 
         //if no error
         if (sizeof($errors) == 0) {

@@ -63,36 +63,21 @@
         <div class="row">
             <div class="col s12 carousel-welcome">
                 <div class="carousel center-align" data-indicators="true">
-                    <a href="#one!" class="carousel-item">
-                        <img class="resize" src="./image/pull.jpg" alt="Top article">
-                        <div>
-                            <p class="top-article">Nom top article 1</p>
-                        </div>
-                    </a>
-                    <a href="#two!" class="carousel-item">
-                        <img class="resize" src="./image/pull.png" alt="Top article">
-                        <div>
-                            <p class="top-article">Nom top article 2</p>
-                        </div>
-                    </a>
-                    <a href="#three!" class="carousel-item">
-                        <img class="resize" src="./image/huete.png" alt="Top article">
-                        <div>
-                            <p class="top-article">Nom top article 3</p>
-                        </div>
-                    </a>
-                    <a href="#four!" class="carousel-item">
-                        <img class="resize" src="./image/dorito.png" alt="Top article">
-                        <div>
-                            <p class="top-article">Nom top article 4</p>
-                        </div>
-                    </a>
-                    <a href="#five!" class="carousel-item">
-                        <img class="resize" src="./image/article.png" alt="Top article">
-                        <div>
-                            <p class="top-article">Nom top article 5</p>
-                        </div>
-                    </a>
+                    
+                    
+                    @foreach (App\product::mostCommanded() as $product)
+                        
+                    
+                        <a href="#one!" class="carousel-item">
+                            <img class="resize" src="/storage/{{$product->picture()->link}}" alt="Top article">
+                            <div>
+                                <p class="top-article">{{$product->name}}</p>
+                            </div>
+                        </a>
+                    @endforeach
+                    
+
+
                 </div>
             </div>
         </div>
