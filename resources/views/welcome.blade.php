@@ -81,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row hide-on-med-and-down">
             <div class="col m3 offset-m2 s6 center-align">
                 <div class="btn-flat prev"><i class="material-icons">chevron_left</i></div>
             </div>
@@ -112,6 +112,12 @@ $(document).ready(function () {
     $('.prev').click(function () {
         $('.carousel').carousel('prev');
     });
+
+    autoplay();
+        function autoplay() {
+        $('.carousel').carousel('next');
+        setTimeout(autoplay, 3000);
+    } 
 });
 </script>
 

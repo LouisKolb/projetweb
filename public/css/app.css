@@ -587,3 +587,21 @@ a:focus{
 .margin-top-button{
     margin-bottom: 5px!important;
 }
+
+
+@media screen and (max-width: 640px) {
+    .carousel-all-event .carousel .carousel-item>img{
+        height: 30vh;
+        width: auto;
+        max-width: 37vh;
+    }
+
+    .event-pic-show{
+        height: 25vh;
+        width: auto;
+        max-width: 40vh;  
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+  }

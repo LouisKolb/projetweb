@@ -41,7 +41,7 @@
         </div>
         <div class="row center-align">
             <div class="col m12 l6 margetop">
-                <h5>{{App\user::find(session()->get('user')[0])->email}}</h5>
+                <h6>{{App\user::find(session()->get('user')[0])->email}}</h6>
             </div>
             <div class="col m12 l5">
                 <p>Modifier mon adresse mail</p>

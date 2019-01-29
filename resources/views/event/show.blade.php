@@ -75,7 +75,7 @@ if(session()->has('user')) {
                     </button>
                 </form>
             @else
-                <a href="/login" class="waves-effect waves-dark btn">Vous devez être connecté pour interagir</a>
+                <a href="/login" class="waves-effect waves-dark btn">Connectez-vous pour interagir</a>
             @endif
             @if ($connected)
                 @if($user->hasRole('Admin'))
@@ -227,12 +227,14 @@ if(session()->has('user')) {
                                                 {{-- Date --}} {{$comment->created_at}}
                                             </div>
                                         <div class="col s6 right-align"> 
-                                            @if($user->hasRole('tutor'))
-                                                <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/signal"><i class="fas fa-exclamation-triangle"></i></a>
-                                            @endif
-                                            @if($user->hasRole('admin'))
-                                                <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/delete"><i class="fas fa-ban"></i></a>
-                                            @endif         
+                                            @if($connected)
+                                                @if($user->hasRole('tutor'))
+                                                    <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/signal"><i class="fas fa-exclamation-triangle"></i></a>
+                                                @endif
+                                                @if($user->hasRole('admin'))
+                                                    <a class="waves-effect waves-light btn" href="/comment/{{$comment->id}}/delete"><i class="fas fa-ban"></i></a>
+                                                @endif 
+                                            @endif        
                                         </div>
                                     </div>
                                 </div>

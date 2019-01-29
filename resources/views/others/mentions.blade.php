@@ -27,7 +27,7 @@
             <h4>Développement</h4>
         </div>
         <div class="col s12">
-            <div class="mentions-container">
+            <div class="mentions-container hide-on-small-only">
                 <table class="striped">
                     <thead>
                         <tr>
@@ -59,6 +59,14 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="hide-on-med-and-up">
+                <div class="col s12">
+                    <p>Guillaume Doignon : guillaume.doignon@viacesi.fr</p><br>
+                    <p>Arthur Michel : michel.arthur@viacesi.fr</p><br>
+                    <p>Sébastien Grosshenny : sebastien.grosshenny@viacesi.fr</p><br>
+                    <p>Simon Grigoletto : simon.grigoletto@viacesi.fr</p><br>
+                </div>
             </div>
             <div class="col s10 offset-s1">
                 <h4>Hébergement</h4>
