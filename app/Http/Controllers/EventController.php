@@ -330,7 +330,7 @@ class EventController extends Controller
           array_push($errors,"Merci de compléter tout les champs et de poster une image ");
       }
 
-      if(request()->recurency <= 0){
+      if(request()->recurency < 0){
         array_push($errors, "La récurrence ne peut pas être inférieur ou égale à 0");
       }
 
