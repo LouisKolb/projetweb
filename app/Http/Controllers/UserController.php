@@ -173,7 +173,7 @@ class UserController extends Controller
         }
         //check the password reliability
         if (!preg_match("/^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/",request()->password)) {
-            array_push($errors, "Le mot de passe doit contenir au moisns une majuscule , minuscule et un chiffre");
+            array_push($errors, "Le mot de passe doit contenir au moins une majuscule , minuscule, un chiffre et un caractere spécial");
         }
         
 
