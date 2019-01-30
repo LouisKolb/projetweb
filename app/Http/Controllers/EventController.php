@@ -294,8 +294,10 @@ class EventController extends Controller
         
         if(session()->has('user')){
             $user = user::find(session()->gat('user')[0]);
-            if($user->hasRole('admin'));
-            return view('event.edit',compact('event'));
+            if($user->hasRole('admin')){
+
+                return view('event.edit',compact('event'));
+            }
         }
         //go to the view edit
         return redirect()->back();
