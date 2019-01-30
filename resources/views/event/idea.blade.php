@@ -52,7 +52,7 @@ if(session()->has('user'))
                     </div>
                     <div class="row event-idea-footer">
                         <div id="user-card" class="col l3 m2 s12">
-                            <div class="col l12 m12 s12 user-info">
+                            <div class="col l12 m12 s12 user-info hide-on-small-only">
                                 <p class="user-info"> Proposé par : {{$creator->first_name}} {{$creator->last_name }}</p>
                             </div>
                         

@@ -290,8 +290,15 @@ class EventController extends Controller
      */
     public function edit(event $event)
     {
+
+        
+        if(session()->has('user')){
+            $user = user::find(session()->gat('user')[0]);
+            if($user->hasRole('admin'));
+            return view('event.edit',compact('event'));
+        }
         //go to the view edit
-        return view('event.edit',compact('event'));
+        return redirect()->back();
     }
 
     /**
