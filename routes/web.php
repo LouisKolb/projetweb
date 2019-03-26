@@ -89,6 +89,7 @@ Route::get('/comment/{comment}/delete','CommentController@destroy');
 
 Route::get('/admin','AdminController@show');
 
+//Route pour le Forum
 
 
 
