@@ -91,6 +91,11 @@ Route::get('/admin','AdminController@show');
 
 //Route pour le Forum
 Route::get('/forum','TopicController@index');
+Route::post('/forum','TopicController@index');
+Route::get('/forum/category-create','CategoryForumController@create');
+Route::post('/categoryForum','CategoryForumController@store');
+Route::get('/forum/question-create','QuestionController@create');
+Route::post('/questioncreate','QuestionController@store');
 
 
 //Route pour pour les mentions légales

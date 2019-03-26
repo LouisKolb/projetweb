@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\event;
+use App\CategoryForum;
 use App\topic;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,10 @@ class TopicController extends Controller
      */
     public function index()
     {
+        $category_forums=CategoryForum::get();
         $events = event::orderBy('date')->get();
-        return view('forum.all', compact('events'));
+        
+        return view('forum.all', compact('events'), compact('category_forums'));
     }
 
     /**

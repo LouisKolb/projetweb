@@ -591,6 +591,11 @@ a:focus{
     margin-bottom: 5px!important;
 }
 
+.btncatefor{
+    margin-top: 10px;
+    margin-bottom: -5px;
+}
+
 
 @media screen and (max-width: 640px) {
     .carousel-all-event .carousel .carousel-item>img{
