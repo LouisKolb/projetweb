@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\event;
 use App\topic;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,8 @@ class TopicController extends Controller
      */
     public function index()
     {
-        //
+        $events = event::orderBy('date')->get();
+        return view('forum.all', compact('events'));
     }
 
     /**
@@ -33,9 +37,8 @@ class TopicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
     }
 
     /**

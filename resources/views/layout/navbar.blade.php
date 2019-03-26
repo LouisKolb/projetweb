@@ -26,6 +26,8 @@ $connected = false; if(session()->has('user')){
                 @endif
 
                 <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownEvent'>Évènement</a></li>
+
+                <li class="navitem"><a href='/forum' data-target='dropdownEvent'>Forum</a></li>
                 @if($connected)
                     <li class="navitem"><a class='dropdown-trigger' href='#' data-target='dropdownUser'>{{$user->username}}</a></li>
                 @else

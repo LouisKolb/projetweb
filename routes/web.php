@@ -90,7 +90,7 @@ Route::get('/comment/{comment}/delete','CommentController@destroy');
 Route::get('/admin','AdminController@show');
 
 //Route pour le Forum
-
+Route::get('/forum','TopicController@index');
 
 
 //Route pour pour les mentions légales
