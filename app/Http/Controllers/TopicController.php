@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\event;
 use App\CategoryForum;
 use App\topic;
+use App\Question;
+use App\user;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -18,10 +20,12 @@ class TopicController extends Controller
      */
     public function index()
     {
+        $user = user::find(session()->get('user')[0]);
+        $questions=Question::orderBy('name')->get();
         $category_forums=CategoryForum::get();
         $events = event::orderBy('date')->get();
         
-        return view('forum.all', compact('events'), compact('category_forums'));
+        return view('forum.all', compact('events','category_forums', 'questions'));
     }
 
     /**

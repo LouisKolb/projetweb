@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CategoryForum;
 use App\user;
+
 use Illuminate\Http\Request;
 
 class CategoryForumController extends Controller
@@ -119,9 +120,9 @@ class CategoryForumController extends Controller
      * @param  \App\CategoryForum  $categoryForum
      * @return \Illuminate\Http\Response
      */
-    public function edit(CategoryForum $categoryForum)
+    public function edit(CategoryForum $CategoryForum)
     {
-        //
+        return view('categoryForum.edit', compact('CategoryForum'));
     }
 
     /**
@@ -131,9 +132,11 @@ class CategoryForumController extends Controller
      * @param  \App\CategoryForum  $categoryForum
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryForum $categoryForum)
+    public function update(CategoryForum $CategoryForum)
     {
-        //
+     $CategoryForum->name = request()->name;
+     $CategoryForum->update();
+     return redirect('/forum');
     }
 
     /**
@@ -142,8 +145,18 @@ class CategoryForumController extends Controller
      * @param  \App\CategoryForum  $categoryForum
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CategoryForum $categoryForum)
+    public function destroy(CategoryForum $CategoryForum)
     {
-        //
+        if(session()->has('user')){
+          //if the user is an admin
+          if(user::find(session()->get('user')[0])->hasRole('admin')){
+            //delete the comment
+
+            $CategoryForum->delete();
+            
+          }
+        } 
+        return redirect('/forum');   
     }
+    
 }

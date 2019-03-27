@@ -35,12 +35,19 @@ $connected = false; if(session()->has('user')){
             </div>
             <div>
               <select name="category_forum" value="{{old('category_forum')}}">
-                  <option value="0" selected>Catégorie</option>
                   @foreach($category_forum as $category)
-                  <option value="1" >{{$category->name}}</option>
+                  <option value="{{$category->id}}">{{$category->name}}</option>
                   @endforeach
                  
               </select>
+          </div>
+
+          <p>
+      <label>
+        <input type="checkbox" class="filled-in" name="public" value="1" />
+          <span>Article privé (accéssible seulement aux membres)</span>
+        </label>
+      </p>
             
 
     </form>

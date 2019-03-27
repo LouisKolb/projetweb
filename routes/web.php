@@ -92,10 +92,17 @@ Route::get('/admin','AdminController@show');
 //Route pour le Forum
 Route::get('/forum','TopicController@index');
 Route::post('/forum','TopicController@index');
+
 Route::get('/forum/category-create','CategoryForumController@create');
+Route::post('/forum/{CategoryForum}/delete','CategoryForumController@destroy');
+Route::put('/forum/{CategoryForum}','CategoryForumController@update');
+Route::get('/forum/{CategoryForum}/edit','CategoryForumController@edit');
 Route::post('/categoryForum','CategoryForumController@store');
 Route::get('/forum/question-create','QuestionController@create');
 Route::post('/questioncreate','QuestionController@store');
+Route::get('/sujet/{question}','QuestionController@show');
+//Route::delete('/forum/CategoryForum}','CategoryForumController@destroy');
+
 
 
 //Route pour pour les mentions légales

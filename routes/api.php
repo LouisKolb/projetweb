@@ -43,7 +43,12 @@ Route::get('/events',function(){
 });
 
 
-
+Route::get('/forum',function(){
+    $data = new stdClass();
+    $questions= Question::get();
+    $data->data=$questions;
+    return response()->json($data);
+});
 
 
 
