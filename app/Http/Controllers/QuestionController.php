@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Question;
 use App\CategoryForum;
+use App\user;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -77,7 +78,7 @@ class QuestionController extends Controller
     public function show(question $question)
     {
         //go to the view sujet
-        return view('questionForum.show', compact('question')); 
+        return view('questionForum.show', compact('question',)); 
            }
 
     /**
@@ -88,7 +89,9 @@ class QuestionController extends Controller
      */
     public function edit(question $question)
     {
-        //
+        //go to edit view of sujet
+        $CategoryForum=CategoryForum::get();
+        return view('questionForum.edit', compact('question','CategoryForum')); 
     }
 
     /**
@@ -98,10 +101,13 @@ class QuestionController extends Controller
      * @param  \App\question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, question $question)
+    public function update(question $question)
     {
-        //
-    }
+        $question->name = request()->name;
+        $question->description = request()->description;
+        $question->categorie = request()->CategoryForum;
+        $question->update();
+     return redirect('/forum');    }
 
     /**
      * Remove the specified resource from storage.
@@ -111,6 +117,16 @@ class QuestionController extends Controller
      */
     public function destroy(question $question)
     {
-        //
+        
+        if(session()->has('user')){
+          //if the user is an admin
+          if(user::find(session()->get('user')[0])->hasRole('admin')){
+            //delete the comment
+
+            $question->delete();
+            
+          }
+        } 
+        return redirect('/forum');   
     }
 }

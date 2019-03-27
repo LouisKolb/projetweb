@@ -98,9 +98,13 @@ Route::post('/forum/{CategoryForum}/delete','CategoryForumController@destroy');
 Route::put('/forum/{CategoryForum}','CategoryForumController@update');
 Route::get('/forum/{CategoryForum}/edit','CategoryForumController@edit');
 Route::post('/categoryForum','CategoryForumController@store');
+
+Route::put('/sujet/{question}','QuestionController@update');
+Route::get('{question}/edit','QuestionController@edit');
 Route::get('/forum/question-create','QuestionController@create');
 Route::post('/questioncreate','QuestionController@store');
 Route::get('/sujet/{question}','QuestionController@show');
+Route::post('{question}/delete','QuestionController@destroy');
 //Route::delete('/forum/CategoryForum}','CategoryForumController@destroy');
 
 

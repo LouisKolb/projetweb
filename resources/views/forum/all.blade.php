@@ -43,7 +43,6 @@
                     <div class="col s12 left-align ">
                       <h3>{{$category_forum->name}} 
                         @if($connected && $user->hasRole('admin'))
-                        <a class="waves-effect waves-light btn" href="/forum/{{$category_forum->id}}/delete" style="float:center;"><i class="fas fa-ban"></i></a>
                         <a class="waves-effect waves-light btn" href="/forum/{{$category_forum->id}}/edit" style="float:center;"><i class="fas fa-edit"></i></a></h3>
                         @endif
                 </div>
@@ -53,11 +52,11 @@
                     
                     <thead>
                         <tr>
-                            <th>Sujet</th>
-                            <th>Réponses</th>
-                            <th>Dernier message</th>
+                            <th width=33%>Sujet</th>
+                            <th width=33%>Réponses</th>
+                            <th width=33%>Dernier message</th>
                             @if($connected && $user->hasRole('admin'))
-                            <th>Modifier</td>
+                            <th width=33%>Modifier</td>
                             @endif
                         </tr>
                     </thead>
@@ -70,7 +69,7 @@
                             <td width=33%>123</td>
                             <td width=33%>par ta mère</td>
                             @if($connected && $user->hasRole('admin'))
-                            <td widht=33%><a class="waves-effect waves-light btn" href="/forum/{{$category_forum->id}}/edit" style="float:center;"><i class="fas fa-edit"></i></a></td>
+                            <td widht=33%><a class="waves-effect waves-light btn" href="{{$question->id}}/edit" style="float:center;"><i class="fas fa-edit"></i></a></td>
                             @endif
                         </tr>
                     </tbody>
