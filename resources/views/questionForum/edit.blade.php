@@ -45,13 +45,21 @@
                      <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                     </select>
+                    <p>
+      <label>
+        <input type="checkbox" class="filled-in" name="public" value="{{$question->prive}}" />
+          <span>Article privé (accéssible seulement aux membres)</span>
+        </label>
+      </p>
                 </div>
-                <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Modifier le produit</button>
+                <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Modifier le sujet</button>
             </form>
+            @if($user->hasRole('admin'))
             <form  action="/{{$question->id}}/delete" method="post">
                     @csrf
-                    <button class="btn waves-effect waves-light margin-top-button" id="submit" type="submit" name="submit">Supprimer le sujet</button>
+                    <button class="btn waves-effect waves-light margin-top-button suppsuj" id="submit" type="submit" name="submit">Supprimer le sujet</button>
             </form>
+            @endif
 
 
         </div>

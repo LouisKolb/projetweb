@@ -7,6 +7,7 @@ use App\CategoryForum;
 use App\topic;
 use App\Question;
 use App\user;
+use App\CommentForum;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -20,12 +21,14 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $user = user::find(session()->get('user')[0]);
         $questions=Question::orderBy('name')->get();
+        $comments=CommentForum::get();
         $category_forums=CategoryForum::get();
         $events = event::orderBy('date')->get();
+
+
         
-        return view('forum.all', compact('events','category_forums', 'questions'));
+        return view('forum.all', compact('events','category_forums', 'questions','comments'));
     }
 
     /**

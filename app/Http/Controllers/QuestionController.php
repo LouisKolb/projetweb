@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Question;
 use App\CategoryForum;
 use App\user;
+use App\CommentForum;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -78,8 +79,9 @@ class QuestionController extends Controller
     public function show(question $question)
     {
         //go to the view sujet
-        return view('questionForum.show', compact('question',)); 
-           }
+        $commentForum = CommentForum::get();
+        return view('questionForum.show', compact('question','commentForum')); 
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -90,8 +92,9 @@ class QuestionController extends Controller
     public function edit(question $question)
     {
         //go to edit view of sujet
+        $user = user::find(session()->get('user')[0]);
         $CategoryForum=CategoryForum::get();
-        return view('questionForum.edit', compact('question','CategoryForum')); 
+        return view('questionForum.edit', compact('question','CategoryForum','user')); 
     }
 
     /**
@@ -103,9 +106,12 @@ class QuestionController extends Controller
      */
     public function update(question $question)
     {
+
+
         $question->name = request()->name;
         $question->description = request()->description;
-        $question->categorie = request()->CategoryForum;
+        $question->prive=isset($_POST['public']);
+        $question->statut=0;
         $question->update();
      return redirect('/forum');    }
 
@@ -128,5 +134,15 @@ class QuestionController extends Controller
           }
         } 
         return redirect('/forum');   
+    }
+
+    public function signal(question $question){
+        
+        $question->statut=1;
+        $question->save();
+
+        return redirect()->back();
+
+        
     }
 }

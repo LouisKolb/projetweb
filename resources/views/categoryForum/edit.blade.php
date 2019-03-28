@@ -41,15 +41,14 @@ if(session()->has('user'))
                         <label class="active" for="name">Nom du produit</label>
                     </div>
                 </div>
-                <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Modifier le produit</button>
+                <button class="btn waves-effect waves-light" id="submit" type="submit" name="submit">Modifier la catégorie</button>
             </form>
 
             <form  action="/forum/{{$CategoryForum->id}}/delete" method="post">
                     @csrf
-                    
-                    <button class="btn waves-effect waves-light margin-top-button" id="submit" type="submit" name="submit">Supprimer l'évènement</button>
+                    <button class="btn waves-effect waves-light suppsuj" id="submit" type="submit" name="submit">Supprimer la catégorie</button>
             </form>
-        </div>
+        
     </div> 
 </section>
 

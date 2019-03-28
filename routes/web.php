@@ -105,7 +105,11 @@ Route::get('/forum/question-create','QuestionController@create');
 Route::post('/questioncreate','QuestionController@store');
 Route::get('/sujet/{question}','QuestionController@show');
 Route::post('{question}/delete','QuestionController@destroy');
-//Route::delete('/forum/CategoryForum}','CategoryForumController@destroy');
+Route::get('/forum/{question}/signal','QuestionController@signal');
+
+Route::post('/commentForum','CommentForumController@store');
+Route::get('/forum/{comment}/delete','CommentForumController@destroy');
+Route::get('/forum/{comment}/signal','CommentForumController@signal');
 
 
 
