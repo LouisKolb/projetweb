@@ -38,30 +38,27 @@
 @if($user->hasRole('admin'))
 <section>
 
-              <div class="row left-align">
-
-                    <div class="col s12 left-align ">
-                        <h3>Sujets Signalés 
-                    </div>
-
-        <div class="col s12">
-            <div class="mentions-container hide-on-small-only">
-                <table class="striped">
-                    
-                    <thead>
-                        <tr>
-                            <th width=33%>Sujet</th>
-                            <th width=33%>Réponses</th>
-                            <th width=33%>Dernier message</th>
-                            @if($connected)
-                            @foreach ($questions as $question)
-                            @if($user->username == App\user::find($question->user_id)->username || $user->hasRole('admin'))
-                            <th width=33%></td>
-                            @endif
-                             @endforeach
-                            @endif
-                        </tr>
-                    </thead>
+    <div class="row left-align">
+        <div class="col s12 left-align ">
+            <h3>Sujets Signalés 
+        </div>
+    <div class="col s12">
+        <div class="mentions-container hide-on-small-only">
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th width=33%>Sujet</th>
+                        <th width=33%>Réponses</th>
+                        <th width=33%>Dernier message</th>
+                        @if($connected)
+                        @foreach ($questions as $question)
+                        @if($user->username == App\user::find($question->user_id)->username || $user->hasRole('admin'))
+                        <th width=33%></td>
+                        @endif
+                        @endforeach
+                        @endif
+                    </tr>
+                </thead>
                    
                 
                     @php 
@@ -87,16 +84,34 @@
                         </tr>
                     </tbody>
                     @endif 
-@endforeach
+                @endforeach
                     
                 
                 </table>
             </div>    
         </div>
-
- </section>
+</section>
 @endif
+
+<div class="container ">
+            <div class="col s5 offset-s1 l3 offset-l1">
+                <div class="filters-group">
+                    <label for="filters-search-input" class="filter-label" >Rechercher un sujet</label>
+                    <input class="textfield filter__search js-shuffle-search" type="search" id="filters-search-input" list="titles" />
+                    <datalist id="titles">
+                        @foreach ($questions as $question)   
+                        <option value="{{$question->name}}">
+                        @endforeach    
+                            
+                    </datalist>
+
+
+
+                </div>
+            </div>
+        </div>
 <section>
+    
 
               <div class="row left-align">
                @foreach ($category_forums as $category_forum)
@@ -141,9 +156,14 @@
                             <td width=33%>{{$total}}</td>
                             <td width=33%>Yolo</td>
                     @if($connected)
-                        @if($user->username == App\user::find($question->user_id)->username || $user->hasRole('admin'))
-                            <td widht=33%><a class="waves-effect waves-light btn" href="{{$question->id}}/edit" style="float:center;"><i class="fas fa-edit"></i></a> <a class="waves-effect waves-light btn suppsuj" href="/forum/{{$question->id}}/signal" style="float:left;"><i class="fas fa-exclamation-triangle"></i></a></td>
-                        @endif
+                        
+                            <td widht=33%>
+                            @if($user->username == App\user::find($question->user_id)->username || $user->hasRole('admin'))
+                                <a class="waves-effect waves-light btn" href="{{$question->id}}/edit" style="float:center;"><i class="fas fa-edit"></i></a> 
+                            @endif
+
+                                <a class="waves-effect waves-light btn suppsuj" href="/forum/{{$question->id}}/signal" style="float:left;"><i class="fas fa-exclamation-triangle"></i></a></td>
+                       
                             
                     @endif
                         </tr>

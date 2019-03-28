@@ -122,16 +122,12 @@ class CommentForumController extends Controller
     }
 
     public function signal($commentForum){
-        //set the connection to false
-        $connected = false;
-        //check if the user is connected
-        if(session()->has('user')){
-            //get the user
-            $user = user::find(session()->get('user')[0]);
-            $commentForums->status=1;
-            
-        }
+        
+        $commentForum->statut=1;
+        $commentForum->save();
 
         return redirect()->back();
+
+        
     }
 }

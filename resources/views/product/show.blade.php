@@ -1,4 +1,4 @@
-@extends('layout.master') 
+she@extends('layout.master') 
 @section('content')
 
 <section id="section">
